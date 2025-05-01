@@ -1,0 +1,113 @@
+.art p{
+    display:inline-block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 18px;   
+
+}
+img{
+    margin-left:auto;
+    margin-right:auto;
+    display:block;
+    margin-bottom:0;
+    margin-top:-25px;
+    height:30px;
+    width:30px;
+    background-position: left bottom;
+
+}
+.hrs{
+    margin-top:25px;
+}
+.food{
+    text-align: left;
+    width:50%;
+}
+.price{
+text-align: right;
+width:50%
+}
+
+body{
+    background-image: url(garden.jpeg);
+    font-family:sans-serif;
+    padding:20px;
+
+}
+
+hr{
+    height: 2px;
+    background-color: brown;
+    border-color: brown;
+}
+h1{
+    font-family:sans-serif;
+    margin-top:0;
+    margin-bottom:20px;
+}
+h2{
+    font-size:30px;
+}
+h1,h2{
+    font-family:Impact, serif;
+}
+h1,h2,p{
+    text-align:center;
+}
+.fully{
+    margin-left:auto;
+    margin-right:auto;
+
+    padding:20px;
+    width:50%;
+    max-width: 800px;
+    background-color:rgb(222, 184, 135);
+}
+.established{
+    font-style:italic;
+}
+
+/*footer */
+footer{
+    font-size:14px;
+}
+.footers{
+    margin-bottom:5px;
+}
+
+a{
+    color: blue;
+}
+ 
+
+a:visited{
+    color:blue;
+}
+a:hover{
+    color:brown;
+}
+
+a:active{
+    color:black;
+}
+   
+  /* FOOTER END */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
