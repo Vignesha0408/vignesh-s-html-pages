@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Analyzer</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            display: flex;
+            gap: 30px;
+            width: fit-content;
+            transform: scale(1.1);
+        }
+        .sudoku-grid {
+            display: grid;
+            grid-template-columns: repeat(9, 60px);
+            gap: 2px;
+            background-color: #000;
+            padding: 4px;
+            flex-shrink: 0;
+        }
+        .cell {
+            width: 60px;
+            height: 60px;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .cell.selected {
+            background-color: #d0eaff;
+        }
+        .cell.conflict {
+            background-color: #ffcccc;
+        }
+        .cell.blue {
+            color: #0000ff;
+        }
+        .cell.highlight {
+            background-color: #ffff99;
+            transition: background-color: 1s ease;
+        }
+        .cell.prefilled {
+            background-color: #e0e0e0;
+            font-weight: bold;
+        }
+        .corner {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            font-size: 14px;
+        }
+        .corner.blue {
+            color: #0000ff;
+        }
+        .corner:not(.blue) {
+            color: #555;
+        }
+        .centre {
+            position: absolute;
+            font-size: 14px;
+        }
+        .centre.blue {
+            color: #0000ff;
+        }
+        .centre:not(.blue) {
+            color: #888;
+        }
+        .cell:nth-child(9n + 3), .cell:nth-child(9n + 6) {
+            border-right: 3px solid #000;
+        }
+        .cell:nth-child(n + 19):nth-child(-n + 27),
+        .cell:nth-child(n + 46):nth-child(-n + 54) {
+            border-bottom: 3px solid #000;
+        }
+        .control-box {
+            padding: 10px;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 180px;
+            flex-shrink: 0;
+        }
+        .mode-buttons {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+        .mode-button {
+            padding: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #ddd;
+            border: 1px solid #000;
+            border-radius: 5px;
+            flex: 1;
+            text-align: center;
+        }
+        .mode-button.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .mode-button:hover {
+            background-color: #bbb;
+        }
+        .number-pad {
+            display: grid;
+            grid-template-columns: repeat(3, 48px);
+            gap: 5px;
+        }
+        .number-button {
+            width: 48px;
+            height: 48px;
+            background-color: #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            cursor: pointer;
+            border: 1px solid #000;
+        }
+        .number-button:hover {
+            background-color: #bbb;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+        .action-button {
+            padding: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #ddd;
+            border: 1px solid #000;
+            border-radius: 5px;
+            flex: 1;
+            text-align: center;
+        }
+        .action-button:disabled {
+            background-color: #eee;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+        .action-button:hover:not(:disabled) {
+            background-color: #bbb;
+        }
+        .analyze-button, .solve-button, .new-game-button {
+            padding: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .analyze-button:hover, .solve-button:hover, .new-game-button:hover {
+            background-color: #45a049;
+        }
+        .status {
+            font-size: 18px;
+            color: #333;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .difficulty-button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #ddd;
+            border: 1px solid #000;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .difficulty-button:hover {
+            background-color: #bbb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sudoku-grid" id="grid"></div>
+        <div class="control-box">
+            <div class="mode-buttons">
+                <button class="mode-button active" onclick="setMode('normal')">Normal</button>
+                <button class="mode-button" onclick="setMode('corner')">Corner</button>
+                <button class="mode-button" onclick="setMode('centre')">Centre</button>
+                <button class="mode-button" onclick="setMode('color')">Color</button>
+                <button class="mode-button" onclick="deleteSelected()">Delete</button>
+            </div>
+            <div class="number-pad" id="number-pad"></div>
+            <div class="action-buttons">
+                <button class="action-button" id="undo-button" onclick="undo()" disabled>Undo</button>
+                <button class="action-button" id="redo-button" onclick="redo()" disabled>Redo</button>
+                <button class="action-button" id="fill-button" onclick="fillSelected()" disabled>Fill</button>
+            </div>
+            <button class="analyze-button" onclick="analyzePuzzle()">Analyze Puzzle</button>
+            <button class="solve-button" onclick="solvePuzzle()">Solve Puzzle</button>
+            <button class="new-game-button" onclick="showDifficultyModal()">New Game</button>
+            <div class="status" id="status">Click a cell to select it.</div>
+        </div>
+    </div>
+    <div class="modal" id="difficulty-modal">
+        <div class="modal-content">
+            <h2>Select Difficulty</h2>
+            <button class="difficulty-button" onclick="startNewGame('easy')">Easy</button>
+            <button class="difficulty-button" onclick="startNewGame('medium')">Medium</button>
+            <button class="difficulty-button" onclick="startNewGame('hard')">Hard</button>
+            <button class="difficulty-button" onclick="startNewGame('advanced')">Advanced</button>
+            <button class="difficulty-button" onclick="startNewGame('intermediate')">Intermediate</button>
+            <button class="difficulty-button" onclick="startNewGame('expert')">Expert</button>
+        </div>
+    </div>
+
+    <script>
+        const grid = document.getElementById('grid');
+        const numberPad = document.getElementById('number-pad');
+        const status = document.getElementById('status');
+        const undoButton = document.getElementById('undo-button');
+        const redoButton = document.getElementById('redo-button');
+        const fillButton = document.getElementById('fill-button');
+        const difficultyModal = document.getElementById('difficulty-modal');
+        let selectedCells = [];
+        let currentModes = ['normal'];
+        let puzzle = Array(9).fill().map(() => Array(9).fill(0));
+        let solution = Array(9).fill().map(() => Array(9).fill(0));
+        let cornerNotes = Array(9).fill().map(() => Array(9).fill([]));
+        let centreNotes = Array(9).fill().map(() => Array(9).fill([]));
+        let colors = Array(9).fill().map(() => Array(9).fill(''));
+        let history = [];
+        let historyIndex = -1;
+        let isDragging = false;
+        let lastEnteredCell = null;
+        let prefilledCells = new Set();
+
+        // Initialize grid
+        for (let i = 0; i < 81; i++) {
+            const cell = document.createElement('div');
+            cell.classList.add('cell');
+            cell.addEventListener('mousedown', (e) => startDrag(cell, i, e));
+            cell.addEventListener('mouseover', (e) => dragOver(cell, e));
+            cell.addEventListener('mouseup', stopDrag);
+            grid.appendChild(cell);
+        }
+
+        // Initialize number pad (1-9)
+        for (let i = 1; i <= 9; i++) {
+            const button = document.createElement('div');
+            button.classList.add('number-button');
+            button.textContent = i;
+            button.addEventListener('click', () => handleInput(i));
+            numberPad.appendChild(button);
+        }
+
+        // Add mouseup and mouseleave on grid to stop dragging
+        grid.addEventListener('mouseup', stopDrag);
+        grid.addEventListener('mouseleave', stopDrag);
+
+        // Keyboard input handler
+        document.addEventListener('keydown', (e) => {
+            if (e.key >= '1' && e.key <= '9') {
+                e.preventDefault();
+                handleInput(parseInt(e.key));
+            } else if (e.key === 'Delete' || e.key === 'Backspace') {
+                e.preventDefault();
+                deleteSelected();
+            } else if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+                e.preventDefault();
+                navigateWithArrow(e.key, e.ctrlKey);
+            }
+        });
+
+        function navigateWithArrow(key, ctrlKey) {
+            if (selectedCells.length === 0 && !lastEnteredCell) {
+                const newCell = grid.children[0];
+                selectedCells = [newCell];
+                newCell.classList.add('selected');
+                lastEnteredCell = newCell;
+                updateStatus();
+                return;
+            }
+
+            const referenceCell = selectedCells.length > 0 ? selectedCells[selectedCells.length - 1] : lastEnteredCell;
+            const index = Array.from(grid.children).indexOf(referenceCell);
+            let row = Math.floor(index / 9);
+            let col = index % 9;
+            let newIndex;
+
+            switch (key) {
+                case 'ArrowUp':
+                    row = Math.max(0, row - 1);
+                    break;
+                case 'ArrowDown':
+                    row = Math.min(8, row + 1);
+                    break;
+                case 'ArrowLeft':
+                    col = Math.max(0, col - 1);
+                    break;
+                case 'ArrowRight':
+                    col = Math.min(8, col + 1);
+                    break;
+            }
+
+            newIndex = row * 9 + col;
+            const newCell = grid.children[newIndex];
+
+            if (ctrlKey) {
+                if (!selectedCells.includes(newCell)) {
+                    selectedCells.push(newCell);
+                    updateFillButton();
+                    newCell.classList.add('selected');
+                }
+            } else {
+                selectedCells.forEach(c => c.classList.remove('selected'));
+                selectedCells = [newCell];
+                updateFillButton();
+                newCell.classList.add('selected');
+            }
+
+            updateStatus();
+        }
+
+        function startDrag(cell, index, event) {
+            event.preventDefault();
+            isDragging = true;
+            if (event.ctrlKey) {
+                const indexInSelected = selectedCells.indexOf(cell);
+                if (indexInSelected === -1) {
+                    selectedCells.push(cell);
+                    cell.classList.add('selected');
+                } else {
+                    selectedCells.splice(indexInSelected, 1);
+                    cell.classList.remove('selected');
+                }
+            } else {
+                selectedCells.forEach(c => c.classList.remove('selected'));
+                selectedCells = [cell];
+                cell.classList.add('selected');
+            }
+            updateFillButton();
+            updateStatus();
+        }
+
+        function dragOver(cell, event) {
+            if (isDragging) {
+                event.preventDefault();
+                if (!selectedCells.includes(cell)) {
+                    selectedCells.push(cell);
+                    cell.classList.add('selected');
+                }
+                updateFillButton();
+                updateStatus();
+            }
+        }
+
+        function stopDrag() {
+            isDragging = false;
+        }
+
+        function setMode(mode) {
+            if (mode === 'color') {
+                if (currentModes.includes('color')) {
+                    currentModes = currentModes.filter(m => m !== 'color');
+                    if (currentModes.length === 0) {
+                        currentModes = ['normal'];
+                    }
+                } else {
+                    currentModes.push('color');
+                }
+            } else {
+                if (currentModes.includes(mode)) {
+                    currentModes = currentModes.filter(m => m !== mode && m !== 'color');
+                    if (currentModes.length === 0) {
+                        currentModes = ['normal'];
+                    }
+                } else {
+                    currentModes = currentModes.filter(m => m !== 'normal' && m !== 'corner' && m !== 'centre');
+                    currentModes.push(mode);
+                }
+                if (!currentModes.includes('color')) {
+                    currentModes = currentModes.filter(m => m !== 'color');
+                }
+            }
+            const buttons = document.querySelectorAll('.mode-button');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+                if (currentModes.includes(button.textContent.toLowerCase())) {
+                    button.classList.add('active');
+                }
+            });
+            updateAllCells();
+            updateStatus();
+        }
+
+        function updateAllCells() {
+            for (let row = 0; row < 9; row++) {
+                for (let col = 0; col < 9; col++) {
+                    updateCellDisplay(row, col);
+                }
+            }
+        }
+
+        function deleteSelected() {
+            if (selectedCells.length === 0) return;
+
+            saveState();
+
+            selectedCells.forEach(cell => {
+                const row = Math.floor(Array.from(grid.children).indexOf(cell) / 9);
+                const col = Array.from(grid.children).indexOf(cell) % 9;
+                if (!prefilledCells.has(`${row},${col}`)) {
+                    puzzle[row][col] = 0;
+                    cornerNotes[row][col] = [];
+                    centreNotes[row][col] = [];
+                    colors[row][col] = '';
+                    updateCellDisplay(row, col);
+                }
+            });
+
+            selectedCells.forEach(cell => cell.classList.remove('selected'));
+            selectedCells = [];
+            lastEnteredCell = null;
+            updateFillButton();
+            clearConflicts();
+            updateStatus('Deleted selected cells.');
+        }
+
+        function updateStatus(message = null) {
+            const modeText = currentModes.map(m => m.charAt(0).toUpperCase() + m.slice(1)).join(', ');
+            status.textContent = message || `Mode: ${modeText}. ${selectedCells.length} cell(s) selected.`;
+        }
+
+        function saveState() {
+            history = history.slice(0, historyIndex + 1);
+            const state = {
+                puzzle: puzzle.map(row => [...row]),
+                cornerNotes: cornerNotes.map(row => row.map(notes => [...notes])),
+                centreNotes: centreNotes.map(row => row.map(notes => [...notes])),
+                colors: colors.map(row => [...row]),
+                lastEnteredCell: lastEnteredCell,
+                prefilledCells: new Set(prefilledCells)
+            };
+            history.push(state);
+            historyIndex++;
+            undoButton.disabled = historyIndex <= 0;
+            redoButton.disabled = historyIndex >= history.length - 1;
+        }
+
+        function undo() {
+            if (historyIndex > 0) {
+                historyIndex--;
+                restoreState(history[historyIndex]);
+                updateButtonStates();
+            }
+        }
+
+        function redo() {
+            if (historyIndex < history.length - 1) {
+                historyIndex++;
+                restoreState(history[historyIndex]);
+                updateButtonStates();
+            }
+        }
+
+        function restoreState(state) {
+            puzzle = state.puzzle.map(row => [...row]);
+            cornerNotes = state.cornerNotes.map(row => row.map(notes => [...notes]));
+            centreNotes = state.centreNotes.map(row => row.map(notes => [...notes]));
+            colors = state.colors.map(row => [...row]);
+            lastEnteredCell = state.lastEnteredCell;
+            prefilledCells = new Set(state.prefilledCells);
+            for (let row = 0; row < 9; row++) {
+                for (let col = 0; col < 9; col++) {
+                    updateCellDisplay(row, col);
+                }
+            }
+            clearConflicts();
+            selectedCells.forEach(cell => cell.classList.remove('selected'));
+            selectedCells = [];
+            updateFillButton();
+            updateStatus();
+        }
+
+        function updateButtonStates() {
+            undoButton.disabled = historyIndex <= 0;
+            redoButton.disabled = historyIndex >= history.length - 1;
+            updateFillButton();
+        }
+
+        function updateFillButton() {
+            fillButton.disabled = selectedCells.length !== 1 || prefilledCells.has(getCellPosition(selectedCells[0]));
+        }
+
+        function getCellPosition(cell) {
+            const index = Array.from(grid.children).indexOf(cell);
+            const row = Math.floor(index / 9);
+            const col = index % 9;
+            return `${row},${col}`;
+        }
+
+        function isValidMove(row, col, number) {
+            for (let c = 0; c < 9; c++) {
+                if (c !== col && puzzle[row][c] === number) {
+                    return false;
+                }
+            }
+            for (let r = 0; r < 9; r++) {
+                if (r !== row && puzzle[r][col] === number) {
+                    return false;
+                }
+            }
+            const startRow = Math.floor(row / 3) * 3;
+            const startCol = Math.floor(col / 3) * 3;
+            for (let r = startRow; r < startRow + 3; r++) {
+                for (let c = startCol; c < startCol + 3; c++) {
+                    if (r !== row && c !== col && puzzle[r][c] === number) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        function handleInput(number) {
+            if (selectedCells.length === 0) return;
+
+            saveState();
+
+            let invalidMove = false;
+            selectedCells.forEach(cell => {
+                const row = Math.floor(Array.from(grid.children).indexOf(cell) / 9);
+                const col = Array.from(grid.children).indexOf(cell) % 9;
+
+                if (prefilledCells.has(`${row},${col}`)) return;
+
+                if (currentModes.includes('normal') || currentModes.includes('color')) {
+                    if (isValidMove(row, col, number)) {
+                        puzzle[row][col] = number;
+                        cornerNotes[row][col] = [];
+                        centreNotes[row][col] = [];
+                        colors[row][col] = currentModes.includes('color') ? 'blue' : '';
+                        updateCellDisplay(row, col);
+                        lastEnteredCell = cell;
+                    } else {
+                        invalidMove = true;
+                        cell.classList.add('conflict');
+                        setTimeout(() => {
+                            cell.classList.remove('conflict');
+                        }, 1000);
+                    }
+                } else if (currentModes.includes('corner')) {
+                    if (puzzle[row][col] === 0) {
+                        const notes = cornerNotes[row][col];
+                        const index = notes.indexOf(number);
+                        if (index === -1) {
+                            notes.push(number);
+                            notes.sort();
+                        } else {
+                            notes.splice(index, 1);
+                        }
+                        updateCellDisplay(row, col);
+                    }
+                } else if (currentModes.includes('centre')) {
+                    if (puzzle[row][col] === 0) {
+                        const notes = centreNotes[row][col];
+                        const index = notes.indexOf(number);
+                        if (index === -1) {
+                            notes.push(number);
+                            notes.sort();
+                        } else {
+                            notes.splice(index, 1);
+                        }
+                        updateCellDisplay(row, col);
+                    }
+                }
+
+                if (!invalidMove) {
+                    cell.classList.add('highlight');
+                    setTimeout(() => {
+                        cell.classList.remove('highlight');
+                    }, 1000);
+                }
+            });
+
+            selectedCells.forEach(cell => cell.classList.remove('selected'));
+            selectedCells = [];
+            updateFillButton();
+            clearConflicts();
+            updateStatus(invalidMove ? 'Invalid move: Number conflicts with Sudoku rules.' : null);
+        }
+
+        function updateCellDisplay(row, col) {
+            const cell = grid.children[row * 9 + col];
+            cell.innerHTML = '';
+            cell.classList.remove('blue', 'prefilled');
+
+            if (puzzle[row][col] !== 0) {
+                cell.textContent = puzzle[row][col];
+                if (colors[row][col] === 'blue') {
+                    cell.classList.add('blue');
+                }
+                if (prefilledCells.has(`${row},${col}`)) {
+                    cell.classList.add('prefilled');
+                }
+            } else {
+                if (cornerNotes[row][col].length > 0) {
+                    const cornerDiv = document.createElement('div');
+                    cornerDiv.classList.add('corner');
+                    if (currentModes.includes('color') && currentModes.includes('corner')) {
+                        cornerDiv.classList.add('blue');
+                    }
+                    cornerDiv.textContent = cornerNotes[row][col].join('');
+                    cell.appendChild(cornerDiv);
+                }
+                if (centreNotes[row][col].length > 0) {
+                    const centreDiv = document.createElement('div');
+                    centreDiv.classList.add('centre');
+                    if (currentModes.includes('color') && currentModes.includes('centre')) {
+                        centreDiv.classList.add('blue');
+                    }
+                    centreDiv.textContent = centreNotes[row][col].join('');
+                    cell.appendChild(centreDiv);
+                }
+            }
+        }
+
+        function clearConflicts() {
+            const cells = document.querySelectorAll('.cell');
+            cells.forEach(cell => cell.classList.remove('conflict'));
+        }
+
+        function fillSelected() {
+            if (selectedCells.length !== 1) return;
+
+            saveState();
+
+            const cell = selectedCells[0];
+            const row = Math.floor(Array.from(grid.children).indexOf(cell) / 9);
+            const col = Array.from(grid.children).indexOf(cell) % 9;
+
+            if (prefilledCells.has(`${row},${col}`)) return;
+
+            // Solve the puzzle to get the correct number
+            const tempPuzzle = puzzle.map(row => [...row]);
+            if (solveSudoku(tempPuzzle)) {
+                puzzle[row][col] = tempPuzzle[row][col];
+                solution[row][col] = tempPuzzle[row][col];
+                cornerNotes[row][col] = [];
+                centreNotes[row][col] = [];
+                colors[row][col] = currentModes.includes('color') ? 'blue' : '';
+                updateCellDisplay(row, col);
+                cell.classList.add('highlight');
+                setTimeout(() => {
+                    cell.classList.remove('highlight');
+                }, 1000);
+                lastEnteredCell = cell;
+            } else {
+                updateStatus('Cannot fill: No valid solution exists.');
+            }
+
+            selectedCells.forEach(cell => cell.classList.remove('selected'));
+            selectedCells = [];
+            updateFillButton();
+            clearConflicts();
+            updateStatus();
+        }
+
+        function showDifficultyModal() {
+            difficultyModal.style.display = 'flex';
+        }
+
+        function startNewGame(difficulty) {
+            difficultyModal.style.display = 'none';
+            saveState();
+            generateNewPuzzle(difficulty);
+            updateAllCells();
+            clearConflicts();
+            selectedCells.forEach(cell => cell.classList.remove('selected'));
+            selectedCells = [];
+            lastEnteredCell = null;
+            updateFillButton();
+            updateStatus(`New ${difficulty} game started.`);
+        }
+
+        function generateNewPuzzle(difficulty) {
+            // Reset puzzle and related states
+            puzzle = Array(9).fill().map(() => Array(9).fill(0));
+            solution = Array(9).fill().map(() => Array(9).fill(0));
+            cornerNotes = Array(9).fill().map(() => Array(9).fill([]));
+            centreNotes = Array(9).fill().map(() => Array(9).fill([]));
+            colors = Array(9).fill().map(() => Array(9).fill(''));
+            prefilledCells = new Set();
+
+            // Generate a full valid Sudoku grid
+            fillDiagonal();
+            solveSudoku(puzzle);
+            solution = puzzle.map(row => [...row]);
+
+            // Determine number of cells to keep based on difficulty
+            let cellsToKeep;
+            switch (difficulty) {
+                case 'easy': cellsToKeep = 40; break; // 41 empty
+                case 'medium': cellsToKeep = 32; break; // 49 empty
+                case 'intermediate': cellsToKeep = 28; break; // 53 empty
+                case 'hard': cellsToKeep = 24; break; // 57 empty
+                case 'advanced': cellsToKeep = 22; break; // 59 empty
+                case 'expert': cellsToKeep = 20; break; // 61 empty
+                default: cellsToKeep = 32;
+            }
+
+            // Remove cells to create the puzzle
+            let cells = Array.from({ length: 81 }, (_, i) => i);
+            shuffleArray(cells);
+            for (let i = 0; i < 81 - cellsToKeep; i++) {
+                const index = cells[i];
+                const row = Math.floor(index / 9);
+                const col = index % 9;
+                puzzle[row][col] = 0;
+            }
+
+            // Mark prefilled cells
+            for (let row = 0; row < 9; row++) {
+                for (let col = 0; col < 9; col++) {
+                    if (puzzle[row][col] !== 0) {
+                        prefilledCells.add(`${row},${col}`);
+                    }
+                }
+            }
+        }
+
+        function fillDiagonal() {
+            for (let box = 0; box < 9; box += 3) {
+                let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+                shuffleArray(numbers);
+                let index = 0;
+                for (let row = box; row < box + 3; row++) {
+                    for (let col = box; col < box + 3; col++) {
+                        puzzle[row][col] = numbers[index++];
+                    }
+                }
+            }
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        function analyzePuzzle() {
+            clearConflicts();
+            let conflicts = false;
+            const cells = document.querySelectorAll('.cell');
+
+            for (let row = 0; row < 9; row++) {
+                let seen = new Set();
+                for (let col = 0; col < 9; col++) {
+                    if (puzzle[row][col] !== 0) {
+                        if (seen.has(puzzle[row][col])) {
+                            conflicts = true;
+                            cells[row * 9 + col].classList.add('conflict');
+                        }
+                        seen.add(puzzle[row][col]);
+                    }
+                }
+            }
+
+            for (let col = 0; col < 9; col++) {
+                let seen = new Set();
+                for (let row = 0; row < 9; row++) {
+                    if (puzzle[row][col] !== 0) {
+                        if (seen.has(puzzle[row][col])) {
+                            conflicts = true;
+                            cells[row * 9 + col].classList.add('conflict');
+                        }
+                        seen.add(puzzle[row][col]);
+                    }
+                }
+            }
+
+            for (let box = 0; box < 9; box++) {
+                let seen = new Set();
+                let startRow = Math.floor(box / 3) * 3;
+                let startCol = (box % 3) * 3;
+                for (let row = startRow; row < startRow + 3; row++) {
+                    for (let col = startCol; col < startCol + 3; col++) {
+                        if (puzzle[row][col] !== 0) {
+                            if (seen.has(puzzle[row][col])) {
+                                conflicts = true;
+                                cells[row * 9 + col].classList.add('conflict');
+                            }
+                            seen.add(puzzle[row][col]);
+                        }
+                    }
+                }
+            }
+
+            const isSolvable = isPuzzleSolvable();
+
+            const modeText = currentModes.map(m => m.charAt(0).toUpperCase() + m.slice(1)).join(', ');
+            if (conflicts) {
+                status.textContent = `Conflicts detected in the puzzle! ${selectedCells.length} cell(s) selected.`;
+            } else if (!isSolvable) {
+                status.textContent = `No solution exists for the current puzzle. ${selectedCells.length} cell(s) selected.`;
+            } else {
+                status.textContent = `No conflicts found. Puzzle is solvable. ${selectedCells.length} cell(s) selected.`;
+            }
+        }
+
+        function isPuzzleSolvable() {
+            const board = puzzle.map(row => [...row]);
+            return solveSudoku(board);
+        }
+
+        function solvePuzzle() {
+            saveState();
+            if (solveSudoku(puzzle)) {
+                cornerNotes = Array(9).fill().map(() => Array(9).fill([]));
+                centreNotes = Array(9).fill().map(() => Array(9).fill([]));
+                colors = Array(9).fill().map(() => Array(9).fill(''));
+                updateAllCells();
+                clearConflicts();
+                updateStatus('Puzzle solved successfully!');
+            } else {
+                updateStatus('No solution exists for the current puzzle.');
+            }
+        }
+
+        function solveSudoku(board = puzzle) {
+            function findEmpty() {
+                for (let row = 0; row < 9; row++) {
+                    for (let col = 0; col < 9; col++) {
+                        if (board[row][col] === 0) {
+                            return [row, col];
+                        }
+                    }
+                }
+                return null;
+            }
+
+            function isValid(row, col, num) {
+                for (let c = 0; c < 9; c++) {
+                    if (board[row][c] === num) return false;
+                }
+                for (let r = 0; r < 9; r++) {
+                    if (board[r][col] === num) return false;
+                }
+                const startRow = Math.floor(row / 3) * 3;
+                const startCol = Math.floor(col / 3) * 3;
+                for (let r = startRow; r < startRow + 3; r++) {
+                    for (let c = startCol; c < startCol + 3; c++) {
+                        if (board[r][c] === num) return false;
+                    }
+                }
+                return true;
+            }
+
+            function solve() {
+                const empty = findEmpty();
+                if (!empty) return true;
+                const [row, col] = empty;
+
+                for (let num = 1; num <= 9; num++) {
+                    if (isValid(row, col, num)) {
+                        board[row][col] = num;
+                        if (solve()) {
+                            return true;
+                        }
+                        board[row][col] = 0;
+                    }
+                }
+                return false;
+            }
+
+            return solve();
+        }
+
+        // Initialize with an empty grid
+        updateAllCells();
+        saveState();
+    </script>
+</body>
+</html>
