@@ -11,6 +11,14 @@ Simple webpages ,,
 | 3 | Green Valley Farmers Market | Landing page design | [Click here](https://vignesha0408.github.io/vignesh-s-html-pages/Green%20valley%20Farmers%20market/index.html) |
 | 4 | YouTube Speeder | Speed controller UI | [Click here](https://vignesha0408.github.io/vignesh-s-html-pages/youtube_speeder/youtube_speeder.html) |
 | 5 | Sudoku | Simple Sudoku page | [Click here](https://vignesha0408.github.io/vignesh-s-html-pages/soduku.html) |
+| 6 | Peg solitaire 37-45 | Peg solitaire game | [Click here](https://vignesha0408.github.io/Peg_soliter/37_peg_solitaire.html), [Click here](https://vignesha0408.github.io/Peg_soliter/45_peg_solitaire.html) |
+
+
+
+
+
+
+
 
 ---
 
