@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functional Programming Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Functional Programming Cheat Sheet</h1>
+        
+        <div class="section">
+            <h2>Core Concepts</h2>
+            <table>
+                <tr><th>Concept</th><th>Description</th><th>Benefits</th><th>Example</th></tr>
+                <tr><td>Immutability</td><td>Values cannot be changed after creation</td><td>Thread safety, predictability</td><td>const x = 5; // x cannot be reassigned</td></tr>
+                <tr><td>Pure Functions</td><td>Functions without side effects</td><td>Predictable, testable, cacheable</td><td>f(x) = x * 2; // same input always produces same output</td></tr>
+                <tr><td>Higher-Order Functions</td><td>Functions that take other functions as arguments</td><td>Code reusability, abstraction</td><td>map, filter, reduce functions</td></tr>
+                <tr><td>First-Class Functions</td><td>Functions treated as values</td><td>Flexibility, functional composition</td><td>const f = (x) => x + 1;</td></tr>
+                <tr><td>Function Composition</td><td>Combining functions to create new functions</td><td>Modularity, readability</td><td>const f = g ∘ h; // f(x) = g(h(x))</td></tr>
+                <tr><td>Recursion</td><td>Function calling itself</td><td>Alternative to loops, elegant solutions</td><td>factorial(n) = n * factorial(n-1)</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Functional Programming Patterns</h2>
+            <table>
+                <tr><th>Pattern</th><th>Description</th><th>Implementation</th><th>Benefits</th></tr>
+                <tr><td>Map</td><td>Transform each element of a collection</td><td>Apply function to each element</td><td>Transform data without mutation</td></tr>
+                <tr><td>Filter</td><td>Select elements based on predicate</td><td>Keep elements satisfying condition</td><td>Remove unwanted elements</td></tr>
+                <tr><td>Reduce</td><td>Combine elements into single value</td><td>Accumulate elements using function</td><td>Aggregate data, complex transformations</td></tr>
+                <tr><td>Currying</td><td>Transform multi-argument function</td><td>Function returning other functions</td><td>Partial application, configuration</td></tr>
+                <tr><td>Partial Application</td><td>Fix some arguments of a function</td><td>Create specialized functions</td><td>Reusability, specialization</td></tr>
+                <tr><td>Compose</td><td>Chain functions together</td><td>Right-to-left function application</td><td>Modular, readable code</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Functional Languages & Features</h2>
+            <table>
+                <tr><th>Language</th><th>Key Features</th><th>Functional Strengths</th><th>Use Cases</th></tr>
+                <tr><td>Haskell</td><td>Pure functional, lazy evaluation, strong typing</td><td>Complete functional paradigm</td><td>Academic research, compiler design</td></tr>
+                <tr><td>Lisp</td><td>S-expressions, macros, dynamic typing</td><td>Code as data, metaprogramming</td><td>AI, symbolic computation</td></tr>
+                <tr><td>Scala</td><td>Hybrid OOP/FP, JVM-based, strong typing</td><td>Enterprise applications</td><td>Big data processing, web applications</td></tr>
+                <tr><td>Erlang</td><td>Actor model, fault tolerance, concurrency</td><td>Distributed systems</td><td>Telecommunications, messaging systems</td></tr>
+                <tr><td>F#</td><td>ML-family, .NET integration, type inference</td><td>Data science, financial modeling</td><td>Scientific computing, web services</td></tr>
+                <tr><td>JavaScript</td><td>Multi-paradigm, dynamic, first-class functions</td><td>Wide adoption, functional utilities</td><td>Web development, scripting</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Functional Programming Techniques</h2>
+            <table>
+                <tr><th>Technique</th><th>Description</th><th>Implementation</th><th>Benefits</th></tr>
+                <tr><td>Closures</td><td>Function capturing variables from outer scope</td><td>Inner function accessing outer variables</td><td>Data encapsulation, factory functions</td></tr>
+                <tr><td>Monads</td><td>Structure for sequencing computations</td><td>Maybe, Either, IO monads</td><td>Error handling, async operations</td></tr>
+                <tr><td>Monoids</td><td>Set with associative operation and identity</td><td>Numbers with addition, lists with concatenation</td><td>Parallelization, aggregation</td></tr>
+                <tr><td>Functors</td><td>Structure that can be mapped over</td><td>Lists, Maybe, Either</td><td>Consistent transformation interface</td></tr>
+                <tr><td>Lazy Evaluation</td><td>Delay computation until needed</td><td>Infinite data structures, efficiency</td><td>Memory efficiency, performance</td></tr>
+                <tr><td>Pattern Matching</td><td>Decompose data structures</td><td>Match against structure patterns</td><td>Concise, safe data handling</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Functional vs Imperative Comparison</h2>
+            <table>
+                <tr><th>Aspect</th><th>Functional</th><th>Imperative</th><th>Trade-offs</th></tr>
+                <tr><td>Data Handling</td><td>Immutable, persistent data structures</td><td>Mutable state, variable reassignment</td><td>FP: Safety vs Performance; IP: Efficiency vs Complexity</td></tr>
+                <tr><td>Control Flow</td><td>Recursion, function composition</td><td>Loops, conditionals, goto</td><td>FP: Readability vs Stack usage; IP: Performance vs Side effects</td></tr>
+                <tr><td>State Management</td><td>No shared mutable state</td><td>Shared mutable state</td><td>FP: Concurrency safety vs Memory; IP: Performance vs Race conditions</td></tr>
+                <tr><td>Error Handling</td><td>Monads, pattern matching</td><td>Exceptions, return codes</td><td>FP: Type safety vs Complexity; IP: Simplicity vs Exception handling</td></tr>
+                <tr><td>Performance</td><td>Potential overhead, lazy evaluation</td><td>Direct execution, optimization</td><td>FP: Abstraction vs Speed; IP: Speed vs Maintainability</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Functional Programming Libraries</h2>
+            <table>
+                <tr><th>Library</th><th>Language</th><th>Key Features</th><th>Popular Functions</th></tr>
+                <tr><td>Lodash</td><td>JavaScript</td><td>Utility functions, FP extensions</td><td>map, filter, reduce, curry, compose</td></tr>
+                <tr><td>Ramda</td><td>JavaScript</td><td>Point-free style, immutable data</td><td>compose, curry, pipe, map, filter</td></tr>
+                <tr><td>Underscore</td><td>JavaScript</td><td>Functional programming utilities</td><td>map, filter, reduce, each, pluck</td></tr>
+                <tr><td>Scala Collections</td><td>Scala</td><td>Immutable collections, functional operations</td><td>map, flatMap, filter, fold, foreach</td></tr>
+                <tr><td>Java Stream API</td><td>Java</td><td>Functional operations on collections</td><td>map, filter, reduce, collect, forEach</td></tr>
+                <tr><td>C# LINQ</td><td>C#</td><td>Query syntax, functional transformations</td><td>Select, Where, Aggregate, OrderBy</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Functional Programming Best Practices</h2>
+            <table>
+                <tr><th>Practice</th><th>Description</th><th>Implementation Tips</th><th>Benefits</th></tr>
+                <tr><td>Avoid Side Effects</td><td>Functions should not modify external state</td><td>Return new values instead of modifying parameters</td><td>Predictable behavior, testability</td></tr>
+                <tr><td>Use Immutable Data</td><td>Prevent modification of data structures</td><td>Use libraries like Immutable.js, final keywords</td><td>Thread safety, easier reasoning</td></tr>
+                <tr><td>Prefer Expressions</td><td>Use expressions over statements</td><td>Return values from functions, avoid if-else statements</td><td>Composability, readability</td></tr>
+                <tr><td>Think in Transformations</td><td>View problems as data transformations</td><td>Chain map, filter, reduce operations</td><td>Declarative code, clarity</td></tr>
+                <tr><td>Embrace Recursion</td><td>Use recursion instead of loops</td><td>Define base cases, ensure termination</td><td>Elegant solutions, mathematical approach</td></tr>
+                <tr><td>Use Higher-Order Functions</td><td>Abstract common patterns with functions</td><td>Build custom map, filter, reduce functions</td><td>Code reusability, abstraction</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

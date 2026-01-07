@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compiler Optimization Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Compiler Optimization Cheat Sheet</h1>
+        
+        <div class="section">
+            <h2>Optimization Levels & Categories</h2>
+            <table>
+                <tr><th>Level</th><th>Flag</th><th>Optimizations</th><th>Trade-offs</th></tr>
+                <tr><td>-O0</td><td>No optimization</td><td>Debugging symbols, no optimization</td><td>Fast compilation, large code size</td></tr>
+                <tr><td>-O1</td><td>Basic optimization</td><td>Local optimizations, dead code elimination</td><td>Small code size, moderate compilation time</td></tr>
+                <tr><td>-O2</td><td>Standard optimization</td><td>Loop optimization, inlining, instruction scheduling</td><td>Balanced performance vs compilation time</td></tr>
+                <tr><td>-O3</td><td>Aggressive optimization</td><td>Vectorization, interprocedural analysis</td><td>Best performance, long compilation time</td></tr>
+                <tr><td>-Os</td><td>Size optimization</td><td>Minimize code size</td><td>Smaller code, possible performance loss</td></tr>
+                <tr><td>-Ofast</td><td>Fast math</td><td>Relaxed floating-point rules</td><td>Fastest math, possible accuracy loss</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Local Optimizations</h2>
+            <table>
+                <tr><th>Technique</th><th>Description</th><th>Example</th><th>Benefits</th></tr>
+                <tr><td>Constant Folding</td><td>Evaluate constant expressions at compile time</td><td>3 + 5 → 8</td><td>Reduced runtime computation</td></tr>
+                <tr><td>Constant Propagation</td><td>Replace variables with known constant values</td><td>x = 5; y = x + 3 → y = 8</td><td>Reduces memory access</td></tr>
+                <tr><td>Dead Code Elimination</td><td>Remove unused code</td><td>Unreachable code removal</td><td>Smaller code size</td></tr>
+                <tr><td>Copy Propagation</td><td>Replace variables with their values</td><td>y = x; z = y → z = x</td><td>Reduces memory access</td></tr>
+                <tr><td>Common Subexpression Elimination</td><td>Compute expression once, reuse result</td><td>a = b * c; d = b * c → t = b * c; a = t; d = t</td><td>Avoid redundant computation</td></tr>
+                <tr><td>Strength Reduction</td><td>Replace expensive operations with cheaper ones</td><td>multiply by power of 2 → shift</td><td>Faster execution</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Loop Optimizations</h2>
+            <table>
+                <tr><th>Technique</th><th>Description</th><th>Example</th><th>Benefits</th></tr>
+                <tr><td>Loop Unrolling</td><td>Replicate loop body to reduce iterations</td><td>for(i=0;i<4;i++) → 4 copies of body</td><td>Reduce loop overhead</td></tr>
+                <tr><td>Loop Invariant Code Motion</td><td>Move computation outside loop</td><td>Move constant calculation out of loop</td><td>Reduce redundant computation</td></tr>
+                <tr><td>Loop Fusion</td><td>Combine adjacent loops</td><td>Two loops over same range → one loop</td><td>Better cache usage</td></tr>
+                <tr><td>Loop Fission</td><td>Split loop into multiple loops</td><td>One loop → multiple loops</td><td>Better cache usage</td></tr>
+                <tr><td>Loop Interchange</td><td>Swap nested loop order</td><td>Change iteration order for cache</td><td>Better cache locality</td></tr>
+                <tr><td>Loop Tiling/Blocking</td><td>Divide loop into smaller blocks</td><td>Process data in cache-sized blocks</td><td>Better cache performance</td></tr>
+                <tr><td>Vectorization</td><td>Convert scalar operations to vector operations</td><td>Use SIMD instructions</td><td>Parallel execution</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Global Optimizations</h2>
+            <table>
+                <tr><th>Technique</th><th>Description</th><th>Scope</th><th>Benefits</th></tr>
+                <tr><td>Global Common Subexpression Elimination</td><td>Find common expressions across basic blocks</td><td>Entire function</td><td>Avoid redundant computation</td></tr>
+                <tr><td>Global Dead Code Elimination</td><td>Remove code that doesn't affect program output</td><td>Entire function</td><td>Smaller code size</td></tr>
+                <tr><td>Global Value Numbering</td><td>Identify equivalent expressions globally</td><td>Entire function</td><td>Reduce redundant computation</td></tr>
+                <tr><td>Data Flow Analysis</td><td>Track variable values across control flow</td><td>Entire function</td><td>Optimization opportunities</td></tr>
+                <tr><td>Register Allocation</td><td>Assign variables to processor registers</td><td>Entire function</td><td>Reduce memory access</td></tr>
+                <tr><td>Instruction Scheduling</td><td>Reorder instructions to reduce pipeline stalls</td><td>Basic blocks</td><td>Better CPU utilization</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Interprocedural Optimizations</h2>
+            <table>
+                <tr><th>Technique</th><th>Description</th><th>Scope</th><th>Benefits</th></tr>
+                <tr><td>Function Inlining</td><td>Replace function call with function body</td><td>Across function boundaries</td><td>Eliminate call overhead</td></tr>
+                <tr><td>Interprocedural Constant Propagation</td><td>Propagate constants across function calls</td><td>Across function boundaries</td><td>Global constant optimization</td></tr>
+                <tr><td>Whole Program Optimization</td><td>Optimize entire program as single unit</td><td>Entire program</td><td>Global optimization opportunities</td></tr>
+                <tr><td>Link-Time Optimization</td><td>Optimize across compilation units</td><td>Across object files</td><td>Cross-module optimizations</td></tr>
+                <tr><td>Profile-Guided Optimization</td><td>Use runtime profiling data for optimization</td><td>Entire program</td><td>Optimize hot paths</td></tr>
+                <tr><td>Auto-Parallelization</td><td>Automatically parallelize code</td><td>Across functions</td><td>Multi-core performance</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Optimization Passes</h2>
+            <table>
+                <tr><th>Phase</th><th>Passes</th><th>Purpose</th><th>Typical Implementation</th></tr>
+                <tr><td>Frontend</td><td>Dead code elimination, constant folding</td><td>Early optimizations</td><td>AST-based transformations</td></tr>
+                <tr><td>Intermediate</td><td>SSA construction, data flow analysis</td><td>Prepare for optimization</td><td>Control flow graph analysis</td></tr>
+                <tr><td>Optimization</td><td>Loop optimization, register allocation</td><td>Performance improvements</td><td>Multiple passes in specific order</td></tr>
+                <tr><td>Backend</td><td>Instruction selection, scheduling</td><td>Target-specific optimization</td><td>Machine instruction generation</td></tr>
+                <tr><td>Assembly</td><td>Peephole optimization</td><td>Final code improvements</td><td>Local instruction patterns</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Optimization Challenges</h2>
+            <table>
+                <tr><th>Challenge</th><th>Description</th><th>Impact</th><th>Solutions</th></tr>
+                <tr><td>Aliasing</td><td>Multiple pointers referencing same memory</td><td>Limits optimization opportunities</td><td>Alias analysis, restrict keyword</td></tr>
+                <tr><td>Memory Dependencies</td><td>Ordering constraints on memory operations</td><td>Prevents reordering</td><td>Dependency analysis</td></tr>
+                <tr><td>Side Effects</td><td>Functions with external effects</td><td>Limits reordering/elimination</td><td>Pure function annotations</td></tr>
+                <tr><td>Compile Time</td><td>Optimization may take long time</td><td>Slows development cycle</td><td>Optimization levels, parallel compilation</td></tr>
+                <tr><td>Debugging</td><td>Optimized code doesn't match source</td><td>Harder debugging</td><td>Debug info preservation</td></tr>
+                <tr><td>Architecture Specific</td><td>Optimizations depend on target architecture</td><td>Complexity of multi-target support</td><td>Target-specific passes</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computational Geometry Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Computational Geometry Cheat Sheet</h1>
+        
+        <div class="section">
+            <h2>Fundamental Geometric Operations</h2>
+            <table>
+                <tr><th>Operation</th><th>Description</th><th>Formula/Algorithm</th><th>Time Complexity</th></tr>
+                <tr><td>Distance Between Points</td><td>Euclidean distance between two points</td><td>√[(x2-x1)² + (y2-y1)²]</td><td>O(1)</td></tr>
+                <tr><td>Point-Line Distance</td><td>Distance from point to line</td><td>|ax₀ + by₀ + c| / √(a² + b²)</td><td>O(1)</td></tr>
+                <tr><td>Line Intersection</td><td>Find intersection of two lines</td><td>Solve system of linear equations</td><td>O(1)</td></tr>
+                <tr><td>Orientation Test</td><td>Determine orientation of three points</td><td>Sign of cross product</td><td>O(1)</td></tr>
+                <tr><td>Polygon Area</td><td>Calculate area of simple polygon</td><td>Shoelace formula</td><td>O(n)</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Convex Hull Algorithms</h2>
+            <table>
+                <tr><th>Algorithm</th><th>Approach</th><th>Time Complexity</th><th>Space Complexity</th><th>Best For</th></tr>
+                <tr><td>Graham Scan</td><td>Incremental construction after sorting</td><td>O(n log n)</td><td>O(n)</td><td>General purpose, educational</td></tr>
+                <tr><td>Andrew's Algorithm</td><td>Monotone chain algorithm</td><td>O(n log n)</td><td>O(n)</td><td>Robust, handles collinear points</td></tr>
+                <tr><td>QuickHull</td><td>Divide and conquer</td><td>O(n log n) average, O(n²) worst</td><td>O(n)</td><td>Random point sets</td></tr>
+                <tr><td>Chan's Algorithm</td><td>Combination of Graham scan and Jarvis march</td><td>O(n log h)</td><td>O(n)</td><td>Small output size (h)</td></tr>
+                <tr><td>Gift Wrapping (Jarvis March)</td><td>Incremental construction</td><td>O(nh)</td><td>O(1)</td><td>Small output size (h)</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Point Location Algorithms</h2>
+            <table>
+                <tr><th>Algorithm</th><th>Structure</th><th>Preprocessing</th><th>Query Time</th><th>Applications</th></tr>
+                <tr><td>Slab Method</td><td>Vertical slabs between x-coordinates</td><td>O(n²)</td><td>O(log n)</td><td>Simple polygons</td></tr>
+                <tr><td>Trapezoidal Decomposition</td><td>Decompose into trapezoids</td><td>O(n log n)</td><td>O(log n)</td><td>Planar subdivisions</td></tr>
+                <tr><td>KD-Tree</td><td>Binary space partitioning</td><td>O(n log n)</td><td>O(√n) average</td><td>Range queries, nearest neighbors</td></tr>
+                <tr><td>Range Tree</td><td>Multi-level binary search tree</td><td>O(n log n)</td><td>O(log² n + k)</td><td>Orthogonal range queries</td></tr>
+                <tr><td>Voronoi Diagram</td><td>Dual of Delaunay triangulation</td><td>O(n log n)</td><td>O(log n)</td><td>Nearest neighbor search</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Triangulation Algorithms</h2>
+            <table>
+                <tr><th>Algorithm</th><th>Input</th><th>Output</th><th>Time Complexity</th><th>Properties</th></tr>
+                <tr><td>Delaunay Triangulation</td><td>Set of points</td><td>Triangulation maximizing min angle</td><td>O(n log n)</td><td>Empty circumcircle property</td></tr>
+                <tr><td>Ear Clipping</td><td>Simple polygon</td><td>Triangulation of polygon</td><td>O(n²)</td><td>Simple implementation</td></tr>
+                <tr><td>Monotone Polygon Triangulation</td><td>Monotone polygon</td><td>Triangulation of monotone polygon</td><td>O(n)</td><td>Linear time for monotone</td></tr>
+                <tr><td>Constrained Delaunay</td><td>Points with constraint edges</td><td>Delaunay respecting constraints</td><td>O(n²)</td><td>Preserves constraint edges</td></tr>
+                <tr><td>Seidel's Algorithm</td><td>Simple polygon</td><td>Triangulation of polygon</td><td>O(n log* n)</td><td>Close to linear time</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Geometric Data Structures</h2>
+            <table>
+                <tr><th>Structure</th><th>Dimension</th><th>Operations</th><th>Time Complexity</th><th>Best For</th></tr>
+                <tr><td>Segment Tree</td><td>1D</td><td>Range queries, updates</td><td>O(log n) query/update</td><td>1D range queries</td></tr>
+                <tr><td>Interval Tree</td><td>1D</td><td>Interval overlap queries</td><td>O(log n + k)</td><td>Overlapping intervals</td></tr>
+                <tr><td>Quadtree</td><td>2D</td><td>Point location, range queries</td><td>O(log n) average</td><td>2D spatial indexing</td></tr>
+                <tr><td>Octree</td><td>3D</td><td>3D spatial indexing</td><td>O(log n) average</td><td>3D spatial applications</td></tr>
+                <tr><td>BSP Tree</td><td>kD</td><td>Space partitioning</td><td>Variable</td><td>Rendering, collision detection</td></tr>
+                <tr><td>Sweep-Line Structure</td><td>2D</td><td>Line sweep algorithms</td><td>Variable</td><td>Line intersection, Voronoi</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Geometric Problems & Solutions</h2>
+            <table>
+                <tr><th>Problem</th><th>Description</th><th>Solution Approach</th><th>Time Complexity</th><th>Applications</th></tr>
+                <tr><td>Closest Pair</td><td>Find closest pair of points</td><td>Divide and conquer</td><td>O(n log n)</td><td>Nearest neighbor, clustering</td></tr>
+                <tr><td>Line Segment Intersection</td><td>Find all intersections among segments</td><td>Sweep-line algorithm</td><td>O((n+k) log n)</td><td>VLSI design, graphics</td></tr>
+                <tr><td>Point in Polygon</td><td>Determine if point is inside polygon</td><td>Ray casting, winding number</td><td>O(n)</td><td>Geographic information systems</td></tr>
+                <tr><td>Visibility Polygon</td><td>Find visible region from point</td><td>Rotational sweep</td><td>O(n²)</td><td>Robotics, computer vision</td></tr>
+                <tr><td>Largest Empty Circle</td><td>Find largest circle with no points inside</td><td>Voronoi diagram</td><td>O(n log n)</td><td>Facility location</td></tr>
+                <tr><td>Linear Programming in 2D</td><td>Optimize linear function with linear constraints</td><td>Incremental algorithm</td><td>O(n)</td><td>Optimization problems</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Geometric Primitives & Formulas</h2>
+            <table>
+                <tr><th>Primitive</th><th>Formula</th><th>Application</th><th>Notes</th></tr>
+                <tr><td>Cross Product</td><td>(p₁-p₀) × (p₂-p₀) = (x₁-x₀)(y₂-y₀) - (y₁-y₀)(x₂-x₀)</td><td>Orientation, area calculation</td><td>Positive = counter-clockwise</td></tr>
+                <tr><td>Dot Product</td><td>u·v = |u||v|cos(θ) = x₁x₂ + y₁y₂</td><td>Angle calculation, projection</td><td>Perpendicular if dot product = 0</td></tr>
+                <tr><td>Line Equation</td><td>ax + by + c = 0</td><td>Line representation</td><td>Can be derived from two points</td></tr>
+                <tr><td>Circle Equation</td><td>(x-h)² + (y-k)² = r²</td><td>Circle representation</td><td>Center (h,k), radius r</td></tr>
+                <tr><td>Shoelace Formula</td><td>Area = ½|Σ(xᵢyᵢ₊₁ - xᵢ₊₁yᵢ)|</td><td>Polygon area calculation</td><td>For vertices in order around polygon</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

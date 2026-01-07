@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sensor Networks - Quick Reference</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --primary-gradient-start: #6a85b6;
+            --primary-gradient-end: #bac8e0;
+            --secondary-gradient-start: #a1c4fd;
+            --secondary-gradient-end: #c2e9fb;
+            --accent-color: #4a69bd;
+            --text-color: #2c3e50;
+            --light-text: #7f8c8d;
+            --card-bg: #ffffff;
+            --border-color: #e0e0e0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, var(--primary-gradient-start), var(--primary-gradient-end));
+            background-attachment: fixed;
+            color: var(--text-color);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+        
+        h1 {
+            text-align: center;
+            background: linear-gradient(to right, var(--secondary-gradient-start), var(--secondary-gradient-end));
+            color: var(--text-color);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            font-size: 2.2rem;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            animation: slideDown 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        h1::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+        
+        h1:hover::before {
+            transform: translateX(100%);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        table:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        th {
+            background: linear-gradient(to right, var(--secondary-gradient-start), var(--secondary-gradient-end));
+            color: var(--text-color);
+            padding: 16px;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.95rem;
+            vertical-align: top;
+            transition: background-color 0.3s ease;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9fbfd;
+        }
+        
+        tr:hover {
+            background-color: #edf7ff;
+        }
+        
+        .topic-tag {
+            display: inline-block;
+            background: linear-gradient(to right, var(--secondary-gradient-start), var(--secondary-gradient-end));
+            color: var(--text-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 3px;
+            transition: transform 0.2s ease;
+        }
+        
+        .topic-tag:hover {
+            transform: scale(1.05);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 5px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+                padding: 20px;
+            }
+            
+            table {
+                margin: 15px 0;
+            }
+            
+            th, td {
+                padding: 12px 8px;
+                font-size: 0.9rem;
+            }
+            
+            .topic-tag {
+                font-size: 0.75rem;
+                padding: 4px 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+                padding: 15px;
+            }
+            
+            th {
+                font-size: 0.85rem;
+                padding: 10px 8px;
+            }
+            
+            td {
+                padding: 10px 6px;
+                font-size: 0.85rem;
+            }
+            
+            .topic-tag {
+                display: block;
+                margin: 4px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sensor Networks - Quick Reference</h1>
+        
+        <table>
+            <tr><th>Concept</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Definition</div></td><td>Network of spatially distributed autonomous sensors to monitor physical or environmental conditions and cooperatively pass their data through the network.</td></tr>
+            <tr><td><div class="topic-tag">Components</div></td><td>Sensor nodes, sink nodes, base stations, communication protocols</td></tr>
+            <tr><td><div class="topic-tag">Characteristics</div></td><td>Resource constraints, self-organization, multi-hop communication, scalability</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Sensor Node Architecture</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Sensing Unit</div></td><td>Collects data from environment using sensors (temperature, humidity, light, etc.)</td></tr>
+            <tr><td><div class="topic-tag">Processing Unit</div></td><td>Microcontroller for data processing and decision making</td></tr>
+            <tr><td><div class="topic-tag">Communication Unit</div></td><td>Radio transceiver for wireless communication</td></tr>
+            <tr><td><div class="topic-tag">Power Unit</div></td><td>Battery or energy harvesting for power supply</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Types of Sensors</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Physical Sensors</div></td><td>Temperature, pressure, humidity, light, sound sensors</td></tr>
+            <tr><td><div class="topic-tag">Chemical Sensors</div></td><td>Gas, pH, chemical composition sensors</td></tr>
+            <tr><td><div class="topic-tag">Biological Sensors</div></td><td>Heart rate, blood pressure, glucose level sensors</td></tr>
+            <tr><td><div class="topic-tag">Motion Sensors</div></td><td>Accelerometers, gyroscopes, magnetometers</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Network Topologies</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Star Topology</div></td><td>All nodes connect directly to a central node (sink/base station)</td></tr>
+            <tr><td><div class="topic-tag">Mesh Topology</div></td><td>Multi-hop network where nodes relay data for other nodes</td></tr>
+            <tr><td><div class="topic-tag">Tree Topology</div></td><td>Hierarchical structure with parent-child relationships</td></tr>
+            <tr><td><div class="topic-tag">Cluster-Based</div></td><td>Network divided into clusters with cluster heads</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Communication Protocols</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">MAC Protocols</div></td><td>TDMA, CSMA, S-MAC, T-MAC for medium access control</td></tr>
+            <tr><td><div class="topic-tag">Routing Protocols</div></td><td>LEACH, PEGASIS, TEEN, SPIN for energy-efficient routing</td></tr>
+            <tr><td><div class="topic-tag">Transport Protocols</div></td><td>Specialized protocols for reliable data delivery</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Applications</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Environmental Monitoring</div></td><td>Weather stations, pollution monitoring, forest fire detection</td></tr>
+            <tr><td><div class="topic-tag">Healthcare</div></td><td>Patient monitoring, body area networks, telemedicine</td></tr>
+            <tr><td><div class="topic-tag">Smart Cities</div></td><td>Traffic management, waste management, smart parking</td></tr>
+            <tr><td><div class="topic-tag">Agriculture</div></td><td>Soil monitoring, irrigation control, crop monitoring</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Challenges</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Energy Efficiency</div></td><td>Power constraints require energy-efficient protocols and algorithms</td></tr>
+            <tr><td><div class="topic-tag">Scalability</div></td><td>Networks must handle thousands of nodes efficiently</td></tr>
+            <tr><td><div class="topic-tag">Reliability</div></td><td>Handling node failures and environmental conditions</td></tr>
+            <tr><td><div class="topic-tag">Security</div></td><td>Protecting against attacks in resource-constrained environment</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Energy Management</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Power Conservation</div></td><td>Duty cycling, sleep/wake scheduling, power-aware routing</td></tr>
+            <tr><td><div class="topic-tag">Energy Harvesting</div></td><td>Solar, thermal, kinetic energy collection</td></tr>
+            <tr><td><div class="topic-tag">Data Aggregation</div></td><td>Reducing transmission by combining data at intermediate nodes</td></tr>
+        </table>
+    </div>
+</body>
+</html>

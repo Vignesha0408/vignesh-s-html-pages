@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Testing & Quality Assurance Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Software Testing & Quality Assurance Cheat Sheet</h1>
+        
+        <div class="section">
+            <h2>Testing Levels</h2>
+            <table>
+                <tr><th>Level</th><th>Description</th><th>Focus</th><th>Performed By</th><th>Tools</th></tr>
+                <tr><td>Unit Testing</td><td>Testing individual components or modules</td><td>Functionality of specific code units</td><td>Developers</td><td>JUnit, NUnit, PyTest, Mockito</td></tr>
+                <tr><td>Integration Testing</td><td>Testing interaction between modules</td><td>Module interfaces and data flow</td><td>Developers/Testers</td><td>TestNG, Selenium, Postman</td></tr>
+                <tr><td>System Testing</td><td>Testing complete system functionality</td><td>End-to-end system behavior</td><td>Testers</td><td>Selenium, QTP, LoadRunner</td></tr>
+                <tr><td>Acceptance Testing</td><td>Testing system against business requirements</td><td>Business requirements fulfillment</td><td>End users/Stakeholders</td><td>Cucumber, FitNesse, UAT tools</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Testing Types</h2>
+            <table>
+                <tr><th>Type</th><th>Description</th><th>When to Use</th><th>Example</th></tr>
+                <tr><td>Functional Testing</td><td>Testing specific functionality of the application</td><td>During development and maintenance</td><td>Testing login functionality</td></tr>
+                <tr><td>Non-Functional Testing</td><td>Testing performance, usability, reliability</td><td>After functional testing</td><td>Load testing, stress testing</td></tr>
+                <tr><td>Regression Testing</td><td>Ensuring new changes don't break existing functionality</td><td>After code changes or new features</td><td>Re-running existing test cases</td></tr>
+                <tr><td>Smoke Testing</td><td>Basic tests to verify critical functionality</td><td>After each build or deployment</td><td>Basic login, navigation tests</td></tr>
+                <tr><td>Sanity Testing</td><td>Testing specific functionality after minor changes</td><td>After bug fixes or small changes</td><td>Testing fixed functionality only</td></tr>
+                <tr><td>Alpha Testing</td><td>Testing by internal team before release</td><td>Before beta testing</td><td>Internal user testing</td></tr>
+                <tr><td>Beta Testing</td><td>Testing by external users before release</td><td>Before final release</td><td>Real user testing in production</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Test Design Techniques</h2>
+            <table>
+                <tr><th>Technique</th><th>Description</th><th>Advantages</th><th>Disadvantages</th><th>Best For</th></tr>
+                <tr><td>Equivalence Partitioning</td><td>Divide input data into partitions with same behavior</td><td>Reduces test cases, efficient</td><td>May miss boundary errors</td><td>Input validation testing</td></tr>
+                <tr><td>Boundary Value Analysis</td><td>Test boundary values of input partitions</td><td>Finds boundary errors effectively</td><td>Limited to numeric inputs</td><td>Range-based inputs</td></tr>
+                <tr><td>Decision Table Testing</td><td>Test combinations of inputs and actions</td><td>Covers all combinations</td><td>Can be complex for many inputs</td><td>Business logic testing</td></tr>
+                <tr><td>State Transition Testing</td><td>Test system behavior based on different states</td><td>Good for state-based systems</td><td>Complex for systems with many states</td><td>Workflow applications</td></tr>
+                <tr><td>Error Guessing</td><td>Test based on experience and intuition</td><td>Finds errors that other methods miss</td><td>Dependent on tester experience</td><td>Supplement other techniques</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Testing Approaches</h2>
+            <table>
+                <tr><th>Approach</th><th>Description</th><th>Advantages</th><th>Disadvantages</th><th>Best For</th></tr>
+                <tr><td>Black Box Testing</td><td>Testing without knowledge of internal code</td><td>Focuses on requirements, easy to design</td><td>May miss internal errors</td><td>Functional testing</td></tr>
+                <tr><td>White Box Testing</td><td>Testing with knowledge of internal code structure</td><td>Thorough code coverage</td><td>Requires programming knowledge</td><td>Unit testing, security testing</td></tr>
+                <tr><td>Gray Box Testing</td><td>Combination of black and white box testing</td><td>Balanced approach</td><td>Requires both skill sets</td><td>Integration testing</td></tr>
+                <tr><td>Manual Testing</td><td>Testing performed by human testers</td><td>Exploratory, intuitive testing</td><td>Time-consuming, prone to human error</td><td>Exploratory, usability testing</td></tr>
+                <tr><td>Automated Testing</td><td>Testing performed using tools/scripts</td><td>Fast, repeatable, scalable</td><td>Initial setup cost, maintenance</td><td>Regression, performance testing</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Quality Assurance vs Quality Control</h2>
+            <table>
+                <tr><th>Aspect</th><th>Quality Assurance</th><th>Quality Control</th><th>Key Differences</th></tr>
+                <tr><td>Focus</td><td>Process improvement</td><td>Product verification</td><td>QA prevents defects, QC detects defects</td></tr>
+                <tr><td>Timing</td><td>Throughout development lifecycle</td><td>During and after development</td><td>QA is proactive, QC is reactive</td></tr>
+                <tr><td>Activities</td><td>Process definition, standards</td><td>Testing, inspections, reviews</td><td>QA defines how, QC checks what</td></tr>
+                <tr><td>Responsibility</td><td>Entire organization</td><td>Testing/QA team</td><td>QA is everyone's responsibility</td></tr>
+                <tr><td>Measurement</td><td>Process metrics</td><td>Product metrics</td><td>QA measures processes, QC measures products</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Testing Standards & Models</h2>
+            <table>
+                <tr><th>Standard/Model</th><th>Description</th><th>Key Components</th><th>Benefits</th></tr>
+                <tr><td>ISTQB</td><td>International Software Testing Qualifications Board</td><td>Foundation, Advanced, Expert levels</td><td>Standardized testing knowledge</td></tr>
+                <tr><td>V-Model</td><td>Sequential model with testing phases parallel to development</td><td>Verification and validation phases</td><td>Early defect detection</td></tr>
+                <tr><td>Agile Testing</td><td>Testing integrated into agile development</td><td>Continuous testing, collaboration</td><td>Fast feedback, adaptability</td></tr>
+                <tr><td>TMMi</td><td>Test Maturity Model integration</td><td>5 maturity levels, best practices</td><td>Process improvement framework</td></tr>
+                <tr><td>CMMi</td><td>Capability Maturity Model integration</td><td>Process improvement framework</td><td>Organizational process maturity</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Test Automation Frameworks</h2>
+            <table>
+                <tr><th>Framework Type</th><th>Description</th><th>Advantages</th><th>Disadvantages</th><th>Best For</th></tr>
+                <tr><td>Linear Framework</td><td>Sequential test execution without reusable components</td><td>Simple to create and understand</td><td>Not reusable, difficult to maintain</td><td>Small projects, quick automation</td></tr>
+                <tr><td>Modular Framework</td><td>Tests divided into independent modules</td><td>Reusable, maintainable</td><td>Initial design complexity</td><td>Medium to large projects</td></tr>
+                <tr><td>Data-Driven Framework</td><td>Test data separated from test scripts</td><td>Single script tests multiple data sets</td><td>Requires data management</td><td>Testing with multiple input values</td></tr>
+                <tr><td>Keyword-Driven Framework</td><td>Keywords define test actions</td><td>Non-technical users can create tests</td><td>Complex setup, maintenance</td><td>Business users creating tests</td></tr>
+                <tr><td>Hybrid Framework</td><td>Combination of multiple framework types</td><td>Flexible, comprehensive</td><td>Complex, requires expertise</td><td>Large, complex projects</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

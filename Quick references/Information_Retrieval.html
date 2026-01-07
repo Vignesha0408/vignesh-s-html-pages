@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information Retrieval Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Information Retrieval Cheat Sheet</h1>
+        
+        <div class="section">
+            <h2>Information Retrieval Components</h2>
+            <table>
+                <tr><th>Component</th><th>Description</th><th>Function</th><th>Examples</th></tr>
+                <tr><td>Document Collection</td><td>Set of documents to be searched</td><td>Storage of information to be retrieved</td><td>Web pages, books, articles, emails</td></tr>
+                <tr><td>Query</td><td>User's information need expressed in keywords</td><td>Input that specifies what information is needed</td><td>Search terms, natural language questions</td></tr>
+                <tr><td>Index</td><td>Data structure for efficient retrieval</td><td>Maps terms to documents containing them</td><td>Inverted index, forward index</td></tr>
+                <tr><td>Retrieval Model</td><td>Method for matching queries to documents</td><td>Defines how relevance is calculated</td><td>Boolean, Vector space, Probabilistic</td></tr>
+                <tr><td>Evaluation Metrics</td><td>Measures of system effectiveness</td><td>Quantifies retrieval quality</td><td>Precision, recall, F1-score</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Text Preprocessing</h2>
+            <table>
+                <tr><th>Step</th><th>Description</th><th>Purpose</th><th>Techniques</th></tr>
+                <tr><td>Tokenization</td><td>Breaking text into individual words/tokens</td><td>Convert text to processable units</td><td>Whitespace, punctuation-based splitting</td></tr>
+                <tr><td>Stop Word Removal</td><td>Removing common words with little meaning</td><td>Reduce index size, improve relevance</td><td>Remove "the", "and", "is", etc.</td></tr>
+                <tr><td>Stemming</td><td>Reducing words to their root form</td><td>Group related terms together</td><td>Porter Stemmer, Snowball Stemmer</td></tr>
+                <tr><td>Lemmatization</td><td>Reducing words to their dictionary form</td><td>More accurate than stemming</td><td>Morphological analysis</td></tr>
+                <tr><td>Case Normalization</td><td>Converting text to consistent case</td><td>Ensure case-insensitive matching</td><td>Convert to lowercase</td></tr>
+                <tr><td>Spell Correction</td><td>Fixing misspelled words</td><td>Improve query and document matching</td><td>Levenshtein distance, n-gram matching</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Retrieval Models</h2>
+            <table>
+                <tr><th>Model</th><th>Approach</th><th>Advantages</th><th>Disadvantages</th><th>Best For</th></tr>
+                <tr><td>Boolean Model</td><td>Exact matching using Boolean operators</td><td>Simple, precise, fast</td><td>No partial matching, no ranking</td><td>Database queries, exact matching</td></tr>
+                <tr><td>Vector Space Model</td><td>Represent documents and queries as vectors</td><td>Partial matching, ranking possible</td><td>High dimensionality, no semantics</td><td>Most IR systems</td></tr>
+                <tr><td>Probabilistic Model</td><td>Rank documents by probability of relevance</td><td>Theoretically grounded, good ranking</td><td>Complex, parameter estimation</td><td>High-quality retrieval</td></tr>
+                <tr><td>Language Models</td><td>Estimate probability of generating query from document</td><td>Simple, no term independence assumption</td><td>Query likelihood, smoothing needed</td><td>Smaller collections</td></tr>
+                <tr><td>Learning to Rank</td><td>Machine learning for ranking</td><td>Leverages multiple features</td><td>Requires training data, complex</td><td>Web search engines</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Indexing Techniques</h2>
+            <table>
+                <tr><th>Technique</th><th>Description</th><th>Structure</th><th>Advantages</th><th>Disadvantages</th></tr>
+                <tr><td>Inverted Index</td><td>Map terms to documents containing them</td><td>Term → [doc1, doc2, ...]</td><td>Fast retrieval, space efficient</td><td>Update overhead</td></tr>
+                <tr><td>Forward Index</td><td>Map documents to terms they contain</td><td>Doc → [term1, term2, ...]</td><td>Fast indexing, compression</td><td>Slow retrieval</td></tr>
+                <tr><td>Signature Files</td><td>Bit signatures for documents/terms</td><td>Bit vectors for filtering</td><td>Fast filtering</td><td>False positives</td></tr>
+                <tr><td>Patricia Tries</td><td>Compressed prefix trees</td><td>Tree structure for terms</td><td>Fast prefix search</td><td>Memory overhead</td></tr>
+                <tr><td>N-gram Indexing</td><td>Index character/word sequences</td><td>Substrings as index terms</td><td>Handles typos, phrase search</td><td>Large index size</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Evaluation Metrics</h2>
+            <table>
+                <tr><th>Metric</th><th>Formula</th><th>Description</th><th>Best For</th></tr>
+                <tr><td>Precision</td><td>TP/(TP+FP)</td><td>Relevant documents among retrieved ones</td><td>When false positives are costly</td></tr>
+                <tr><td>Recall</td><td>TP/(TP+FN)</td><td>Retrieved documents among all relevant ones</td><td>When false negatives are costly</td></tr>
+                <tr><td>F1-Score</td><td>2×(Precision×Recall)/(Precision+Recall)</td><td>Harmonic mean of precision and recall</td><td>Balanced evaluation</td></tr>
+                <tr><td>MAP (Mean Average Precision)</td><td>Average of precision at each relevant doc</td><td>Mean precision across multiple queries</td><td>System evaluation</td></tr>
+                <tr><td>NDCG (Normalized Discounted Cumulative Gain)</td><td>Normalized DCG at position k</td><td>Ranking quality with graded relevance</td><td>Graded relevance tasks</td></tr>
+                <tr><td>MRR (Mean Reciprocal Rank)</td><td>Mean of reciprocal ranks of first relevant doc</td><td>Focus on first relevant result</td><td>Question answering</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Web Search Concepts</h2>
+            <table>
+                <tr><th>Concept</th><th>Description</th><th>Technique</th><th>Impact</th></tr>
+                <tr><td>PageRank</td><td>Link analysis algorithm for page importance</td><td>Random walk on web graph</td><td>Improved search quality</td></tr>
+                <tr><td>TF-IDF</td><td>Term frequency-inverse document frequency</td><td>Weighting terms by importance</td><td>Better document ranking</td></tr>
+                <tr><td>Anchor Text</td><td>Text of hyperlinks pointing to a page</td><td>Using link text as page description</td><td>Improved relevance for linked pages</td></tr>
+                <tr><td>Query Expansion</td><td>Adding related terms to original query</td><td>Thesaurus, co-occurrence analysis</td><td>Improved recall</td></tr>
+                <tr><td>Relevance Feedback</td><td>Using user feedback to improve results</td><td>Pseudo-relevance feedback, active learning</td><td>Improved precision</td></tr>
+                <tr><td>Personalization</td><td>Adapting results to user preferences</td><td>User profiles, history analysis</td><td>Improved user experience</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Advanced IR Topics</h2>
+            <table>
+                <tr><th>Topic</th><th>Description</th><th>Techniques</th><th>Applications</th></tr>
+                <tr><td>Latent Semantic Indexing (LSI)</td><td>Discover hidden semantic relationships</td><td>Singular value decomposition</td><td>Concept search, synonym detection</td></tr>
+                <tr><td>Latent Dirichlet Allocation (LDA)</td><td>Probabilistic topic modeling</td><td>Bags of words, topic assignments</td><td>Document clustering, content analysis</td></tr>
+                <tr><td>Word Embeddings</td><td>Dense vector representations of words</td><td>Word2Vec, GloVe, FastText</td><td>Semantic search, similarity</td></tr>
+                <tr><td>Neural IR</td><td>Deep learning for information retrieval</td><td>Neural networks, dense retrieval</td><td>Modern search engines</td></tr>
+                <tr><td>Question Answering</td><td>Direct answers to natural language questions</td><td>Information extraction, NLP</td><td>Virtual assistants, FAQ systems</td></tr>
+                <tr><td>Recommendation Systems</td><td>Suggesting relevant items to users</td><td>Collaborative filtering, content-based</td><td>E-commerce, content platforms</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

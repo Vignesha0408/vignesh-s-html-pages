@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithms & Data Structures Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Algorithms & Data Structures Cheat Sheet</h1>
+        
+        <div class="section">
+            <h2>Time Complexity</h2>
+            <table>
+                <tr><th>Notation</th><th>Meaning</th><th>Example</th><th>Common Algorithms</th></tr>
+                <tr><td>O(1)</td><td>Constant time</td><td>Accessing array element</td><td>Array access, hash table lookup</td></tr>
+                <tr><td>O(log n)</td><td>Logarithmic time</td><td>Binary search</td><td>Binary search, balanced tree operations</td></tr>
+                <tr><td>O(n)</td><td>Linear time</td><td>Linear search</td><td>Linear search, traversing array</td></tr>
+                <tr><td>O(n log n)</td><td>Linearithmic</td><td>Efficient sorting</td><td>Merge sort, quick sort average case</td></tr>
+                <tr><td>O(n²)</td><td>Quadratic time</td><td>Bubble sort</td><td>Bubble sort, selection sort</td></tr>
+                <tr><td>O(2ⁿ)</td><td>Exponential time</td><td>Tower of Hanoi</td><td>Recursive algorithms without memoization</td></tr>
+                <tr><td>O(n!)</td><td>Factorial time</td><td>Traveling salesman</td><td>Permutations, brute force</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Sorting Algorithms</h2>
+            <table>
+                <tr><th>Algorithm</th><th>Time Complexity (Avg)</th><th>Time Complexity (Worst)</th><th>Space Complexity</th><th>Stable</th><th>Best Use Case</th></tr>
+                <tr><td>Bubble Sort</td><td>O(n²)</td><td>O(n²)</td><td>O(1)</td><td>Yes</td><td>Small datasets, educational purposes</td></tr>
+                <tr><td>Selection Sort</td><td>O(n²)</td><td>O(n²)</td><td>O(1)</td><td>No</td><td>Small datasets, minimal memory writes</td></tr>
+                <tr><td>Insertion Sort</td><td>O(n²)</td><td>O(n²)</td><td>O(1)</td><td>Yes</td><td>Small datasets, nearly sorted data</td></tr>
+                <tr><td>Merge Sort</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n)</td><td>Yes</td><td>Stable sort, guaranteed performance</td></tr>
+                <tr><td>Quick Sort</td><td>O(n log n)</td><td>O(n²)</td><td>O(log n)</td><td>No</td><td>General purpose, in-place sorting</td></tr>
+                <tr><td>Heap Sort</td><td>O(n log n)</td><td>O(n log n)</td><td>O(1)</td><td>No</td><td>Guaranteed O(n log n), in-place</td></tr>
+                <tr><td>Counting Sort</td><td>O(n + k)</td><td>O(n + k)</td><td>O(k)</td><td>Yes</td><td>Small integer keys, limited range</td></tr>
+                <tr><td>Radix Sort</td><td>O(d(n + k))</td><td>O(d(n + k))</td><td>O(n + k)</td><td>Yes</td><td>Fixed-length keys, integers or strings</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Searching Algorithms</h2>
+            <table>
+                <tr><th>Algorithm</th><th>Time Complexity</th><th>Space Complexity</th><th>Requirements</th><th>Best Use Case</th></tr>
+                <tr><td>Linear Search</td><td>O(n)</td><td>O(1)</td><td>Unsorted array</td><td>Small arrays, unsorted data</td></tr>
+                <tr><td>Binary Search</td><td>O(log n)</td><td>O(1)</td><td>Sorted array</td><td>Large sorted arrays</td></tr>
+                <tr><td>Jump Search</td><td>O(√n)</td><td>O(1)</td><td>Sorted array</td><td>Block-based searching</td></tr>
+                <tr><td>Interpolation Search</td><td>O(log log n)</td><td>O(1)</td><td>Sorted array, uniformly distributed</td><td>Uniformly distributed sorted data</td></tr>
+                <tr><td>Exponential Search</td><td>O(log n)</td><td>O(1)</td><td>Sorted array</td><td>Unbounded or infinite arrays</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Graph Algorithms</h2>
+            <table>
+                <tr><th>Algorithm</th><th>Purpose</th><th>Time Complexity</th><th>Space Complexity</th><th>Best Use Case</th></tr>
+                <tr><td>BFS</td><td>Shortest path in unweighted graph</td><td>O(V + E)</td><td>O(V)</td><td>Shortest path, level-order traversal</td></tr>
+                <tr><td>DFS</td><td>Traverse graph, detect cycles</td><td>O(V + E)</td><td>O(V)</td><td>Topological sort, cycle detection</td></tr>
+                <tr><td>Dijkstra</td><td>Shortest path in weighted graph</td><td>O((V + E) log V)</td><td>O(V)</td><td>Non-negative weights, single source</td></tr>
+                <tr><td>Bellman-Ford</td><td>Shortest path with negative weights</td><td>O(VE)</td><td>O(V)</td><td>Negative weights, detect negative cycles</td></tr>
+                <tr><td>Floyd-Warshall</td><td>All-pairs shortest paths</td><td>O(V³)</td><td>O(V²)</td><td>Small graphs, all-pairs paths</td></tr>
+                <tr><td>Kruskal</td><td>Minimum Spanning Tree</td><td>O(E log E)</td><td>O(E)</td><td>Sparse graphs, disjoint sets</td></tr>
+                <tr><td>Prim</td><td>Minimum Spanning Tree</td><td>O(E log V)</td><td>O(V)</td><td>Dense graphs, priority queue</td></tr>
+                <tr><td>Topological Sort</td><td>Order for dependencies</td><td>O(V + E)</td><td>O(V)</td><td>Task scheduling, dependencies</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Data Structures</h2>
+            <table>
+                <tr><th>Structure</th><th>Access</th><th>Search</th><th>Insertion</th><th>Deletion</th><th>Space</th><th>Best Use Case</th></tr>
+                <tr><td>Array</td><td>O(1)</td><td>O(n)</td><td>O(n)</td><td>O(n)</td><td>O(n)</td><td>Random access, fixed size</td></tr>
+                <tr><td>Stack</td><td>O(n)</td><td>O(n)</td><td>O(1)</td><td>O(1)</td><td>O(n)</td><td>LIFO operations, function calls</td></tr>
+                <tr><td>Queue</td><td>O(n)</td><td>O(n)</td><td>O(1)</td><td>O(1)</td><td>O(n)</td><td>FIFO operations, BFS</td></tr>
+                <tr><td>Singly Linked List</td><td>O(n)</td><td>O(n)</td><td>O(1)</td><td>O(1)</td><td>O(n)</td><td>Dynamic size, frequent insertions/deletions</td></tr>
+                <tr><td>Doubly Linked List</td><td>O(n)</td><td>O(n)</td><td>O(1)</td><td>O(1)</td><td>O(n)</td><td>Bi-directional traversal</td></tr>
+                <tr><td>Hash Table</td><td>N/A</td><td>O(1)</td><td>O(1)</td><td>O(1)</td><td>O(n)</td><td>Fast lookups, key-value pairs</td></tr>
+                <tr><td>Binary Search Tree</td><td>O(log n)</td><td>O(log n)</td><td>O(log n)</td><td>O(log n)</td><td>O(n)</td><td>Sorted data, range queries</td></tr>
+                <tr><td>AVL Tree</td><td>O(log n)</td><td>O(log n)</td><td>O(log n)</td><td>O(log n)</td><td>O(n)</td><td>Balanced tree, guaranteed performance</td></tr>
+                <tr><td>Heap</td><td>O(1)</td><td>O(n)</td><td>O(log n)</td><td>O(log n)</td><td>O(n)</td><td>Priority queue, heap sort</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Dynamic Programming Patterns</h2>
+            <table>
+                <tr><th>Pattern</th><th>Problem Type</th><th>Approach</th><th>Example Problems</th></tr>
+                <tr><td>Grid DP</td><td>2D path finding</td><td>2D table, fill row by row</td><td>Unique paths, min path sum</td></tr>
+                <tr><td>Knapsack</td><td>Optimization with constraints</td><td>Maximize value within capacity</td><td>0/1 knapsack, unbounded knapsack</td></tr>
+                <tr><td>LIS</td><td>Longest increasing subsequence</td><td>Compare with previous elements</td><td>Longest increasing subsequence</td></tr>
+                <tr><td>Palindromes</td><td>Palindrome problems</td><td>Expand around centers or DP table</td><td>Longest palindromic substring</td></tr>
+                <tr><td>Partition</td><td>Divide into groups</td><td>Try all possible partitions</td><td>Partition to equal sum subsets</td></tr>
+                <tr><td>Bit Manipulation</td><td>Subset problems</td><td>Use bits to represent subsets</td><td>Generate all subsets</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>String Algorithms</h2>
+            <table>
+                <tr><th>Algorithm</th><th>Purpose</th><th>Time Complexity</th><th>Space Complexity</th><th>Best Use Case</th></tr>
+                <tr><td>KMP</td><td>Pattern matching</td><td>O(n + m)</td><td>O(m)</td><td>Pattern matching with preprocessing</td></tr>
+                <tr><td>Rabin-Karp</td><td>Pattern matching</td><td>O(n + m)</td><td>O(1)</td><td>Multiple pattern search</td></tr>
+                <tr><td>Z Algorithm</td><td>Pattern matching</td><td>O(n)</td><td>O(n)</td><td>Find all occurrences efficiently</td></tr>
+                <tr><td>Trie</td><td>Prefix operations</td><td>O(m)</td><td>O(ALPHABET_SIZE * N * M)</td><td>Autocomplete, spell checker</td></tr>
+                <tr><td>Manacher</td><td>Longest palindromic substring</td><td>O(n)</td><td>O(n)</td><td>Linear palindrome detection</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Common Algorithm Techniques</h2>
+            <table>
+                <tr><th>Technique</th><th>Description</th><th>When to Use</th><th>Example Problems</th></tr>
+                <tr><td>Greedy</td><td>Make locally optimal choices</td><td>Optimal substructure, greedy choice property</td><td>Activity selection, Huffman coding</td></tr>
+                <tr><td>Divide & Conquer</td><td>Break into subproblems</td><td>Problems that can be divided</td><td>Merge sort, binary search</td></tr>
+                <tr><td>Dynamic Programming</td><td>Store results of subproblems</td><td>Overlapping subproblems</td><td>Fibonacci, knapsack</td></tr>
+                <tr><td>Backtracking</td><td>Try all possibilities</td><td>Constraint satisfaction problems</td><td>N-Queens, Sudoku</td></tr>
+                <tr><td>Two Pointers</td><td>Two pointers in data structure</td><td>Sorted arrays, linked lists</td><td>Two sum, palindrome check</td></tr>
+                <tr><td>Sliding Window</td><td>Fixed/variable size window</td><td>Subarray/string problems</td><td>Max sum subarray, anagram</td></tr>
+                <tr><td>BFS</td><td>Level-by-level exploration</td><td>Shortest path, tree problems</td><td>Level order traversal, shortest path</td></tr>
+                <tr><td>DFS</td><td>Deep exploration</td><td>Graph/tree traversal</td><td>Connected components, cycle detection</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Tree Traversals</h2>
+            <table>
+                <tr><th>Traversal</th><th>Order</th><th>Implementation</th><th>Use Case</th></tr>
+                <tr><td>Preorder</td><td>Root → Left → Right</td><td>Process root first</td><td>Copy tree, expression evaluation</td></tr>
+                <tr><td>Inorder</td><td>Left → Root → Right</td><td>Process root between subtrees</td><td>Binary search tree (sorted order)</td></tr>
+                <tr><td>Postorder</td><td>Left → Right → Root</td><td>Process root last</td><td>Delete tree, expression evaluation</td></tr>
+                <tr><td>Level Order</td><td>Level by level</td><td>Use queue</td><td>BFS, print tree level by level</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Important Algorithms</h2>
+            <table>
+                <tr><th>Algorithm</th><th>Purpose</th><th>Time Complexity</th><th>Space Complexity</th></tr>
+                <tr><td>Binary Search</td><td>Find element in sorted array</td><td>O(log n)</td><td>O(1)</td></tr>
+                <tr><td>Fast Power</td><td>Compute a^n efficiently</td><td>O(log n)</td><td>O(1)</td></tr>
+                <tr><td>Euclidean Algorithm</td><td>Find GCD</td><td>O(log min(a,b))</td><td>O(1)</td></tr>
+                <tr><td>Extended Euclidean</td><td>Find GCD and coefficients</td><td>O(log min(a,b))</td><td>O(1)</td></tr>
+                <tr><td>Sieve of Eratosthenes</td><td>Find all primes up to n</td><td>O(n log log n)</td><td>O(n)</td></tr>
+                <tr><td>Union-Find</td><td>Disjoint set operations</td><td>O(α(n)) amortized</td><td>O(n)</td></tr>
+                <tr><td>Topological Sort</td><td>Order vertices with dependencies</td><td>O(V + E)</td><td>O(V)</td></tr>
+                <tr><td>Kadane's Algorithm</td><td>Maximum subarray sum</td><td>O(n)</td><td>O(1)</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

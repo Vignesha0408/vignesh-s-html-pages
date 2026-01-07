@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edge Computing - Quick Reference</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --primary-gradient-start: #6a85b6;
+            --primary-gradient-end: #bac8e0;
+            --secondary-gradient-start: #a1c4fd;
+            --secondary-gradient-end: #c2e9fb;
+            --accent-color: #4a69bd;
+            --text-color: #2c3e50;
+            --light-text: #7f8c8d;
+            --card-bg: #ffffff;
+            --border-color: #e0e0e0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, var(--primary-gradient-start), var(--primary-gradient-end));
+            background-attachment: fixed;
+            color: var(--text-color);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+        
+        h1 {
+            text-align: center;
+            background: linear-gradient(to right, var(--secondary-gradient-start), var(--secondary-gradient-end));
+            color: var(--text-color);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            font-size: 2.2rem;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            animation: slideDown 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        h1::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+        
+        h1:hover::before {
+            transform: translateX(100%);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        table:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        th {
+            background: linear-gradient(to right, var(--secondary-gradient-start), var(--secondary-gradient-end));
+            color: var(--text-color);
+            padding: 16px;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.95rem;
+            vertical-align: top;
+            transition: background-color 0.3s ease;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9fbfd;
+        }
+        
+        tr:hover {
+            background-color: #edf7ff;
+        }
+        
+        .topic-tag {
+            display: inline-block;
+            background: linear-gradient(to right, var(--secondary-gradient-start), var(--secondary-gradient-end));
+            color: var(--text-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 3px;
+            transition: transform 0.2s ease;
+        }
+        
+        .topic-tag:hover {
+            transform: scale(1.05);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 5px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+                padding: 20px;
+            }
+            
+            table {
+                margin: 15px 0;
+            }
+            
+            th, td {
+                padding: 12px 8px;
+                font-size: 0.9rem;
+            }
+            
+            .topic-tag {
+                font-size: 0.75rem;
+                padding: 4px 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+                padding: 15px;
+            }
+            
+            th {
+                font-size: 0.85rem;
+                padding: 10px 8px;
+            }
+            
+            td {
+                padding: 10px 6px;
+                font-size: 0.85rem;
+            }
+            
+            .topic-tag {
+                display: block;
+                margin: 4px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Edge Computing - Quick Reference</h1>
+        
+        <table>
+            <tr><th>Concept</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Definition</div></td><td>Computing paradigm that brings computation and data storage closer to the location where it is needed, typically at the edge of the network near data sources.</td></tr>
+            <tr><td><div class="topic-tag">Purpose</div></td><td>Reduce latency, bandwidth usage, and improve response times by processing data closer to its source.</td></tr>
+            <tr><td><div class="topic-tag">Key Benefits</div></td><td>Low latency, reduced bandwidth, improved privacy, enhanced reliability</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Architecture Components</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Edge Devices</div></td><td>Sensors, IoT devices, smartphones, routers that collect and process data locally.</td></tr>
+            <tr><td><div class="topic-tag">Edge Gateways</div></td><td>Intermediate devices that aggregate data from edge devices and perform initial processing.</td></tr>
+            <tr><td><div class="topic-tag">Edge Servers</div></td><td>Local computing infrastructure that runs applications and processes data near the source.</td></tr>
+            <tr><td><div class="topic-tag">Cloud Core</div></td><td>Central cloud infrastructure for storage, analytics, and management of edge resources.</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Edge vs Cloud Computing</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Edge Computing</div></td><td>Processing occurs near data source, low latency, limited compute resources</td></tr>
+            <tr><td><div class="topic-tag">Cloud Computing</div></td><td>Processing occurs in centralized data centers, high latency, massive compute resources</td></tr>
+            <tr><td><div class="topic-tag">Hybrid Approach</div></td><td>Combines both for optimal performance and resource utilization</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Key Technologies</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Containerization</div></td><td>Docker, Kubernetes for deploying applications at the edge with consistency.</td></tr>
+            <tr><td><div class="topic-tag">5G Networks</div></td><td>Ultra-low latency networks supporting edge computing applications.</td></tr>
+            <tr><td><div class="topic-tag">Virtualization</div></td><td>Network Function Virtualization (NFV) and Software Defined Networking (SDN).</td></tr>
+            <tr><td><div class="topic-tag">AI/ML at Edge</div></td><td>Machine learning models deployed and executed on edge devices.</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Applications</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Autonomous Vehicles</div></td><td>Real-time processing for navigation, obstacle detection, and decision making.</td></tr>
+            <tr><td><div class="topic-tag">Smart Cities</div></td><td>Traffic management, surveillance, environmental monitoring.</td></tr>
+            <tr><td><div class="topic-tag">Industrial IoT</div></td><td>Predictive maintenance, quality control, process optimization.</td></tr>
+            <tr><td><div class="topic-tag">Healthcare</div></td><td>Remote patient monitoring, real-time diagnostics, telemedicine.</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Challenges</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Resource Constraints</div></td><td>Limited processing power, memory, and storage on edge devices.</td></tr>
+            <tr><td><div class="topic-tag">Security</div></td><td>Distributed nature creates more attack vectors and security challenges.</td></tr>
+            <tr><td><div class="topic-tag">Management</div></td><td>Managing large number of distributed edge devices and applications.</td></tr>
+            <tr><td><div class="topic-tag">Data Consistency</div></td><td>Maintaining consistency across distributed edge nodes.</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Edge Computing Platforms</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">AWS IoT Greengrass</div></td><td>Extends AWS cloud capabilities to edge devices for local processing.</td></tr>
+            <tr><td><div class="topic-tag">Azure IoT Edge</div></td><td>Microsoft's platform for running cloud workloads on edge devices.</td></tr>
+            <tr><td><div class="topic-tag">Google Cloud IoT Edge</div></td><td>Google's edge computing platform with AI/ML capabilities.</td></tr>
+            <tr><td><div class="topic-tag">KubeEdge</div></td><td>Open-source system for extending Kubernetes to edge nodes.</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Performance Metrics</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Latency</div></td><td>Time delay between data generation and processing response.</td></tr>
+            <tr><td><div class="topic-tag">Bandwidth</div></td><td>Amount of data transferred between edge and cloud.</td></tr>
+            <tr><td><div class="topic-tag">Reliability</div></td><td>Consistency and uptime of edge computing services.</td></tr>
+            <tr><td><div class="topic-tag">Scalability</div></td><td>Ability to handle increasing number of edge devices and workloads.</td></tr>
+        </table>
+    </div>
+</body>
+</html>

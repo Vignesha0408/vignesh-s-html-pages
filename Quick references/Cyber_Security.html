@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Security Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #e74c3c;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #e74c3c;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #c0392b;
+            margin-top: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #e74c3c;
+            color: white;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cyber Security Cheat Sheet</h1>
+        
+        <div class="section">
+            <h2>Security Fundamentals</h2>
+            <table>
+                <tr><th>Concept</th><th>Definition</th><th>Example</th></tr>
+                <tr><td>CIA Triad</td><td>Confidentiality, Integrity, Availability</td><td>Encryption for confidentiality, checksums for integrity, redundancy for availability</td></tr>
+                <tr><td>Defense in Depth</td><td>Multiple layers of security controls</td><td>Firewall + IDS + encryption + access controls</td></tr>
+                <tr><td>Principle of Least Privilege</td><td>Users get minimum access needed</td><td>Database user only gets read access if that's all they need</td></tr>
+                <tr><td>Zero Trust</td><td>Never trust, always verify</td><td>Continuous authentication and authorization checks</td></tr>
+                <tr><td>Threat Modeling</td><td>Identifying potential security threats</td><td>STRIDE model: Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Common Attack Types</h2>
+            <table>
+                <tr><th>Attack</th><th>Description</th><th>Defense</th></tr>
+                <tr><td>SQL Injection</td><td>Injecting malicious SQL code</td><td>Input validation, parameterized queries, least privilege</td></tr>
+                <tr><td>Cross-Site Scripting (XSS)</td><td>Injecting malicious scripts into web pages</td><td>Input sanitization, output encoding, CSP headers</td></tr>
+                <tr><td>Cross-Site Request Forgery (CSRF)</td><td>Tricking users to execute unwanted actions</td><td>CSRF tokens, same-site cookies, origin headers</td></tr>
+                <tr><td>Man-in-the-Middle</td><td>Intercepting communications</td><td>Encryption, certificate validation, VPNs</td></tr>
+                <tr><td>Phishing</td><td>Tricking users to reveal sensitive info</td><td>Security awareness training, email filtering, MFA</td></tr>
+                <tr><td>Denial of Service (DoS)</td><td>Overwhelming systems to deny service</td><td>Rate limiting, traffic filtering, redundancy</td></tr>
+                <tr><td>Buffer Overflow</td><td>Writing beyond buffer boundaries</td><td>Bounds checking, safe coding practices, ASLR</td></tr>
+                <tr><td>Ransomware</td><td>Encrypting data and demanding payment</td><td>Regular backups, endpoint protection, user training</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Authentication & Authorization</h2>
+            <table>
+                <tr><th>Method</th><th>Description</th><th>Advantages/Disadvantages</th></tr>
+                <tr><td>Passwords</td><td>Something you know</td><td>Easy to implement, vulnerable to brute force</td></tr>
+                <tr><td>Multi-Factor Authentication (MFA)</td><td>Multiple verification factors</td><td>More secure, can be inconvenient</td></tr>
+                <tr><td>Biometrics</td><td>Something you are (fingerprint, face)</td><td>Difficult to forge, privacy concerns</td></tr>
+                <tr><td>Single Sign-On (SSO)</td><td>One login for multiple systems</td><td>Convenience, centralized control</td></tr>
+                <tr><td>OAuth</td><td>Authorization framework</td><td>Delegated access, token-based</td></tr>
+                <tr><td>OpenID Connect</td><td>Authentication layer on OAuth</td><td>Standardized identity, token validation</td></tr>
+                <tr><td>Role-Based Access Control (RBAC)</td><td>Permissions based on roles</td><td>Scalable, manageable access control</td></tr>
+                <tr><td>Mandatory Access Control (MAC)</td><td>System-enforced access control</td><td>High security, less flexible</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Cryptography</h2>
+            <table>
+                <tr><th>Type</th><th>Algorithm</th><th>Use Case</th><th>Key Size</th></tr>
+                <tr><td>Symmetric Encryption</td><td>AES</td><td>Data encryption</td><td>128, 192, 256 bits</td></tr>
+                <tr><td>Symmetric Encryption</td><td>3DES</td><td>Legacy systems</td><td>112, 168 bits</td></tr>
+                <tr><td>Asymmetric Encryption</td><td>RSA</td><td>Key exchange, digital signatures</td><td>2048, 3072, 4096 bits</td></tr>
+                <tr><td>Asymmetric Encryption</td><td>ECC</td><td>Mobile, IoT devices</td><td>256, 384, 521 bits</td></tr>
+                <tr><td>Hash Function</td><td>SHA-256</td><td>Integrity verification</td><td>256 bits</td></tr>
+                <tr><td>Hash Function</td><td>SHA-3</td><td>Future-proof hashing</td><td>224, 256, 384, 512 bits</td></tr>
+                <tr><td>Hash Function</td><td>MD5</td><td>Deprecated</td><td>128 bits</td></tr>
+                <tr><td>Key Exchange</td><td>Diffie-Hellman</td><td>Secure key exchange</td><td>2048+ bits</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Network Security</h2>
+            <table>
+                <tr><th>Technology</th><th>Purpose</th><th>Implementation</th></tr>
+                <tr><td>Firewall</td><td>Filter network traffic</td><td>Rule-based packet filtering</td></tr>
+                <tr><td>VPN</td><td>Secure remote access</td><td>IPSec, SSL/TLS tunneling</td></tr>
+                <tr><td>Intrusion Detection System (IDS)</td><td>Detect suspicious activity</td><td>Signature-based, anomaly-based</td></tr>
+                <tr><td>Intrusion Prevention System (IPS)</td><td>Block detected threats</td><td>Inline traffic inspection</td></tr>
+                <tr><td>Network Segmentation</td><td>Isolate network sections</td><td>VLANs, subnetting, microsegmentation</td></tr>
+                <tr><td>SIEM</td><td>Security information and event management</td><td>Log aggregation, correlation, analysis</td></tr>
+                <tr><td>DMZ</td><td>Isolated network for public services</td><td>Web servers, email servers</td></tr>
+                <tr><td>Port Security</td><td>Control access to network ports</td><td>MAC address filtering</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Security Protocols</h2>
+            <table>
+                <tr><th>Protocol</th><th>Layer</th><th>Purpose</th><th>Security Feature</th></tr>
+                <tr><td>SSL/TLS</td><td>Transport</td><td>Secure communication</td><td>Encryption, authentication</td></tr>
+                <tr><td>IPSec</td><td>Network</td><td>Secure IP communication</td><td>Authentication, encryption, integrity</td></tr>
+                <tr><td>SSH</td><td>Application</td><td>Secure remote access</td><td>Encrypted shell access</td></tr>
+                <tr><td>SFTP</td><td>Application</td><td>Secure file transfer</td><td>SSH-based file transfer</td></tr>
+                <tr><td>HTTPS</td><td>Application</td><td>Secure web communication</td><td>HTTP over TLS</td></tr>
+                <tr><td>WPA3</td><td>Network</td><td>Secure WiFi</td><td>Individualized data encryption</td></tr>
+                <tr><td>Kerberos</td><td>Application</td><td>Network authentication</td><td>Trusted third-party authentication</td></tr>
+                <tr><td>SAML</td><td>Application</td><td>Single sign-on</td><td>Security assertion markup language</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Vulnerability Management</h2>
+            <table>
+                <tr><th>Process</th><th>Description</th><th>Tools</th></tr>
+                <tr><td>Vulnerability Scanning</td><td>Systematic search for security weaknesses</td><td>Nessus, OpenVAS, Qualys</td></tr>
+                <tr><td>Penetration Testing</td><td>Simulated attacks to find vulnerabilities</td><td>Metasploit, Burp Suite, Nmap</td></tr>
+                <tr><td>Risk Assessment</td><td>Evaluate potential security risks</td><td>CVSS, DREAD, OCTAVE</td></tr>
+                <tr><td>Asset Management</td><td>Track and manage security of assets</td><td>CMDB, asset discovery tools</td></tr>
+                <tr><td>Patch Management</td><td>Manage software updates and patches</td><td>WSUS, Red Hat Satellite, Ansible</td></tr>
+                <tr><td>Security Auditing</td><td>Systematic evaluation of security controls</td><td>Compliance tools, configuration checkers</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Incident Response</h2>
+            <table>
+                <tr><th>Phase</th><th>Activities</th><th>Tools</th></tr>
+                <tr><td>Preparation</td><td>Develop IR plan, train staff, establish communication</td><td>IR plans, communication tools, training materials</td></tr>
+                <tr><td>Identification</td><td>Detect and analyze security incidents</td><td>SIEM, IDS, forensic tools</td></tr>
+                <tr><td>Containment</td><td>Limit the scope of the incident</td><td>Network isolation, access controls</td></tr>
+                <tr><td>Eradication</td><td>Remove the cause of the incident</td><td>Antivirus, patching, system restoration</td></tr>
+                <tr><td>Recovery</td><td>Restore systems and services</td><td>Backups, system monitoring</td></tr>
+                <tr><td>Lessons Learned</td><td>Document and analyze the incident</td><td>Documentation, metrics, process improvement</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Security Frameworks & Compliance</h2>
+            <table>
+                <tr><th>Framework</th><th>Purpose</th><th>Key Components</th></tr>
+                <tr><td>NIST Cybersecurity Framework</td><td>Manage cybersecurity risks</td><td>Identify, Protect, Detect, Respond, Recover</td></tr>
+                <tr><td>ISO 27001</td><td>Information security management</td><td>ISMS, risk management, controls</td></tr>
+                <tr><td>COBIT</td><td>IT governance and management</td><td>Process model, maturity model, metrics</td></tr>
+                <tr><td>PCI DSS</td><td>Payment card industry security</td><td>Cardholder data protection, network security</td></tr>
+                <tr><td>SOX</td><td>Financial reporting accuracy</td><td>Internal controls, audit requirements</td></tr>
+                <tr><td>HIPAA</td><td>Health information privacy</td><td>Privacy rule, security rule, breach notification</td></tr>
+                <tr><td>GDPR</td><td>Data protection and privacy</td><td>Consent, rights of data subjects, breach reporting</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Security Tools</h2>
+            <table>
+                <tr><th>Category</th><th>Tool</th><th>Function</th></tr>
+                <tr><td>Network Scanning</td><td>Nmap</td><td>Port scanning, network discovery</td></tr>
+                <tr><td>Web Application Testing</td><td>Burp Suite</td><td>Web vulnerability assessment</td></tr>
+                <tr><td>Exploitation Framework</td><td>Metasploit</td><td>Penetration testing, exploit development</td></tr>
+                <tr><td>Packet Analysis</td><td>Wireshark</td><td>Network protocol analysis</td></tr>
+                <tr><td>Vulnerability Scanner</td><td>Nessus</td><td>Automated vulnerability detection</td></tr>
+                <tr><td>Forensic Analysis</td><td>Autopsy</td><td>Digital forensics and investigation</td></tr>
+                <tr><td>Password Cracking</td><td>John the Ripper</td><td>Password recovery and testing</td></tr>
+                <tr><td>System Monitoring</td><td>Sysmon</td><td>System activity monitoring</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Secure Coding Practices</h2>
+            <table>
+                <tr><th>Practice</th><th>Description</th><th>Implementation</th></tr>
+                <tr><td>Input Validation</td><td>Validate all user inputs</td><td>Whitelist validation, parameterized queries</td></tr>
+                <tr><td>Output Encoding</td><td>Encode data for proper context</td><td>HTML encoding, URL encoding</td></tr>
+                <tr><td>Error Handling</td><td>Don't leak system information</td><td>Generic error messages, logging</td></tr>
+                <tr><td>Authentication</td><td>Implement strong authentication</td><td>MFA, secure session management</td></tr>
+                <tr><td>Authorization</td><td>Verify access rights</td><td>Role-based access, principle of least privilege</td></tr>
+                <tr><td>Session Management</td><td>Secure session handling</td><td>Secure cookies, session timeout</td></tr>
+                <tr><td>Cryptography</td><td>Use strong encryption</td><td>Standard algorithms, proper key management</td></tr>
+                <tr><td>Secure Configuration</td><td>Follow security best practices</td><td>Remove default accounts, disable unnecessary services</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Emerging Security Technologies</h2>
+            <table>
+                <tr><th>Technology</th><th>Application</th><th>Security Benefits</th></tr>
+                <tr><td>Zero Trust Architecture</td><td>Network security model</td><td>Continuous verification, micro-segmentation</td></tr>
+                <tr><td>Deception Technology</td><td>Attack detection and response</td><td>Early detection, attacker engagement</td></tr>
+                <tr><td>Behavioral Analytics</td><td>User and entity behavior analysis</td><td>Threat detection, anomaly identification</td></tr>
+                <tr><td>Security Orchestration</td><td>Automate security operations</td><td>Efficiency, consistency, scalability</td></tr>
+                <tr><td>Threat Intelligence</td><td>Proactive threat detection</td><td>Context, indicators of compromise</td></tr>
+                <tr><td>Blockchain Security</td><td>Distributed ledger security</td><td>Immutability, transparency, decentralization</td></tr>
+                <tr><td>Cloud Security</td><td>Secure cloud environments</td><td>Encryption, identity management, compliance</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

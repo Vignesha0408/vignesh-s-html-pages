@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Logic Design Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Digital Logic Design Cheat Sheet</h1>
+        
+        <div class="section">
+            <h2>Basic Logic Gates</h2>
+            <table>
+                <tr><th>Gate</th><th>Symbol</th><th>Boolean Expression</th><th>Truth Table</th><th>Function</th></tr>
+                <tr><td>AND</td><td>A·B or A∧B</td><td>Y = A·B</td><td>0·0=0, 0·1=0, 1·0=0, 1·1=1</td><td>Output high only when all inputs are high</td></tr>
+                <tr><td>OR</td><td>A+B or A∨B</td><td>Y = A+B</td><td>0+0=0, 0+1=1, 1+0=1, 1+1=1</td><td>Output high when any input is high</td></tr>
+                <tr><td>NOT (Inverter)</td><td>A' or Ā</td><td>Y = A'</td><td>0'=1, 1'=0</td><td>Output is complement of input</td></tr>
+                <tr><td>NAND</td><td>(A·B)'</td><td>Y = (A·B)'</td><td>(0·0)'=1, (0·1)'=1, (1·0)'=1, (1·1)'=0</td><td>AND gate followed by inverter</td></tr>
+                <tr><td>NOR</td><td>(A+B)'</td><td>Y = (A+B)'</td><td>(0+0)'=1, (0+1)'=0, (1+0)'=0, (1+1)'=0</td><td>OR gate followed by inverter</td></tr>
+                <tr><td>XOR</td><td>A⊕B</td><td>Y = A⊕B</td><td>0⊕0=0, 0⊕1=1, 1⊕0=1, 1⊕1=0</td><td>Output high when inputs are different</td></tr>
+                <tr><td>XNOR</td><td>(A⊕B)'</td><td>Y = (A⊕B)'</td><td>(0⊕0)'=1, (0⊕1)'=0, (1⊕0)'=0, (1⊕1)'=1</td><td>XOR gate followed by inverter</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Boolean Algebra Laws</h2>
+            <table>
+                <tr><th>Law</th><th>Name</th><th>Expression</th><th>Description</th></tr>
+                <tr><td>A + 0 = A</td><td>Identity</td><td>A·1 = A</td><td>OR/AND with identity element</td></tr>
+                <tr><td>A + 1 = 1</td><td>Null</td><td>A·0 = 0</td><td>OR/AND with null element</td></tr>
+                <tr><td>A + A = A</td><td>Idempotent</td><td>A·A = A</td><td>Element OR/AND with itself</td></tr>
+                <tr><td>A + A' = 1</td><td>Complement</td><td>A·A' = 0</td><td>Element OR/AND with complement</td></tr>
+                <tr><td>A + B = B + A</td><td>Commutative</td><td>A·B = B·A</td><td>Order of operands doesn't matter</td></tr>
+                <tr><td>A + (B + C) = (A + B) + C</td><td>Associative</td><td>A·(B·C) = (A·B)·C</td><td>Grouping of operands doesn't matter</td></tr>
+                <tr><td>A·(B + C) = A·B + A·C</td><td>Distributive</td><td>A + B·C = (A + B)·(A + C)</td><td>AND distributes over OR and vice versa</td></tr>
+                <tr><td>(A + B)' = A'·B'</td><td>De Morgan's</td><td>(A·B)' = A' + B'</td><td>Complement of sum/product</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Combinational Logic Circuits</h2>
+            <table>
+                <tr><th>Circuit</th><th>Inputs</th><th>Outputs</th><th>Function</th><th>Applications</th></tr>
+                <tr><td>Half Adder</td><td>2 (A, B)</td><td>2 (Sum, Carry)</td><td>Adds 2 bits</td><td>Basic addition building block</td></tr>
+                <tr><td>Full Adder</td><td>3 (A, B, Cin)</td><td>2 (Sum, Cout)</td><td>Adds 3 bits</td><td>Multi-bit addition</td></tr>
+                <tr><td>Half Subtractor</td><td>2 (A, B)</td><td>2 (Difference, Borrow)</td><td>Subtracts 2 bits</td><td>Basic subtraction building block</td></tr>
+                <tr><td>Full Subtractor</td><td>3 (A, B, Bin)</td><td>2 (Difference, Bout)</td><td>Subtracts 3 bits</td><td>Multi-bit subtraction</td></tr>
+                <tr><td>Multiplexer</td><td>2^n data inputs, n select lines</td><td>1 output</td><td>Selects 1 of 2^n inputs</td><td>Data routing, function implementation</td></tr>
+                <tr><td>Demultiplexer</td><td>1 input, n select lines</td><td>2^n outputs</td><td>Routes 1 input to 1 of 2^n outputs</td><td>Data distribution</td></tr>
+                <tr><td>Decoder</td><td>n inputs</td><td>2^n outputs</td><td>Activates 1 of 2^n outputs</td><td>Memory addressing, display drivers</td></tr>
+                <tr><td>Encoder</td><td>2^n inputs</td><td>n outputs</td><td>Converts active input to binary code</td><td>Keyboard interfaces, priority encoders</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Sequential Logic Circuits</h2>
+            <table>
+                <tr><th>Circuit</th><th>Inputs</th><th>Outputs</th><th>Memory</th><th>Applications</th></tr>
+                <tr><td>SR Latch</td><td>S, R</td><td>Q, Q'</td><td>1 bit</td><td>Basic memory element</td></tr>
+                <tr><td>D Latch</td><td>D, Enable</td><td>Q, Q'</td><td>1 bit</td><td>Transparent latch, temporary storage</td></tr>
+                <tr><td>D Flip-Flop</td><td>D, Clock</td><td>Q, Q'</td><td>1 bit</td><td>Edge-triggered storage</td></tr>
+                <tr><td>JK Flip-Flop</td><td>J, K, Clock</td><td>Q, Q'</td><td>1 bit</td><td>Toggle function, no invalid state</td></tr>
+                <tr><td>T Flip-Flop</td><td>T, Clock</td><td>Q, Q'</td><td>1 bit</td><td>Toggle function</td></tr>
+                <tr><td>Shift Register</td><td>Data, Clock</td><td>Serial/Parallel outputs</td><td>Multiple bits</td><td>Serial-to-parallel, delay lines</td></tr>
+                <tr><td>Counter</td><td>Clock, Reset</td><td>n-bit output</td><td>Multiple bits</td><td>Timing, sequencing, counting</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Number Systems & Conversions</h2>
+            <table>
+                <tr><th>System</th><th>Base</th><th>Symbols</th><th>Example</th><th>Conversion Method</th></tr>
+                <tr><td>Binary</td><td>2</td><td>0, 1</td><td>1101₂</td><td>Positional notation: 1×2³ + 1×2² + 0×2¹ + 1×2⁰</td></tr>
+                <tr><td>Octal</td><td>8</td><td>0-7</td><td>15₈</td><td>Group binary digits in sets of 3</td></tr>
+                <tr><td>Decimal</td><td>10</td><td>0-9</td><td>13₁₀</td><td>Standard positional notation</td></tr>
+                <tr><td>Hexadecimal</td><td>16</td><td>0-9, A-F</td><td>D₁₆</td><td>Group binary digits in sets of 4</td></tr>
+                <tr><td>BCD</td><td>10</td><td>0-9 as 4-bit binary</td><td>0001 0011 for 13</td><td>Each decimal digit as 4-bit binary</td></tr>
+                <tr><td>Gray Code</td><td>2</td><td>0, 1</td><td>1101</td><td>Only one bit changes between consecutive values</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Minimization Techniques</h2>
+            <table>
+                <tr><th>Method</th><th>Approach</th><th>Best For</th><th>Advantages</th><th>Disadvantages</th></tr>
+                <tr><td>Algebraic Simplification</td><td>Apply Boolean algebra laws</td><td>Simple expressions</td><td>Quick for simple cases</td><td>Requires experience, not systematic</td></tr>
+                <tr><td>Karnaugh Map (K-map)</td><td>Graphical representation of truth table</td><td>Up to 6 variables</td><td>Systematic, visual approach</td><td>Limited to few variables</td></tr>
+                <tr><td>Quine-McCluskey</td><td>Tabular method for minimization</td><td>Many variables</td><td>Systematic, computer implementable</td><td>Complex for manual calculation</td></tr>
+                <tr><td>Espresso Algorithm</td><td>Heuristic minimization</td><td>Large functions</td><td>Efficient for large functions</td><td>Approximation, not optimal</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Logic Families</h2>
+            <table>
+                <tr><th>Family</th><th>Technology</th><th>Advantages</th><th>Disadvantages</th><th>Applications</th></tr>
+                <tr><td>RTL (Resistor-Transistor Logic)</td><td>Bipolar junction transistors</td><td>Simple, low cost</td><td>Slow, high power</td><td>Early digital systems</td></tr>
+                <tr><td>DTL (Diode-Transistor Logic)</td><td>Diodes and transistors</td><td>Better noise margin than RTL</td><td>Slow, moderate power</td><td>Early digital systems</td></tr>
+                <tr><td>TTL (Transistor-Transistor Logic)</td><td>Bipolar junction transistors</td><td>Fast, good drive capability</td><td>High power consumption</td><td>General-purpose digital</td></tr>
+                <tr><td>ECL (Emitter-Coupled Logic)</td><td>Differential amplifiers</td><td>Fastest logic family</td><td>High power, low noise margin</td><td>High-speed applications</td></tr>
+                <tr><td>MOS (Metal-Oxide-Semiconductor)</td><td>MOSFET transistors</td><td>High density, low power</td><td>Slower than bipolar</td><td>Memory, microprocessors</td></tr>
+                <tr><td>CMOS (Complementary MOS)</td><td>NMOS and PMOS transistors</td><td>Low power, high noise margin</td><td>Slower than ECL</td><td>Modern digital systems</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

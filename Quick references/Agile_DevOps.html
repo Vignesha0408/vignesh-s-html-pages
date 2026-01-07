@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agile & DevOps - Quick Reference</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --primary-gradient-start: #6a85b6;
+            --primary-gradient-end: #bac8e0;
+            --secondary-gradient-start: #a1c4fd;
+            --secondary-gradient-end: #c2e9fb;
+            --accent-color: #4a69bd;
+            --text-color: #2c3e50;
+            --light-text: #7f8c8d;
+            --card-bg: #ffffff;
+            --border-color: #e0e0e0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, var(--primary-gradient-start), var(--primary-gradient-end));
+            background-attachment: fixed;
+            color: var(--text-color);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+        
+        h1 {
+            text-align: center;
+            background: linear-gradient(to right, var(--secondary-gradient-start), var(--secondary-gradient-end));
+            color: var(--text-color);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            font-size: 2.2rem;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            animation: slideDown 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        h1::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+        
+        h1:hover::before {
+            transform: translateX(100%);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        table:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        th {
+            background: linear-gradient(to right, var(--secondary-gradient-start), var(--secondary-gradient-end));
+            color: var(--text-color);
+            padding: 16px;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.95rem;
+            vertical-align: top;
+            transition: background-color 0.3s ease;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9fbfd;
+        }
+        
+        tr:hover {
+            background-color: #edf7ff;
+        }
+        
+        .topic-tag {
+            display: inline-block;
+            background: linear-gradient(to right, var(--secondary-gradient-start), var(--secondary-gradient-end));
+            color: var(--text-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 3px;
+            transition: transform 0.2s ease;
+        }
+        
+        .topic-tag:hover {
+            transform: scale(1.05);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 5px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+                padding: 20px;
+            }
+            
+            table {
+                margin: 15px 0;
+            }
+            
+            th, td {
+                padding: 12px 8px;
+                font-size: 0.9rem;
+            }
+            
+            .topic-tag {
+                font-size: 0.75rem;
+                padding: 4px 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+                padding: 15px;
+            }
+            
+            th {
+                font-size: 0.85rem;
+                padding: 10px 8px;
+            }
+            
+            td {
+                padding: 10px 6px;
+                font-size: 0.85rem;
+            }
+            
+            .topic-tag {
+                display: block;
+                margin: 4px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Agile & DevOps - Quick Reference</h1>
+        
+        <table>
+            <tr><th>Concept</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Agile</div></td><td>Software development methodology emphasizing iterative development, collaboration, and customer feedback.</td></tr>
+            <tr><td><div class="topic-tag">DevOps</div></td><td>Culture and practice that unifies software development and operations teams for faster delivery.</td></tr>
+            <tr><td><div class="topic-tag">Agile Manifesto</div></td><td>Individuals & interactions, Working software, Customer collaboration, Responding to change</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Agile Frameworks</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Scrum</div></td><td>Framework with roles (Product Owner, Scrum Master, Team), events (Sprint, Daily Scrum, Review, Retrospective), and artifacts (Product Backlog, Sprint Backlog, Increment).</td></tr>
+            <tr><td><div class="topic-tag">Kanban</div></td><td>Visual workflow management method using boards and cards to visualize work and limit WIP.</td></tr>
+            <tr><td><div class="topic-tag">Extreme Programming (XP)</div></td><td>Focuses on engineering practices like pair programming, TDD, continuous integration.</td></tr>
+            <tr><td><div class="topic-tag">Lean</div></td><td>Eliminates waste, amplifies learning, decides as late as possible, delivers as fast as possible.</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Scrum Roles</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Product Owner</div></td><td>Represents stakeholders, manages Product Backlog, defines requirements, prioritizes features.</td></tr>
+            <tr><td><div class="topic-tag">Scrum Master</div></td><td>Facilitates Scrum process, removes impediments, coaches team, ensures proper implementation.</td></tr>
+            <tr><td><div class="topic-tag">Development Team</div></td><td>Cross-functional team that develops the product, self-organizing, collectively responsible.</td></tr>
+        </table>
+
+        <table>
+            <tr><th>DevOps Practices</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">CI/CD</div></td><td>Continuous Integration (frequent code merging) and Continuous Delivery (automated deployment).</td></tr>
+            <tr><td><div class="topic-tag">Infrastructure as Code (IaC)</div></td><td>Managing infrastructure through machine-readable files instead of manual processes.</td></tr>
+            <tr><td><div class="topic-tag">Monitoring & Logging</div></td><td>Real-time visibility into application and infrastructure performance.</td></tr>
+            <tr><td><div class="topic-tag">Automated Testing</div></td><td>Unit, integration, and end-to-end tests integrated into deployment pipeline.</td></tr>
+        </table>
+
+        <table>
+            <tr><th>DevOps Tools</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Version Control</div></td><td>Git, SVN for source code management and collaboration.</td></tr>
+            <tr><td><div class="topic-tag">CI/CD</div></td><td>Jenkins, GitLab CI, CircleCI, GitHub Actions for automation pipelines.</td></tr>
+            <tr><td><div class="topic-tag">Containerization</div></td><td>Docker for packaging applications, Kubernetes for container orchestration.</td></tr>
+            <tr><td><div class="topic-tag">Cloud Platforms</div></td><td>AWS, Azure, GCP for infrastructure and deployment services.</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Agile Ceremonies</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Sprint Planning</div></td><td>Team plans work for upcoming sprint, defines Sprint Goal.</td></tr>
+            <tr><td><div class="topic-tag">Daily Standup</div></td><td>15-minute meeting to synchronize team, discuss progress and blockers.</td></tr>
+            <tr><td><div class="topic-tag">Sprint Review</div></td><td>Demonstrate completed work to stakeholders, gather feedback.</td></tr>
+            <tr><td><div class="topic-tag">Sprint Retrospective</div></td><td>Team reflects on sprint, identifies improvements for next sprint.</td></tr>
+        </table>
+
+        <table>
+            <tr><th>DevOps Benefits</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Faster Delivery</div></td><td>Shorter development cycles, faster time to market.</td></tr>
+            <tr><td><div class="topic-tag">Improved Quality</div></td><td>Automated testing reduces defects, better monitoring detects issues early.</td></tr>
+            <tr><td><div class="topic-tag">Enhanced Collaboration</div></td><td>Breaks down silos between development and operations teams.</td></tr>
+            <tr><td><div class="topic-tag">Increased Reliability</div></td><td>Infrastructure as code ensures consistency and reduces human error.</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Key Metrics</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Lead Time</div></td><td>Time from work start to delivery to customer.</td></tr>
+            <tr><td><div class="topic-tag">Deployment Frequency</div></td><td>How often deployments occur to production.</td></tr>
+            <tr><td><div class="topic-tag">Mean Time to Recovery</div></td><td>Time to restore service after failure.</td></tr>
+            <tr><td><div class="topic-tag">Change Failure Rate</div></td><td>Percentage of deployments causing failures.</td></tr>
+        </table>
+    </div>
+</body>
+</html>

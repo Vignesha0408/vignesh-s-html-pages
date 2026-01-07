@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Programming Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Python Programming Cheat Sheet</h1>
+        
+        <div class="section">
+            <h2>Basic Syntax</h2>
+            <table>
+                <tr><th>Concept</th><th>Syntax</th><th>Example</th></tr>
+                <tr><td>Comments</td><td># comment</td><td><span class="code"># This is a comment</span></td></tr>
+                <tr><td>Print Statement</td><td>print(value)</td><td><span class="code">print("Hello World")</span></td></tr>
+                <tr><td>Input Statement</td><td>input(prompt)</td><td><span class="code">name = input("Enter name: ")</span></td></tr>
+                <td>Multi-line Comment</td><td>""" comment """</td><td><span class="code">"""This is a multi-line comment"""</span></td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Data Types</h2>
+            <table>
+                <tr><th>Type</th><th>Example</th><th>Description</th></tr>
+                <tr><td>int</td><td><span class="code">x = 10</span></td><td>Integer number</td></tr>
+                <tr><td>float</td><td><span class="code">y = 3.14</span></td><td>Floating point number</td></tr>
+                <tr><td>str</td><td><span class="code">name = "Python"</span></td><td>String of characters</td></tr>
+                <tr><td>bool</td><td><span class="code">flag = True</span></td><td>Boolean value (True/False)</td></tr>
+                <tr><td>list</td><td><span class="code">items = [1, 2, 3]</span></td><td>Ordered, mutable collection</td></tr>
+                <tr><td>tuple</td><td><span class="code">point = (1, 2)</span></td><td>Ordered, immutable collection</td></tr>
+                <tr><td>dict</td><td><span class="code">person = {"name": "John"}</span></td><td>Key-value pairs</td></tr>
+                <tr><td>set</td><td><span class="code">unique = {1, 2, 3}</span></td><td>Unordered unique items</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Operators</h2>
+            <table>
+                <tr><th>Category</th><th>Operator</th><th>Example</th><th>Description</th></tr>
+                <tr><td>Arithmetic</td><td>+ - * / // % **</td><td><span class="code">5 + 3 = 8</span></td><td>Addition, Subtraction, Multiplication, Division, Floor Division, Modulus, Exponentiation</td></tr>
+                <tr><td>Comparison</td><td>== != &lt; &gt; &lt;= &gt;=</td><td><span class="code">5 == 5 is True</span></td><td>Equality, Inequality, Less/Greater than, etc.</td></tr>
+                <tr><td>Logical</td><td>and or not</td><td><span class="code">True and False is False</span></td><td>Logical AND, OR, NOT</td></tr>
+                <tr><td>Assignment</td><td>= += -= *= /= //= %= **= &amp;= |= ^= &gt;&gt;= &lt;&lt;=</td><td><span class="code">x += 5</span></td><td>Assignment operators</td></tr>
+                <tr><td>Membership</td><td>in not in</td><td><span class="code">3 in [1,2,3] is True</span></td><td>Check if value is in sequence</td></tr>
+                <tr><td>Identity</td><td>is is not</td><td><span class="code">x is y</span></td><td>Check if objects are identical</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Control Structures</h2>
+            <table>
+                <tr><th>Structure</th><th>Syntax</th><th>Example</th></tr>
+                <tr><td>If Statement</td><td>if condition:<br>&nbsp;&nbsp;&nbsp;&nbsp;statement</td><td><span class="code">if x > 0:<br>&nbsp;&nbsp;&nbsp;&nbsp;print("Positive")</span></td></tr>
+                <tr><td>If-Elif-Else</td><td>if c1:<br>&nbsp;&nbsp;&nbsp;&nbsp;s1<br>elif c2:<br>&nbsp;&nbsp;&nbsp;&nbsp;s2<br>else:<br>&nbsp;&nbsp;&nbsp;&nbsp;s3</td><td><span class="code">if x > 0:<br>&nbsp;&nbsp;&nbsp;&nbsp;print("Pos")<br>elif x == 0:<br>&nbsp;&nbsp;&nbsp;&nbsp;print("Zero")<br>else:<br>&nbsp;&nbsp;&nbsp;&nbsp;print("Neg")</span></td></tr>
+                <tr><td>For Loop</td><td>for item in iterable:<br>&nbsp;&nbsp;&nbsp;&nbsp;statement</td><td><span class="code">for i in range(5):<br>&nbsp;&nbsp;&nbsp;&nbsp;print(i)</span></td></tr>
+                <tr><td>While Loop</td><td>while condition:<br>&nbsp;&nbsp;&nbsp;&nbsp;statement</td><td><span class="code">while x > 0:<br>&nbsp;&nbsp;&nbsp;&nbsp;x -= 1</span></td></tr>
+                <tr><td>Break</td><td>break</td><td><span class="code">for i in range(10):<br>&nbsp;&nbsp;&nbsp;&nbsp;if i == 5:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break</span></td></tr>
+                <tr><td>Continue</td><td>continue</td><td><span class="code">for i in range(5):<br>&nbsp;&nbsp;&nbsp;&nbsp;if i == 2:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue<br>&nbsp;&nbsp;&nbsp;&nbsp;print(i)</span></td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Functions</h2>
+            <table>
+                <tr><th>Concept</th><th>Syntax</th><th>Example</th></tr>
+                <tr><td>Function Definition</td><td>def name(params):<br>&nbsp;&nbsp;&nbsp;&nbsp;body</td><td><span class="code">def greet(name):<br>&nbsp;&nbsp;&nbsp;&nbsp;return f"Hello {name}"</span></td></tr>
+                <tr><td>Function Call</td><td>name(arguments)</td><td><span class="code">result = greet("John")</span></td></tr>
+                <tr><td>Default Parameters</td><td>def func(p=value):</td><td><span class="code">def greet(name="World"):</span></td></tr>
+                <tr><td>Keyword Arguments</td><td>func(param=value)</td><td><span class="code">func(name="John", age=25)</span></td></tr>
+                <tr><td>Variable Arguments</td><td>*args, **kwargs</td><td><span class="code">def func(*args, **kwargs):</span></td></tr>
+                <tr><td>Lambda Function</td><td>lambda params: expression</td><td><span class="code">square = lambda x: x**2</span></td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Lists</h2>
+            <table>
+                <tr><th>Operation</th><th>Syntax</th><th>Example</th></tr>
+                <tr><td>Create List</td><td>list = [items]</td><td><span class="code">nums = [1, 2, 3]</span></td></tr>
+                <tr><td>Access Element</td><td>list[index]</td><td><span class="code">first = nums[0]</span></td></tr>
+                <tr><td>Add Element</td><td>list.append(item)</td><td><span class="code">nums.append(4)</span></td></tr>
+                <tr><td>Insert Element</td><td>list.insert(index, item)</td><td><span class="code">nums.insert(1, 10)</span></td></tr>
+                <tr><td>Remove Element</td><td>list.remove(item)</td><td><span class="code">nums.remove(2)</span></td></tr>
+                <tr><td>Pop Element</td><td>list.pop(index)</td><td><span class="code">last = nums.pop()</span></td></tr>
+                <tr><td>List Slicing</td><td>list[start:end:step]</td><td><span class="code">subset = nums[1:4]</span></td></tr>
+                <tr><td>List Comprehension</td><td>[expr for item in list]</td><td><span class="code">squares = [x**2 for x in range(5)]</span></td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Dictionaries</h2>
+            <table>
+                <tr><th>Operation</th><th>Syntax</th><th>Example</th></tr>
+                <tr><td>Create Dict</td><td>dict = {key: value}</td><td><span class="code">person = {"name": "John", "age": 25}</span></td></tr>
+                <tr><td>Access Value</td><td>dict[key]</td><td><span class="code">name = person["name"]</span></td></tr>
+                <tr><td>Add/Update</td><td>dict[key] = value</td><td><span class="code">person["city"] = "NYC"</span></td></tr>
+                <tr><td>Get Value</td><td>dict.get(key)</td><td><span class="code">age = person.get("age", 0)</span></td></tr>
+                <tr><td>Keys</td><td>dict.keys()</td><td><span class="code">keys = person.keys()</span></td></tr>
+                <tr><td>Values</td><td>dict.values()</td><td><span class="code">values = person.values()</span></td></tr>
+                <tr><td>Items</td><td>dict.items()</td><td><span class="code">items = person.items()</span></td></tr>
+                <tr><td>Delete Key</td><td>del dict[key]</td><td><span class="code">del person["age"]</span></td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>String Operations</h2>
+            <table>
+                <tr><th>Operation</th><th>Syntax</th><th>Example</th></tr>
+                <tr><td>Length</td><td>len(string)</td><td><span class="code">length = len("hello")</span></td></tr>
+                <tr><td>Concatenation</td><td>str1 + str2</td><td><span class="code">result = "Hello" + " " + "World"</span></td></tr>
+                <tr><td>Repetition</td><td>string * n</td><td><span class="code">stars = "*" * 5</span></td></tr>
+                <tr><td>Indexing</td><td>string[index]</td><td><span class="code">first = "hello"[0]</span></td></tr>
+                <tr><td>Slicing</td><td>string[start:end]</td><td><span class="code">part = "hello"[1:4]</span></td></tr>
+                <tr><td>Upper Case</td><td>string.upper()</td><td><span class="code">caps = "hello".upper()</span></td></tr>
+                <tr><td>Lower Case</td><td>string.lower()</td><td><span class="code">lower = "HELLO".lower()</span></td></tr>
+                <tr><td>Replace</td><td>string.replace(old, new)</td><td><span class="code">new = "hello".replace("l", "x")</span></td></tr>
+                <tr><td>Split</td><td>string.split(separator)</td><td><span class="code">parts = "a,b,c".split(",")</span></td></tr>
+                <tr><td>Join</td><td>separator.join(list)</td><td><span class="code">result = "-".join(["a", "b", "c"])</span></td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>File Operations</h2>
+            <table>
+                <tr><th>Operation</th><th>Syntax</th><th>Example</th></tr>
+                <tr><td>Open File</td><td>open(filename, mode)</td><td><span class="code">f = open("file.txt", "r")</span></td></tr>
+                <tr><td>Read File</td><td>file.read()</td><td><span class="code">content = f.read()</span></td></tr>
+                <tr><td>Read Lines</td><td>file.readlines()</td><td><span class="code">lines = f.readlines()</span></td></tr>
+                <tr><td>Write File</td><td>file.write(text)</td><td><span class="code">f.write("Hello World")</span></td></tr>
+                <tr><td>Close File</td><td>file.close()</td><td><span class="code">f.close()</span></td></tr>
+                <tr><td>Context Manager</td><td>with open(...) as f:</td><td><span class="code">with open("file.txt", "r") as f:<br>&nbsp;&nbsp;&nbsp;&nbsp;content = f.read()</span></td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Error Handling</h2>
+            <table>
+                <tr><th>Structure</th><th>Syntax</th><th>Example</th></tr>
+                <tr><td>Try-Except</td><td>try:<br>&nbsp;&nbsp;&nbsp;&nbsp;statements<br>except Error:<br>&nbsp;&nbsp;&nbsp;&nbsp;handler</td><td><span class="code">try:<br>&nbsp;&nbsp;&nbsp;&nbsp;result = 10 / 0<br>except ZeroDivisionError:<br>&nbsp;&nbsp;&nbsp;&nbsp;print("Cannot divide by zero")</span></td></tr>
+                <tr><td>Try-Except-Else</td><td>try:<br>&nbsp;&nbsp;&nbsp;&nbsp;...<br>except ...:<br>&nbsp;&nbsp;&nbsp;&nbsp;...<br>else:<br>&nbsp;&nbsp;&nbsp;&nbsp;...</td><td><span class="code">try:<br>&nbsp;&nbsp;&nbsp;&nbsp;x = int(input())<br>except ValueError:<br>&nbsp;&nbsp;&nbsp;&nbsp;print("Invalid")<br>else:<br>&nbsp;&nbsp;&nbsp;&nbsp;print("Valid")</span></td></tr>
+                <tr><td>Try-Except-Finally</td><td>try:<br>&nbsp;&nbsp;&nbsp;&nbsp;...<br>except ...:<br>&nbsp;&nbsp;&nbsp;&nbsp;...<br>finally:<br>&nbsp;&nbsp;&nbsp;&nbsp;...</td><td><span class="code">try:<br>&nbsp;&nbsp;&nbsp;&nbsp;f = open("file.txt")<br>&nbsp;&nbsp;&nbsp;&nbsp;...<br>finally:<br>&nbsp;&nbsp;&nbsp;&nbsp;f.close()</span></td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Classes and Objects</h2>
+            <table>
+                <tr><th>Concept</th><th>Syntax</th><th>Example</th></tr>
+                <tr><td>Class Definition</td><td>class Name:<br>&nbsp;&nbsp;&nbsp;&nbsp;def __init__(self):</td><td><span class="code">class Person:<br>&nbsp;&nbsp;&nbsp;&nbsp;def __init__(self, name):<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.name = name</span></td></tr>
+                <tr><td>Object Creation</td><td>obj = ClassName()</td><td><span class="code">p = Person("John")</span></td></tr>
+                <tr><td>Method Definition</td><td>def method(self):</td><td><span class="code">def greet(self):<br>&nbsp;&nbsp;&nbsp;&nbsp;return f"Hello {self.name}"</span></td></tr>
+                <tr><td>Inheritance</td><td>class Child(Parent):</td><td><span class="code">class Student(Person):<br>&nbsp;&nbsp;&nbsp;&nbsp;def __init__(self, name, grade):<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super().__init__(name)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.grade = grade</span></td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Common Built-in Functions</h2>
+            <table>
+                <tr><th>Function</th><th>Usage</th><th>Example</th></tr>
+                <tr><td>len()</td><td>Get length of object</td><td><span class="code">len([1,2,3]) returns 3</span></td></tr>
+                <tr><td>type()</td><td>Get type of object</td><td><span class="code">type(42) returns &lt;class 'int'&gt;</span></td></tr>
+                <tr><td>str()</td><td>Convert to string</td><td><span class="code">str(42) returns "42"</span></td></tr>
+                <tr><td>int()</td><td>Convert to integer</td><td><span class="code">int("42") returns 42</span></td></tr>
+                <tr><td>float()</td><td>Convert to float</td><td><span class="code">float("3.14") returns 3.14</span></td></tr>
+                <tr><td>list()</td><td>Convert to list</td><td><span class="code">list("abc") returns ['a', 'b', 'c']</span></td></tr>
+                <tr><td>range()</td><td>Create range object</td><td><span class="code">range(5) creates 0,1,2,3,4</span></td></tr>
+                <tr><td>enumerate()</td><td>Get index and value</td><td><span class="code">for i, v in enumerate(list)</span></td></tr>
+                <tr><td>zip()</td><td>Combine iterables</td><td><span class="code">zip([1,2], ['a','b'])</span></td></tr>
+                <tr><td>map()</td><td>Apply function to items</td><td><span class="code">map(func, [1,2,3])</span></td></tr>
+                <tr><td>filter()</td><td>Filter items with function</td><td><span class="code">filter(func, [1,2,3])</span></td></tr>
+                <tr><td>sum()</td><td>Sum of numbers</td><td><span class="code">sum([1,2,3]) returns 6</span></td></tr>
+                <tr><td>max()</td><td>Maximum value</td><td><span class="code">max([1,2,3]) returns 3</span></td></tr>
+                <tr><td>min()</td><td>Minimum value</td><td><span class="code">min([1,2,3]) returns 1</span></td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Engineering Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #34495e;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #34495e;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-top: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #34495e;
+            color: white;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Software Engineering Cheat Sheet</h1>
+        
+        <div class="section">
+            <h2>Software Development Life Cycle (SDLC) Models</h2>
+            <table>
+                <tr><th>Model</th><th>Description</th><th>Advantages</th><th>Disadvantages</th><th>Best Use Case</th></tr>
+                <tr><td>Waterfall</td><td>Sequential development phases</td><td>Simple, structured, well-documented</td><td>Inflexible, late testing, difficult to change</td><td>Well-defined requirements, stable technology</td></tr>
+                <tr><td>Agile</td><td>Iterative, customer-focused development</td><td>Flexible, customer collaboration, rapid delivery</td><td>Requires customer involvement, difficult to estimate</td><td>Changing requirements, customer collaboration</td></tr>
+                <tr><td>Iterative</td><td>Develop in iterations with feedback</td><td>Early error detection, risk management</td><td>Resource-intensive, complex management</td><td>Large projects, evolving requirements</td></tr>
+                <tr><td>Spiral</td><td>Risk-driven, prototype-based</td><td>Risk management, flexible</td><td>Complex, expensive, requires expertise</td><td>High-risk projects, large systems</td></tr>
+                <tr><td>V-Model</td><td>Testing phase for each development phase</td><td>Systematic, early testing planning</td><td>Inflexible, late discovery of issues</td><td>Regulated industries, safety-critical</td></tr>
+                <tr><td>DevOps</td><td>Development and operations integration</td><td>Continuous delivery, automation, collaboration</td><td>Requires cultural change, learning curve</td><td>Continuous deployment, automation</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Agile Methodologies</h2>
+            <table>
+                <tr><th>Methodology</th><th>Key Principles</th><th>Key Practices</th><th>Best For</th></tr>
+                <tr><td>Scrum</td><td>Iterative sprints, self-organizing teams</td><td>Sprint planning, daily standups, retrospectives</td><td>Complex projects, cross-functional teams</td></tr>
+                <tr><td>Kanban</td><td>Visual workflow, continuous delivery</td><td>Visual boards, WIP limits, flow optimization</td><td>Continuous flow, maintenance projects</td></tr>
+                <tr><td>Extreme Programming (XP)</td><td>Customer satisfaction, rapid feedback</td><td>Pair programming, TDD, continuous integration</td><td>Changing requirements, high-quality code</td></tr>
+                <tr><td>Lean</td><td>Eliminate waste, optimize workflow</td><td>Value stream mapping, continuous improvement</td><td>Efficiency, waste reduction</td></tr>
+                <tr><td>Crystal</td><td>People and interaction over processes</td><td>Reflective improvement, personal communication</td><td>Small teams, high-criticality projects</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Software Testing Types</h2>
+            <table>
+                <tr><th>Type</th><th>Focus</th><th>When</th><th>Techniques</th><th>Tools</th></tr>
+                <tr><td>Unit Testing</td><td>Individual components</td><td>During development</td><td>White box, equivalence partitioning</td><td>JUnit, NUnit, PyTest</td></tr>
+                <tr><td>Integration Testing</td><td>Module interactions</td><td>After unit testing</td><td>Top-down, bottom-up, sandwich</td><td>TestNG, Mockito, JMock</td></tr>
+                <tr><td>System Testing</td><td>Complete system</td><td>After integration</td><td>Black box, functional testing</td><td>Selenium, JMeter, LoadRunner</td></tr>
+                <tr><td>Acceptance Testing</td><td>Business requirements</td><td>Before delivery</td><td>User acceptance, alpha/beta testing</td><td>Cucumber, FitNesse, UFT</td></tr>
+                <tr><td>Regression Testing</td><td>Ensure no new bugs</td><td>After changes</td><td>Retest, selective retest</td><td>Selenium, TestComplete, Ranorex</td></tr>
+                <tr><td>Performance Testing</td><td>Speed, stability, scalability</td><td>Before production</td><td>Load, stress, endurance testing</td><td>JMeter, LoadRunner, Gatling</td></tr>
+                <tr><td>Security Testing</td><td>Vulnerabilities</td><td>Throughout development</td><td>Penetration testing, vulnerability scanning</td><td>OWASP ZAP, Burp Suite, Nessus</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Design Patterns</h2>
+            <table>
+                <tr><th>Pattern</th><th>Category</th><th>Purpose</th><th>Implementation</th><th>Benefits</th></tr>
+                <tr><td>Singleton</td><td>Creational</td><td>Ensure single instance</td><td>Private constructor, static instance</td><td>Controlled access, reduced memory</td></tr>
+                <tr><td>Factory</td><td>Creational</td><td>Create objects without specifying class</td><td>Factory method, abstract factory</td><td>Loose coupling, flexibility</td></tr>
+                <tr><td>Observer</td><td>Behavioral</td><td>Define one-to-many dependency</td><td>Subject, observer interfaces</td><td>Loose coupling, broadcast</td></tr>
+                <tr><td>Strategy</td><td>Behavioral</td><td>Define family of algorithms</td><td>Interface for algorithms</td><td>Runtime algorithm selection</td></tr>
+                <tr><td>Decorator</td><td>Structural</td><td>Add responsibilities dynamically</td><td>Wraps original object</td><td>Flexible alternative to subclassing</td></tr>
+                <tr><td>Adapter</td><td>Structural</td><td>Convert interface to compatible one</td><td>Wrapper pattern</td><td>Make incompatible interfaces work together</td></tr>
+                <tr><td>Command</td><td>Behavioral</td><td>Encapsulate request as object</td><td>Command interface, invoker</td><td>Parameterize, queue, log requests</td></tr>
+                <tr><td>Facade</td><td>Structural</td><td>Provide unified interface</td><td>Simple interface to complex system</td><td>Simplify complex subsystems</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Software Quality Metrics</h2>
+            <table>
+                <tr><th>Category</th><th>Metric</th><th>Description</th><th>Measurement</th><th>Target</th></tr>
+                <tr><td>Productivity</td><td>Lines of Code (LOC)</td><td>Size of software</td><td>Count of source lines</td><td>Context-dependent</td></tr>
+                <tr><td>Productivity</td><td>Function Points</td><td>Functionality provided</td><td>Count of inputs, outputs, files</td><td>10-15 FP per person-month</td></tr>
+                <tr><td>Productivity</td><td>Code Reuse</td><td>Reusable components</td><td>Percentage of reused code</td><td>60-80%</td></tr>
+                <tr><td>Quality</td><td>Defect Density</td><td>Defects per size unit</td><td>Defects / KLOC or FP</td><td>1-5 defects/KLOC</td></tr>
+                <tr><td>Quality</td><td>Code Coverage</td><td>Code tested</td><td>Percentage of code exercised</td><td>80-90%</td></tr>
+                <tr><td>Quality</td><td>Cyclomatic Complexity</td><td>Code complexity</td><td>Number of linearly independent paths</td><td>3-7 per method</td></tr>
+                <tr><td>Maintenance</td><td>Maintainability Index</td><td>Effort to maintain</td><td>Based on complexity, lines, comments</td><td>65-100 (higher better)</td></tr>
+                <tr><td>Maintenance</td><td>Mean Time to Repair (MTTR)</td><td>Time to fix defects</td><td>Average time to resolve issues</td><td>As low as possible</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Software Configuration Management</h2>
+            <table>
+                <tr><th>Activity</th><th>Purpose</th><th>Tools</th><th>Best Practices</th></tr>
+                <tr><td>Version Control</td><td>Track changes to code</td><td>Git, SVN, Mercurial</td><td>Commit frequently, use branches, meaningful commit messages</td></tr>
+                <tr><td>Build Management</td><td>Automate build process</td><td>Maven, Gradle, Ant, Make</td><td>Automate, consistent environment, dependency management</td></tr>
+                <tr><td>Release Management</td><td>Manage software releases</td><td>Jenkins, Bamboo, TeamCity</td><td>Automated testing, staging environments, rollback plans</td></tr>
+                <tr><td>Change Management</td><td>Control changes to software</td><td>Issue trackers, change logs</td><td>Impact analysis, approval process, documentation</td></tr>
+                <tr><td>Configuration Management</td><td>Manage system configurations</td><td>Ansible, Puppet, Chef</td><td>Infrastructure as code, version control, automation</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Requirements Engineering</h2>
+            <table>
+                <tr><th>Activity</th><th>Description</th><th>Techniques</th><th>Deliverables</th></tr>
+                <tr><td>Requirements Elicitation</td><td>Gather requirements from stakeholders</td><td>Interviews, surveys, observation, prototyping</td><td>Requirements document</td></tr>
+                <tr><td>Requirements Analysis</td><td>Understand and organize requirements</td><td>Use cases, user stories, context diagrams</td><td>Analysis model</td></tr>
+                <tr><td>Requirements Specification</td><td>Document requirements formally</td><td>SRS document, specifications</td><td>Software Requirements Specification</td></tr>
+                <tr><td>Requirements Validation</td><td>Verify requirements are correct</td><td>Reviews, prototyping, model checking</td><td>Validated requirements</td></tr>
+                <tr><td>Requirements Management</td><td>Track and control requirements</td><td>Traceability matrices, tools</td><td>Requirements traceability</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Software Architecture Patterns</h2>
+            <table>
+                <tr><th>Pattern</th><th>Description</th><th>Advantages</th><th>Disadvantages</th><th>Use Case</th></tr>
+                <tr><td>Layered (n-tier)</td><td>Organized into horizontal layers</td><td>Separation of concerns, maintainable</td><td>Performance overhead, rigid structure</td><td>Enterprise applications</td></tr>
+                <tr><td>Client-Server</td><td>Client requests, server responds</td><td>Separation of concerns, scalability</td><td>Single point of failure, network dependency</td><td>Web applications</td></tr>
+                <tr><td>Microservices</td><td>Small, independent services</td><td>Scalability, technology diversity</td><td>Complexity, network latency</td><td>Large, complex applications</td></tr>
+                <tr><td>Event-driven</td><td>Components react to events</td><td>Loose coupling, scalability</td><td>Complexity, debugging difficulty</td><td>Real-time applications</td></tr>
+                <tr><td>Model-View-Controller</td><td>Separate data, presentation, logic</td><td>Separation of concerns, maintainable</td><td>Complexity, over-engineering</td><td>GUI applications</td></tr>
+                <tr><td>Repository</td><td>Mediates between domain and data mapping</td><td>Decoupling, testability</td><td>Complexity, performance</td><td>Data-centric applications</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Software Maintenance Types</h2>
+            <table>
+                <tr><th>Type</th><th>Purpose</th><th>Examples</th><th>Percentage of Effort</th></tr>
+                <tr><td>Corrective</td><td>Fix defects</td><td>Bug fixes, error corrections</td><td>20%</td></tr>
+                <tr><td>Adaptive</td><td>Modify for environment changes</td><td>New OS, hardware changes, regulatory changes</td><td>25%</td></tr>
+                <tr><td>Perfective</td><td>Improve performance/functionality</td><td>Performance improvements, feature enhancements</td><td>50%</td></tr>
+                <tr><td>Preventive</td><td>Prevent future problems</td><td>Code refactoring, documentation updates</td><td>5%</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Project Management in Software Engineering</h2>
+            <table>
+                <tr><th>Aspect</th><th>Description</th><th>Techniques/Tools</th><th>Key Considerations</th></tr>
+                <tr><td>Project Planning</td><td>Define scope, schedule, resources</td><td>WBS, Gantt charts, PERT, critical path</td><td>Accurate estimation, risk assessment</td></tr>
+                <tr><td>Project Estimation</td><td>Estimate effort, time, cost</td><td>COCOMO, Function points, expert judgment</td><td>Historical data, team experience</td></tr>
+                <tr><td>Risk Management</td><td>Identify, analyze, mitigate risks</td><td>Risk matrix, mitigation plans</td><td>Early identification, contingency plans</td></tr>
+                <tr><td>Quality Management</td><td>Ensure software quality</td><td>Quality standards, reviews, testing</td><td>Quality planning, continuous improvement</td></tr>
+                <tr><td>Team Management</td><td>Manage human resources</td><td>Team building, communication, motivation</td><td>Skills, roles, communication</td></tr>
+                <tr><td>Change Management</td><td>Control requirement changes</td><td>Change control process, impact analysis</td><td>Documentation, approval process</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Architecture Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #95a5a6;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #95a5a6;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #7f8c8d;
+            margin-top: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #95a5a6;
+            color: white;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Computer Architecture Cheat Sheet</h1>
+        
+        <div class="section">
+            <h2>Computer System Components</h2>
+            <table>
+                <tr><th>Component</th><th>Function</th><th>Characteristics</th><th>Performance Metrics</th></tr>
+                <tr><td>CPU (Central Processing Unit)</td><td>Execute instructions, perform calculations</td><td>ALU, Control Unit, Registers</td><td>Clock speed, MIPS, FLOPS</td></tr>
+                <tr><td>Memory (RAM)</td><td>Store data and instructions temporarily</td><td>Fast access, volatile</td><td>Capacity, speed, bandwidth</td></tr>
+                <tr><td>Storage</td><td>Store data permanently</td><td>Non-volatile, high capacity</td><td>Capacity, access time, transfer rate</td></tr>
+                <tr><td>Cache Memory</td><td>Store frequently accessed data</td><td>Fast, small, expensive</td><td>Hit rate, access time</td></tr>
+                <tr><td>I/O Devices</td><td>Interface with external world</td><td>Various speeds and protocols</td><td>Transfer rate, response time</td></tr>
+                <tr><td>System Bus</td><td>Connect components</td><td>Data, address, control lines</td><td>Bandwidth, speed</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Instruction Set Architecture (ISA)</h2>
+            <table>
+                <tr><th>Aspect</th><th>Description</th><th>Examples</th><th>Trade-offs</th></tr>
+                <tr><td>Instruction Types</td><td>Categories of operations</td><td>Data transfer, ALU, control, I/O</td><td>Flexibility vs. simplicity</td></tr>
+                <tr><td>Addressing Modes</td><td>How operands are specified</td><td>Immediate, direct, indirect, register</td><td>Flexibility vs. complexity</td></tr>
+                <tr><td>CISC</td><td>Complex Instruction Set Computer</td><td>Intel x86, VAX</td><td>Rich instructions vs. complex hardware</td></tr>
+                <tr><td>RISC</td><td>Reduced Instruction Set Computer</td><td>ARM, MIPS, PowerPC</td><td>Simple instructions vs. more instructions</td></tr>
+                <tr><td>Instruction Format</td><td>Structure of machine instructions</td><td>Opcode + operands</td><td>Fixed vs. variable length</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Processor Architecture</h2>
+            <table>
+                <tr><th>Feature</th><th>Description</th><th>Advantages</th><th>Disadvantages</th></tr>
+                <tr><td>Single Cycle</td><td>Execute each instruction in one clock cycle</td><td>Simple control, predictable timing</td><td>Waste of resources, long cycle time</td></tr>
+                <tr><td>Multi-cycle</td><td>Execute instructions in multiple cycles</td><td>Better resource utilization</td><td>More complex control</td></tr>
+                <tr><td>Pipelined</td><td>Overlapping execution of instructions</td><td>Higher throughput</td><td>Complexity, pipeline hazards</td></tr>
+                <tr><td>Superscalar</td><td>Multiple execution units in parallel</td><td>Multiple instructions per cycle</td><td>High power, complexity</td></tr>
+                <tr><td>VLIW</td><td>Very Long Instruction Word</td><td>Explicit parallelism</td><td>Compiler complexity, code bloat</td></tr>
+                <tr><td>Out-of-Order Execution</td><td>Execute instructions when operands ready</td><td>Better performance</td><td>Complex hardware</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Memory Hierarchy</h2>
+            <table>
+                <tr><th>Level</th><th>Type</th><th>Speed</th><th>Cost per Byte</th><th>Capacity</th><th>Function</th></tr>
+                <tr><td>Registers</td><td>SRAM</td><td>Fastest</td><td>Highest</td><td>Smallest</td><td>CPU internal storage</td></tr>
+                <tr><td>L1 Cache</td><td>SRAM</td><td>Very Fast</td><td>High</td><td>Small</td><td>Immediate data access</td></tr>
+                <tr><td>L2 Cache</td><td>SRAM</td><td>Fast</td><td>Medium</td><td>Medium</td><td>Backup to L1 cache</td></tr>
+                <tr><td>L3 Cache</td><td>SRAM</td><td>Medium</td><td>Low</td><td>Large</td><td>Shared cache for cores</td></tr>
+                <tr><td>Main Memory</td><td>DRAM</td><td>Slow</td><td>Lowest</td><td>Large</td><td>Program storage</td></tr>
+                <tr><td>Secondary Storage</td><td>SSD/HDD</td><td>Slowest</td><td>Lowest</td><td>Largest</td><td>Permanent storage</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Cache Memory</h2>
+            <table>
+                <tr><th>Concept</th><th>Description</th><th>Type/Method</th><th>Trade-offs</th></tr>
+                <tr><td>Mapping</td><td>How memory blocks map to cache</td><td>Direct, associative, set-associative</td><td>Speed vs. hit rate vs. complexity</td></tr>
+                <tr><td>Write Policy</td><td>How writes are handled</td><td>Write-through, write-back</td><td>Consistency vs. speed</td></tr>
+                <tr><td>Replacement Policy</td><td>Which block to replace</td><td>LRU, FIFO, Random</td><td>Performance vs. implementation</td></tr>
+                <tr><td>Cache Miss Types</td><td>Reasons for cache misses</td><td>Compulsory, capacity, conflict</td><td>Design optimization</td></tr>
+                <tr><td>Cache Coherence</td><td>Keeping caches consistent</td><td>Directory-based, snooping</td><td>Performance vs. consistency</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Memory Management</h2>
+            <table>
+                <tr><th>Technique</th><th>Description</th><th>Advantages</th><th>Disadvantages</th></tr>
+                <tr><td>Segmentation</td><td>Divide memory into logical segments</td><td>Natural program structure, sharing</td><td>External fragmentation</td></tr>
+                <tr><td>Paging</td><td>Divide memory into fixed-size pages</td><td>No external fragmentation</td><td>Internal fragmentation</td></tr>
+                <tr><td>Virtual Memory</td><td>Extend physical memory with disk</td><td>Larger address space</td><td>Performance overhead</td></tr>
+                <tr><td>Page Tables</td><td>Map virtual to physical addresses</td><td>Flexible mapping</td><td>Memory overhead</td></tr>
+                <tr><td>TLB</td><td>Translation Lookaside Buffer</td><td>Fast address translation</td><td>Small, expensive</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Pipeline Hazards</h2>
+            <table>
+                <tr><th>Hazard Type</th><th>Cause</th><th>Example</th><th>Solutions</th></tr>
+                <tr><td>Structural</td><td>Resource conflicts</td><td>Two instructions need same ALU</td><td>More resources, stalling</td></tr>
+                <tr><td>Data</td><td>Data dependencies</td><td>Instruction 2 needs result of Instruction 1</td><td>Forwarding, stalling, reordering</td></tr>
+                <tr><td>Control</td><td>Branch instructions</td><td>Branch direction affects next instructions</td><td>Branch prediction, delay slots</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Performance Metrics</h2>
+            <table>
+                <tr><th>Metric</th><th>Definition</th><th>Formula</th><th>Use Case</th></tr>
+                <tr><td>Clock Rate</td><td>Speed of processor clock</td><td>Cycles per second (Hz)</td><td>Basic performance indicator</td></tr>
+                <tr><td>CPI (Cycles Per Instruction)</td><td>Average cycles per instruction</td><td>Total cycles / Total instructions</td><td>Architecture comparison</td></tr>
+                <tr><td>MIPS (Million Instructions Per Second)</td><td>Instruction execution rate</td><td>Instructions / (time in seconds × 10⁶)</td><td>Overall performance</td></tr>
+                <tr><td>Throughput</td><td>Work completed per unit time</td><td>Tasks completed / time</td><td>System performance</td></tr>
+                <tr><td>Response Time</td><td>Time to complete task</td><td>Completion time - Start time</td><td>User experience</td></tr>
+                <tr><td>Speedup</td><td>Performance improvement</td><td>Old time / New time</td><td>Comparison of systems</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Parallel Processing</h2>
+            <table>
+                <tr><th>Approach</th><th>Description</th><th>Characteristics</th><th>Best For</th></tr>
+                <tr><td>Instruction Level Parallelism</td><td>Execute multiple instructions simultaneously</td><td>Pipelining, superscalar, VLIW</td><td>Single thread optimization</td></tr>
+                <tr><td>Data Level Parallelism</td><td>Perform same operation on multiple data items</td><td>Vector processors, SIMD</td><td>Scientific computing, graphics</td></tr>
+                <tr><td>Thread Level Parallelism</td><td>Execute multiple threads simultaneously</td><td>Multi-core, hyper-threading</td><td>Multi-threaded applications</td></tr>
+                <tr><td>Task Level Parallelism</td><td>Execute independent tasks in parallel</td><td>Multi-processing, distributed systems</td><td>Independent computations</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Bus Architecture</h2>
+            <table>
+                <tr><th>Bus Type</th><th>Function</th><th>Characteristics</th><th>Performance Factors</th></tr>
+                <tr><td>Data Bus</td><td>Transfer data between components</td><td>Bi-directional, width varies</td><td>Width, frequency, protocols</td></tr>
+                <tr><td>Address Bus</td><td>Specify memory addresses</td><td>Unidirectional, determines addressable memory</td><td>Width (2^n addressable locations)</td></tr>
+                <tr><td>Control Bus</td><td>Control signal transmission</td><td>Read/write, interrupt, clock signals</td><td>Signal integrity, timing</td></tr>
+                <tr><td>System Bus</td><td>Connect CPU to memory</td><td>High-speed, connects major components</td><td>Bandwidth, latency</td></tr>
+                <tr><td>I/O Bus</td><td>Connect I/O devices</td><td>Various standards, slower</td><td>Standard compatibility</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

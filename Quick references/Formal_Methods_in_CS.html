@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formal Methods in Computer Science Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Formal Methods in Computer Science Cheat Sheet</h1>
+        
+        <div class="section">
+            <h2>Formal Methods Overview</h2>
+            <table>
+                <tr><th>Concept</th><th>Description</th><th>Purpose</th><th>Applications</th></tr>
+                <tr><td>Specification</td><td>Rigorous description of system behavior</td><td>Define what system should do</td><td>Requirements, design documentation</td></tr>
+                <tr><td>Verification</td><td>Proving system meets specification</td><td>Ensure correctness of implementation</td><td>Proofs, model checking, testing</td></tr>
+                <tr><td>Validation</td><td>Ensuring specification meets requirements</td><td>Confirm system solves right problem</td><td>Reviews, prototyping, testing</td></tr>
+                <tr><td>Formal Semantics</td><td>Mathematical meaning of programming constructs</td><td>Define precise meaning of programs</td><td>Language design, compiler construction</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Specification Languages</h2>
+            <table>
+                <tr><th>Language</th><th>Type</th><th>Features</th><th>Best For</th></tr>
+                <tr><td>Z Notation</td><td>Set theory and logic</td><td>State-based, mathematical approach</td><td>Software systems, data structures</td></tr>
+                <tr><td>VDM (Vienna Development Method)</td><td>Set theory and logic</td><td>State-based, data refinement</td><td>Software engineering, data modeling</td></tr>
+                <tr><td>B-Method</td><td>Set theory and logic</td><td>Refinement, proof obligations</td><td>Safety-critical systems</td></tr>
+                <tr><td>Alloy</td><td>Relational logic</td><td>Lightweight, automated analysis</td><td>Design exploration, model checking</td></tr>
+                <tr><td>PVS (Prototype Verification System)</td><td>Higher-order logic</td><td>Theorem proving, type theory</td><td>Complex algorithms, mathematical proofs</td></tr>
+                <tr><td>TLA+ (Temporal Logic of Actions)</td><td>Temporal logic</td><td>Concurrent and distributed systems</td><td>Protocol design, distributed algorithms</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Verification Techniques</h2>
+            <table>
+                <tr><th>Technique</th><th>Approach</th><th>Advantages</th><th>Disadvantages</th><th>Tools</th></tr>
+                <tr><td>Model Checking</td><td>Automatic verification of finite-state models</td><td>Complete, automated, counterexamples</td><td>State space explosion</td><td>SPIN, NuSMV, UPPAAL</td></tr>
+                <tr><td>Theorem Proving</td><td>Interactive proof construction</td><td>Handles infinite state spaces</td><td>Requires expertise, time-consuming</td><td>Coq, Isabelle, HOL</td></tr>
+                <tr><td>Static Analysis</td><td>Analysis of code without execution</td><td>Fast, finds bugs early</td><td>May have false positives/negatives</td><td>ESBMC, CBMC, Astrée</td></tr>
+                <tr><td>Abstract Interpretation</td><td>Approximate program semantics</td><td>Sound analysis, handles loops</td><td>May be imprecise</td><td>Astrée, Polka, PPL</td></tr>
+                <tr><td>Runtime Verification</td><td>Monitor system during execution</td><td>Practical, handles complex properties</td><td>Only checks observed executions</td><td>Java PathFinder, RV-Monitor</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Formal Methods in Software Development</h2>
+            <table>
+                <tr><th>Phase</th><th>Method</th><th>Technique</th><th>Benefits</th><th>Challenges</th></tr>
+                <tr><td>Requirements</td><td>Formal specification</td><td>Mathematical models, logic</td><td>Precise requirements, early error detection</td><td>Stakeholder communication, complexity</td></tr>
+                <tr><td>Design</td><td>Refinement</td><td>Stepwise development, abstraction</td><td>Correct-by-construction, traceability</td><td>Time investment, skill requirements</td></tr>
+                <tr><td>Implementation</td><td>Correctness proofs</td><td>Hoare logic, program verification</td><td>Verified code, reduced testing</td><td>Complexity, tool limitations</td></tr>
+                <tr><td>Testing</td><td>Specification-based testing</td><td>Model-based, property-based</td><td>Systematic test generation</td><td>Specification effort, oracle problem</td></tr>
+                <tr><td>Maintenance</td><td>Specification evolution</td><td>Change impact analysis</td><td>Controlled evolution, safety</td><td>Specification updating, consistency</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Mathematical Foundations</h2>
+            <table>
+                <tr><th>Foundation</th><th>Concepts</th><th>Applications</th><th>Key Theorems/Principles</th></tr>
+                <tr><td>Set Theory</td><td>Sets, relations, functions</td><td>Data structures, database theory</td><td>Cantor's theorem, Russell's paradox</td></tr>
+                <tr><td>Logic</td><td>Propositional, predicate, modal</td><td>Specification, verification</td><td>Soundness, completeness, compactness</td></tr>
+                <tr><td>Algebra</td><td>Groups, rings, lattices</td><td>Abstract data types, concurrency</td><td>Homomorphisms, isomorphism theorems</td></tr>
+                <tr><td>Category Theory</td><td>Categories, functors, natural transformations</td><td>Functional programming, type theory</td><td>Yoneda lemma, adjunctions</td></tr>
+                <tr><td>Automata Theory</td><td>Finite automata, pushdown automata</td><td>Compiler design, protocol verification</td><td>Kleene theorem, pumping lemmas</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Applications of Formal Methods</h2>
+            <table>
+                <tr><th>Domain</th><th>Techniques Used</th><th>Examples</th><th>Benefits</th></tr>
+                <tr><td>Avionics</td><td>B-Method, Z, Model checking</td><td>Flight control systems, autopilot</td><td>Safety assurance, certification compliance</td></tr>
+                <tr><td>Telecommunications</td><td>Process algebras, TLA+, CSP</td><td>Protocol verification, network protocols</td><td>Correctness, reliability</td></tr>
+                <tr><td>Security</td><td>Hoare logic, BAN logic, type systems</td><td>Cryptographic protocols, access control</td><td>Security guarantees, vulnerability detection</td></tr>
+                <tr><td>Hardware Design</td><td>Model checking, theorem proving</td><td>Processor verification, circuit design</td><td>Correctness, time-to-market</td></tr>
+                <tr><td>Blockchain</td><td>Formal verification, smart contract analysis</td><td>Ethereum smart contracts, consensus protocols</td><td>Security, correctness of transactions</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Formal Methods Tools</h2>
+            <table>
+                <tr><th>Tool</th><th>Type</th><th>Language/Logic</th><th>Strengths</th><th>Limitations</th></tr>
+                <tr><td>Coq</td><td>Theorem prover</td><td>Calculus of Inductive Constructions</td><td>Dependent types, extraction to code</td><td>Steep learning curve</td></tr>
+                <tr><td>Isabelle</td><td>Theorem prover</td><td>Higher-order logic</td><td>Multiple logics, Sledgehammer</td><td>Complex for beginners</td></tr>
+                <tr><td>SPIN</td><td>Model checker</td><td>Promela language</td><td>Fast, widely used, good documentation</td><td>Requires explicit modeling</td></tr>
+                <tr><td>Alloy</td><td>Analyzer</td><td>Relational logic</td><td>Easy to learn, fast analysis</td><td>Limited to finite scope</td></tr>
+                <tr><td>TLA+</td><td>Specification language</td><td>Temporal logic</td><td>High-level, handles concurrency</td><td>Model checking complexity</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robotics Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Robotics Cheat Sheet</h1>
+        
+        <div class="section">
+            <h2>Robotics Components</h2>
+            <table>
+                <tr><th>Component</th><th>Description</th><th>Examples</th><th>Applications</th></tr>
+                <tr><td>Sensors</td><td>Perceive environment and robot state</td><td>Cameras, LIDAR, IMU, encoders, ultrasonic</td><td>Navigation, mapping, localization</td></tr>
+                <tr><td>Actuators</td><td>Enable robot movement and manipulation</td><td>DC motors, servos, stepper motors, pneumatic/hydraulic</td><td>Locomotion, manipulation, grasping</td></tr>
+                <tr><td>Controllers</td><td>Process sensor data and control actuators</td><td>Microcontrollers, single-board computers</td><td>Real-time control, decision making</td></tr>
+                <tr><td>Power Systems</td><td>Provide energy to robot components</td><td>Batteries, fuel cells, power supplies</td><td>Energy management, autonomy</td></tr>
+                <tr><td>Communication</td><td>Enable data exchange between components</td><td>Wi-Fi, Bluetooth, CAN bus, Ethernet</td><td>Multi-robot systems, remote control</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Robotics Kinematics</h2>
+            <table>
+                <tr><th>Concept</th><th>Description</th><th>Formula</th><th>Applications</th></tr>
+                <tr><td>Forward Kinematics</td><td>Calculate end-effector position from joint angles</td><td>T = T₁(θ₁) × T₂(θ₂) × ... × Tn(θn)</td><td>Robot control, trajectory planning</td></tr>
+                <tr><td>Inverse Kinematics</td><td>Calculate joint angles from end-effector position</td><td>θ = f⁻¹(x, y, z)</td><td>Path planning, manipulation tasks</td></tr>
+                <tr><td>Denavit-Hartenberg Parameters</td><td>Method to define robot link frames</td><td>4 parameters per joint (α, a, d, θ)</td><td>Robot modeling, simulation</td></tr>
+                <tr><td>Workspace</td><td>Volume of space robot can reach</td><td>Reachable vs dexterous workspace</td><td>Task planning, robot selection</td></tr>
+                <tr><td>Redundancy</td><td>More degrees of freedom than required</td><td>DOF > task requirements</td><td>Obstacle avoidance, optimization</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Robot Control Systems</h2>
+            <table>
+                <tr><th>Control Type</th><th>Description</th><th>Characteristics</th><th>Applications</th></tr>
+                <tr><td>Open-Loop Control</td><td>Control without feedback</td><td>No error correction, simple</td><td>Pre-programmed tasks, simple movements</td></tr>
+                <tr><td>Closed-Loop Control</td><td>Control with feedback</td><td>Error correction, more accurate</td><td>Position control, trajectory following</td></tr>
+                <tr><td>Proportional Control (P)</td><td>Control proportional to error</td><td>Fast response, may have steady-state error</td><td>Simple position control</td></tr>
+                <tr><td>Proportional-Integral (PI)</td><td>Proportional + integral action</td><td>Eliminates steady-state error</td><td>Velocity control, force control</td></tr>
+                <tr><td>Proportional-Integral-Derivative (PID)</td><td>Complete feedback control</td><td>Optimal response, widely used</td><td>Motor control, trajectory tracking</td></tr>
+                <tr><td>Adaptive Control</td><td>Adjusts parameters in real-time</td><td>Handles changing dynamics</td><td>Uncertain environments, changing loads</td></tr>
+                <tr><td>Optimal Control</td><td>Minimizes cost function</td><td>Mathematically optimal solution</td><td>Energy efficiency, time optimization</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Robot Perception</h2>
+            <table>
+                <tr><th>Technique</th><th>Description</th><th>Algorithms</th><th>Applications</th></tr>
+                <tr><td>Computer Vision</td><td>Interpret visual information</td><td>Feature detection, object recognition, tracking</td><td>Object detection, visual servoing</td></tr>
+                <tr><td>SLAM (Simultaneous Localization and Mapping)</td><td>Build map while localizing</td><td>EKF, particle filters, graph-based SLAM</td><td>Autonomous navigation, exploration</td></tr>
+                <tr><td>Sensor Fusion</td><td>Combine multiple sensor inputs</td><td>Kalman filters, particle filters, Bayesian methods</td><td>Accurate state estimation</td></tr>
+                <tr><td>Path Planning</td><td>Find optimal route to goal</td><td>A*, Dijkstra, RRT, potential fields</td><td>Navigation, obstacle avoidance</td></tr>
+                <tr><td>Object Recognition</td><td>Identify objects in environment</td><td>Template matching, deep learning, feature descriptors</td><td>Grasping, manipulation</td></tr>
+                <tr><td>Human-Robot Interaction</td><td>Interact with humans naturally</td><td>Natural language processing, gesture recognition</td><td>Service robots, collaborative robots</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Robotics Software & Frameworks</h2>
+            <table>
+                <tr><th>Framework</th><th>Language</th><th>Features</th><th>Applications</th><th>Advantages</th></tr>
+                <tr><td>ROS (Robot Operating System)</td><td>C++, Python</td><td>Message passing, tools, libraries</td><td>Research, prototyping</td><td>Large community, extensive packages</td></tr>
+                <tr><td>ROS 2</td><td>C++, Python, others</td><td>Distributed, real-time, DDS-based</td><td>Industrial, commercial</td><td>Real-time, security, multi-language</td></tr>
+                <tr><td>OpenRAVE</td><td>C++, Python</td><td>Robot simulation, planning</td><td>Planning algorithms, simulation</td><td>Advanced kinematics, physics</td></tr>
+                <tr><td>Stage</td><td>C++</td><td>2D multi-robot simulator</td><td>Algorithm testing, visualization</td><td>Lightweight, simple</td></tr>
+                <tr><td>Gazebo</td><td>C++</td><td>3D physics simulation</td><td>Realistic simulation, sensor modeling</td><td>Realistic physics, sensor simulation</td></tr>
+                <tr><td>Webots</td><td>C, C++, Python, Java</td><td>3D mobile robotics simulation</td><td>Robot simulation, development</td><td>User-friendly, fast simulation</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Robotics Applications</h2>
+            <table>
+                <tr><th>Domain</th><th>Application</th><th>Robot Type</th><th>Key Technologies</th><th>Challenges</th></tr>
+                <tr><td>Industrial</td><td>Manufacturing, assembly, welding</td><td>Articulated arms, SCARA, delta robots</td><td>Position control, vision systems</td><td>Speed, precision, safety</td></tr>
+                <tr><td>Service</td><td>Assistive, cleaning, entertainment</td><td>Mobile robots, humanoid robots</td><td>HRI, navigation, manipulation</td><td>Adaptability, safety, cost</td></tr>
+                <tr><td>Medical</td><td>Surgery, rehabilitation, diagnosis</td><td>Surgical robots, exoskeletons</td><td>Accuracy, safety, compliance</td><td>Regulation, precision, reliability</td></tr>
+                <tr><td>Agricultural</td><td>Harvesting, monitoring, spraying</td><td>Ground vehicles, drones</td><td>Computer vision, GPS, autonomy</td><td>Environment variability, cost</td></tr>
+                <tr><td>Exploration</td><td>Space, underwater, disaster areas</td><td>Planetary rovers, AUVs, UAVs</td><td>Autonomy, communication, robustness</td><td>Harsh environments, communication</td></tr>
+                <tr><td>Logistics</td><td>Warehouse automation, delivery</td><td>AGVs, AMRs, drones</td><td>Navigation, path planning, scheduling</td><td>Coordination, efficiency, scalability</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Robotics Standards & Safety</h2>
+            <table>
+                <tr><th>Standard</th><th>Focus Area</th><th>Description</th><th>Applications</th></tr>
+                <tr><td>ISO 10218</td><td>Industrial robot safety</td><td>Safety requirements for industrial robots</td><td>Manufacturing, assembly</td></tr>
+                <tr><td>ISO 13482</td><td>Personal care robots</td><td>Safety requirements for service robots</td><td>Healthcare, domestic robots</td></tr>
+                <tr><td>ISO 18646</td><td>Service robot performance</td><td>Performance metrics for service robots</td><td>Service robotics evaluation</td></tr>
+                <tr><td>ANSI/RIA R15.06</td><td>Industrial robot safety</td><td>Safety standard for industrial robots</td><td>Industrial automation</td></tr>
+                <tr><td>IEEE 1872</td><td>Robotics ontologies</td><td>Standardized terminology for robotics</td><td>Interoperability, communication</td></tr>
+                <tr><td>IEC 62061</td><td>Safety-related control systems</td><td>Functional safety for machinery</td><td>Robot safety systems</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

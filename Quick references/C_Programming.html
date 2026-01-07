@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C Programming Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>C Programming Cheat Sheet</h1>
+        
+        <div class="section">
+            <h2>Basic Syntax</h2>
+            <table>
+                <tr><th>Concept</th><th>Syntax</th><th>Example</th></tr>
+                <tr><td>Include Header</td><td>#include &lt;header&gt;</td><td><span class="code">#include &lt;stdio.h&gt;</span></td></tr>
+                <tr><td>Main Function</td><td>int main() { ... }</td><td><span class="code">int main() { return 0; }</span></td></tr>
+                <tr><td>Print Statement</td><td>printf("text");</td><td><span class="code">printf("Hello World");</span></td></tr>
+                <tr><td>Input Statement</td><td>scanf("%d", &var);</td><td><span class="code">scanf("%d", &num);</span></td></tr>
+                <tr><td>Comments</td><td>// single line /* multi */</td><td><span class="code">// This is comment</span></td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Data Types</h2>
+            <table>
+                <tr><th>Type</th><th>Size</th><th>Range</th><th>Example</th></tr>
+                <tr><td>int</td><td>4 bytes</td><td>-2,147,483,648 to 2,147,483,647</td><td><span class="code">int age = 25;</span></td></tr>
+                <tr><td>char</td><td>1 byte</td><td>-128 to 127</td><td><span class="code">char grade = 'A';</span></td></tr>
+                <tr><td>float</td><td>4 bytes</td><td>6 decimal precision</td><td><span class="code">float price = 19.99;</span></td></tr>
+                <tr><td>double</td><td>8 bytes</td><td>15 decimal precision</td><td><span class="code">double pi = 3.14159;</span></td></tr>
+                <tr><td>void</td><td>0 bytes</td><td>No value</td><td><span class="code">void func();</span></td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Operators</h2>
+            <table>
+                <tr><th>Category</th><th>Operator</th><th>Example</th><th>Description</th></tr>
+                <tr><td>Arithmetic</td><td>+ - * / %</td><td><span class="code">a + b</span></td><td>Addition, Subtraction, Multiplication, Division, Modulus</td></tr>
+                <tr><td>Relational</td><td>== != &lt; &gt; &lt;= &gt;=</td><td><span class="code">a == b</span></td><td>Comparison operators</td></tr>
+                <tr><td>Logical</td><td>&& || !</td><td><span class="code">a && b</span></td><td>AND, OR, NOT</td></tr>
+                <tr><td>Assignment</td><td>= += -= *= /= %=</td><td><span class="code">a += b</span></td><td>Assignment operators</td></tr>
+                <tr><td>Bitwise</td><td>& | ^ ~ &lt;&lt; &gt;&gt;</td><td><span class="code">a & b</span></td><td>Bitwise operations</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Control Structures</h2>
+            <table>
+                <tr><th>Structure</th><th>Syntax</th><th>Example</th></tr>
+                <tr><td>If Statement</td><td>if(condition) { ... }</td><td><span class="code">if(x > 0) { printf("Positive"); }</span></td></tr>
+                <tr><td>If-Else</td><td>if(c) { ... } else { ... }</td><td><span class="code">if(x > 0) { printf("Pos"); } else { printf("Neg"); }</span></td></tr>
+                <tr><td>Switch</td><td>switch(var) { case x: ... break; }</td><td><span class="code">switch(day) { case 1: printf("Mon"); break; }</span></td></tr>
+                <tr><td>For Loop</td><td>for(init; cond; inc) { ... }</td><td><span class="code">for(i=0; i&lt;10; i++) { printf("%d", i); }</span></td></tr>
+                <tr><td>While Loop</td><td>while(condition) { ... }</td><td><span class="code">while(x > 0) { x--; }</span></td></tr>
+                <tr><td>Do-While</td><td>do { ... } while(condition);</td><td><span class="code">do { scanf("%d", &x); } while(x != 0);</span></td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Functions</h2>
+            <table>
+                <tr><th>Concept</th><th>Syntax</th><th>Example</th></tr>
+                <tr><td>Function Declaration</td><td>return_type name(type param);</td><td><span class="code">int add(int a, int b);</span></td></tr>
+                <tr><td>Function Definition</td><td>return_type name(type param) { ... }</td><td><span class="code">int add(int a, int b) { return a+b; }</span></td></tr>
+                <tr><td>Function Call</td><td>name(arg1, arg2);</td><td><span class="code">result = add(5, 3);</span></td></tr>
+                <tr><td>Recursion</td><td>function calls itself</td><td><span class="code">int fact(int n) { if(n<=1) return 1; else return n*fact(n-1); }</span></td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Arrays</h2>
+            <table>
+                <tr><th>Concept</th><th>Syntax</th><th>Example</th></tr>
+                <tr><td>Array Declaration</td><td>type name[size];</td><td><span class="code">int arr[10];</span></td></tr>
+                <tr><td>Array Initialization</td><td>type name[] = {a, b, c};</td><td><span class="code">int nums[] = {1, 2, 3};</span></td></tr>
+                <tr><td>Access Element</td><td>name[index]</td><td><span class="code">arr[0] = 5;</span></td></tr>
+                <tr><td>2D Array</td><td>type name[row][col];</td><td><span class="code">int matrix[3][3];</span></td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Pointers</h2>
+            <table>
+                <tr><th>Concept</th><th>Syntax</th><th>Example</th></tr>
+                <tr><td>Pointer Declaration</td><td>type *name;</td><td><span class="code">int *ptr;</span></td></tr>
+                <tr><td>Address Operator</td><td>&variable</td><td><span class="code">ptr = &var;</span></td></tr>
+                <tr><td>Dereference Operator</td><td>*pointer</td><td><span class="code">value = *ptr;</span></td></tr>
+                <tr><td>Pointer Arithmetic</td><td>ptr++, ptr--, ptr+n</td><td><span class="code">ptr++; // move to next address</span></td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Strings</h2>
+            <table>
+                <tr><th>Function</th><th>Declaration</th><th>Purpose</th><th>Example</th></tr>
+                <tr><td>strlen</td><td>int strlen(char *str);</td><td>Get string length</td><td><span class="code">len = strlen("hello");</span></td></tr>
+                <tr><td>strcpy</td><td>char *strcpy(char *dest, char *src);</td><td>Copy string</td><td><span class="code">strcpy(dest, src);</span></td></tr>
+                <tr><td>strcat</td><td>char *strcat(char *dest, char *src);</td><td>Concatenate strings</td><td><span class="code">strcat(str1, str2);</span></td></tr>
+                <tr><td>strcmp</td><td>int strcmp(char *str1, char *str2);</td><td>Compare strings</td><td><span class="code">result = strcmp(s1, s2);</span></td></tr>
+                <tr><td>gets</td><td>char *gets(char *str);</td><td>Read string</td><td><span class="code">gets(buffer);</span></td></tr>
+                <tr><td>puts</td><td>int puts(char *str);</td><td>Print string</td><td><span class="code">puts("Hello");</span></td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Memory Management</h2>
+            <table>
+                <tr><th>Function</th><th>Declaration</th><th>Purpose</th><th>Example</th></tr>
+                <tr><td>malloc</td><td>void *malloc(size_t size);</td><td>Allocate memory</td><td><span class="code">ptr = malloc(10 * sizeof(int));</span></td></tr>
+                <tr><td>calloc</td><td>void *calloc(size_t n, size_t size);</td><td>Allocate and initialize to 0</td><td><span class="code">ptr = calloc(10, sizeof(int));</span></td></tr>
+                <tr><td>realloc</td><td>void *realloc(void *ptr, size_t size);</td><td>Resize allocated memory</td><td><span class="code">ptr = realloc(ptr, 20 * sizeof(int));</span></td></tr>
+                <tr><td>free</td><td>void free(void *ptr);</td><td>Free allocated memory</td><td><span class="code">free(ptr);</span></td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Preprocessor Directives</h2>
+            <table>
+                <tr><th>Directive</th><th>Usage</th><th>Example</th><th>Description</th></tr>
+                <tr><td>#include</td><td>Include header files</td><td><span class="code">#include &lt;stdio.h&gt;</span></td><td>Includes header files</td></tr>
+                <tr><td>#define</td><td>Define macros</td><td><span class="code">#define PI 3.14159</span></td><td>Defines constants/macros</td></tr>
+                <tr><td>#ifdef</td><td>Conditional compilation</td><td><span class="code">#ifdef DEBUG ... #endif</span></td><td>Compile conditionally</td></tr>
+                <tr><td>#ifndef</td><td>Check if not defined</td><td><span class="code">#ifndef HEADER_H ... #endif</span></td><td>Guard against multiple inclusion</td></tr>
+                <tr><td>#if #else #endif</td><td>Conditional compilation</td><td><span class="code">#if x>5 ... #else ... #endif</span></td><td>Conditional compilation</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Structures and Unions</h2>
+            <table>
+                <tr><th>Concept</th><th>Syntax</th><th>Example</th></tr>
+                <tr><td>Structure</td><td>struct name { ... };</td><td><span class="code">struct Student { int id; char name[20]; };</span></td></tr>
+                <tr><td>Structure Variable</td><td>struct name var;</td><td><span class="code">struct Student s1;</span></td></tr>
+                <tr><td>Access Member</td><td>var.member</td><td><span class="code">s1.id = 10;</span></td></tr>
+                <tr><td>Union</td><td>union name { ... };</td><td><span class="code">union Data { int i; float f; };</span></td></tr>
+                <tr><td>Typedef</td><td>typedef old new;</td><td><span class="code">typedef struct Student Std;</span></td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>File Operations</h2>
+            <table>
+                <tr><th>Function</th><th>Declaration</th><th>Purpose</th><th>Example</th></tr>
+                <tr><td>fopen</td><td>FILE *fopen(char *name, char *mode);</td><td>Open file</td><td><span class="code">fp = fopen("file.txt", "r");</span></td></tr>
+                <tr><td>fclose</td><td>int fclose(FILE *fp);</td><td>Close file</td><td><span class="code">fclose(fp);</span></td></tr>
+                <tr><td>fread</td><td>size_t fread(void *ptr, size_t size, size_t n, FILE *fp);</td><td>Read from file</td><td><span class="code">fread(buffer, 1, 10, fp);</span></td></tr>
+                <tr><td>fwrite</td><td>size_t fwrite(void *ptr, size_t size, size_t n, FILE *fp);</td><td>Write to file</td><td><span class="code">fwrite(buffer, 1, 10, fp);</span></td></tr>
+                <tr><td>fprintf</td><td>int fprintf(FILE *fp, char *format, ...);</td><td>Formatted write</td><td><span class="code">fprintf(fp, "%d", num);</span></td></tr>
+                <tr><td>fscanf</td><td>int fscanf(FILE *fp, char *format, ...);</td><td>Formatted read</td><td><span class="code">fscanf(fp, "%d", &num);</span></td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

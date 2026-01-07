@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object-Oriented Programming Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Object-Oriented Programming Cheat Sheet</h1>
+        
+        <div class="section">
+            <h2>OOP Fundamentals</h2>
+            <table>
+                <tr><th>Concept</th><th>Description</th><th>Benefits</th><th>Example</th></tr>
+                <tr><td>Class</td><td>Blueprint for creating objects</td><td>Code reusability, organization</td><td>class Car { ... }</td></tr>
+                <tr><td>Object</td><td>Instance of a class</td><td>Concrete implementation</td><td>Car myCar = new Car();</td></tr>
+                <tr><td>Encapsulation</td><td>Bundle data and methods together</td><td>Data security, controlled access</td><td>private fields, public methods</td></tr>
+                <tr><td>Abstraction</td><td>Hide complex implementation details</td><td>Simplified interface</td><td>Abstract classes, interfaces</td></tr>
+                <tr><td>Inheritance</td><td>Derive new classes from existing ones</td><td>Code reusability, hierarchy</td><td>class SUV extends Car</td></tr>
+                <tr><td>Polymorphism</td><td>Same interface, different implementations</td><td>Flexibility, extensibility</td><td>Method overriding, overloading</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Access Modifiers</h2>
+            <table>
+                <tr><th>Modifier</th><th>Class</th><th>Package</th><th>Subclass</th><th>Global</th><th>Purpose</th></tr>
+                <tr><td>Public</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>Unrestricted access</td></tr>
+                <tr><td>Protected</td><td>✓</td><td>✓</td><td>✓</td><td>✗</td><td>Access within package and subclasses</td></tr>
+                <tr><td>Default (Package)</td><td>✓</td><td>✓</td><td>✗</td><td>✗</td><td>Access within same package</td></tr>
+                <tr><td>Private</td><td>✓</td><td>✗</td><td>✗</td><td>✗</td><td>Access only within class</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Inheritance Concepts</h2>
+            <table>
+                <tr><th>Concept</th><th>Description</th><th>Syntax (Java/C++)</th><th>Best Practices</th></tr>
+                <tr><td>Single Inheritance</td><td>Class inherits from one parent</td><td>class B extends A</td><td>Prefer composition over inheritance</td></tr>
+                <tr><td>Multi-level Inheritance</td><td>Chain of inheritance (A→B→C)</td><td>class C extends B extends A</td><td>Keep inheritance hierarchies shallow</td></tr>
+                <tr><td>Multiple Inheritance</td><td>Class inherits from multiple parents</td><td>class C extends A, B (not in Java)</td><td>Use interfaces instead in Java</td></tr>
+                <tr><td>Method Overriding</td><td>Child class redefines parent method</td><td>@Override annotation</td><td>Use @Override annotation</td></tr>
+                <tr><td>Method Overloading</td><td>Multiple methods with same name</td><td>Same name, different parameters</td><td>Keep parameter lists distinct</td></tr>
+                <tr><td>Super Keyword</td><td>Access parent class members</td><td>super.methodName()</td><td>Call parent constructor first</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Polymorphism Types</h2>
+            <table>
+                <tr><th>Type</th><th>Description</th><th>Implementation</th><th>Example</th></tr>
+                <tr><td>Compile-time (Static)</td><td>Resolved at compile time</td><td>Method overloading, operator overloading</td><td>add(int a, int b) and add(double a, double b)</td></tr>
+                <tr><td>Runtime (Dynamic)</td><td>Resolved at runtime</td><td>Method overriding, virtual functions</td><td>Parent p = new Child(); p.method();</td></tr>
+                <tr><td>Parametric</td><td>Generic types</td><td>Templates (C++), Generics (Java)</td><td>List&lt;String&gt;, List&lt;Integer&gt;</td></tr>
+                <tr><td>Subtyping</td><td>Subtype can be used where supertype is expected</td><td>Interface implementation, inheritance</td><td>Animal a = new Dog();</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Design Principles</h2>
+            <table>
+                <tr><th>Principle</th><th>Description</th><th>Benefits</th><th>Implementation Tips</th></tr>
+                <tr><td>Single Responsibility</td><td>Class should have one reason to change</td><td>Maintainability, testability</td><td>One class = one purpose</td></tr>
+                <tr><td>Open/Closed</td><td>Open for extension, closed for modification</td><td>Extensibility without breaking existing code</td><td>Use inheritance, composition, interfaces</td></tr>
+                <tr><td>Liskov Substitution</td><td>Subtypes must be substitutable for base types</td><td>Code correctness in inheritance</td><td>Follow contract of parent class</td></tr>
+                <tr><td>Interface Segregation</td><td>Many client-specific interfaces better than one general</td><td>Reduced coupling, focused interfaces</td><td>Create small, focused interfaces</td></tr>
+                <tr><td>Dependency Inversion</td><td>Depend on abstractions, not concretions</td><td>Reduced coupling, flexibility</td><td>Program to interfaces, not implementations</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Design Patterns</h2>
+            <table>
+                <tr><th>Pattern</th><th>Type</th><th>Purpose</th><th>Implementation</th><th>Use Case</th></tr>
+                <tr><td>Singleton</td><td>Creational</td><td>Ensure one instance exists</td><td>Private constructor, static instance</td><td>Database connections, logging</td></tr>
+                <tr><td>Factory Method</td><td>Creational</td><td>Defer instantiation to subclasses</td><td>Virtual constructor method</td><td>Object creation with varying types</td></tr>
+                <tr><td>Observer</td><td>Behavioral</td><td>Notify dependent objects automatically</td><td>Subject-Observer relationship</td><td>Event handling, MVC architecture</td></tr>
+                <tr><td>Strategy</td><td>Behavioral</td><td>Define family of algorithms</td><td>Interface for algorithm, implementations</td><td>Multiple ways to perform operation</td></tr>
+                <tr><td>Decorator</td><td>Structural</td><td>Add responsibilities dynamically</td><td>Wrap objects with additional functionality</td><td>Adding features without subclassing</td></tr>
+                <tr><td>Adapter</td><td>Structural</td><td>Convert interface to another interface</td><td>Wrap incompatible interface</td><td>Integrate legacy code with new code</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Memory Management</h2>
+            <table>
+                <tr><th>Concept</th><th>Description</th><th>Language</th><th>Management</th><th>Best Practices</th></tr>
+                <tr><td>Stack Memory</td><td>Stores local variables and method calls</td><td>All OOP languages</td><td>Automatic, LIFO structure</td><td>Use for temporary, small data</td></tr>
+                <tr><td>Heap Memory</td><td>Stores objects and dynamic data</td><td>All OOP languages</td><td>Manual (C++) or automatic (Java)</td><td>Manage lifetime carefully</td></tr>
+                <tr><td>Garbage Collection</td><td>Automatic memory reclamation</td><td>Java, C#, Python</td><td>Runtime system manages memory</td><td>Understand collection triggers</td></tr>
+                <tr><td>Destructor</td><td>Clean up resources when object destroyed</td><td>C++, C#</td><td>Explicit cleanup</td><td>Release resources, prevent memory leaks</td></tr>
+                <tr><td>RAII (C++)</td><td>Resource Acquisition Is Initialization</td><td>C++</td><td>Bind resources to object lifetime</td><td>Use smart pointers</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

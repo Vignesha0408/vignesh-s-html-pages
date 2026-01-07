@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Processing Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Image Processing Cheat Sheet</h1>
+        
+        <div class="section">
+            <h2>Image Representation</h2>
+            <table>
+                <tr><th>Format</th><th>Description</th><th>Properties</th><th>Applications</th></tr>
+                <tr><td>Binary</td><td>Black and white only</td><td>1 bit per pixel (0 or 1)</td><td>Document scanning, OCR</td></tr>
+                <tr><td>Grayscale</td><td>Intensity levels</td><td>8 bits per pixel (0-255)</td><td>Medical imaging, basic processing</td></tr>
+                <tr><td>RGB</td><td>Red, Green, Blue channels</td><td>8 bits per channel (24-bit)</td><td>Color photography, digital displays</td></tr>
+                <tr><td>HSV</td><td>Hue, Saturation, Value</td><td>Color-based representation</td><td>Color segmentation, object detection</td></tr>
+                <tr><td>CMYK</td><td>Cyan, Magenta, Yellow, Black</td><td>Print-based color model</td><td>Printing, publishing</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Image Enhancement Techniques</h2>
+            <table>
+                <tr><th>Technique</th><th>Description</th><th>Formula</th><th>Applications</th></tr>
+                <tr><td>Contrast Stretching</td><td>Expand intensity range</td><td>s = (r - r_min) * (L-1) / (r_max - r_min)</td><td>Low contrast images</td></tr>
+                <tr><td>Histogram Equalization</td><td>Redistribute intensity values</td><td>Transform to uniform distribution</td><td>Medical imaging, photography</td></tr>
+                <tr><td>Gamma Correction</td><td>Adjust brightness non-linearly</td><td>s = c * r^γ</td><td>Display correction, lighting</td></tr>
+                <tr><td>Sharpening</td><td>Enhance image details</td><td>Unsharp masking, high-pass filtering</td><td>Edge enhancement, detail accentuation</td></tr>
+                <tr><td>Noise Reduction</td><td>Remove unwanted noise</td><td>Median, Gaussian, bilateral filtering</td><td>Preprocessing, restoration</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Spatial Filtering Operations</h2>
+            <table>
+                <tr><th>Filter Type</th><th>Kernel Purpose</th><th>Example Kernel</th><th>Effect</th><th>Applications</th></tr>
+                <tr><td>Smoothing (Low-pass)</td><td>Blur, noise reduction</td><td>3x3 averaging: [1 1 1; 1 1 1; 1 1 1]/9</td><td>Reduces noise, detail</td><td>Preprocessing, noise reduction</td></tr>
+                <tr><td>Gaussian</td><td>Blur with Gaussian distribution</td><td>2D Gaussian function</td><td>Smooth blur, noise reduction</td><td>Preprocessing, edge detection prep</td></tr>
+                <tr><td>Sharpening (High-pass)</td><td>Enhance edges</td><td>Laplacian: [0 -1 0; -1 4 -1; 0 -1 0]</td><td>Enhances edges, details</td><td>Image sharpening, detail enhancement</td></tr>
+                <tr><td>Edge Detection</td><td>Find intensity changes</td><td>Sobel X: [-1 0 1; -2 0 2; -1 0 1]</td><td>Highlights edges</td><td>Object detection, feature extraction</td></tr>
+                <tr><td>Median</td><td>Remove salt-and-pepper noise</td><td>Sort pixel values in neighborhood</td><td>Preserves edges, removes noise</td><td>Impulse noise reduction</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Edge Detection Algorithms</h2>
+            <table>
+                <tr><th>Algorithm</th><th>Approach</th><th>Advantages</th><th>Disadvantages</th><th>Best For</th></tr>
+                <tr><td>Sobel Operator</td><td>First derivative approximation</td><td>Fast, simple, good for noise</td><td>Thick edges, less accurate</td><td>General purpose edge detection</td></tr>
+                <tr><td>Prewitt Operator</td><td>First derivative approximation</td><td>Simple, good for noise</td><td>Thick edges</td><td>Simple edge detection</td></tr>
+                <tr><td>Roberts Cross-Gradient</td><td>Diagonal edge detection</td><td>Fast, thin edges</td><td>Sensitive to noise</td><td>Thin edge detection</td></tr>
+                <tr><td>Canny Edge Detector</td><td>Multi-stage algorithm</td><td>Optimal edge detection, thin edges</td><td>Computationally expensive</td><td>High-quality edge detection</td></tr>
+                <tr><td>Laplacian of Gaussian</td><td>Second derivative operator</td><td>Good for blob detection</td><td>Double response to edges</td><td>Edge localization, blob detection</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Image Segmentation Methods</h2>
+            <table>
+                <tr><th>Method</th><th>Approach</th><th>Advantages</th><th>Disadvantages</th><th>Applications</th></tr>
+                <tr><td>Thresholding</td><td>Separate pixels based on intensity</td><td>Simple, fast</td><td>Sensitive to lighting</td><td>Binary segmentation, document analysis</td></tr>
+                <tr><td>Region Growing</td><td>Group similar neighboring pixels</td><td>Good for connected regions</td><td>Sensitive to seed points</td><td>Medical imaging, object detection</td></tr>
+                <tr><td>Watershed Transform</td><td>Treat image as topographic surface</td><td>Good for touching objects</td><td>Over-segmentation</td><td>Cell counting, object separation</td></tr>
+                <tr><td>K-means Clustering</td><td>Group pixels in feature space</td><td>Unsupervised, flexible</td><td>Need to specify k</td><td>Color segmentation, texture analysis</td></tr>
+                <tr><td>Active Contours (Snakes)</td><td>Energy-minimizing curves</td><td>Accurate boundaries</td><td>Initialization sensitive</td><td>Medical imaging, object tracking</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Feature Detection & Description</h2>
+            <table>
+                <tr><th>Method</th><th>Purpose</th><th>Characteristics</th><th>Applications</th><th>Robustness</th></tr>
+                <tr><td>Harris Corner Detector</td><td>Find corner points</td><td>Rotation invariant, intensity change</td><td>Image registration, tracking</td><td>Rotation, illumination</td></tr>
+                <tr><td>SIFT (Scale-Invariant)</td><td>Find keypoints invariant to scale</td><td>Scale, rotation invariant</td><td>Object recognition, matching</td><td>Scale, rotation, illumination</td></tr>
+                <tr><td>SURF (Speeded-Up)</td><td>Faster alternative to SIFT</td><td>Fast, good for real-time</td><td>Real-time applications</td><td>Scale, rotation, illumination</td></tr>
+                <tr><td>FAST Corner</td><td>Fast corner detection</td><td>Very fast, good for tracking</td><td>Rotation dependent</td><td>Real-time tracking</td></tr>
+                <tr><td>HOG (Histogram of Gradients)</td><td>Describe object shape</td><td>Good for object detection</td><td>Translation dependent</td><td>Human detection, object recognition</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Image Transformations</h2>
+            <table>
+                <tr><th>Transformation</th><th>Formula/Method</th><th>Applications</th><th>Properties</th></tr>
+                <tr><td>Fourier Transform</td><td>F(u,v) = ΣΣ f(x,y)e^(-j2π(ux+vy)/N)</td><td>Frequency analysis, filtering</td><td>Frequency domain representation</td></tr>
+                <tr><td>Discrete Cosine Transform</td><td>Similar to Fourier but real-valued</td><td>Image compression (JPEG)</td><td>Energy compaction</td></tr>
+                <tr><td>Wavelet Transform</td><td>Multi-resolution analysis</td><td>Image compression, denoising</td><td>Time-frequency localization</td></tr>
+                <tr><td>Morphological Operations</td><td>Dilation, erosion, opening, closing</td><td>Shape analysis, noise removal</td><td>Structuring element dependent</td></tr>
+                <tr><td>Radon Transform</td><td>Line integral projections</td><td>Medical imaging, pattern recognition</td><td>Line detection in images</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

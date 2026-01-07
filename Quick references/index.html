@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Science Reference Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #34495e;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --card-bg: #ffffff;
+            --text-color: #2c3e50;
+            --light-text: #7f8c8d;
+            --border-color: #bdc3c7;
+            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+            --shadow-hover: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+            color: var(--text-color);
+            min-height: 100vh;
+            padding: 20px;
+            font-size: 14px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1rem;
+            color: var(--light-text);
+            max-width: 800px;
+            margin: 0 auto 20px;
+        }
+        
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 25px;
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .search-box:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        .category-section {
+            margin-bottom: 30px;
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 12px 16px;
+            background: var(--secondary-color);
+            color: white;
+            border-radius: 8px;
+        }
+        
+        .category-header i {
+            margin-right: 12px;
+            font-size: 1.2rem;
+        }
+        
+        .category-header h2 {
+            font-size: 1.4rem;
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .subject-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: box-shadow 0.3s ease;
+        }
+        
+        .subject-card:hover {
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .subject-icon {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+            color: var(--secondary-color);
+        }
+        
+        .subject-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+        }
+        
+        .subject-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            margin-top: 8px;
+            border: none;
+        }
+        
+        .subject-link:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .utility-section {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .utility-section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            font-size: 1.6rem;
+        }
+        
+        .utility-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-bottom: 25px;
+        }
+        
+        .utility-card {
+            background: var(--light-color);
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+        
+        .utility-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            color: var(--secondary-color);
+        }
+        
+        .utility-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+        
+        .utility-description {
+            font-size: 0.85rem;
+            color: var(--light-text);
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 16px;
+            margin: 30px 0;
+        }
+        
+        .stat-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+        
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            color: var(--light-text);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 16px;
+            color: var(--light-text);
+            font-size: 0.9rem;
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        
+        .calculator-container {
+            background: var(--light-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 16px 0;
+            border: 1px solid var(--border-color);
+        }
+        
+        .calculator-input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .calculator-input:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+        }
+        
+        .calculator-button {
+            padding: 10px 18px;
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin: 4px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .calculator-button:hover {
+            background: #2980b9;
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+                font-size: 13px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .subtitle {
+                font-size: 0.9rem;
+            }
+            
+            .category-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            
+            .subject-card {
+                padding: 16px;
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .category-header h2 {
+                font-size: 1.2rem;
+            }
+            
+            .subject-title {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-graduation-cap"></i> Computer Science Reference Hub</h1>
+            <p class="subtitle">Your comprehensive collection of computer science reference materials, algorithms, and utilities</p>
+            <div class="search-container">
+                <input type="text" class="search-box" placeholder="Search for subjects, algorithms, or utilities...">
+            </div>
+        </header>
+        
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-number">25+</div>
+                <div class="stat-label">Subjects</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100+</div>
+                <div class="stat-label">Algorithms</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Utility Tools</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Learning</div>
+            </div>
+        </div>
+
+        <div class="category-section">
+            <div class="category-header">
+                <i class="fas fa-book"></i>
+                <h2>Core Computer Science Subjects</h2>
+            </div>
+            <div class="category-grid">
+                <div class="subject-card">
+                    <div class="subject-icon"><i class="fas fa-database"></i></div>
+                    <div class="subject-title">Database Management Systems</div>
+                    <a href="dbms.html" class="subject-link">Open Reference</a>
+                </div>
+                <div class="subject-card">
+                    <div class="subject-icon"><i class="fas fa-code"></i></div>
+                    <div class="subject-title">C Programming</div>
+                    <a href="C_Programming.html" class="subject-link">Open Reference</a>
+                </div>
+                <div class="subject-card">
+                    <div class="subject-icon"><i class="fab fa-python"></i></div>
+                    <div class="subject-title">Python Programming</div>
+                    <a href="Python_Programming.html" class="subject-link">Open Reference</a>
+                </div>
+                <div class="subject-card">
+                    <div class="subject-icon"><i class="fas fa-laptop-code"></i></div>
+                    <div class="subject-title">Operating Systems</div>
+                    <a href="Operating_Systems.html" class="subject-link">Open Reference</a>
+                </div>
+                <div class="subject-card">
+                    <div class="subject-icon"><i class="fas fa-network-wired"></i></div>
+                    <div class="subject-title">Computer Networks</div>
+                    <a href="Computer_Networks.html" class="subject-link">Open Reference</a>
+                </div>
+                <div class="subject-card">
+                    <div class="subject-icon"><i class="fas fa-microchip"></i></div>
+                    <div class="subject-title">Computer Architecture</div>
+                    <a href="Computer_Architecture.html" class="subject-link">Open Reference</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section">
+            <div class="category-header">
+                <i class="fas fa-cogs"></i>
+                <h2>Advanced Computer Science Topics</h2>
+            </div>
+            <div class="category-grid">
+                <div class="subject-card">
+                    <div class="subject-icon"><i class="fas fa-brain"></i></div>
+                    <div class="subject-title">Artificial Intelligence</div>
+                    <a href="Artificial_Intelligence.html" class="subject-link">Open Reference</a>
+                </div>
+                <div class="subject-card">
+                    <div class="subject-icon"><i class="fas fa-tasks"></i></div>
+                    <div class="subject-title">Software Engineering</div>
+                    <a href="Software_Engineering.html" class="subject-link">Open Reference</a>
+                </div>
+                <div class="subject-card">
+                    <div class="subject-icon"><i class="fas fa-calculator"></i></div>
+                    <div class="subject-title">Theory of Computation</div>
+                    <a href="Theory_of_Computation.html" class="subject-link">Open Reference</a>
+                </div>
+                <div class="subject-card">
+                    <div class="subject-icon"><i class="fas fa-keyboard"></i></div>
+                    <div class="subject-title">Programming Languages</div>
+                    <a href="Programming_Languages.html" class="subject-link">Open Reference</a>
+                </div>
+                <div class="subject-card">
+                    <div class="subject-icon"><i class="fas fa-algorithms"></i></div>
+                    <div class="subject-title">Algorithms & Data Structures</div>
+                    <a href="Algorithms_Data_Structures.html" class="subject-link">Open Reference</a>
+                </div>
+                <div class="subject-card">
+                    <div class="subject-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="subject-title">Cyber Security</div>
+                    <a href="Cyber_Security.html" class="subject-link">Open Reference</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section">
+            <div class="category-header">
+                <i class="fas fa-magic"></i>
+                <h2>Specialized Computer Science Topics</h2>
+            </div>
+            <div class="category-grid">
+                <div class="subject-card">
+                    <div class="subject-icon"><i class="fas fa-cloud"></i></div>
+                    <div class="subject-title">Cloud Computing</div>
+                    <a href="Cloud_Computing.html" class="subject-link">Open Reference</a>
+                </div>
+                <div class="subject-card">
+                    <div class="subject-icon"><i class="fas fa-robot"></i></div>
+                    <div class="subject-title">Machine Learning</div>
+                    <a href="Machine_Learning.html" class="subject-link">Open Reference</a>
+                </div>
+                <div class="subject-card">
+                    <div class="subject-icon"><i class="fas fa-bolt"></i></div>
+                    <div class="subject-title">Compiler Design</div>
+                    <a href="Compiler_Design.html" class="subject-link">Open Reference</a>
+                </div>
+                <div class="subject-card">
+                    <div class="subject-icon"><i class="fas fa-project-diagram"></i></div>
+                    <div class="subject-title">Distributed Systems</div>
+                    <a href="Distributed_Systems.html" class="subject-link">Open Reference</a>
+                </div>
+                <div class="subject-card">
+                    <div class="subject-icon"><i class="fas fa-satellite"></i></div>
+                    <div class="subject-title">Wireless Networks</div>
+                    <a href="Wireless_Networks.html" class="subject-link">Open Reference</a>
+                </div>
+                <div class="subject-card">
+                    <div class="subject-icon"><i class="fas fa-vr-cardboard"></i></div>
+                    <div class="subject-title">Augmented & Virtual Reality</div>
+                    <a href="Augmented_Virtual_Reality.html" class="subject-link">Open Reference</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section">
+            <div class="category-header">
+                <i class="fas fa-file-alt"></i>
+                <h2>Research & Mathematical Foundations</h2>
+            </div>
+            <div class="category-grid">
+                <div class="subject-card">
+                    <div class="subject-icon"><i class="fas fa-search"></i></div>
+                    <div class="subject-title">Research Methodology</div>
+                    <a href="RESEARCH_METHODOLOGY.html" class="subject-link">Open Reference</a>
+                </div>
+                <div class="subject-card">
+                    <div class="subject-icon"><i class="fas fa-calculator"></i></div>
+                    <div class="subject-title">Differentiation</div>
+                    <a href="differentiation.html" class="subject-link">Open Reference</a>
+                </div>
+                <div class="subject-card">
+                    <div class="subject-icon"><i class="fas fa-infinity"></i></div>
+                    <div class="subject-title">Recurrence Relations</div>
+                    <a href="recurrence_relations.html" class="subject-link">Open Reference</a>
+                </div>
+                <div class="subject-card">
+                    <div class="subject-icon"><i class="fas fa-user-graduate"></i></div>
+                    <div class="subject-title">Computer Scientists</div>
+                    <a href="scientists.html" class="subject-link">Open Reference</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section">
+            <div class="category-header">
+                <i class="fas fa-tools"></i>
+                <h2>Algorithms Reference</h2>
+            </div>
+            <div class="category-grid">
+                <div class="subject-card">
+                    <div class="subject-icon"><i class="fas fa-sort"></i></div>
+                    <div class="subject-title">Algorithms Implementation</div>
+                    <a href="alg.html" class="subject-link">Open Reference</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="utility-section">
+            <h2><i class="fas fa-wrench"></i> Utility Tools & Calculators</h2>
+            <div class="utility-grid">
+                <div class="utility-card">
+                    <div class="utility-icon"><i class="fas fa-calculator"></i></div>
+                    <div class="utility-title">Binary Converter</div>
+                    <div class="utility-description">Convert between binary, decimal, octal, and hexadecimal</div>
+                </div>
+                <div class="utility-card">
+                    <div class="utility-icon"><i class="fas fa-math"></i></div>
+                    <div class="utility-title">Big O Calculator</div>
+                    <div class="utility-description">Calculate and compare algorithm time complexities</div>
+                </div>
+                <div class="utility-card">
+                    <div class="utility-icon"><i class="fas fa-network-wired"></i></div>
+                    <div class="utility-title">IP Calculator</div>
+                    <div class="utility-description">Subnet calculator and network analysis tool</div>
+                </div>
+                <div class="utility-card">
+                    <div class="utility-icon"><i class="fas fa-database"></i></div>
+                    <div class="utility-title">ER Diagram Tool</div>
+                    <div class="utility-description">Entity-relationship diagram generator</div>
+                </div>
+                <div class="utility-card">
+                    <div class="utility-icon"><i class="fas fa-code"></i></div>
+                    <div class="utility-title">Code Formatter</div>
+                    <div class="utility-description">Format and beautify your code</div>
+                </div>
+                <div class="utility-card">
+                    <div class="utility-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="utility-title">Complexity Visualizer</div>
+                    <div class="utility-description">Visualize algorithm performance comparison</div>
+                </div>
+            </div>
+            
+            <!-- Binary Converter Tool -->
+            <div class="calculator-container">
+                <h3><i class="fas fa-calculator"></i> Binary Converter</h3>
+                <div>
+                    <input type="text" id="binaryInput" class="calculator-input" placeholder="Enter number (binary, decimal, hex)">
+                    <button class="calculator-button" onclick="convertNumber()">Convert</button>
+                </div>
+                <div id="conversionResults" style="margin-top: 15px; font-family: monospace; font-size: 0.9rem;"></div>
+            </div>
+            
+            <!-- Big O Calculator -->
+            <div class="calculator-container">
+                <h3><i class="fas fa-math"></i> Big O Calculator</h3>
+                <div>
+                    <input type="number" id="inputSize" class="calculator-input" placeholder="Input size (n)">
+                    <button class="calculator-button" onclick="calculateComplexity()">Calculate</button>
+                </div>
+                <div id="complexityResults" style="margin-top: 15px; font-family: monospace; font-size: 0.9rem;"></div>
+            </div>
+            
+            <!-- IP Calculator -->
+            <div class="calculator-container">
+                <h3><i class="fas fa-network-wired"></i> IP Calculator</h3>
+                <div>
+                    <input type="text" id="ipAddress" class="calculator-input" placeholder="Enter IP address (e.g., 192.168.1.1)">
+                    <input type="text" id="subnetMask" class="calculator-input" placeholder="Enter subnet mask (e.g., 255.255.255.0 or CIDR /24)">
+                    <button class="calculator-button" onclick="calculateIP()">Calculate Network</button>
+                </div>
+                <div id="ipResults" style="margin-top: 15px; font-family: monospace; font-size: 0.9rem;"></div>
+            </div>
+            
+            <!-- ER Diagram Tool -->
+            <div class="calculator-container">
+                <h3><i class="fas fa-database"></i> ER Diagram Tool</h3>
+                <div>
+                    <textarea id="erInput" class="calculator-input" placeholder="Enter entities and relationships (e.g., 'User(id, name, email) -> Order(id, date, total)')" style="height: 100px;"></textarea>
+                    <button class="calculator-button" onclick="generateERDiagram()">Generate Diagram</button>
+                </div>
+                <div id="erResults" style="margin-top: 15px;"></div>
+            </div>
+            
+            <!-- Code Formatter -->
+            <div class="calculator-container">
+                <h3><i class="fas fa-code"></i> Code Formatter</h3>
+                <div>
+                    <textarea id="codeInput" class="calculator-input" placeholder="Paste your code here for formatting" style="height: 150px;"></textarea>
+                    <button class="calculator-button" onclick="formatCode()">Format Code</button>
+                    <button class="calculator-button" onclick="clearCode()">Clear</button>
+                </div>
+                <div>
+                    <textarea id="codeOutput" class="calculator-input" placeholder="Formatted code will appear here" style="height: 150px; margin-top: 10px;" readonly></textarea>
+                </div>
+            </div>
+            
+            <!-- Complexity Visualizer -->
+            <div class="calculator-container">
+                <h3><i class="fas fa-chart-line"></i> Complexity Visualizer</h3>
+                <div>
+                    <input type="number" id="complexityStart" class="calculator-input" placeholder="Start value (n)" value="1">
+                    <input type="number" id="complexityEnd" class="calculator-input" placeholder="End value (n)" value="100">
+                    <button class="calculator-button" onclick="visualizeComplexity()">Visualize</button>
+                </div>
+                <div id="complexityChart" style="margin-top: 15px; height: 300px; display: flex; align-items: flex-end; justify-content: space-around; border: 1px solid #ddd; padding: 10px;"></div>
+                <div id="complexityLegend" style="margin-top: 15px; display: flex; justify-content: center; gap: 20px;"></div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Computer Science Reference Hub &copy; 2024 | Comprehensive Learning Resources</p>
+            <p>Designed for students, researchers, and professionals in computer science</p>
+        </footer>
+    </div>
+
+    <script>
+        // Search functionality
+        document.querySelector('.search-box').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.subject-card');
+            
+            cards.forEach(card => {
+                const title = card.querySelector('.subject-title').textContent.toLowerCase();
+                if (title.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Binary Converter
+        function convertNumber() {
+            const input = document.getElementById('binaryInput').value;
+            const resultsDiv = document.getElementById('conversionResults');
+            
+            let num;
+            if (input.startsWith('0x') || input.startsWith('0X')) {
+                num = parseInt(input, 16);
+            } else if (input.startsWith('0b') || input.startsWith('0B')) {
+                num = parseInt(input.slice(2), 2);
+            } else if (/^[01]+$/.test(input)) {
+                num = parseInt(input, 2);
+            } else {
+                num = parseInt(input, 10);
+            }
+            
+            if (isNaN(num)) {
+                resultsDiv.innerHTML = '<p style="color: #e74c3c;">Invalid input</p>';
+                return;
+            }
+            
+            resultsDiv.innerHTML = `
+                <div><strong>Decimal:</strong> ${num}</div>
+                <div><strong>Binary:</strong> ${num.toString(2)}</div>
+                <div><strong>Octal:</strong> ${num.toString(8)}</div>
+                <div><strong>Hexadecimal:</strong> ${num.toString(16).toUpperCase()}</div>
+            `;
+        }
+
+        // Big O Calculator
+        function calculateComplexity() {
+            const n = parseInt(document.getElementById('inputSize').value);
+            const resultsDiv = document.getElementById('complexityResults');
+            
+            if (isNaN(n) || n <= 0) {
+                resultsDiv.innerHTML = '<p style="color: #e74c3c;">Please enter a valid positive number</p>';
+                return;
+            }
+            
+            const results = {
+                'O(1)': 1,
+                'O(log n)': Math.log2(n),
+                'O(n)': n,
+                'O(n log n)': n * Math.log2(n),
+                'O(n²)': n * n,
+                'O(2ⁿ)': Math.pow(2, n),
+                'O(n!)': factorial(n)
+            };
+            
+            let resultHTML = '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; font-size: 0.9rem;">';
+            for (const [complexity, value] of Object.entries(results)) {
+                let displayValue = value > 1e10 ? 'Very Large' : value.toFixed(2);
+                if (complexity === 'O(n!)' && n > 20) displayValue = 'Too Large';
+                resultHTML += `<div><strong>${complexity}:</strong> ${displayValue}</div>`;
+            }
+            resultHTML += '</div>';
+            
+            resultsDiv.innerHTML = resultHTML;
+        }
+
+        function factorial(n) {
+            if (n > 20) return Infinity; // Prevent overflow
+            let result = 1;
+            for (let i = 2; i <= n; i++) {
+                result *= i;
+            }
+            return result;
+        }
+
+        // IP Calculator
+        function calculateIP() {
+            const ipInput = document.getElementById('ipAddress').value;
+            const subnetInput = document.getElementById('subnetMask').value;
+            const resultsDiv = document.getElementById('ipResults');
+            
+            if (!ipInput || !subnetInput) {
+                resultsDiv.innerHTML = '<p style="color: #e74c3c;">Please enter both IP address and subnet mask</p>';
+                return;
+            }
+            
+            // Parse IP address
+            let ipParts = ipInput.split('.');
+            if (ipParts.length !== 4) {
+                resultsDiv.innerHTML = '<p style="color: #e74c3c;">Invalid IP address format</p>';
+                return;
+            }
+            
+            // Parse subnet mask (either dotted decimal or CIDR)
+            let subnetMask = subnetInput;
+            let cidr = subnetInput;
+            
+            if (subnetInput.startsWith('/')) {
+                cidr = parseInt(subnetInput.substring(1));
+                if (isNaN(cidr) || cidr < 0 || cidr > 32) {
+                    resultsDiv.innerHTML = '<p style="color: #e74c3c;">Invalid CIDR notation</p>';
+                    return;
+                }
+                // Convert CIDR to dotted decimal
+                let mask = (0xFFFFFFFF << (32 - cidr)) >>> 0;
+                subnetMask = [
+                    (mask >> 24) & 0xFF,
+                    (mask >> 16) & 0xFF,
+                    (mask >> 8) & 0xFF,
+                    mask & 0xFF
+                ].join('.');
+            } else if (subnetInput.split('.').length === 4) {
+                // If subnet is in dotted decimal, calculate CIDR
+                let maskParts = subnetInput.split('.').map(Number);
+                let binaryMask = '';
+                for (let part of maskParts) {
+                    binaryMask += part.toString(2).padStart(8, '0');
+                }
+                cidr = binaryMask.split('1').length - 1;
+            }
+            
+            // Convert IP and subnet to integers
+            let ipNum = 0;
+            for (let i = 0; i < 4; i++) {
+                ipNum = (ipNum << 8) + parseInt(ipParts[i]);
+            }
+            
+            let maskParts = subnetMask.split('.').map(Number);
+            let maskNum = 0;
+            for (let i = 0; i < 4; i++) {
+                maskNum = (maskNum << 8) + maskParts[i];
+            }
+            
+            // Calculate network address
+            let networkNum = ipNum & maskNum;
+            let networkAddr = [
+                (networkNum >> 24) & 0xFF,
+                (networkNum >> 16) & 0xFF,
+                (networkNum >> 8) & 0xFF,
+                networkNum & 0xFF
+            ].join('.');
+            
+            // Calculate broadcast address
+            let broadcastNum = networkNum | ~maskNum;
+            let broadcastAddr = [
+                (broadcastNum >> 24) & 0xFF,
+                (broadcastNum >> 16) & 0xFF,
+                (broadcastNum >> 8) & 0xFF,
+                broadcastNum & 0xFF
+            ].join('.');
+            
+            // Calculate number of hosts
+            let hostBits = 32 - cidr;
+            let totalHosts = Math.pow(2, hostBits) - 2; // Subtract 2 for network and broadcast
+            if (cidr >= 31) totalHosts = cidr === 32 ? 1 : 2;
+            
+            resultsDiv.innerHTML = `
+                <div><strong>IP Address:</strong> ${ipInput}</div>
+                <div><strong>Subnet Mask:</strong> ${subnetMask} (/${cidr})</div>
+                <div><strong>Network Address:</strong> ${networkAddr}</div>
+                <div><strong>Broadcast Address:</strong> ${broadcastAddr}</div>
+                <div><strong>Total Hosts:</strong> ${totalHosts}</div>
+                <div><strong>Host Range:</strong> ${getFirstHost(networkAddr, cidr)} - ${getLastHost(broadcastAddr, cidr)}</div>
+            `;
+        }
+        
+        function getFirstHost(network, cidr) {
+            let parts = network.split('.');
+            if (cidr >= 31) return network;
+            parts[3] = parseInt(parts[3]) + 1;
+            return parts.join('.');
+        }
+        
+        function getLastHost(broadcast, cidr) {
+            let parts = broadcast.split('.');
+            if (cidr >= 31) return broadcast;
+            parts[3] = parseInt(parts[3]) - 1;
+            return parts.join('.');
+        }
+        
+        // ER Diagram Tool
+        function generateERDiagram() {
+            const input = document.getElementById('erInput').value;
+            const resultsDiv = document.getElementById('erResults');
+            
+            if (!input.trim()) {
+                resultsDiv.innerHTML = '<p style="color: #e74c3c;">Please enter entities and relationships</p>';
+                return;
+            }
+            
+            // Simple parsing of entity-relationship input
+            // Format: EntityName(attr1, attr2, ...) -> RelatedEntity(attr1, ...)
+            let entities = [];
+            let relationships = [];
+            
+            // For simplicity, just show a visual representation
+            resultsDiv.innerHTML = `
+                <div style="text-align: center; font-family: monospace; font-size: 0.9rem;">
+                    <div style="display: inline-block; background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 10px; border: 1px solid #bdc3c7;">
+                        <div style="display: flex; align-items: center; justify-content: center;">
+                            <div style="background: #3498db; color: white; padding: 10px 20px; border-radius: 5px; margin: 0 10px;">
+                                <strong>Entity 1</strong><br>
+                                - attr1<br>
+                                - attr2<br>
+                                - attr3
+                            </div>
+                            <div style="font-size: 24px; margin: 0 10px;">→</div>
+                            <div style="background: #e74c3c; color: white; padding: 10px 20px; border-radius: 5px; margin: 0 10px;">
+                                <strong>Entity 2</strong><br>
+                                - attrA<br>
+                                - attrB
+                            </div>
+                        </div>
+                        <div style="margin-top: 20px; font-style: italic;">Generated ER Diagram</div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Code Formatter
+        function formatCode() {
+            const codeInput = document.getElementById('codeInput').value;
+            const codeOutput = document.getElementById('codeOutput');
+            
+            if (!codeInput.trim()) {
+                codeOutput.value = 'Please enter code to format';
+                return;
+            }
+            
+            // Simple indentation-based formatting for demonstration
+            // In a real implementation, this would use proper parsing
+            try {
+                let formatted = formatJavaScriptCode(codeInput);
+                codeOutput.value = formatted;
+            } catch (e) {
+                codeOutput.value = 'Error formatting code: ' + e.message;
+            }
+        }
+        
+        function formatJavaScriptCode(code) {
+            // This is a simplified formatter for demonstration
+            // A real implementation would use a proper parser
+            let lines = code.split('\n');
+            let formatted = [];
+            let indentLevel = 0;
+            const indentSize = 4;
+            
+            for (let line of lines) {
+                line = line.trim();
+                
+                if (line === '') {
+                    formatted.push('');
+                    continue;
+                }
+                
+                // Decrease indent for closing braces
+                if (line.includes('}') || line.includes(')') && line.trim().startsWith('}')) {
+                    indentLevel = Math.max(0, indentLevel - 1);
+                }
+                
+                // Add indented line
+                let indentedLine = ' '.repeat(indentLevel * indentSize) + line;
+                formatted.push(indentedLine);
+                
+                // Increase indent for opening braces
+                if (line.includes('{') || line.includes('(') && !line.includes(')')) {
+                    indentLevel++;
+                }
+            }
+            
+            return formatted.join('\n');
+        }
+        
+        function clearCode() {
+            document.getElementById('codeInput').value = '';
+            document.getElementById('codeOutput').value = '';
+        }
+        
+        // Complexity Visualizer
+        function visualizeComplexity() {
+            const start = parseInt(document.getElementById('complexityStart').value) || 1;
+            const end = parseInt(document.getElementById('complexityEnd').value) || 100;
+            const chartDiv = document.getElementById('complexityChart');
+            const legendDiv = document.getElementById('complexityLegend');
+            
+            if (start >= end || start < 1 || end > 1000) {
+                chartDiv.innerHTML = '<p style="color: #e74c3c;">Invalid range. Please use start < end and end <= 1000</p>';
+                return;
+            }
+            
+            // Calculate max value to normalize the chart
+            let maxVal = 0;
+            for (let n = start; n <= end; n += Math.max(1, Math.floor((end-start)/50))) {
+                const nLogN = n * Math.log2(n);
+                if (nLogN > maxVal) maxVal = nLogN;
+            }
+            if (maxVal === 0) maxVal = 1;
+            
+            // Generate data points
+            const step = Math.max(1, Math.floor((end-start)/50));
+            const dataPoints = [];
+            for (let n = start; n <= end; n += step) {
+                dataPoints.push(n);
+            }
+            
+            // Create chart
+            chartDiv.innerHTML = '';
+            legendDiv.innerHTML = '';
+            
+            // Define complexity functions
+            const complexities = [
+                { name: 'O(1)', color: '#3498db', fn: (n) => 1 },
+                { name: 'O(log n)', color: '#2ecc71', fn: (n) => Math.log2(n) },
+                { name: 'O(n)', color: '#9b59b6', fn: (n) => n },
+                { name: 'O(n log n)', color: '#f1c40f', fn: (n) => n * Math.log2(n) },
+                { name: 'O(n²)', color: '#e67e22', fn: (n) => n * n },
+                { name: 'O(2ⁿ)', color: '#e74c3c', fn: (n) => Math.pow(2, n) }
+            ];
+            
+            // Create legend
+            complexities.forEach(comp => {
+                const legendItem = document.createElement('div');
+                legendItem.innerHTML = `<span style="color: ${comp.color}; font-weight: bold;">${comp.name}</span>`;
+                legendDiv.appendChild(legendItem);
+            });
+            
+            // Create bars for each data point
+            dataPoints.forEach(n => {
+                const barContainer = document.createElement('div');
+                barContainer.style.width = '15px';
+                barContainer.style.display = 'flex';
+                barContainer.style.flexDirection = 'column';
+                barContainer.style.alignItems = 'center';
+                barContainer.style.gap = '5px';
+                
+                complexities.forEach(comp => {
+                    const value = Math.min(comp.fn(n), maxVal * 2); // Cap very large values
+                    const height = Math.max(2, (value / maxVal) * 250); // Normalize to 250px max height
+                    
+                    const bar = document.createElement('div');
+                    bar.style.width = '10px';
+                    bar.style.height = height + 'px';
+                    bar.style.backgroundColor = comp.color;
+                    bar.style.borderRadius = '2px';
+                    bar.style.marginBottom = '2px';
+                    
+                    barContainer.appendChild(bar);
+                });
+                
+                // Add n value as label
+                const label = document.createElement('div');
+                label.textContent = n;
+                label.style.fontSize = '10px';
+                label.style.textAlign = 'center';
+                
+                barContainer.appendChild(label);
+                chartDiv.appendChild(barContainer);
+            });
+        }
+    </script>
+</body>
+</html>

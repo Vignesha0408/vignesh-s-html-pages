@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Microprocessors & Microcontrollers - Quick Reference</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --primary-gradient-start: #6a85b6;
+            --primary-gradient-end: #bac8e0;
+            --secondary-gradient-start: #a1c4fd;
+            --secondary-gradient-end: #c2e9fb;
+            --accent-color: #4a69bd;
+            --text-color: #2c3e50;
+            --light-text: #7f8c8d;
+            --card-bg: #ffffff;
+            --border-color: #e0e0e0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, var(--primary-gradient-start), var(--primary-gradient-end));
+            background-attachment: fixed;
+            color: var(--text-color);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+        
+        h1 {
+            text-align: center;
+            background: linear-gradient(to right, var(--secondary-gradient-start), var(--secondary-gradient-end));
+            color: var(--text-color);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            font-size: 2.2rem;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            animation: slideDown 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        h1::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+        
+        h1:hover::before {
+            transform: translateX(100%);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        table:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        th {
+            background: linear-gradient(to right, var(--secondary-gradient-start), var(--secondary-gradient-end));
+            color: var(--text-color);
+            padding: 16px;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.95rem;
+            vertical-align: top;
+            transition: background-color 0.3s ease;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9fbfd;
+        }
+        
+        tr:hover {
+            background-color: #edf7ff;
+        }
+        
+        .topic-tag {
+            display: inline-block;
+            background: linear-gradient(to right, var(--secondary-gradient-start), var(--secondary-gradient-end));
+            color: var(--text-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 3px;
+            transition: transform 0.2s ease;
+        }
+        
+        .topic-tag:hover {
+            transform: scale(1.05);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 5px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+                padding: 20px;
+            }
+            
+            table {
+                margin: 15px 0;
+            }
+            
+            th, td {
+                padding: 12px 8px;
+                font-size: 0.9rem;
+            }
+            
+            .topic-tag {
+                font-size: 0.75rem;
+                padding: 4px 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+                padding: 15px;
+            }
+            
+            th {
+                font-size: 0.85rem;
+                padding: 10px 8px;
+            }
+            
+            td {
+                padding: 10px 6px;
+                font-size: 0.85rem;
+            }
+            
+            .topic-tag {
+                display: block;
+                margin: 4px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Microprocessors & Microcontrollers - Quick Reference</h1>
+        
+        <table>
+            <tr><th>Concept</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Microprocessor</div></td><td>CPU on a single integrated circuit. Requires external memory and I/O components.</td></tr>
+            <tr><td><div class="topic-tag">Microcontroller</div></td><td>Single chip computer with CPU, memory, and I/O peripherals integrated.</td></tr>
+            <tr><td><div class="topic-tag">Applications</div></td><td>Microprocessors: PCs, servers; Microcontrollers: embedded systems, IoT devices</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Architecture Components</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">CPU</div></td><td>Central Processing Unit with ALU, control unit, and registers</td></tr>
+            <tr><td><div class="topic-tag">ALU</div></td><td>Arithmetic Logic Unit for mathematical and logical operations</td></tr>
+            <tr><td><div class="topic-tag">Control Unit</div></td><td>Manages instruction execution and system coordination</td></tr>
+            <tr><td><div class="topic-tag">Registers</div></td><td>High-speed storage locations within CPU (PC, SP, IR, ACC)</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Memory Types</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">RAM</div></td><td>Random Access Memory - volatile, used for temporary data storage</td></tr>
+            <tr><td><div class="topic-tag">ROM</div></td><td>Read Only Memory - non-volatile, stores permanent data</td></tr>
+            <tr><td><div class="topic-tag">Flash</div></td><td>Non-volatile memory that can be electrically erased and reprogrammed</td></tr>
+            <tr><td><div class="topic-tag">Cache</div></td><td>High-speed memory between CPU and main memory for faster access</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Instruction Set</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">RISC</div></td><td>Reduced Instruction Set Computer - simple instructions, fixed length</td></tr>
+            <tr><td><div class="topic-tag">CISC</div></td><td>Complex Instruction Set Computer - complex instructions, variable length</td></tr>
+            <tr><td><div class="topic-tag">Instruction Cycle</div></td><td>Fetch, Decode, Execute, Store sequence</td></tr>
+            <tr><td><div class="topic-tag">Addressing Modes</div></td><td>Immediate, Direct, Indirect, Register, Indexed addressing</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Bus Architecture</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Data Bus</div></td><td>Carries data between CPU, memory, and I/O devices</td></tr>
+            <tr><td><div class="topic-tag">Address Bus</div></td><td>Carries memory addresses from CPU to memory</td></tr>
+            <tr><td><div class="topic-tag">Control Bus</div></td><td>Carries control signals for synchronization and coordination</td></tr>
+            <tr><td><div class="topic-tag">Bus Width</div></td><td>Determines amount of data transferred simultaneously (8-bit, 16-bit, 32-bit, 64-bit)</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Microcontroller Peripherals</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">GPIO</div></td><td>General Purpose Input/Output pins for digital I/O</td></tr>
+            <tr><td><div class="topic-tag">ADC</div></td><td>Analog-to-Digital Converter for analog signal processing</td></tr>
+            <tr><td><div class="topic-tag">DAC</div></td><td>Digital-to-Analog Converter for analog output generation</td></tr>
+            <tr><td><div class="topic-tag">Timers/Counters</div></td><td>For time measurement, pulse generation, and event counting</td></tr>
+            <tr><td><div class="topic-tag">Communication</div></td><td>UART, SPI, I2C, CAN for serial communication</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Popular Families</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Microprocessors</div></td><td>Intel x86, ARM Cortex-A, AMD, PowerPC</td></tr>
+            <tr><td><div class="topic-tag">Microcontrollers</div></td><td>ARM Cortex-M, AVR, PIC, 8051, ESP32, STM32</td></tr>
+            <tr><td><div class="topic-tag">Applications</div></td><td>General computing vs embedded control applications</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Development Tools</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">IDE</div></td><td>Integrated Development Environment (Keil, MPLAB, Atmel Studio)</td></tr>
+            <tr><td><div class="topic-tag">Compiler</div></td><td>Converts high-level code to machine code (GCC, IAR, Keil)</td></tr>
+            <tr><td><div class="topic-tag">Debugger</div></td><td>Hardware/software tools for debugging (JTAG, SWD)</td></tr>
+            <tr><td><div class="topic-tag">Simulator</div></td><td>Software tools to simulate microcontroller behavior</td></tr>
+        </table>
+    </div>
+</body>
+</html>

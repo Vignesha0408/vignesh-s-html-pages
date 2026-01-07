@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embedded Systems Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Embedded Systems Cheat Sheet</h1>
+        
+        <div class="section">
+            <h2>Embedded Systems Characteristics</h2>
+            <table>
+                <tr><th>Feature</th><th>Description</th><th>Examples</th><th>Design Considerations</th></tr>
+                <tr><td>Real-Time Operation</td><td>System must respond within specified time constraints</td><td>Automotive engine control, medical devices</td><td>Hard vs soft real-time requirements</td></tr>
+                <tr><td>Resource Constraints</td><td>Limited memory, processing power, energy</td><td>IoT sensors, wearable devices</td><td>Optimize for size, speed, power</td></tr>
+                <tr><td>Dedicated Function</td><td>Designed for specific purpose</td><td>Washing machine controller, GPS device</td><td>Specialized hardware and software</td></tr>
+                <tr><td>Reliability</td><td>Must operate reliably for long periods</td><td>Avionics, industrial control</td><td>Fault tolerance, error handling</td></tr>
+                <tr><td>Low Power Consumption</td><td>Efficient energy usage, especially for battery-powered</td><td>Mobile phones, remote sensors</td><td>Power management, sleep modes</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Hardware Components</h2>
+            <table>
+                <tr><th>Component</th><th>Function</th><th>Examples</th><th>Key Features</th></tr>
+                <tr><td>Microcontroller</td><td>Integrated processor, memory, and I/O</td><td>Arduino, PIC, ARM Cortex-M</td><td>Single chip solution, low power</td></tr>
+                <tr><td>Microprocessor</td><td>Central processing unit</td><td>ARM Cortex-A, x86, MIPS</td><td>Higher performance, external memory</td></tr>
+                <tr><td>Memory</td><td>Store program and data</td><td>Flash, RAM, ROM, EEPROM</td><td>Volatile vs non-volatile, speed vs capacity</td></tr>
+                <tr><td>Peripherals</td><td>Interface with external world</td><td>UART, SPI, I2C, GPIO, ADC</td><td>Communication, sensing, control</td></tr>
+                <tr><td>Sensors</td><td>Measure physical quantities</td><td>Temperature, pressure, accelerometer</td><td>Analog to digital conversion</td></tr>
+                <tr><td>Actuators</td><td>Control physical systems</td><td>Motors, relays, displays</td><td>Digital to analog conversion</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Embedded Programming Concepts</h2>
+            <table>
+                <tr><th>Concept</th><th>Description</th><th>Implementation</th><th>Considerations</th></tr>
+                <tr><td>Interrupts</td><td>Asynchronous event handling</td><td>ISR (Interrupt Service Routine)</td><td>Low latency, priority levels</td></tr>
+                <tr><td>Timer/Counter</td><td>Time-based operations</td><td>Periodic tasks, PWM generation</td><td>Accurate timing, overflow handling</td></tr>
+                <tr><td>Direct Memory Access (DMA)</td><td>Transfer data without CPU intervention</td><td>High-speed data transfers</td><td>Efficiency, conflict resolution</td></tr>
+                <tr><td>Memory Mapping</td><td>Assign addresses to hardware registers</td><td>Register access, I/O operations</td><td>Address space management</td></tr>
+                <tr><td>Boot Process</td><td>Initialize system at startup</td><td>Bootloader, initialization code</td><td>Hardware initialization, self-test</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Communication Protocols</h2>
+            <table>
+                <tr><th>Protocol</th><th>Type</th><th>Characteristics</th><th>Applications</th></tr>
+                <tr><td>UART</td><td>Serial, asynchronous</td><td>Start/stop bits, configurable baud rate</td><td>Debugging, device-to-device communication</td></tr>
+                <tr><td>SPI</td><td>Serial, synchronous, master-slave</td><td>Full duplex, multiple slaves</td><td>Sensor communication, memory access</td></tr>
+                <tr><td>I2C</td><td>Serial, synchronous, multi-master</td><td>Two-wire, addressing, collision detection</td><td>Sensor networks, memory chips</td></tr>
+                <tr><td>CAN</td><td>Serial, multi-master</td><td>Error detection, priority-based, bus topology</td><td>Automotive, industrial control</td></tr>
+                <tr><td>USB</td><td>Serial, host-device</td><td>Hot-plug, power delivery, multiple speeds</td><td>Peripherals, data transfer</td></tr>
+                <tr><td>Ethernet</td><td>Network, packet-based</td><td>IP addressing, TCP/UDP protocols</td><td>Networked embedded systems</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Real-Time Operating Systems (RTOS)</h2>
+            <table>
+                <tr><th>Concept</th><th>Description</th><th>Implementation</th><th>Benefits</th></tr>
+                <tr><td>Task Scheduling</td><td>Manage execution of multiple tasks</td><td>Round-robin, priority-based, deadline-driven</td><td>Efficient resource utilization</td></tr>
+                <tr><td>Task Synchronization</td><td>Coordinate access to shared resources</td><td>Semaphores, mutexes, message queues</td><td>Prevent race conditions</td></tr>
+                <tr><td>Interrupt Handling</td><td>Process hardware events</td><td>Fast response, context switching</td><td>Real-time response to events</td></tr>
+                <tr><td>Memory Management</td><td>Allocate and manage memory</td><td>Static, dynamic, memory pools</td><td>Predictable allocation</td></tr>
+                <tr><td>Power Management</td><td>Optimize energy consumption</td><td>Sleep modes, dynamic voltage scaling</td><td>Extend battery life</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Development Tools & Techniques</h2>
+            <table>
+                <tr><th>Tool/Technique</th><th>Purpose</th><th>Examples</th><th>Benefits</th></tr>
+                <tr><td>Cross-Compiler</td><td>Compile code for different target architecture</td><td>gcc for ARM, IAR, Keil</td><td>Develop on host, run on target</td></tr>
+                <tr><td>Debugger</td><td>Debug target system</td><td>JTAG, SWD, in-circuit emulator</td><td>Real-time debugging, breakpoints</td></tr>
+                <tr><td>Simulator</td><td>Simulate target hardware</td><td>QEMU, Proteus, ModelSim</td><td>Early testing, no hardware required</td></tr>
+                <tr><td>Hardware Description Language</td><td>Design digital circuits</td><td>VHDL, Verilog, SystemC</td><td>Hardware-software co-design</td></tr>
+                <tr><td>Development Boards</td><td>Prototype and test designs</td><td>Arduino, Raspberry Pi, STM32 Nucleo</td><td>Rapid prototyping, evaluation</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Design Considerations</h2>
+            <table>
+                <tr><th>Aspect</th><th>Considerations</th><th>Techniques</th><th>Trade-offs</th></tr>
+                <tr><td>Power Consumption</td><td>Battery life, thermal management</td><td>Sleep modes, clock gating, voltage scaling</td><td>Performance vs power</td></tr>
+                <tr><td>Performance</td><td>Response time, throughput</td><td>Optimization, parallel processing, caching</td><td>Cost vs performance</td></tr>
+                <tr><td>Cost</td><td>Component cost, development cost</td><td>Component selection, design optimization</td><td>Features vs cost</td></tr>
+                <tr><td>Reliability</td><td>System uptime, fault tolerance</td><td>Error detection, redundancy, testing</td><td>Complexity vs reliability</td></tr>
+                <tr><td>Security</td><td>Data protection, authentication</td><td>Encryption, secure boot, access control</td><td>Security vs performance</td></tr>
+                <tr><td>Maintainability</td><td>Software updates, debugging</td><td>Modular design, logging, remote access</td><td>Security vs maintainability</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

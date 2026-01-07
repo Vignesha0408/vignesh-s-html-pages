@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Systems Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #e67e22;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #e67e22;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #d35400;
+            margin-top: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #e67e22;
+            color: white;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Database Systems Cheat Sheet</h1>
+        
+        <div class="section">
+            <h2>Database Models</h2>
+            <table>
+                <tr><th>Model</th><th>Description</th><th>Advantages</th><th>Disadvantages</th><th>Use Cases</th></tr>
+                <tr><td>Relational</td><td>Data stored in tables with rows and columns</td><td>ACID properties, structured, mature tools</td><td>Complex joins, rigid schema</td><td>Financial systems, ERP, CRM</td></tr>
+                <tr><td>Hierarchical</td><td>Data organized in tree structure</td><td>Fast retrieval, simple structure</td><td>Difficult to modify, data duplication</td><td>File systems, XML</td></tr>
+                <tr><td>Network</td><td>Data organized in graph structure</td><td>Efficient for complex relationships</td><td>Complex to manage, difficult to maintain</td><td>Legacy systems</td></tr>
+                <tr><td>Object-Oriented</td><td>Data stored as objects</td><td>Matches OOP concepts, complex data types</td><td>Complex queries, limited tools</td><td>Complex applications, CAD systems</td></tr>
+                <tr><td>Document</td><td>Data stored as documents (JSON, XML)</td><td>Flexible schema, horizontal scaling</td><td>Complex transactions, limited joins</td><td>Content management, catalogs</td></tr>
+                <tr><td>Key-Value</td><td>Data stored as key-value pairs</td><td>Fast access, simple model</td><td>Complex queries difficult, no relationships</td><td>Caching, sessions, preferences</td></tr>
+                <tr><td>Graph</td><td>Data stored as nodes and edges</td><td>Excellent for relationship queries</td><td>Complex to manage, limited tools</td><td>Social networks, recommendation engines</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>SQL Commands</h2>
+            <table>
+                <tr><th>Category</th><th>Command</th><th>Purpose</th><th>Example</th></tr>
+                <tr><td>DDL</td><td>CREATE</td><td>Create database objects</td><td><span class="code">CREATE TABLE users (id INT, name VARCHAR(50));</span></td></tr>
+                <tr><td>DDL</td><td>ALTER</td><td>Modify database objects</td><td><span class="code">ALTER TABLE users ADD COLUMN email VARCHAR(100);</span></td></tr>
+                <tr><td>DDL</td><td>DROP</td><td>Delete database objects</td><td><span class="code">DROP TABLE users;</span></td></tr>
+                <tr><td>DDL</td><td>TRUNCATE</td><td>Delete all data from table</td><td><span class="code">TRUNCATE TABLE users;</span></td></tr>
+                <tr><td>DML</td><td>SELECT</td><td>Retrieve data</td><td><span class="code">SELECT * FROM users WHERE age > 25;</span></td></tr>
+                <tr><td>DML</td><td>INSERT</td><td>Add new records</td><td><span class="code">INSERT INTO users (name, age) VALUES ('John', 30);</span></td></tr>
+                <tr><td>DML</td><td>UPDATE</td><td>Modify existing records</td><td><span class="code">UPDATE users SET age = 31 WHERE name = 'John';</span></td></tr>
+                <tr><td>DML</td><td>DELETE</td><td>Remove records</td><td><span class="code">DELETE FROM users WHERE age < 18;</span></td></tr>
+                <tr><td>DCL</td><td>GRANT</td><td>Give permissions</td><td><span class="code">GRANT SELECT ON users TO user1;</span></td></tr>
+                <tr><td>DCL</td><td>REVOKE</td><td>Remove permissions</td><td><span class="code">REVOKE SELECT ON users FROM user1;</span></td></tr>
+                <tr><td>TCL</td><td>COMMIT</td><td>Save transaction</td><td><span class="code">COMMIT;</span></td></tr>
+                <tr><td>TCL</td><td>ROLLBACK</td><td>Undo transaction</td><td><span class="code">ROLLBACK;</span></td></tr>
+                <tr><td>TCL</td><td>SAVEPOINT</td><td>Set savepoint in transaction</td><td><span class="code">SAVEPOINT sp1;</span></td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Normalization Forms</h2>
+            <table>
+                <tr><th>Form</th><th>Definition</th><th>Requirements</th><th>Problems Solved</th></tr>
+                <tr><td>1NF (First Normal Form)</td><td>Eliminate repeating groups</td><td>Each column contains atomic values</td><td>Repeating groups, multi-valued attributes</td></tr>
+                <tr><td>2NF (Second Normal Form)</td><td>1NF + Eliminate partial dependencies</td><td>All non-key attributes fully dependent on primary key</td><td>Partial dependencies on composite key</td></tr>
+                <tr><td>3NF (Third Normal Form)</td><td>2NF + Eliminate transitive dependencies</td><td>No non-key attribute depends on another non-key attribute</td><td>Transitive dependencies</td></tr>
+                <tr><td>BCNF (Boyce-Codd NF)</td><td>Advanced 3NF</td><td>Every determinant is a candidate key</td><td>Dependencies not captured by 3NF</td></tr>
+                <tr><td>4NF (Fourth Normal Form)</td><td>BCNF + Eliminate multi-valued dependencies</td><td>No multi-valued dependencies</td><td>Multi-valued dependencies</td></tr>
+                <tr><td>5NF (Fifth Normal Form)</td><td>4NF + Eliminate join dependencies</td><td>Decomposition based on join dependencies</td><td>Join dependencies</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Database Constraints</h2>
+            <table>
+                <tr><th>Constraint</th><th>Description</th><th>Example</th><th>Effect</th></tr>
+                <tr><td>PRIMARY KEY</td><td>Uniquely identifies each record</td><td><span class="code">id INT PRIMARY KEY</span></td><td>Unique, NOT NULL, single per table</td></tr>
+                <tr><td>FOREIGN KEY</td><td>References primary key in another table</td><td><span class="code">user_id INT REFERENCES users(id)</span></td><td>Maintains referential integrity</td></tr>
+                <tr><td>UNIQUE</td><td>Ensures all values in column are unique</td><td><span class="code">email VARCHAR(100) UNIQUE</span></td><td>Allows NULL, multiple per table</td></tr>
+                <tr><td>NOT NULL</td><td>Prevents NULL values</td><td><span class="code">name VARCHAR(50) NOT NULL</span></td><td>Column must have value</td></tr>
+                <tr><td>CHECK</td><td>Ensures values meet condition</td><td><span class="code">age INT CHECK (age >= 0)</span></td><td>Validates value against condition</td></tr>
+                <tr><td>DEFAULT</td><td>Sets default value</td><td><span class="code">status VARCHAR(20) DEFAULT 'active'</span></td><td>Value when none provided</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>SQL Joins</h2>
+            <table>
+                <tr><th>Join Type</th><th>Description</th><th>Syntax</th><th>Result</th></tr>
+                <tr><td>INNER JOIN</td><td>Returns records with matching values in both tables</td><td><span class="code">SELECT * FROM t1 INNER JOIN t2 ON t1.id = t2.id;</span></td><td>Only matching records</td></tr>
+                <tr><td>LEFT JOIN</td><td>Returns all records from left table, matched from right</td><td><span class="code">SELECT * FROM t1 LEFT JOIN t2 ON t1.id = t2.id;</span></td><td>All left records, matched right</td></tr>
+                <td>RIGHT JOIN</td><td>Returns all records from right table, matched from left</td><td><span class="code">SELECT * FROM t1 RIGHT JOIN t2 ON t1.id = t2.id;</span></td><td>Matched left, all right records</td></tr>
+                <tr><td>FULL OUTER JOIN</td><td>Returns all records when there's a match in either table</td><td><span class="code">SELECT * FROM t1 FULL OUTER JOIN t2 ON t1.id = t2.id;</span></td><td>All records from both tables</td></tr>
+                <tr><td>CROSS JOIN</td><td>Returns Cartesian product of both tables</td><td><span class="code">SELECT * FROM t1 CROSS JOIN t2;</span></td><td>All possible combinations</td></tr>
+                <tr><td>SELF JOIN</td><td>Join a table with itself</td><td><span class="code">SELECT * FROM t1 a, t1 b WHERE a.id = b.parent_id;</span></td><td>Relationship within same table</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>ACID Properties</h2>
+            <table>
+                <tr><th>Property</th><th>Description</th><th>Implementation</th><th>Example</th></tr>
+                <tr><td>Atomicity</td><td>All operations in transaction succeed or fail together</td><td>Transaction logs, rollback mechanisms</td><td>Transfer money: debit + credit as single transaction</td></tr>
+                <tr><td>Consistency</td><td>Database remains in valid state before and after transaction</td><td>Constraints, triggers, rules</td><td>Balance can't go negative after withdrawal</td></tr>
+                <tr><td>Isolation</td><td>Concurrent transactions don't interfere with each other</td><td>Locking, MVCC</td><td>Two users updating same record simultaneously</td></tr>
+                <tr><td>Durability</td><td>Committed transactions remain permanent</td><td>Write-ahead logging, backup</td><td>Transaction survives system crash</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Database Indexes</h2>
+            <table>
+                <tr><th>Index Type</th><th>Description</th><th>Advantages</th><th>Disadvantages</th><th>Best Use Case</th></tr>
+                <tr><td>Clustered</td><td>Determines physical order of data in table</td><td>Fast range queries, sorting</td><td>Only one per table, slower updates</td><td>Primary key, frequently queried columns</td></tr>
+                <tr><td>Non-Clustered</td><td>Separate structure from data</td><td>Multiple per table, faster inserts</td><td>Additional storage, slower updates</td><td>Secondary search columns</td></tr>
+                <tr><td>Unique</td><td>Ensures no duplicate values</td><td>Enforces uniqueness, fast lookups</td><td>Slower updates</td><td>Columns requiring unique values</td></tr>
+                <tr><td>Composite</td><td>Index on multiple columns</td><td>Multi-column queries, sorting</td><td>More storage, complex maintenance</td><td>Queries with multiple WHERE conditions</td></tr>
+                <tr><td>Hash</td><td>Uses hash function for equality lookups</td><td>Fast equality queries</td><td>No range queries, hash collisions</td><td>Exact match lookups</td></tr>
+                <tr><td>Bitmap</td><td>Bitmap for each distinct value</td><td>Efficient for low-cardinality columns</td><td>Not good for high-cardinality</td><td>Boolean flags, status columns</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Transaction Isolation Levels</h2>
+            <table>
+                <tr><th>Level</th><th>Phenomena Prevented</th><th>Phenomena Allowed</th><th>Performance</th><th>Use Case</th></tr>
+                <tr><td>READ UNCOMMITTED</td><td>None</td><td>Dirty Read, Non-repeatable Read, Phantom Read</td><td>Fastest</td><td>Analytics, reporting</td></tr>
+                <tr><td>READ COMMITTED</td><td>Dirty Read</td><td>Non-repeatable Read, Phantom Read</td><td>Good performance</td><td>Most databases default</td></tr>
+                <tr><td>REPEATABLE READ</td><td>Dirty Read, Non-repeatable Read</td><td>Phantom Read</td><td>Moderate</td><td>Consistent reads needed</td></tr>
+                <tr><td>SERIALIZABLE</td><td>All anomalies</td><td>None</td><td>Slowest</td><td>Full ACID compliance</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Database Design Process</h2>
+            <table>
+                <tr><th>Phase</th><th>Activities</th><th>Deliverables</th><th>Key Considerations</th></tr>
+                <tr><td>Requirements Analysis</td><td>Gather user requirements, business rules</td><td>Requirements document</td><td>What data is needed?</td></tr>
+                <tr><td>Conceptual Design</td><td>High-level design, ER modeling</td><td>ER diagrams, conceptual schema</td><td>Entities, relationships, constraints</td></tr>
+                <tr><td>Logical Design</td><td>Convert to relational schema</td><td>Normalized tables, relationships</td><td>Normalization, integrity constraints</td></tr>
+                <tr><td>Physical Design</td><td>Implementation details</td><td>Indexes, storage parameters</td><td>Performance, storage, access methods</td></tr>
+                <tr><td>Implementation</td><td>Create database, populate data</td><td>Actual database</td><td>Efficiency, security, backup</td></tr>
+                <tr><td>Maintenance</td><td>Monitor, tune, backup</td><td>Optimized database</td><td>Performance, security, availability</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Query Optimization Techniques</h2>
+            <table>
+                <tr><th>Technique</th><th>Description</th><th>Benefit</th><th>Example</th></tr>
+                <tr><td>Indexing</td><td>Create indexes on frequently queried columns</td><td>Faster data retrieval</td><td>Create index on WHERE clause columns</td></tr>
+                <tr><td>Query Rewriting</td><td>Transform query to more efficient form</td><td>Reduced execution time</td><td>Replace subqueries with JOINs</td></tr>
+                <tr><td>Join Reordering</td><td>Optimize order of table joins</td><td>Reduced intermediate results</td><td>Join smallest tables first</td></tr>
+                <tr><td>Partitioning</td><td>Divide large tables into smaller pieces</td><td>Parallel processing, faster queries</td><td>Partition by date or region</td></tr>
+                <tr><td>Denormalization</td><td>Add redundancy to reduce joins</td><td>Faster read operations</td><td>Store calculated values</td></tr>
+                <tr><td>Query Caching</td><td>Store results of expensive queries</td><td>Reduced execution for repeated queries</td><td>Cache report results</td></tr>
+                <tr><td>Statistics Maintenance</td><td>Keep table statistics up to date</td><td>Better query plan generation</td><td>Update statistics regularly</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

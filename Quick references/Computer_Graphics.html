@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Graphics Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Computer Graphics Cheat Sheet</h1>
+        
+        <div class="section">
+            <h2>Graphics Pipeline Stages</h2>
+            <table>
+                <tr><th>Stage</th><th>Description</th><th>Input</th><th>Output</th><th>Key Operations</th></tr>
+                <tr><td>Vertex Processing</td><td>Process individual vertices</td><td>Vertex data</td><td>Transformed vertices</td><td>Model-view, projection transforms</td></tr>
+                <tr><td>Primitive Assembly</td><td>Group vertices into primitives</td><td>Vertices</td><td>Triangles, lines, points</td><td>Primitive formation</td></tr>
+                <tr><td>Rasterization</td><td>Convert primitives to fragments</td><td>Primitives</td><td>Fragments</td><td>Triangle setup, scan conversion</td></tr>
+                <tr><td>Fragment Processing</td><td>Calculate pixel colors</td><td>Fragments</td><td>Pixel colors</td><td>Shading, texturing, blending</td></tr>
+                <tr><td>Output Merging</td><td>Combine fragments with frame buffer</td><td>Fragment colors</td><td>Final image</td><td>Depth testing, blending</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Coordinate Systems</h2>
+            <table>
+                <tr><th>System</th><th>Description</th><th>Range</th><th>Usage</th><th>Transformations</th></tr>
+                <tr><td>Object/Model Space</td><td>Coordinates relative to object</td><td>Arbitrary</td><td>Model definition</td><td>Model matrix</td></tr>
+                <tr><td>World Space</td><td>Coordinates in global scene</td><td>Arbitrary</td><td>Scene composition</td><td>World matrix</td></tr>
+                <tr><td>View/Eye Space</td><td>Coordinates relative to camera</td><td>Arbitrary</td><td>Camera positioning</td><td>View matrix</td></tr>
+                <tr><td>Clip Space</td><td>After projection transformation</td><td>[-w, w] for each axis</td><td>Clipping operations</td><td>Projection matrix</td></tr>
+                <tr><td>Normalized Device Coordinates</td><td>After perspective division</td><td>[-1, 1] for each axis</td><td>Viewport mapping</td><td>Division by w</td></tr>
+                <tr><td>Screen/Window Space</td><td>Actual pixel coordinates</td><td>Pixel dimensions</td><td>Final rendering</td><td>Viewport transform</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Transformation Matrices</h2>
+            <table>
+                <tr><th>Transformation</th><th>Matrix</th><th>Parameters</th><th>Effect</th><th>Usage</th></tr>
+                <tr><td>Translation</td><td>4x4 matrix with translation vector</td><td>Tx, Ty, Tz</td><td>Move object in space</td><td>Positioning objects</td></tr>
+                <tr><td>Rotation</td><td>4x4 rotation matrix</td><td>Angle, axis</td><td>Rotate object around axis</td><td>Orientation changes</td></tr>
+                <tr><td>Scaling</td><td>4x4 diagonal matrix</td><td>Sx, Sy, Sz</td><td>Resize object</td><td>Size adjustments</td></tr>
+                <tr><td>Projection</td><td>Perspective/Orthographic matrix</td><td>FOV, aspect, near/far planes</td><td>3D to 2D projection</td><td>Camera view</td></tr>
+                <tr><td>View</td><td>Camera transformation matrix</td><td>Eye, target, up vectors</td><td>Camera positioning</td><td>Scene viewing</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Shading Models</h2>
+            <table>
+                <tr><th>Model</th><th>Description</th><th>Components</th><th>Complexity</th><th>Visual Quality</th></tr>
+                <tr><td>Ambient Only</td><td>Constant illumination</td><td>Ambient term only</td><td>Low</td><td>Flat, unrealistic</td></tr>
+                <tr><td>Flat Shading</td><td>Constant color per face</td><td>One normal per face</td><td>Low</td><td>Faceted appearance</td></tr>
+                <tr><td>Gouraud Shading</td><td>Interpolate vertex colors</td><td>Vertex colors, per-vertex lighting</td><td>Medium</td><td>Smooth but specular issues</td></tr>
+                <tr><td>Phong Shading</td><td>Interpolate normals, compute per pixel</td><td>Surface normals, per-pixel lighting</td><td>High</td><td>Realistic, smooth</td></tr>
+                <tr><td>Blinn-Phong</td><td>Modified Phong with halfway vector</td><td>Halfway vector, per-pixel lighting</td><td>High</td><td>Efficient specular highlights</td></tr>
+                <tr><td>Physically Based Rendering (PBR)</td><td>Realistic light-surface interaction</td><td>Roughness, metallic, normal maps</td><td>Very High</td><td>Photorealistic</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Texture Mapping</h2>
+            <table>
+                <tr><th>Technique</th><th>Description</th><th>Usage</th><th>Benefits</th><th>Challenges</th></tr>
+                <tr><td>Basic Texturing</td><td>Apply 2D image to surface</td><td>Surface detail, color variation</td><td>Realistic appearance</td><td>UV mapping, filtering</td></tr>
+                <tr><td>Mipmapping</td><td>Multiple resolution levels</td><td>Reduce aliasing, improve performance</td><td>Artifact reduction</td><td>Memory overhead</td></tr>
+                <tr><td>Bump Mapping</td><td>Simulate surface detail with normals</td><td>Surface detail without geometry</td><td>Visual complexity</td><td>Proper normal calculations</td></tr>
+                <tr><td>Normal Mapping</td><td>Store surface normals in texture</td><td>Enhanced surface detail</td><td>Realistic lighting</td><td>Tangent space calculations</td></tr>
+                <tr><td>Environment Mapping</td><td>Reflect environment on surfaces</td><td>Reflections, refractions</td><td>Realistic reflections</td><td>Spherical/cubic mapping</td></tr>
+                <tr><td>Shadow Mapping</td><td>Render scene from light perspective</td><td>Real-time shadows</td><td>Dynamic shadows</td><td>Resolution, filtering</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Graphics APIs & Frameworks</h2>
+            <table>
+                <tr><th>API/Framework</th><th>Type</th><th>Platform</th><th>Abstraction Level</th><th>Use Cases</th></tr>
+                <tr><td>OpenGL</td><td>Graphics API</td><td>Cross-platform</td><td>Low-level</td><td>3D applications, games, visualization</td></tr>
+                <tr><td>DirectX</td><td>Graphics API</td><td>Windows</td><td>Low-level</td><td>Windows games, applications</td></tr>
+                <tr><td>Vulkan</td><td>Graphics API</td><td>Cross-platform</td><td>Low-level, explicit</td><td>High-performance applications</td></tr>
+                <tr><td>WebGL</td><td>Graphics API</td><td>Web browsers</td><td>Medium-level</td><td>Web-based 3D graphics</td></tr>
+                <tr><td>Unity</td><td>Game Engine</td><td>Cross-platform</td><td>High-level</td><td>Game development, VR/AR</td></tr>
+                <tr><td>Unreal Engine</td><td>Game Engine</td><td>Cross-platform</td><td>High-level</td><td>High-end games, visualization</td></tr>
+                <tr><td>Three.js</td><td>JavaScript Library</td><td>Web browsers</td><td>High-level</td><td>Web-based 3D graphics</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Rendering Techniques</h2>
+            <table>
+                <tr><th>Technique</th><th>Description</th><th>Performance</th><th>Quality</th><th>Applications</th></tr>
+                <tr><td>Rasterization</td><td>Convert geometric primitives to pixels</td><td>Fast</td><td>Good</td><td>Real-time applications, games</td></tr>
+                <tr><td>Ray Tracing</td><td>Trace light paths through pixels</td><td>Slow</td><td>Excellent</td><td>Photorealistic rendering</td></tr>
+                <tr><td>Ray Casting</td><td>Cast rays from viewpoint</td><td>Moderate</td><td>Good</td><td>Simple 3D, volume rendering</td></tr>
+                <tr><td>Radiosity</td><td>Global illumination method</td><td>Slow</td><td>Excellent</td><td>Architectural visualization</td></tr>
+                <tr><td>Global Illumination</td><td>Simulate light bouncing</td><td>Slow</td><td>Excellent</td><td>Photorealistic scenes</td></tr>
+                <tr><td>Forward Rendering</td><td>Process lights per object</td><td>Fast</td><td>Good</td><td>Many objects, few lights</td></tr>
+                <tr><td>Deferred Rendering</td><td>Process lights per pixel</td><td>Moderate</td><td>Good</td><td>Few objects, many lights</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

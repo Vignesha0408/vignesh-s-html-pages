@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distributed Systems Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Distributed Systems Cheat Sheet</h1>
+        
+        <div class="section">
+            <h2>System Characteristics</h2>
+            <table>
+                <tr><th>Characteristic</th><th>Description</th><th>Challenges</th><th>Solutions</th></tr>
+                <tr><td>Concurrency</td><td>Multiple nodes operating simultaneously</td><td>Coordination, synchronization</td><td>Locks, semaphores, consensus protocols</td></tr>
+                <tr><td>No Global Clock</td><td>Each node has its own clock</td><td>Ordering events, causality</td><td>Logical clocks, vector clocks</td></tr>
+                <tr><td>Independent Failures</td><td>Components can fail independently</td><td>System reliability, fault tolerance</td><td>Replication, redundancy, error recovery</td></tr>
+                <tr><td>Network Partitions</td><td>Communication failures between nodes</td><td>Data consistency, availability</td><td>Consensus protocols, conflict resolution</td></tr>
+                <tr><td>Heterogeneity</td><td>Different hardware, OS, and programming languages</td><td>Interoperability, communication</td><td>Standard protocols, middleware</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Consistency Models</h2>
+            <table>
+                <tr><th>Model</th><th>Description</th><th>Characteristics</th><th>Trade-offs</th></tr>
+                <tr><td>Strong Consistency</td><td>All nodes see same data at same time</td><td>Linearizability, sequential consistency</td><td>High consistency, low availability</td></tr>
+                <tr><td>Eventual Consistency</td><td>All nodes eventually converge to same state</td><td>Availability over consistency</td><td>High availability, potential inconsistency</td></tr>
+                <tr><td>Causal Consistency</td><td>Causally related operations appear in order</td><td>Maintains causality, relaxes global order</td><td>Balanced approach</td></tr>
+                <tr><td>Weak Consistency</td><td>No guarantees about data consistency</td><td>Best effort, fast responses</td><td>High performance, no consistency</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Consensus Algorithms</h2>
+            <table>
+                <tr><th>Algorithm</th><th>Approach</th><th>Strengths</th><th>Weaknesses</th><th>Use Cases</th></tr>
+                <tr><td>Raft</td><td>Leader-based consensus</td><td>Simple, understandable, efficient</td><td>Single point of failure</td><td>Etcd, Consul, CockroachDB</td></tr>
+                <tr><td>Paxos</td><td>Message passing with quorums</td><td>Proven, fault-tolerant</td><td>Complex, hard to implement</td><td>Google Chubby, Spanner</td></tr>
+                <tr><td>Two-Phase Commit</td><td>Prepare and commit phases</td><td>Ensures atomicity</td><td>Blocking, single point of failure</td><td>Distributed databases</td></tr>
+                <tr><td>Three-Phase Commit</td><td>Non-blocking extension of 2PC</td><td>Reduces blocking issues</td><td>Complex, assumes reliable network</td><td>Distributed transactions</td></tr>
+                <tr><td>Byzantine Fault Tolerance</td><td>Handles malicious nodes</td><td>Secure against arbitrary failures</td><td>High resource overhead</td><td>Blockchain, security-critical systems</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>System Architectures</h2>
+            <table>
+                <tr><th>Architecture</th><th>Description</th><th>Advantages</th><th>Disadvantages</th><th>Examples</th></tr>
+                <tr><td>Client-Server</td><td>Centralized model with clients requesting services</td><td>Simple, centralized control</td><td>Single point of failure, scalability</td><td>Web applications, databases</td></tr>
+                <tr><td>Peer-to-Peer</td><td>Decentralized model with equal nodes</td><td>Scalable, resilient</td><td>Complex management, security</td><td>BitTorrent, blockchain</td></tr>
+                <tr><td>Microservices</td><td>Decomposed into small, independent services</td><td>Scalability, technology diversity</td><td>Complexity, network overhead</td><td>Netflix, Amazon, Uber</td></tr>
+                <tr><td>Master-Slave</td><td>Master coordinates work among slaves</td><td>Load distribution, fault tolerance</td><td>Master as bottleneck</td><td>Hadoop, MapReduce</td></tr>
+                <tr><td>Event-Driven</td><td>Components communicate through events</td><td>Loose coupling, scalability</td><td>Complex debugging, event ordering</td><td>Message queues, event sourcing</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Distributed Data Management</h2>
+            <table>
+                <tr><th>Concept</th><th>Description</th><th>Techniques</th><th>Trade-offs</th></tr>
+                <tr><td>Partitioning</td><td>Distributing data across multiple nodes</td><td>Range, hash, consistent hashing</td><td>Scalability vs complexity</td></tr>
+                <tr><td>Replication</td><td>Duplicating data across nodes</td><td>Synchronous, asynchronous, semi-synchronous</td><td>Availability vs consistency</td></tr>
+                <tr><td>Sharding</td><td>Horizontal partitioning of database</td><td>Key-based, directory-based, consistent hashing</td><td>Scalability vs query complexity</td></tr>
+                <tr><td>Cache Coherence</td><td>Keeping cached data consistent</td><td>Write-through, write-back, invalidation</td><td>Performance vs consistency</td></tr>
+                <tr><td>Data Locality</td><td>Processing data near where it's stored</td><td>MapReduce, Hadoop, edge computing</td><td>Network efficiency vs load balancing</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Distributed Computing Patterns</h2>
+            <table>
+                <tr><th>Pattern</th><th>Description</th><th>Use Case</th><th>Benefits</th></tr>
+                <tr><td>MapReduce</td><td>Process large datasets in parallel</td><td>Big data processing, analytics</td><td>Scalability, fault tolerance</td></tr>
+                <tr><td>Actor Model</td><td>Concurrency through message passing</td><td>Concurrent, distributed systems</td><td>Isolation, concurrency</td></tr>
+                <tr><td>Service Discovery</td><td>Dynamic service location</td><td>Microservices, cloud systems</td><td>Dynamic scaling, resilience</td></tr>
+                <tr><td>Circuit Breaker</td><td>Prevent cascading failures</td><td>Microservices, API calls</td><td>Fault isolation, resilience</td></tr>
+                <tr><td>Load Balancing</td><td>Distribute requests across nodes</td><td>High-traffic applications</td><td>Scalability, availability</td></tr>
+                <tr><td>Leader Election</td><td>Select coordinator among nodes</td><td>Consensus, coordination</td><td>Coordination, fault tolerance</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>CAP Theorem</h2>
+            <table>
+                <tr><th>Property</th><th>Description</th><th>Systems that prioritize it</th><th>Trade-offs</th></tr>
+                <tr><td>Consistency</td><td>All nodes see same data at same time</td><td>RDBMS, Spanner</td><td>May sacrifice availability</td></tr>
+                <tr><td>Availability</td><td>System remains operational despite failures</td><td>Cassandra, DynamoDB</td><td>May sacrifice consistency</td></tr>
+                <tr><td>Partition Tolerance</td><td>System continues despite network failures</td><td>All distributed systems</td><td>Must choose between C or A</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

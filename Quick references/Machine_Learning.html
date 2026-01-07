@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Learning Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Machine Learning Cheat Sheet</h1>
+        
+        <div class="section">
+            <h2>Machine Learning Types</h2>
+            <table>
+                <tr><th>Type</th><th>Description</th><th>Use Case</th><th>Examples</th></tr>
+                <tr><td>Supervised</td><td>Learning from labeled training data</td><td>Classification, regression</td><td>Image recognition, spam detection</td></tr>
+                <tr><td>Unsupervised</td><td>Learning from unlabeled data</td><td>Clustering, dimensionality reduction</td><td>Customer segmentation, anomaly detection</td></tr>
+                <tr><td>Reinforcement</td><td>Learning through interaction with environment</td><td>Game playing, robotics</td><td>Game AI, autonomous vehicles</td></tr>
+                <tr><td>Semi-Supervised</td><td>Combination of labeled and unlabeled data</td><td>When labeled data is scarce</td><td>Image classification with few labels</td></tr>
+                <tr><td>Self-Supervised</td><td>Learning from data itself without human labels</td><td>Pre-training for NLP, vision</td><td>Language models, image representations</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Supervised Learning Algorithms</h2>
+            <table>
+                <tr><th>Algorithm</th><th>Type</th><th>Best For</th><th>Advantages</th><th>Disadvantages</th></tr>
+                <tr><td>Linear Regression</td><td>Regression</td><td>Continuous output prediction</td><td>Simple, interpretable, fast</td><td>Assumes linear relationship</td></tr>
+                <tr><td>Logistic Regression</td><td>Classification</td><td>Binary classification</td><td>Simple, provides probabilities</td><td>Assumes linear decision boundary</td></tr>
+                <tr><td>Decision Trees</td><td>Classification/Regression</td><td>Interpretable decisions</td><td>Easy to understand, handles non-linear</td><td>Prone to overfitting</td></tr>
+                <tr><td>Random Forest</td><td>Classification/Regression</td><td>High accuracy</td><td>Reduces overfitting, handles non-linear</td><td>Less interpretable</td></tr>
+                <tr><td>SVM</td><td>Classification/Regression</td><td>High-dimensional data</td><td>Effective in high dimensions</td><td>Requires feature scaling</td></tr>
+                <tr><td>K-Nearest Neighbors</td><td>Classification/Regression</td><td>Local patterns</td><td>Simple, no training phase</td><td>Slow prediction, sensitive to features</td></tr>
+                <tr><td>Naive Bayes</td><td>Classification</td><td>Text classification</td><td>Fast, works with small datasets</td><td>Assumes feature independence</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Unsupervised Learning Algorithms</h2>
+            <table>
+                <tr><th>Algorithm</th><th>Type</th><th>Best For</th><th>Advantages</th><th>Disadvantages</th></tr>
+                <tr><td>K-Means</td><td>Clustering</td><td>Grouping similar data points</td><td>Simple, efficient</td><td>Need to specify k, sensitive to initialization</td></tr>
+                <tr><td>Hierarchical Clustering</td><td>Clustering</td><td>Creating hierarchy of clusters</td><td>Creates tree structure, no need to specify k</td><td>Computationally expensive</td></tr>
+                <tr><td>DBSCAN</td><td>Clustering</td><td>Clusters of varying shapes</td><td>Finds arbitrary shapes, handles noise</td><td>Sensitive to parameters</td></tr>
+                <tr><td>Principal Component Analysis (PCA)</td><td>Dimensionality Reduction</td><td>Feature reduction, visualization</td><td>Reduces noise, visualization</td><td>Loss of interpretability</td></tr>
+                <tr><td>Independent Component Analysis (ICA)</td><td>Dimensionality Reduction</td><td>Feature extraction</td><td>Finds independent components</td><td>Assumes independence</td></tr>
+                <tr><td>t-SNE</td><td>Dimensionality Reduction</td><td>Visualization of high-dimensional data</td><td>Good for visualization</td><td>Computationally expensive</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Model Evaluation Metrics</h2>
+            <table>
+                <tr><th>Task</th><th>Metric</th><th>Formula</th><th>Best For</th><th>Range</th></tr>
+                <tr><td>Classification</td><td>Accuracy</td><td>TP+TN / (TP+TN+FP+FN)</td><td>Balanced datasets</td><td>[0,1]</td></tr>
+                <tr><td>Classification</td><td>Precision</td><td>TP / (TP+FP)</td><td>Minimizing false positives</td><td>[0,1]</td></tr>
+                <tr><td>Classification</td><td>Recall/Sensitivity</td><td>TP / (TP+FN)</td><td>Minimizing false negatives</td><td>[0,1]</td></tr>
+                <tr><td>Classification</td><td>F1-Score</td><td>2×(Precision×Recall) / (Precision+Recall)</td><td>Imbalanced datasets</td><td>[0,1]</td></tr>
+                <tr><td>Classification</td><td>AUC-ROC</td><td>Area under ROC curve</td><td>Threshold-independent evaluation</td><td>[0,1]</td></tr>
+                <tr><td>Regression</td><td>Mean Squared Error (MSE)</td><td>1/n Σ(yi - ŷi)²</td><td>Penalizing large errors</td><td>[0,∞)</td></tr>
+                <tr><td>Regression</td><td>Mean Absolute Error (MAE)</td><td>1/n Σ|yi - ŷi|</td><td>Robust to outliers</td><td>[0,∞)</td></tr>
+                <tr><td>Regression</td><td>R² (R-squared)</td><td>1 - (SSres/SStot)</td><td>Explained variance</td><td>(-∞,1]</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Data Preprocessing</h2>
+            <table>
+                <tr><th>Technique</th><th>Purpose</th><th>Method</th><th>When to Use</th></tr>
+                <tr><td>Feature Scaling</td><td>Normalize feature ranges</td><td>Min-Max, Standardization</td><td>Distance-based algorithms, neural networks</td></tr>
+                <tr><td>One-Hot Encoding</td><td>Convert categorical to numerical</td><td>Create binary columns</td><td>Categorical features</td></tr>
+                <tr><td>Feature Engineering</td><td>Create new informative features</td><td>Domain knowledge, transformations</td><td>Improve model performance</td></tr>
+                <tr><td>Feature Selection</td><td>Remove irrelevant features</td><td>Statistical tests, regularization</td><td>Reduce overfitting, improve speed</td></tr>
+                <tr><td>Handling Missing Values</td><td>Deal with incomplete data</td><td>Imputation, deletion</td><td>Datasets with missing values</td></tr>
+                <tr><td>Data Imbalance Handling</td><td>Deal with unequal class distributions</td><td>SMOTE, class weighting</td><td>Classification with imbalanced data</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Model Selection & Validation</h2>
+            <table>
+                <tr><th>Method</th><th>Description</th><th>Advantages</th><th>Disadvantages</th></tr>
+                <tr><td>Train-Test Split</td><td>Divide data into training and testing sets</td><td>Simple, fast</td><td>Single evaluation, variance</td></tr>
+                <tr><td>K-Fold Cross-Validation</td><td>Split data into k folds, train/test k times</td><td>More robust evaluation</td><td>Computationally expensive</td></tr>
+                <tr><td>Stratified K-Fold</td><td>K-fold preserving class distribution</td><td>Good for imbalanced data</td><td>More complex implementation</td></tr>
+                <tr><td>Leave-One-Out</td><td>Each sample as test set once</td><td>Unbiased estimate</td><td>Very computationally expensive</td></tr>
+                <tr><td>Grid Search</td><td>Exhaustive search over hyperparameters</td><td>Finds best hyperparameters</td><td>Computationally expensive</td></tr>
+                <tr><td>Random Search</td><td>Random search over hyperparameters</td><td>More efficient than grid search</td><td>May miss optimal parameters</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Overfitting & Underfitting</h2>
+            <table>
+                <tr><th>Problem</th><th>Definition</th><th>Signs</th><th>Solutions</th></tr>
+                <tr><td>Overfitting</td><td>Model performs well on training but poorly on test</td><td>High training accuracy, low test accuracy</td><td>Regularization, dropout, more data, simpler model</td></tr>
+                <tr><td>Underfitting</td><td>Model performs poorly on both training and test</td><td>Low accuracy on both sets</td><td>More complex model, feature engineering, less regularization</td></tr>
+                <tr><td>Bias-Variance Tradeoff</td><td>Balance between underfitting and overfitting</td><td>High bias (underfitting) vs high variance (overfitting)</td><td>Find optimal model complexity</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Ensemble Methods</h2>
+            <table>
+                <tr><th>Method</th><th>Approach</th><th>How It Works</th><th>Benefits</th></tr>
+                <tr><td>Bagging</td><td>Parallel training of models</td><td>Bootstrap samples, average predictions</td><td>Reduces variance, prevents overfitting</td></tr>
+                <tr><td>Boosting</td><td>Sequential training of models</td><td>Focus on misclassified examples</td><td>Reduces bias, handles complex patterns</td></tr>
+                <tr><td>Random Forest</td><td>Bagging with random features</td><td>Multiple decision trees with random features</td><td>Reduces overfitting, handles non-linear</td></tr>
+                <tr><td>AdaBoost</td><td>Adaptive boosting</td><td>Sequentially focus on hard examples</td><td>Good for weak learners</td></tr>
+                <tr><td>Gradient Boosting</td><td>Boosting with gradient descent</td><td>Sequentially minimize loss function</td><td>High accuracy, handles complex patterns</td></tr>
+                <tr><td>Voting Classifiers</td><td>Combine different models</td><td>Majority vote or average predictions</td><td>Reduces variance, leverages different models</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

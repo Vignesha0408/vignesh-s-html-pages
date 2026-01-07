@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallel Computing Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Parallel Computing Cheat Sheet</h1>
+        
+        <div class="section">
+            <h2>Parallel Computing Types</h2>
+            <table>
+                <tr><th>Type</th><th>Description</th><th>Characteristics</th><th>Examples</th></tr>
+                <tr><td>Bit-Level Parallelism</td><td>Processing more bits per instruction</td><td>Wider word sizes, SIMD</td><td>32-bit to 64-bit processors</td></tr>
+                <tr><td>Instruction-Level Parallelism</td><td>Executing multiple instructions simultaneously</td><td>Pipelining, superscalar, VLIW</td><td>Modern CPUs with multiple execution units</td></tr>
+                <tr><td>Data Parallelism</td><td>Same operation on multiple data elements</td><td>Vector processing, GPU computing</td><td>GPU, SIMD instructions</td></tr>
+                <tr><td>Task Parallelism</td><td>Different operations on same or different data</td><td>Thread-level parallelism</td><td>Multi-threaded applications</td></tr>
+                <tr><td>Distributed Parallelism</td><td>Parallelism across multiple machines</td><td>Message passing, shared nothing</td><td>Cluster computing, Hadoop</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Parallel Architecture Models</h2>
+            <table>
+                <tr><th>Model</th><th>Description</th><th>Memory Organization</th><th>Communication</th><th>Examples</th></tr>
+                <tr><td>SISD</td><td>Single Instruction, Single Data</td><td>Shared memory</td><td>None</td><td>Traditional uniprocessor systems</td></tr>
+                <tr><td>SIMD</td><td>Single Instruction, Multiple Data</td><td>Shared memory or distributed</td><td>Memory access</td><td>Vector processors, GPU</td></tr>
+                <tr><td>MISD</td><td>Multiple Instruction, Single Data</td><td>Shared memory or distributed</td><td>Memory access</td><td>Fault-tolerant systems</td></tr>
+                <tr><td>MIMD</td><td>Multiple Instruction, Multiple Data</td><td>Shared or distributed memory</td><td>Memory or message passing</td><td>Multi-core processors, clusters</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Shared Memory Systems</h2>
+            <table>
+                <tr><th>Concept</th><th>Description</th><th>Implementation</th><th>Challenges</th></tr>
+                <tr><td>UMA (Uniform Memory Access)</td><td>All processors access memory with same latency</td><td>Single shared memory bus</td><td>Memory bandwidth limitation</td></tr>
+                <tr><td>NUMA (Non-Uniform Memory Access)</td><td>Memory access time varies by location</td><td>Multiple memory modules per processor</td><td>Load balancing, data placement</td></tr>
+                <tr><td>CPU Cache Coherence</td><td>Keep caches consistent across cores</td><td>Cache coherency protocols (MESI)</td><td>Performance overhead</td></tr>
+                <tr><td>Cache Hierarchy</td><td>Multiple levels of cache memory</td><td>L1, L2, L3 caches</td><td>Cache misses, false sharing</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Parallel Programming Models</h2>
+            <table>
+                <tr><th>Model</th><th>Description</th><th>Tools/Languages</th><th>Best For</th></tr>
+                <tr><td>Shared Memory</td><td>Threads share memory space</td><td>Pthreads, OpenMP, Cilk</td><td>Tightly coupled parallel tasks</td></tr>
+                <tr><td>Message Passing</td><td>Processes communicate via messages</td><td>MPI, PVM</td><td>Distributed memory systems</td></tr>
+                <tr><td>Data Parallel</td><td>Parallel operations on data structures</td><td>OpenCL, CUDA, TBB</td><td>Regular data-parallel algorithms</td></tr>
+                <tr><td>Task Parallel</td><td>Parallel execution of tasks</td><td>OpenMP tasks, TBB, Cilk</td><td>Irregular parallel workloads</td></tr>
+                <tr><td>MapReduce</td><td>Map and reduce operations</td><td>Hadoop, Spark</td><td>Large-scale data processing</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Synchronization Primitives</h2>
+            <table>
+                <tr><th>Primitive</th><th>Description</th><th>Use Case</th><th>Advantages</th><th>Disadvantages</th></tr>
+                <tr><td>Locks/Mutex</td><td>Exclusive access to critical sections</td><td>Protecting shared resources</td><td>Simple, efficient</td><td>Potential deadlocks, performance overhead</td></tr>
+                <tr><td>Semaphores</td><td>Counting or binary signaling</td><td>Resource counting, synchronization</td><td>Flexible, resource management</td><td>Complex to use correctly</td></tr>
+                <tr><td>Barriers</td><td>Thread synchronization at specific points</td><td>Iterative parallel algorithms</td><td>Simple coordination</td><td>May cause waiting</td></tr>
+                <tr><td>Atomic Operations</td><td>Indivisible operations</td><td>Counters, flags</td><td>High performance</td><td>Limited operations</td></tr>
+                <tr><td>Condition Variables</td><td>Wait for specific conditions</td><td>Producer-consumer problems</td><td>Efficient waiting</td><td>Complex to implement correctly</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Parallel Performance Metrics</h2>
+            <table>
+                <tr><th>Metric</th><th>Formula</th><th>Description</th><th>Interpretation</th></tr>
+                <tr><td>Speedup</td><td>S = T1 / Tp</td><td>Performance improvement with p processors</td><td>Higher is better, ideally S = p (linear)</td></tr>
+                <tr><td>Efficiency</td><td>E = S / p</td><td>How effectively processors are used</td><td>Range 0-1, higher is better</td></tr>
+                <tr><td>Scalability</td><td>Performance as processors increase</td><td>Ability to handle more processors</td><td>Good scalability maintains efficiency</td></tr>
+                <tr><td>Amdahl's Law</td><td>S = 1 / (s + p/n)</td><td>Theoretical speedup limit</td><td>Speedup limited by sequential portion</td></tr>
+                <tr><td>Gustafson's Law</td><td>S = s + p*(1-s)</td><td>Speedup with problem size scaling</td><td>More optimistic than Amdahl's</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Parallel Programming Challenges</h2>
+            <table>
+                <tr><th>Challenge</th><th>Description</th><th>Impact</th><th>Solutions</th></tr>
+                <tr><td>Load Balancing</td><td>Distributing work evenly across processors</td><td>Underutilization of some processors</td><td>Dynamic load balancing, work stealing</td></tr>
+                <tr><td>Data Dependencies</td><td>Ordering constraints between operations</td><td>Limit parallelism, serialization</td><td>Dependency analysis, loop transformations</td></tr>
+                <tr><td>Communication Overhead</td><td>Time spent in message passing</td><td>Reduces performance gains</td><td>Minimize communication, overlap computation</td></tr>
+                <tr><td>False Sharing</td><td>Multiple cores accessing different data in same cache line</td><td>Performance degradation</td><td>Padding, data reorganization</td></tr>
+                <tr><td>Race Conditions</td><td>Unpredictable behavior due to unsynchronized access</td><td>Incorrect results, hard to debug</td><td>Synchronization, atomic operations</td></tr>
+                <tr><td>Deadlock</td><td>Processes waiting for each other indefinitely</td><td>System hangs</td><td>Lock ordering, timeouts, deadlock detection</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

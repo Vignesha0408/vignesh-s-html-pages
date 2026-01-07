@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Mining & Warehousing Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Data Mining & Warehousing Cheat Sheet</h1>
+        
+        <div class="section">
+            <h2>Data Mining Process (CRISP-DM)</h2>
+            <table>
+                <tr><th>Phase</th><th>Description</th><th>Activities</th><th>Output</th></tr>
+                <tr><td>Business Understanding</td><td>Understand business objectives</td><td>Define goals, assess situation, determine success criteria</td><td>Business success criteria</td></tr>
+                <tr><td>Data Understanding</td><td>Collect and explore data</td><td>Collect initial data, describe data, explore data</td><td>Data understanding report</td></tr>
+                <tr><td>Data Preparation</td><td>Prepare data for modeling</td><td>Data cleaning, feature construction, data integration</td><td>Final dataset</td></tr>
+                <tr><td>Modeling</td><td>Select and apply data mining techniques</td><td>Select modeling technique, generate test design, build model</td><td>Potential models</td></tr>
+                <tr><td>Evaluation</td><td>Evaluate models thoroughly</td><td>Evaluate results, review process, determine next steps</td><td>Model assessment</td></tr>
+                <tr><td>Deployment</td><td>Deploy model in production</td><td>Plan deployment, monitor and maintain, generate report</td><td>Deployment plan</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Data Mining Tasks</h2>
+            <table>
+                <tr><th>Task</th><th>Description</th><th>Techniques</th><th>Example</th></tr>
+                <tr><td>Classification</td><td>Predict categorical class labels</td><td>Decision trees, neural networks, SVM, Naive Bayes</td><td>Email spam detection</td></tr>
+                <tr><td>Regression</td><td>Predict continuous values</td><td>Linear regression, polynomial regression, neural networks</td><td>House price prediction</td></tr>
+                <tr><td>Clustering</td><td>Group similar data points</td><td>K-means, hierarchical clustering, DBSCAN</td><td>Customer segmentation</td></tr>
+                <tr><td>Association Rule Mining</td><td>Find relationships between variables</td><td>Apriori, FP-Growth</td><td>Market basket analysis</td></tr>
+                <tr><td>Sequential Patterns</td><td>Find temporal patterns</td><td>PrefixSpan, GSP</td><td>Customer purchase sequences</td></tr>
+                <tr><td>Anomaly Detection</td><td>Identify unusual patterns</td><td>Statistical methods, clustering, neural networks</td><td>Fraud detection</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Data Mining Algorithms</h2>
+            <table>
+                <tr><th>Algorithm</th><th>Type</th><th>Strengths</th><th>Weaknesses</th><th>Best For</th></tr>
+                <tr><td>Decision Trees</td><td>Classification/Regression</td><td>Interpretable, handles non-linear, no assumptions</td><td>Prone to overfitting, unstable</td><td>Interpretable models</td></tr>
+                <tr><td>Naive Bayes</td><td>Classification</td><td>Simple, fast, good with high-dim data</td><td>Assumes feature independence</td><td>Text classification</td></tr>
+                <tr><td>Support Vector Machine</td><td>Classification/Regression</td><td>Effective in high dimensions, memory efficient</td><td>Requires feature scaling, no probability estimates</td><td>High-dimensional data</td></tr>
+                <tr><td>K-Means</td><td>Clustering</td><td>Simple, efficient, works well with spherical clusters</td><td>Need to specify k, sensitive to outliers</td><td>Customer segmentation</td></tr>
+                <tr><td>Apriori</td><td>Association Rules</td><td>Simple, finds all frequent itemsets</td><td>Computationally expensive, generates many rules</td><td>Market basket analysis</td></tr>
+                <tr><td>Neural Networks</td><td>Classification/Regression</td><td>Universal approximators, handle complex patterns</td><td>Black box, requires large datasets</td><td>Complex pattern recognition</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Data Warehousing Concepts</h2>
+            <table>
+                <tr><th>Concept</th><th>Description</th><th>Characteristics</th><th>Benefits</th></tr>
+                <tr><td>OLTP vs OLAP</td><td>Online Transaction Processing vs Online Analytical Processing</td><td>OLTP: Transactional, normalized, frequent updates; OLAP: Analytical, denormalized, infrequent updates</td><td>OLTP: Fast transactions; OLAP: Fast analysis</td></tr>
+                <tr><td>Dimensions</td><td>Descriptive attributes of data</td><td>Time, product, location, customer</td><td>Context for analysis</td></tr>
+                <tr><td>Fact Tables</td><td>Contain quantitative data and foreign keys</td><td>Measures, metrics, facts</td><td>Numerical data for analysis</td></tr>
+                <tr><td>Star Schema</td><td>Dimension tables connected to fact table</td><td>Central fact table, surrounding dimension tables</td><td>Simple, fast queries</td></tr>
+                <tr><td>Snowflake Schema</td><td>Normalized version of star schema</td><td>Normalized dimension tables</td><td>Reduces redundancy</td></tr>
+                <tr><td>Fact Constellation</td><td>Multiple fact tables sharing dimensions</td><td>Shared dimensional tables</td><td>Multiple subject areas</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>ETL Process</h2>
+            <table>
+                <tr><th>Phase</th><th>Description</th><th>Activities</th><th>Tools</th></tr>
+                <tr><td>Extract</td><td>Retrieve data from source systems</td><td>Connect to sources, read data, capture changes</td><td>SQL queries, APIs, file readers</td></tr>
+                <tr><td>Transform</td><td>Convert data to required format</td><td>Data cleaning, validation, aggregation, formatting</td><td>Scripts, ETL tools, data transformation engines</td></tr>
+                <tr><td>Load</td><td>Store data in target system</td><td>Full load, incremental load, error handling</td><td>Database loaders, bulk insert operations</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Data Quality Issues</h2>
+            <table>
+                <tr><th>Issue</th><th>Description</th><th>Impact</th><th>Solution</th></tr>
+                <tr><td>Incomplete Data</td><td>Missing values or attributes</td><td>Reduces analysis accuracy</td><td>Imputation, deletion, model missingness</td></tr>
+                <tr><td>Noisy Data</td><td>Data with errors or outliers</td><td>Distorts analysis results</td><td>Smoothing, binning, regression</td></tr>
+                <tr><td>Inconsistent Data</td><td>Same information represented differently</td><td>Confuses analysis algorithms</td><td>Data standardization, normalization</td></tr>
+                <tr><td>Duplicate Data</td><td>Multiple instances of same record</td><td>Biases analysis results</td><td>Duplicate detection, merging</td></tr>
+                <tr><td>Outliers</td><td>Extreme values far from others</td><td>Skews statistical measures</td><td>Statistical methods, clustering, visualization</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Data Mining Evaluation Metrics</h2>
+            <table>
+                <tr><th>Task</th><th>Metric</th><th>Formula</th><th>Best For</th><th>Range</th></tr>
+                <tr><td>Classification</td><td>Accuracy</td><td>(TP+TN)/(TP+TN+FP+FN)</td><td>Balanced datasets</td><td>[0,1]</td></tr>
+                <tr><td>Classification</td><td>Precision</td><td>TP/(TP+FP)</td><td>Minimizing false positives</td><td>[0,1]</td></tr>
+                <tr><td>Classification</td><td>Recall</td><td>TP/(TP+FN)</td><td>Minimizing false negatives</td><td>[0,1]</td></tr>
+                <tr><td>Clustering</td><td>Silhouette Coefficient</td><td>(b-a)/max(a,b)</td><td>Cluster quality assessment</td><td>[-1,1]</td></tr>
+                <tr><td>Clustering</td><td>Within-Cluster Sum of Squares</td><td>Σ(distance²)</td><td>Measuring cluster compactness</td><td>[0,∞)</td></tr>
+                <tr><td>Association Rules</td><td>Support</td><td>Count(X→Y)/Total Transactions</td><td>Rule frequency</td><td>[0,1]</td></tr>
+                <tr><td>Association Rules</td><td>Confidence</td><td>Count(X→Y)/Count(X)</td><td>Rule reliability</td><td>[0,1]</td></tr>
+                <tr><td>Association Rules</td><td>Lift</td><td>Support(X→Y)/(Support(X)×Support(Y))</td><td>Rule independence</td><td>[0,∞)</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

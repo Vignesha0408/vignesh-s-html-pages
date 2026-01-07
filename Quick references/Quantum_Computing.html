@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quantum Computing - Quick Reference</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --primary-gradient-start: #6a85b6;
+            --primary-gradient-end: #bac8e0;
+            --secondary-gradient-start: #a1c4fd;
+            --secondary-gradient-end: #c2e9fb;
+            --accent-color: #4a69bd;
+            --text-color: #2c3e50;
+            --light-text: #7f8c8d;
+            --card-bg: #ffffff;
+            --border-color: #e0e0e0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, var(--primary-gradient-start), var(--primary-gradient-end));
+            background-attachment: fixed;
+            color: var(--text-color);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+        
+        h1 {
+            text-align: center;
+            background: linear-gradient(to right, var(--secondary-gradient-start), var(--secondary-gradient-end));
+            color: var(--text-color);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            font-size: 2.2rem;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            animation: slideDown 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        h1::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+        
+        h1:hover::before {
+            transform: translateX(100%);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        table:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        th {
+            background: linear-gradient(to right, var(--secondary-gradient-start), var(--secondary-gradient-end));
+            color: var(--text-color);
+            padding: 16px;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.95rem;
+            vertical-align: top;
+            transition: background-color 0.3s ease;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9fbfd;
+        }
+        
+        tr:hover {
+            background-color: #edf7ff;
+        }
+        
+        .topic-tag {
+            display: inline-block;
+            background: linear-gradient(to right, var(--secondary-gradient-start), var(--secondary-gradient-end));
+            color: var(--text-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 3px;
+            transition: transform 0.2s ease;
+        }
+        
+        .topic-tag:hover {
+            transform: scale(1.05);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 5px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+                padding: 20px;
+            }
+            
+            table {
+                margin: 15px 0;
+            }
+            
+            th, td {
+                padding: 12px 8px;
+                font-size: 0.9rem;
+            }
+            
+            .topic-tag {
+                font-size: 0.75rem;
+                padding: 4px 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+                padding: 15px;
+            }
+            
+            th {
+                font-size: 0.85rem;
+                padding: 10px 8px;
+            }
+            
+            td {
+                padding: 10px 6px;
+                font-size: 0.85rem;
+            }
+            
+            .topic-tag {
+                display: block;
+                margin: 4px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quantum Computing - Quick Reference</h1>
+        
+        <table>
+            <tr><th>Concept</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Definition</div></td><td>Computing technology based on quantum theory principles. Uses quantum bits (qubits) that can exist in multiple states simultaneously.</td></tr>
+            <tr><td><div class="topic-tag">Key Principles</div></td><td>Superposition, Entanglement, Interference, Quantum tunneling</td></tr>
+            <tr><td><div class="topic-tag">Applications</div></td><td>Cryptography, optimization, drug discovery, machine learning, materials science</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Quantum States</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Qubit</div></td><td>Quantum bit that can be 0, 1, or both simultaneously (superposition)</td></tr>
+            <tr><td><div class="topic-tag">Superposition</div></td><td>Qubit exists in multiple states until measured</td></tr>
+            <tr><td><div class="topic-tag">Entanglement</div></td><td>Qubits become correlated, measurement of one affects the other instantly</td></tr>
+            <tr><td><div class="topic-tag">Quantum Tunneling</div></td><td>Qubits can pass through energy barriers</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Quantum Gates</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Pauli Gates</div></td><td>X, Y, Z gates that perform bit flips and phase flips</td></tr>
+            <tr><td><div class="topic-tag">Hadamard Gate</div></td><td>Creates superposition (H gate)</td></tr>
+            <tr><td><div class="topic-tag">CNOT Gate</div></td><td>Controlled NOT gate for entanglement (2-qubit gate)</td></tr>
+            <tr><td><div class="topic-tag">Phase Gates</div></td><td>Introduce phase shifts (S, T gates)</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Quantum Algorithms</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Shor's Algorithm</div></td><td>For integer factorization, threatens RSA encryption</td></tr>
+            <tr><td><div class="topic-tag">Grover's Algorithm</div></td><td>For searching unsorted databases with quadratic speedup</td></tr>
+            <tr><td><div class="topic-tag">Quantum Fourier Transform</div></td><td>Foundation for many quantum algorithms</td></tr>
+            <tr><td><div class="topic-tag">Variational Quantum Eigensolver</div></td><td>For quantum chemistry and optimization problems</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Quantum Hardware</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Superconducting</div></td><td>IBM, Google use superconducting circuits cooled to near absolute zero</td></tr>
+            <tr><td><div class="topic-tag">Trapped Ions</div></td><td>IonQ uses trapped ions manipulated with lasers</td></tr>
+            <tr><td><div class="topic-tag">Photonic</div></td><td>Uses photons as qubits, operated at room temperature</td></tr>
+            <tr><td><div class="topic-tag">Topological</div></td><td>Theoretical approach using anyons, more stable qubits</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Challenges</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Decoherence</div></td><td>Loss of quantum state due to environmental interference</td></tr>
+            <tr><td><div class="topic-tag">Error Correction</div></td><td>Quantum error correction requires many physical qubits per logical qubit</td></tr>
+            <tr><td><div class="topic-tag">Scalability</div></td><td>Building large-scale quantum computers remains challenging</td></tr>
+            <tr><td><div class="topic-tag">Temperature</div></td><td>Most systems require extremely low temperatures to operate</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Quantum Supremacy</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Definition</div></td><td>Point where quantum computers outperform classical computers for specific tasks</td></tr>
+            <tr><td><div class="topic-tag">Google Sycamore</div></td><td>Claimed quantum supremacy in 2019 with random circuit sampling</td></tr>
+            <tr><td><div class="topic-tag">NISQ Era</div></td><td>Noisy Intermediate-Scale Quantum devices with 50-100 qubits</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Future Applications</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Cryptography</div></td><td>Quantum key distribution, post-quantum cryptography</td></tr>
+            <tr><td><div class="topic-tag">Drug Discovery</div></td><td>Simulating molecular interactions for pharmaceuticals</td></tr>
+            <tr><td><div class="topic-tag">Financial Modeling</div></td><td>Portfolio optimization, risk analysis</td></tr>
+            <tr><td><div class="topic-tag">AI/ML</div></td><td>Quantum machine learning algorithms</td></tr>
+        </table>
+    </div>
+</body>
+</html>

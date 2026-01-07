@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Methodology Quick Reference Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 25px;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        .module-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        .module-1 { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); }
+        .module-2 { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+        .module-3 { background: linear-gradient(135deg, #fffee1 0%, #f6e4cc 100%); }
+        .module-4 { background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%); }
+        .module-5 { background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); }
+        h2 {
+            color: #2980b9;
+            margin-top: 0;
+        }
+        h3 {
+            color: #e74c3c;
+            margin-top: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+        .tip {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .module-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        .module-topic {
+            background-color: #3498db;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            display: inline-block;
+        }
+        .module-ethics {
+            background-color: #2ecc71;
+        }
+        .module-citations {
+            background-color: #9b59b6;
+        }
+        .module-ip {
+            background-color: #e67e22;
+        }
+        .module-patents {
+            background-color: #34495e;
+        }
+        .module-copyrights {
+            background-color: #e74c3c;
+        }
+        .module-designs {
+            background-color: #1abc9c;
+        }
+        .module-gi {
+            background-color: #f39c12;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Research Methodology Quick Reference Sheet</h1>
+        
+        <div class="section">
+            <h2>Research Approaches</h2>
+            <table>
+                <tr>
+                    <th>Approach</th>
+                    <th>Description</th>
+                    <th>Characteristics</th>
+                    <th>Best For</th>
+                </tr>
+                <tr>
+                    <td><strong>Quantitative</strong></td>
+                    <td>Research that uses numerical data and statistical analysis</td>
+                    <td>Objective, structured, statistical, large samples</td>
+                    <td>Measuring, testing hypotheses, establishing cause-effect relationships</td>
+                </tr>
+                <tr>
+                    <td><strong>Qualitative</strong></td>
+                    <td>Research that explores experiences, meanings, and understanding</td>
+                    <td>Subjective, flexible, in-depth, small samples</td>
+                    <td>Understanding context, exploring complex phenomena, discovering new insights</td>
+                </tr>
+                <tr>
+                    <td><strong>Mixed Methods</strong></td>
+                    <td>Combines quantitative and qualitative approaches</td>
+                    <td>Triangulation, comprehensive understanding</td>
+                    <td>Complex research questions requiring multiple perspectives</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Research Design Types</h2>
+            <table>
+                <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Key Features</th>
+                    <th>Applications</th>
+                </tr>
+                <tr>
+                    <td><strong>Experimental</strong></td>
+                    <td>Controlled study manipulating variables to establish causation</td>
+                    <td>Random assignment, control groups, manipulation of IV</td>
+                    <td>Testing cause-effect relationships, controlled environments</td>
+                </tr>
+                <tr>
+                    <td><strong>Quasi-Experimental</strong></td>
+                    <td>Similar to experimental but without random assignment</td>
+                    <td>No randomization, comparison groups, manipulation</td>
+                    <td>Real-world settings where randomization not possible</td>
+                </tr>
+                <tr>
+                    <td><strong>Descriptive</strong></td>
+                    <td>Describes characteristics of a population or phenomenon</td>
+                    <td>Surveys, observations, statistical summaries</td>
+                    <td>Current status, characteristics, trends</td>
+                </tr>
+                <tr>
+                    <td><strong>Correlational</strong></td>
+                    <td>Examines relationships between variables without manipulation</td>
+                    <td>Measures variables as they naturally occur</td>
+                    <td>Relationships, predictions, association patterns</td>
+                </tr>
+                <tr>
+                    <td><strong>Exploratory</strong></td>
+                    <td>Investigates poorly understood problems</td>
+                    <td>Flexible, open-ended, hypothesis generation</td>
+                    <td>New research areas, initial investigations</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Data Collection Methods</h2>
+            <table>
+                <tr>
+                    <th>Method</th>
+                    <th>Description</th>
+                    <th>Advantages</th>
+                    <th>Disadvantages</th>
+                </tr>
+                <tr>
+                    <td><strong>Surveys/Questionnaires</strong></td>
+                    <td>Structured questions to collect data from many respondents</td>
+                    <td>Cost-effective, large samples, standardized data</td>
+                    <td>Response bias, limited depth, inflexible</td>
+                </tr>
+                <tr>
+                    <td><strong>Interviews</strong></td>
+                    <td>Direct conversations to gather detailed information</td>
+                    <td>In-depth data, flexibility, clarification possible</td>
+                    <td>Time-consuming, interviewer bias, smaller samples</td>
+                </tr>
+                <tr>
+                    <td><strong>Focus Groups</strong></td>
+                    <td>Group discussions to explore collective views</td>
+                    <td>Ideas emerge from interaction, rich data</td>
+                    <td>Group dynamics, dominant voices, difficult to analyze</td>
+                </tr>
+                <tr>
+                    <td><strong>Observations</strong></td>
+                    <td>Systematic watching and recording of behavior</td>
+                    <td>Natural behavior, objective data</td>
+                    <td>Observer bias, Hawthorne effect, time-consuming</td>
+                </tr>
+                <tr>
+                    <td><strong>Document Analysis</strong></td>
+                    <td>Analysis of existing records and documents</td>
+                    <td>Cost-effective, historical data, unobtrusive</td>
+                    <td>Limited availability, potential bias in documents</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Sampling Techniques</h2>
+            <table>
+                <tr>
+                    <th>Technique</th>
+                    <th>Description</th>
+                    <th>When to Use</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td><strong>Simple Random Sampling</strong></td>
+                    <td>Every member has equal chance of selection</td>
+                    <td>Homogeneous population, complete list available</td>
+                    <td>Randomly selecting 100 students from a university list</td>
+                </tr>
+                <tr>
+                    <td><strong>Stratified Sampling</strong></td>
+                    <td>Population divided into subgroups, samples from each</td>
+                    <td>Important subgroups need representation</td>
+                    <td>Sampling from different age groups proportionally</td>
+                </tr>
+                <tr>
+                    <td><strong>Cluster Sampling</strong></td>
+                    <td>Entire groups selected randomly</td>
+                    <td>Geographically dispersed population</td>
+                    <td>Selecting entire schools in a district</td>
+                </tr>
+                <tr>
+                    <td><strong>Systematic Sampling</strong></td>
+                    <td>Every nth member selected from a list</td>
+                    <td>Ordered list, no hidden patterns</td>
+                    <td>Selecting every 10th person from a list</td>
+                </tr>
+                <tr>
+                    <td><strong>Convenience Sampling</strong></td>
+                    <td>Most accessible participants</td>
+                    <td>Exploratory research, limited resources</td>
+                    <td>Surveying people in a shopping mall</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Research Process Steps</h2>
+            <table>
+                <tr>
+                    <th>Step</th>
+                    <th>Description</th>
+                    <th>Key Activities</th>
+                    <th>Deliverable</th>
+                </tr>
+                <tr>
+                    <td><strong>1. Problem Definition</strong></td>
+                    <td>Identify and define the research problem</td>
+                    <td>Literature review, problem statement, objectives</td>
+                    <td>Clear research questions/hypotheses</td>
+                </tr>
+                <tr>
+                    <td><strong>2. Literature Review</strong></td>
+                    <td>Review existing research on the topic</td>
+                    <td>Search databases, analyze studies, identify gaps</td>
+                    <td>Theoretical framework, research gap</td>
+                </tr>
+                <tr>
+                    <td><strong>3. Research Design</strong></td>
+                    <td>Plan the research methodology</td>
+                    <td>Choose approach, methods, sampling strategy</td>
+                    <td>Research proposal/methodology plan</td>
+                </tr>
+                <tr>
+                    <td><strong>4. Data Collection</strong></td>
+                    <td>Gather information needed for research</td>
+                    <td>Surveys, interviews, observations, experiments</td>
+                    <td>Raw data set</td>
+                </tr>
+                <tr>
+                    <td><strong>5. Data Analysis</strong></td>
+                    <td>Process and analyze collected data</td>
+                    <td>Statistical analysis, coding, interpretation</td>
+                    <td>Results and findings</td>
+                </tr>
+                <tr>
+                    <td><strong>6. Conclusion & Reporting</strong></td>
+                    <td>Draw conclusions and communicate findings</td>
+                    <td>Interpretation, recommendations, report writing</td>
+                    <td>Final report, recommendations</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Validity and Reliability</h2>
+            <table>
+                <tr>
+                    <th>Concept</th>
+                    <th>Definition</th>
+                    <th>Types/Aspects</th>
+                    <th>How to Ensure</th>
+                </tr>
+                <tr>
+                    <td><strong>Validity</strong></td>
+                    <td>Measures what it claims to measure</td>
+                    <td>Content, construct, criterion, face validity</td>
+                    <td>Pilot testing, expert review, proper design</td>
+                </tr>
+                <tr>
+                    <td><strong>Reliability</strong></td>
+                    <td>Consistency of measurement</td>
+                    <td>Test-retest, inter-rater, internal consistency</td>
+                    <td>Standardized procedures, clear instructions</td>
+                </tr>
+                <tr>
+                    <td><strong>Internal Validity</strong></td>
+                    <td>Confidence in causal relationships</td>
+                    <td>Control for confounding variables</td>
+                    <td>Randomization, control groups, matching</td>
+                </tr>
+                <tr>
+                    <td><strong>External Validity</strong></td>
+                    <td>Generalizability to other contexts</td>
+                    <td>Population, ecological validity</td>
+                    <td>Representative sampling, real-world settings</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Statistical Concepts for Research</h2>
+            <table>
+                <tr>
+                    <th>Concept</th>
+                    <th>Definition</th>
+                    <th>Application</th>
+                    <th>Key Points</th>
+                </tr>
+                <tr>
+                    <td><strong>Hypothesis Testing</strong></td>
+                    <td>Statistical method to evaluate claims about population</td>
+                    <td>Testing research hypotheses, comparing groups</td>
+                    <td>Null vs alternative hypothesis, p-value, significance level</td>
+                </tr>
+                <tr>
+                    <td><strong>Type I & II Errors</strong></td>
+                    <td>Incorrect decisions in hypothesis testing</td>
+                    <td>Interpreting statistical results, setting significance</td>
+                    <td>Type I: False positive; Type II: False negative</td>
+                </tr>
+                <tr>
+                    <td><strong>Statistical Power</strong></td>
+                    <td>Probability of correctly rejecting false null hypothesis</td>
+                    <td>Sample size planning, result interpretation</td>
+                    <td>Power = 1 - β; typically aim for 0.80 or higher</td>
+                </tr>
+                <tr>
+                    <td><strong>Effect Size</strong></td>
+                    <td>Strength of relationship or difference between variables</td>
+                    <td>Practical significance, comparing studies</td>
+                    <td>Independent of sample size, Cohen's d, r, η²</td>
+                </tr>
+                <tr>
+                    <td><strong>Confidence Interval</strong></td>
+                    <td>Range of values likely to contain population parameter</td>
+                    <td>Estimating population values, precision</td>
+                    <td>Wider for smaller samples, narrower for larger samples</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Qualitative Data Analysis Methods</h2>
+            <table>
+                <tr>
+                    <th>Method</th>
+                    <th>Description</th>
+                    <th>Process</th>
+                    <th>Output</th>
+                </tr>
+                <tr>
+                    <td><strong>Thematic Analysis</strong></td>
+                    <td>Identifying, analyzing, and interpreting patterns</td>
+                    <td>Data familiarization, coding, theme development</td>
+                    <td>Themes that capture important patterns</td>
+                </tr>
+                <tr>
+                    <td><strong>Grounded Theory</strong></td>
+                    <td>Developing theory from collected data</td>
+                    <td>Constant comparison, coding, theory building</td>
+                    <td>Theory grounded in empirical data</td>
+                </tr>
+                <tr>
+                    <td><strong>Phenomenology</strong></td>
+                    <td>Study of lived experiences and meanings</td>
+                    <td>Essential structure identification, meaning extraction</td>
+                    <td>Essential structures of experiences</td>
+                </tr>
+                <tr>
+                    <td><strong>Content Analysis</strong></td>
+                    <td>Systematic analysis of text or visual material</td>
+                    <td>Coding, categorizing, frequency analysis</td>
+                    <td>Patterns in communication content</td>
+                </tr>
+                <tr>
+                    <td><strong>Discourse Analysis</strong></td>
+                    <td>Examines language use in social contexts</td>
+                    <td>Language patterns, power structures, social construction</td>
+                    <td>How language shapes reality and identity</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Ethical Considerations</h2>
+            <table>
+                <tr>
+                    <th>Principle</th>
+                    <th>Description</th>
+                    <th>Implementation</th>
+                    <th>Example</h2>
+                </tr>
+                <tr>
+                    <td><strong>Informed Consent</strong></td>
+                    <td>Participants understand and agree to participate</td>
+                    <td>Clear information about study, voluntary participation</td>
+                    <td>Providing consent form with study details</td>
+                </tr>
+                <tr>
+                    <td><strong>Confidentiality</strong></td>
+                    <td>Protecting participant identity and data</td>
+                    <td>Anonymous data, secure storage, limited access</td>
+                    <td>Using codes instead of names in data</td>
+                </tr>
+                <tr>
+                    <td><strong>Right to Withdraw</strong></td>
+                    <td>Participants can leave at any time</td>
+                    <td>Clear communication of this right, no penalties</td>
+                    <td>Allowing participants to stop participation anytime</td>
+                </tr>
+                <tr>
+                    <td><strong>Minimize Harm</strong></td>
+                    <td>Ensure no physical or psychological harm</td>
+                    <td>Risk assessment, support resources, debriefing</td>
+                    <td>Providing counseling if study causes distress</td>
+                </tr>
+                <tr>
+                    <td><strong>Debriefing</strong></td>
+                    <td>Providing full information after study</td>
+                    <td>Explanation of purpose, deception (if any), results</td>
+                    <td>Explaining true purpose after deception study</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Common Interview Questions & Answers</h2>
+            <table>
+                <tr>
+                    <th>Question</th>
+                    <th>Sample Answer</th>
+                    <th>Key Points to Remember</th>
+                </tr>
+                <tr>
+                    <td><strong>What's the difference between qualitative and quantitative research?</strong></td>
+                    <td>Quantitative research uses numerical data and statistical analysis to measure variables and test hypotheses. Qualitative research explores experiences, meanings, and understanding through non-numerical data like interviews and observations. Quantitative is objective and generalizable; qualitative is subjective and context-specific.</td>
+                    <td>Emphasize the differences in data type, analysis approach, and purpose. Mention that mixed methods combine both approaches.</td>
+                </tr>
+                <tr>
+                    <td><strong>Explain the research process in detail.</strong></td>
+                    <td>The research process involves: 1) Defining the problem and objectives, 2) Conducting literature review, 3) Designing the study methodology, 4) Collecting data systematically, 5) Analyzing and interpreting data, 6) Drawing conclusions and reporting findings. Each step builds on the previous one and requires careful planning.</td>
+                    <td>Remember the sequential nature of the process and the importance of planning each step carefully.</td>
+                </tr>
+                <tr>
+                    <td><strong>What are the main sampling techniques?</strong></td>
+                    <td>Probability sampling includes simple random (equal chance for all), stratified (subgroup sampling), cluster (group sampling), and systematic (every nth member). Non-probability includes convenience, purposive, snowball, and quota sampling. Probability sampling allows generalization; non-probability is more accessible but less generalizable.</td>
+                    <td>Know the difference between probability and non-probability sampling and when to use each type.</td>
+                </tr>
+                <tr>
+                    <td><strong>What are validity and reliability?</strong></td>
+                    <td>Validity refers to whether a measure actually measures what it claims to measure. Reliability refers to consistency of measurement across time, items, or raters. A measure can be reliable without being valid, but cannot be valid without being reliable. Internal validity concerns causal inferences; external validity concerns generalizability.</td>
+                    <td>Remember the difference and their relationship. Internal vs. external validity are important distinctions.</td>
+                </tr>
+                <tr>
+                    <td><strong>How do you ensure ethical research?</strong></td>
+                    <td>Ethical research requires informed consent, confidentiality protection, right to withdraw, minimizing harm, and proper debriefing. Researchers must also consider potential benefits vs. risks, get institutional approval (IRB), and maintain professional integrity throughout the research process.</td>
+                    <td>Know the key ethical principles and how they apply in practice. IRB approval is often required.</td>
+                </tr>
+                <tr>
+                    <td><strong>What's the difference between Type I and Type II errors?</strong></td>
+                    <td>A Type I error occurs when we reject a true null hypothesis (false positive). A Type II error occurs when we fail to reject a false null hypothesis (false negative). The probability of Type I error is α (significance level), while Type II error is β. There's a trade-off between these errors.</td>
+                    <td>Remember: Type I = False positive; Type II = False negative. The significance level α is typically set at 0.05.</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Research Proposal Structure</h2>
+            <table>
+                <tr>
+                    <th>Section</th>
+                    <th>Content</th>
+                    <th>Key Elements</th>
+                    <th>Interview Tip</th>
+                </tr>
+                <tr>
+                    <td><strong>Title</strong></td>
+                    <td>Clear, concise description of research</td>
+                    <td>Should indicate variables, population, method</td>
+                    <td>Keep it specific and descriptive</td>
+                </tr>
+                <tr>
+                    <td><strong>Abstract</strong></td>
+                    <td>Brief summary of entire proposal</td>
+                    <td>Problem, objectives, methods, expected outcomes</td>
+                    <td>Limited to 150-300 words</td>
+                </tr>
+                <tr>
+                    <td><strong>Introduction</strong></td>
+                    <td>Background and problem statement</td>
+                    <td>Context, significance, research questions</td>
+                    <td>Build a strong case for your research</td>
+                </tr>
+                <tr>
+                    <td><strong>Literature Review</strong></td>
+                    <td>Summary of existing research</td>
+                    <td>Key studies, gaps, theoretical framework</td>
+                    <td>Shows knowledge of field and research gap</td>
+                </tr>
+                <tr>
+                    <td><strong>Methodology</strong></td>
+                    <td>Research design and procedures</td>
+                    <td>Approach, design, sampling, data collection, analysis</td>
+                    <td>Should be detailed and justified</td>
+                </tr>
+                <tr>
+                    <td><strong>Timeline</strong></td>
+                    <td>Project schedule</td>
+                    <td>Phases, milestones, duration</td>
+                    <td>Be realistic about time requirements</td>
+                </tr>
+                <tr>
+                    <td><strong>Budget</strong></td>
+                    <td>Financial requirements</td>
+                    <td>Personnel, equipment, travel, materials</td>
+                    <td>Justify all expenses</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Key Research Terminology</h2>
+            <table>
+                <tr>
+                    <th>Term</th>
+                    <th>Definition</th>
+                    <th>Example</th>
+                    <th>Related Concepts</th>
+                </tr>
+                <tr>
+                    <td><strong>Independent Variable (IV)</strong></td>
+                    <td>Variable that is manipulated or changed</td>
+                    <td>In a study on exercise and weight loss, exercise is the IV</td>
+                    <td>Predictor variable, cause</td>
+                </tr>
+                <tr>
+                    <td><strong>Dependent Variable (DV)</strong></td>
+                    <td>Variable that is measured or observed</td>
+                    <td>In a study on exercise and weight loss, weight loss is the DV</td>
+                    <td>Outcome variable, effect</td>
+                </tr>
+                <tr>
+                    <td><strong>Control Variable</strong></td>
+                    <td>Variable held constant to isolate effects</td>
+                    <td>Controlling for age in a study on income and education</td>
+                    <td>Extraneous variables, confounding variables</td>
+                </tr>
+                <tr>
+                    <td><strong>Hypothesis</strong></td>
+                    <td>Testable prediction about relationship between variables</td>
+                    <td>"Increased study time leads to higher test scores"</td>
+                    <td>Null hypothesis, alternative hypothesis</td>
+                </tr>
+                <tr>
+                    <td><strong>Operational Definition</strong></td>
+                    <td>How a concept will be measured in a study</td>
+                    <td>Defining "anxiety" as score on standardized anxiety scale</td>
+                    <td>Measurement, indicators</td>
+                </tr>
+                <tr>
+                    <td><strong>Population</strong></td>
+                    <td>Entire group of interest for research</td>
+                    <td>All college students in a country</td>
+                    <td>Sample, target population</td>
+                </tr>
+                <tr>
+                    <td><strong>Sample</strong></td>
+                    <td>Subset of population studied</td>
+                    <td>300 college students selected from all college students</td>
+                    <td>Sampling, representativeness</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Course Modules: Engineering Research & Intellectual Property</h2>
+            
+            <div class="module-section module-1">
+                <h3>Module-1 (8 Hours): Introduction to Engineering Research</h3>
+                <div class="module-topics">
+                    <span class="module-topic">Meaning of Research</span>
+                    <span class="module-topic">Objectives of Engineering Research</span>
+                    <span class="module-topic">Motivation in Engineering Research</span>
+                    <span class="module-topic">Types of Engineering Research</span>
+                    <span class="module-topic">Finding Problems</span>
+                    <span class="module-topic module-ethics">Research Ethics</span>
+                    <span class="module-topic module-ethics">Research Misconduct</span>
+                    <span class="module-topic module-ethics">Authorship Issues</span>
+                </div>
+            </div>
+            
+            <div class="module-section module-2">
+                <h3>Module-2 (8 Hours): Literature Review & Technical Reading</h3>
+                <div class="module-topics">
+                    <span class="module-topic">Literature Review</span>
+                    <span class="module-topic">New & Existing Knowledge</span>
+                    <span class="module-topic">Prior Art Analysis</span>
+                    <span class="module-topic">Bibliographic Databases</span>
+                    <span class="module-topic">Web of Science</span>
+                    <span class="module-topic">Google Scholar</span>
+                    <span class="module-topic">Technical Reading</span>
+                    <span class="module-topic">Critical Reading</span>
+                    <span class="module-topic module-citations">Citations</span>
+                    <span class="module-topic module-citations">Attributions</span>
+                    <span class="module-topic module-citations">Acknowledgments</span>
+                </div>
+            </div>
+            
+            <div class="module-section module-3">
+                <h3>Module-3 (8 Hours): Introduction to Intellectual Property</h3>
+                <div class="module-topics">
+                    <span class="module-topic module-ip">IP Role in Development</span>
+                    <span class="module-topic module-ip">IP Governance</span>
+                    <span class="module-topic module-ip">IP as Innovation Indicator</span>
+                    <span class="module-topic module-ip">IP History in India</span>
+                    <span class="module-topic module-patents">Patent Conditions</span>
+                    <span class="module-topic module-patents">Patent Rights</span>
+                    <span class="module-topic module-patents">Patent Infringements</span>
+                    <span class="module-topic module-patents">Patent Process</span>
+                    <span class="module-topic module-patents">Prior Art Search</span>
+                    <span class="module-topic module-patents">Patent Application</span>
+                    <span class="module-topic module-patents">Patent Commercialization</span>
+                </div>
+            </div>
+            
+            <div class="module-section module-4">
+                <h3>Module-4 (8 Hours): Copyrights & Trademarks</h3>
+                <div class="module-topics">
+                    <span class="module-topic module-copyrights">Copyright Classes</span>
+                    <span class="module-topic module-copyrights">Copyright Criteria</span>
+                    <span class="module-topic module-copyrights">Copyright Ownership</span>
+                    <span class="module-topic module-copyrights">Copyright Infringements</span>
+                    <span class="module-topic module-copyrights">Fair Use Doctrine</span>
+                    <span class="module-topic module-copyrights">Copyright Registration</span>
+                    <span class="module-topic">Trademark Eligibility</span>
+                    <span class="module-topic">Trademark Registration</span>
+                    <span class="module-topic">Trademark Classification</span>
+                    <span class="module-topic">Trademark Process</span>
+                </div>
+            </div>
+            
+            <div class="module-section module-5">
+                <h3>Module-5 (8 Hours): Industrial Designs & Geographical Indications</h3>
+                <div class="module-topics">
+                    <span class="module-topic module-designs">Industrial Design Eligibility</span>
+                    <span class="module-topic module-designs">Design Rights</span>
+                    <span class="module-topic module-designs">Design Registration</span>
+                    <span class="module-topic module-designs">Design Protection</span>
+                    <span class="module-topic module-gi">GI Acts & Laws</span>
+                    <span class="module-topic module-gi">GI Rights</span>
+                    <span class="module-topic module-gi">GI Registration</span>
+                    <span class="module-topic module-gi">GI Protection</span>
+                    <span class="module-topic">Patent Case Studies</span>
+                    <span class="module-topic">Turmeric Patent</span>
+                    <span class="module-topic">Neem Patent</span>
+                    <span class="module-topic">Basmati Patent</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="tip">
+            <h3>Interview Tips for Research Methodology</h3>
+            <ul>
+                <li><strong>Know your research philosophy:</strong> Understand positivism, interpretivism, and critical realism</li>
+                <li><strong>Be prepared to justify your methodological choices:</strong> Always explain why you selected specific methods</li>
+                <li><strong>Understand the trade-offs:</strong> Every method has advantages and disadvantages</li>
+                <li><strong>Practice with examples:</strong> Have specific examples ready to illustrate methodological concepts</li>
+                <li><strong>Know your limitations:</strong> Be honest about potential limitations of your approach</li>
+                <li><strong>Connect theory to practice:</strong> Explain how methodological concepts apply in real research</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

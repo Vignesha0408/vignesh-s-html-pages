@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Network Security - Quick Reference</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --primary-gradient-start: #6a85b6;
+            --primary-gradient-end: #bac8e0;
+            --secondary-gradient-start: #a1c4fd;
+            --secondary-gradient-end: #c2e9fb;
+            --accent-color: #4a69bd;
+            --text-color: #2c3e50;
+            --light-text: #7f8c8d;
+            --card-bg: #ffffff;
+            --border-color: #e0e0e0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, var(--primary-gradient-start), var(--primary-gradient-end));
+            background-attachment: fixed;
+            color: var(--text-color);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+        
+        h1 {
+            text-align: center;
+            background: linear-gradient(to right, var(--secondary-gradient-start), var(--secondary-gradient-end));
+            color: var(--text-color);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            font-size: 2.2rem;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            animation: slideDown 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        h1::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+        
+        h1:hover::before {
+            transform: translateX(100%);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        table:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        th {
+            background: linear-gradient(to right, var(--secondary-gradient-start), var(--secondary-gradient-end));
+            color: var(--text-color);
+            padding: 16px;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.95rem;
+            vertical-align: top;
+            transition: background-color 0.3s ease;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9fbfd;
+        }
+        
+        tr:hover {
+            background-color: #edf7ff;
+        }
+        
+        .topic-tag {
+            display: inline-block;
+            background: linear-gradient(to right, var(--secondary-gradient-start), var(--secondary-gradient-end));
+            color: var(--text-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 3px;
+            transition: transform 0.2s ease;
+        }
+        
+        .topic-tag:hover {
+            transform: scale(1.05);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 5px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+                padding: 20px;
+            }
+            
+            table {
+                margin: 15px 0;
+            }
+            
+            th, td {
+                padding: 12px 8px;
+                font-size: 0.9rem;
+            }
+            
+            .topic-tag {
+                font-size: 0.75rem;
+                padding: 4px 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+                padding: 15px;
+            }
+            
+            th {
+                font-size: 0.85rem;
+                padding: 10px 8px;
+            }
+            
+            td {
+                padding: 10px 6px;
+                font-size: 0.85rem;
+            }
+            
+            .topic-tag {
+                display: block;
+                margin: 4px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Network Security - Quick Reference</h1>
+        
+        <table>
+            <tr><th>Concept</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Definition</div></td><td>Protection of computer networks from unauthorized access, misuse, malfunction, modification, destruction, or improper disclosure.</td></tr>
+            <tr><td><div class="topic-tag">Goals</div></td><td>Confidentiality, Integrity, Availability (CIA Triad)</td></tr>
+            <tr><td><div class="topic-tag">Layers</div></td><td>Physical, Data Link, Network, Transport, Application security</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Security Threats</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Malware</div></td><td>Virus, worm, trojan, ransomware, spyware that damages systems</td></tr>
+            <tr><td><div class="topic-tag">DoS/DDoS</div></td><td>Distributed Denial of Service attacks that overwhelm network resources</td></tr>
+            <tr><td><div class="topic-tag">Man-in-the-Middle</div></td><td>Attacker intercepts and possibly alters communication between parties</td></tr>
+            <tr><td><div class="topic-tag">Phishing</div></td><td>Fraudulent attempts to obtain sensitive information by disguising as trustworthy entities</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Network Security Tools</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Firewall</div></td><td>Network security system that monitors and controls incoming/outgoing traffic</td></tr>
+            <tr><td><div class="topic-tag">IDS/IPS</div></td><td>Intrusion Detection/Prevention Systems that monitor network for malicious activity</td></tr>
+            <tr><td><div class="topic-tag">VPN</div></td><td>Virtual Private Network for secure remote access to private networks</td></tr>
+            <tr><td><div class="topic-tag">Antivirus</div></td><td>Software that prevents, detects, and removes malware</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Authentication Methods</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Single Factor</div></td><td>Password-only authentication</td></tr>
+            <tr><td><div class="topic-tag">Two-Factor (2FA)</div></td><td>Two different authentication factors (something you know + have)</td></tr>
+            <tr><td><div class="topic-tag">Multi-Factor (MFA)</div></td><td>Multiple authentication factors (something you know, have, are)</td></tr>
+            <tr><td><div class="topic-tag">Biometric</div></td><td>Fingerprint, facial recognition, iris scan authentication</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Encryption & Protocols</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">SSL/TLS</div></td><td>Secure Sockets Layer/Transport Layer Security for encrypted web communication</td></tr>
+            <tr><td><div class="topic-tag">IPSec</div></td><td>Internet Protocol Security for encrypted IP communication</td></tr>
+            <tr><td><div class="topic-tag">WPA/WPA2/WPA3</div></td><td>WiFi security protocols for wireless network protection</td></tr>
+            <tr><td><div class="topic-tag">SSH</div></td><td>Secure Shell for encrypted remote login and command execution</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Network Segmentation</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">VLAN</div></td><td>Virtual Local Area Networks to segment network traffic</td></tr>
+            <tr><td><div class="topic-tag">DMZ</div></td><td>Demilitarized Zone for publicly accessible servers</td></tr>
+            <tr><td><div class="topic-tag">Subnetting</div></td><td>Dividing network into smaller subnetworks for security and efficiency</td></tr>
+            <tr><td><div class="topic-tag">Microsegmentation</div></td><td>Granular security policies at individual workload level</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Security Protocols</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Kerberos</div></td><td>Network authentication protocol using secret-key cryptography</td></tr>
+            <tr><td><div class="topic-tag">RADIUS</div></td><td>Remote Authentication Dial-In User Service for centralized authentication</td></tr>
+            <tr><td><div class="topic-tag">TACACS+</div></td><td>Terminal Access Controller Access-Control System for network device access</td></tr>
+            <tr><td><div class="topic-tag">802.1X</div></td><td>Network access control protocol for port-based authentication</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Best Practices</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Defense in Depth</div></td><td>Multiple layers of security controls throughout the network</td></tr>
+            <tr><td><div class="topic-tag">Least Privilege</div></td><td>Grant minimum necessary access rights to users and systems</td></tr>
+            <tr><td><div class="topic-tag">Regular Updates</div></td><td>Keep systems, software, and security patches current</td></tr>
+            <tr><td><div class="topic-tag">Monitoring</div></td><td>Continuous network monitoring and logging for threat detection</td></tr>
+        </table>
+    </div>
+</body>
+</html>

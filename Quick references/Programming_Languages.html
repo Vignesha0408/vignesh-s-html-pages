@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programming Languages Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #8e44ad;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #8e44ad;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #8e44ad;
+            margin-top: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #8e44ad;
+            color: white;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Programming Languages Cheat Sheet</h1>
+        
+        <div class="section">
+            <h2>Programming Language Paradigms</h2>
+            <table>
+                <tr><th>Paradigm</th><th>Description</th><th>Characteristics</th><th>Examples</th></tr>
+                <tr><td>Imperative</td><td>Specify how to solve a problem using statements that change program state</td><td>Variables, assignment, control flow, subroutines</td><td>C, Pascal, Fortran, Basic</td></tr>
+                <tr><td>Object-Oriented</td><td>Structure programs around objects that contain data and methods</td><td>Encapsulation, inheritance, polymorphism, abstraction</td><td>Java, C++, C#, Python</td></tr>
+                <tr><td>Functional</td><td>Treat computation as evaluation of mathematical functions</td><td>Immutability, higher-order functions, recursion</td><td>Haskell, Lisp, ML, F#, JavaScript</td></tr>
+                <tr><td>Logic</td><td>Express programs as relations and use logical inference</td><td>Declarative, predicates, rules, facts</td><td>Prolog, Datalog</td></tr>
+                <tr><td>Procedural</td><td>Based on procedure calls and structured programming</td><td>Functions, procedures, variables, loops</td><td>Pascal, C, Fortran</td></tr>
+                <tr><td>Event-Driven</td><td>Program flow determined by events</td><td>Event handlers, callbacks, asynchronous execution</td><td>JavaScript, Visual Basic, C#</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Type Systems</h2>
+            <table>
+                <tr><th>Concept</th><th>Description</th><th>Examples</th><th>Advantages/Disadvantages</th></tr>
+                <tr><td>Static Typing</td><td>Types checked at compile time</td><td>Java, C, C++, Haskell</td><td>Early error detection, performance, but less flexibility</td></tr>
+                <tr><td>Dynamic Typing</td><td>Types checked at runtime</td><td>Python, Ruby, JavaScript, PHP</td><td>Flexibility, rapid development, but runtime errors possible</td></tr>
+                <tr><td>Strong Typing</td><td>Strict enforcement of type rules</td><td>Haskell, Python, Java</td><td>Prevents type errors, but may require explicit conversions</td></tr>
+                <tr><td>Weak Typing</td><td>Loose enforcement of type rules</td><td>C, C++, JavaScript</td><td>Flexibility, but potential for errors</td></tr>
+                <tr><td>Polymorphism</td><td>Same interface for different data types</td><td>Function overloading, generics, inheritance</td><td>Code reusability, but complexity</td></tr>
+                <tr><td>Type Inference</td><td>Compiler deduces types automatically</td><td>Haskell, ML, Scala, C#</td><td>Less verbose, but harder to debug type errors</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Memory Management</h2>
+            <table>
+                <tr><th>Approach</th><th>Description</th><th>Examples</th><th>Advantages/Disadvantages</th></tr>
+                <tr><td>Manual Management</td><td>Programmer explicitly allocates/deallocates memory</td><td>C, C++</td><td>Full control, performance, but memory leaks possible</td></tr>
+                <tr><td>Automatic (Garbage Collection)</td><td>Runtime system automatically reclaims unused memory</td><td>Java, C#, Python, JavaScript</td><td>No memory leaks, but performance overhead</td></tr>
+                <tr><td>Reference Counting</td><td>Track number of references to each object</td><td>Python (partially), Objective-C</td><td>Deterministic deallocation, but cycle detection issues</td></tr>
+                <tr><td>Borrowing/Rust Model</td><td>Compile-time ownership checking</td><td>Rust</td><td>No garbage collection, memory safety</td></tr>
+                <tr><td>Stack Allocation</td><td>Automatic allocation/deallocation in LIFO order</td><td>All languages</td><td>Fast allocation, automatic cleanup</td></tr>
+                <tr><td>Heap Allocation</td><td>Dynamic allocation with manual or automatic management</td><td>Most languages</td><td>Flexible lifetime, but slower allocation</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Scoping Rules</h2>
+            <table>
+                <tr><th>Scoping Type</th><th>Description</th><th>Examples</th><th>Characteristics</th></tr>
+                <tr><td>Lexical (Static)</td><td>Variable scope determined by source code structure</td><td>C, Java, Python, C++</td><td>Predictable, checked at compile time</td></tr>
+                <tr><td>Dynamic</td><td>Variable scope determined at runtime</td><td>Early Lisp, Perl (special variables)</td><td>Flexible, but harder to debug</td></tr>
+                <tr><td>Global Scope</td><td>Variable accessible throughout program</td><td>All languages</td><td>Easy access, but can cause naming conflicts</td></tr>
+                <tr><td>Local Scope</td><td>Variable accessible only within specific block</td><td>All languages</td><td>Encapsulation, avoids naming conflicts</td></tr>
+                <tr><td>Block Scope</td><td>Variable accessible within a block</td><td>C, Java, JavaScript</td><td>Fine-grained control</td></tr>
+                <tr><td>Function Scope</td><td>Variable accessible within function</td><td>JavaScript (var)</td><td>Hoisting behavior</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Programming Language Constructs</h2>
+            <table>
+                <tr><th>Construct</th><th>Purpose</th><th>Examples</th><th>Implementation</th></tr>
+                <tr><td>Control Structures</td><td>Control flow of execution</td><td>if/else, while, for, switch</td><td>Conditional jumps, loops in machine code</td></tr>
+                <tr><td>Functions/Methods</td><td>Modularize code into reusable units</td><td>function, procedure, method, subroutine</td><td>Stack frames, parameter passing, return mechanisms</td></tr>
+                <tr><td>Data Structures</td><td>Organize and store data</td><td>Arrays, records, classes, structs</td><td>Memory layout, access methods</td></tr>
+                <tr><td>Abstraction</td><td>Hide implementation details</td><td>Classes, modules, interfaces</td><td>Encapsulation, information hiding</td></tr>
+                <tr><td>Error Handling</td><td>Deal with exceptional conditions</td><td>try/catch/finally, exceptions, error codes</td><td>Stack unwinding, exception handling mechanism</td></tr>
+                <tr><td>Concurrency</td><td>Execute multiple tasks simultaneously</td><td>Threads, coroutines, async/await</td><td>OS threads, event loops, green threads</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Compilation Process</h2>
+            <table>
+                <tr><th>Phase</th><th>Description</th><th>Input</th><th>Output</th></tr>
+                <tr><td>Lexical Analysis</td><td>Convert source code to tokens</td><td>Character stream</td><td>Token stream</td></tr>
+                <tr><td>Syntax Analysis</td><td>Parse tokens into syntax tree</td><td>Token stream</td><td>Parse tree/AST</td></tr>
+                <tr><td>Semantic Analysis</td><td>Check semantic rules</td><td>Parse tree</td><td>Decorated AST</td></tr>
+                <tr><td>Intermediate Code Generation</td><td>Create intermediate representation</td><td>Decorated AST</td><td>IR code</td></tr>
+                <tr><td>Optimization</td><td>Improve code efficiency</td><td>IR code</td><td>Optimized IR</td></tr>
+                <tr><td>Code Generation</td><td>Create target machine code</td><td>Optimized IR</td><td>Assembly/machine code</td></tr>
+                <tr><td>Assembly</td><td>Convert assembly to machine code</td><td>Assembly code</td><td>Object code</td></tr>
+                <tr><td>Linking</td><td>Combine object files</td><td>Object files, libraries</td><td>Executable</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Language Implementation</h2>
+            <table>
+                <tr><th>Method</th><th>Description</th><th>Examples</th><th>Advantages/Disadvantages</th></tr>
+                <tr><td>Compilation</td><td>Translate entire program before execution</td><td>C, C++, Go, Rust</td><td>Fast execution, but longer development cycle</td></tr>
+                <tr><td>Interpretation</td><td>Execute program directly without prior translation</td><td>Python, Ruby, JavaScript (initially)</td><td>Fast startup, interactive development</td></tr>
+                <tr><td>Hybrid (Bytecode)</td><td>Compile to intermediate code, then interpret</td><td>Java (JVM), Python (.pyc), C# (.NET)</td><td>Platform independence, good performance</td></tr>
+                <tr><td>Just-In-Time (JIT)</td><td>Compile code at runtime</td><td>Java (HotSpot), JavaScript (V8), .NET</td><td>Optimization opportunities, but warm-up time</td></tr>
+                <tr><td>Transpilation</td><td>Translate source to source</td><td>TypeScript → JavaScript, CoffeeScript → JavaScript</td><td>Use advanced features on existing platforms</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Language Features Comparison</h2>
+            <table>
+                <tr><th>Feature</th><th>C</th><th>Java</th><th>Python</th><th>JavaScript</th></tr>
+                <tr><td>Typing</td><td>Static, weak</td><td>Static, strong</td><td>Dynamic, strong</td><td>Dynamic, weak</td></tr>
+                <tr><td>Memory Management</td><td>Manual</td><td>Garbage collected</td><td>Garbage collected</td><td>Garbage collected</td></tr>
+                <tr><td>Paradigm</td><td>Procedural</td><td>OOP, imperative</td><td>Multi-paradigm</td><td>Multi-paradigm</td></tr>
+                <tr><td>Execution</td><td>Compiled</td><td>Bytecode + JIT</td><td>Interpreted</td><td>Interpreted + JIT</td></tr>
+                <tr><td>Concurrency</td><td>Threads, POSIX</td><td>Threads, async</td><td>Threads, async, GIL</td><td>Event loop, async</td></tr>
+                <tr><td>Platform</td><td>Cross-platform</td><td>Write once, run anywhere</td><td>Cross-platform</td><td>Browser, server</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Standard Language Components</h2>
+            <table>
+                <tr><th>Component</th><th>Purpose</th><th>Examples</th><th>Implementation</th></tr>
+                <tr><td>Standard Library</td><td>Provide common functionality</td><td>String handling, I/O, data structures</td><td>Built-in functions, classes, modules</td></tr>
+                <tr><td>Runtime System</td><td>Support program execution</td><td>Memory manager, garbage collector</td><td>System libraries, kernel interfaces</td></tr>
+                <tr><td>Package Manager</td><td>Manage dependencies and libraries</td><td>npm, pip, Maven, Cargo</td><td>Repository systems, dependency resolution</td></tr>
+                <tr><td>Development Tools</td><td>Support development process</td><td>IDEs, debuggers, profilers</td><td>Language-specific tools</td></tr>
+                <tr><td>Documentation</td><td>Explain language features</td><td>API docs, tutorials, specifications</td><td>Automated doc generation</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Language Design Principles</h2>
+            <table>
+                <tr><th>Principle</th><th>Description</th><th>Application</th><th>Benefits</th></tr>
+                <tr><td>Simplicity</td><td>Keep language features minimal and clear</td><td>Avoid unnecessary complexity</td><td>Easier to learn, implement, and maintain</td></tr>
+                <tr><td>Orthogonality</td><td>Combine features in consistent ways</td><td>Independent language constructs</td><td>Predictable behavior, fewer special cases</td></tr>
+                <tr><td>Generality</td><td>Use few constructs for many purposes</td><td>Polymorphism, generic types</td><td>Reduced redundancy, increased flexibility</td></tr>
+                <tr><td>Uniformity</td><td>Consistent syntax and semantics</td><td>Consistent naming, syntax rules</td><td>Easier to learn and use</td></tr>
+                <tr><td>Abstraction</td><td>Hide complexity behind simple interfaces</td><td>Functions, classes, modules</td><td>Manageable complexity, code reuse</td></tr>
+                <tr><td>Efficiency</td><td>Enable performance optimization</td><td>Low-level access, optimization opportunities</td><td>Fast execution, resource utilization</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

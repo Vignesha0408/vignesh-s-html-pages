@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natural Language Processing Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Natural Language Processing Cheat Sheet</h1>
+        
+        <div class="section">
+            <h2>NLP Pipeline Stages</h2>
+            <table>
+                <tr><th>Stage</th><th>Description</th><th>Techniques</th><th>Output</th><th>Applications</th></tr>
+                <tr><td>Text Preprocessing</td><td>Cleaning and normalizing text</td><td>Tokenization, stemming, lemmatization</td><td>Cleaned text tokens</td><td>Preparation for downstream tasks</td></tr>
+                <tr><td>Part-of-Speech Tagging</td><td>Label words with grammatical roles</td><td>Rule-based, statistical, neural models</td><td>Word-tag pairs</td><td>Grammar analysis, information extraction</td></tr>
+                <tr><td>Named Entity Recognition</td><td>Identify named entities</td><td>Rule-based, ML, deep learning</td><td>Entity-label pairs</td><td>Information extraction, question answering</td></tr>
+                <tr><td>Syntactic Parsing</td><td>Analyze grammatical structure</td><td>Constituency, dependency parsing</td><td>Parse trees</td><td>Grammar analysis, semantic parsing</td></tr>
+                <tr><td>Semantic Analysis</td><td>Extract meaning from text</td><td>Word sense disambiguation, semantic role labeling</td><td>Semantic representations</td><td>Question answering, machine translation</td></tr>
+                <tr><td>Discourse Analysis</td><td>Analyze relationships between sentences</td><td>Coreference resolution, coherence</td><td>Discourse structures</td><td>Document understanding, summarization</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Text Preprocessing Techniques</h2>
+            <table>
+                <tr><th>Technique</th><th>Description</th><th>Implementation</th><th>Benefits</th><th>Considerations</th></tr>
+                <tr><td>Tokenization</td><td>Split text into tokens (words, sentences)</td><td>Whitespace, punctuation, regex-based</td><td>Basic text processing</td><td>Language-specific rules</td></tr>
+                <tr><td>Stop Word Removal</td><td>Remove common words with little meaning</td><td>Predefined stop word lists</td><td>Reduce dimensionality</td><td>Context-dependent importance</td></tr>
+                <tr><td>Stemming</td><td>Reduce words to root form</td><td>Porter, Snowball, Lancaster stemmers</td><td>Reduce vocabulary size</td><td>May produce non-words</td></tr>
+                <tr><td>Lemmatization</td><td>Reduce words to dictionary form</td><td>Morphological analysis, POS tagging</td><td>Preserves word meaning</td><td>More computationally expensive</td></tr>
+                <tr><td>Lowercasing</td><td>Convert text to lowercase</td><td>String transformation</td><td>Normalize case variations</td><td>May lose important information</td></tr>
+                <tr><td>Handling Special Characters</td><td>Remove or replace special characters</td><td>Regex, normalization rules</td><td>Reduce noise</td><td>Context-dependent importance</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>NLP Models & Architectures</h2>
+            <table>
+                <tr><th>Model</th><th>Type</th><th>Architecture</th><th>Strengths</th><th>Weaknesses</th><th>Applications</th></tr>
+                <tr><td>Bag of Words</td><td>Classical</td><td>Vector representation</td><td>Simple, efficient</td><td>Loss of word order</td><td>Text classification, sentiment analysis</td></tr>
+                <tr><td>TF-IDF</td><td>Classical</td><td>Term frequency-inverse document frequency</td><td>Weighted importance</td><td>Still loses word order</td><td>Information retrieval, document similarity</td></tr>
+                <tr><td>Word2Vec</td><td>Neural</td><td>Continuous bag of words, Skip-gram</td><td>Semantic relationships</td><td>Context-independent</td><td>Word similarity, analogies</td></tr>
+                <tr><td>GloVe</td><td>Neural</td><td>Global vectors</td><td>Global statistics</td><td>Context-independent</td><td>Word similarity, embeddings</td></tr>
+                <tr><td>LSTM/GRU</td><td>Neural</td><td>Recurrent neural networks</td><td>Handle sequential data</td><td>Vanishing gradients, slow training</td><td>Machine translation, text generation</td></tr>
+                <tr><td>Transformer</td><td>Neural</td><td>Self-attention mechanism</td><td>Parallel processing, long-range dependencies</td><td>Quadratic complexity</td><td>Modern NLP models (BERT, GPT)</td></tr>
+                <tr><td>BERT</td><td>Transformer</td><td>Bidirectional encoder</td><td>Contextual representations</td><td>Requires fine-tuning</td><td>Question answering, text classification</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>NLP Tasks & Applications</h2>
+            <table>
+                <tr><th>Task</th><th>Description</th><th>Common Approaches</th><th>Performance Metrics</th><th>Examples</th></tr>
+                <tr><td>Text Classification</td><td>Assign categories to text</td><td>Naive Bayes, SVM, neural networks</td><td>Accuracy, F1-score, precision, recall</td><td>Sentiment analysis, spam detection</td></tr>
+                <tr><td>Named Entity Recognition</td><td>Identify entities in text</td><td>CRF, BiLSTM-CRF, BERT</td><td>Entity-level F1-score</td><td>Person, location, organization extraction</td></tr>
+                <tr><td>Machine Translation</td><td>Translate text between languages</td><td>Statistical, neural, transformer models</td><td>BLEU, METEOR, TER</td><td>Google Translate, DeepL</td></tr>
+                <tr><td>Question Answering</td><td>Answer questions based on context</td><td>Extractive, generative models</td><td>Exact match, F1-score</td><td>SQuAD, reading comprehension</td></tr>
+                <tr><td>Text Summarization</td><td>Condense text while preserving meaning</td><td>Extractive, abstractive methods</td><td>ROUGE, BLEU</td><td>News summarization, document abstraction</td></tr>
+                <tr><td>Sentiment Analysis</td><td>Determine sentiment in text</td><td>Lexicon-based, machine learning</td><td>Accuracy, F1-score</td><td>Product reviews, social media analysis</td></tr>
+                <tr><td>Part-of-Speech Tagging</td><td>Label words with grammatical roles</td><td>HMM, CRF, neural networks</td><td>Tagging accuracy</td><td>Grammar analysis, text preprocessing</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Word Embeddings</h2>
+            <table>
+                <tr><th>Method</th><th>Approach</th><th>Dimensionality</th><th>Training Objective</th><th>Advantages</th><th>Disadvantages</th></tr>
+                <tr><td>Word2Vec (Skip-gram)</td><td>Predict context from target word</td><td>Typically 100-300 dimensions</td><td>Maximize context prediction</td><td>Efficient, captures semantic similarity</td><td>Context-independent, single representation</td></tr>
+                <tr><td>Word2Vec (CBOW)</td><td>Predict target word from context</td><td>Typically 100-300 dimensions</td><td>Maximize word prediction</td><td>Fast training, good for frequent words</td><td>Less effective for rare words</td></tr>
+                <tr><td>GloVe</td><td>Global matrix factorization</td><td>Typically 100-300 dimensions</td><td>Factorize co-occurrence matrix</td><td>Global statistics, efficient</td><td>Context-independent</td></tr>
+                <tr><td>FastText</td><td>Subword information</td><td>Typically 100-300 dimensions</td><td>Word and n-gram representations</td><td>Handles out-of-vocabulary words</td><td>Larger memory footprint</td></tr>
+                <tr><td>ELMo</td><td>Contextual embeddings</td><td>Variable (concatenated layers)</td><td>BiLM objective</td><td>Context-dependent representations</td><td>Computationally expensive</td></tr>
+                <tr><td>BERT</td><td>Contextual embeddings</td><td>Typically 768-1024 dimensions</td><td>Masked language model</td><td>Bidirectional context, rich representations</td><td>Requires fine-tuning</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Language Model Evaluation</h2>
+            <table>
+                <tr><th>Metric</th><th>Description</th><th>Formula/Method</th><th>Best For</th><th>Limitations</th></tr>
+                <tr><td>Perplexity</td><td>Measure of language model uncertainty</td><td>2^(-1/N * Σ log₂ P(wᵢ))</td><td>Language model comparison</td><td>Doesn't correlate with downstream tasks</td></tr>
+                <tr><td>BLEU</td><td>Bilingual evaluation understudy</td><td>Modified n-gram precision</td><td>Machine translation, text generation</td><td>Focuses on lexical similarity</td></tr>
+                <tr><td>ROUGE</td><td>Recall-oriented understudy</td><td>Overlap statistics (n-grams, LCS)</td><td>Text summarization</td><td>Lexical overlap only</td></tr>
+                <tr><td>METEOR</td><td>Translation evaluation metric</td><td>Harmonic mean of precision and recall</td><td>Machine translation</td><td>Computationally expensive</td></tr>
+                <tr><td>TER</td><td>Translation edit rate</td><td>Minimum edit distance</td><td>Translation quality</td><td>Doesn't consider meaning preservation</td></tr>
+                <tr><td>Embedding-based Metrics</td><td>Similarity in embedding space</td><td>Cosine similarity, WMD</td><td>Content similarity</td><td>Dependent on embedding quality</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Challenges in NLP</h2>
+            <table>
+                <tr><th>Challenge</th><th>Description</th><th>Impact</th><th>Approaches to Address</th><th>Examples</th></tr>
+                <tr><td>Ambiguity</td><td>Words/phrases with multiple meanings</td><td>Incorrect interpretation</td><td>Contextual models, word sense disambiguation</td><td>"Bank" (financial institution vs. riverbank)</td></tr>
+                <tr><td>Named Entity Recognition</td><td>Identifying and classifying named entities</td><td>Information extraction errors</td><td>Sequence labeling, neural models</td><td>Person, location, organization identification</td></tr>
+                <tr><td>Coreference Resolution</td><td>Identifying referring expressions</td><td>Discourse understanding errors</td><td>Neural coreference models</td><td>"John said he was tired" (who is "he"?)</td></tr>
+                <tr><td>Language Variations</td><td>Dialects, slang, informal language</td><td>Model performance degradation</td><td>Data augmentation, multilingual models</td><td>Regional variations, social media text</td></tr>
+                <tr><td>Data Sparsity</td><td>Insufficient training data for rare words</td><td>Poor performance on rare words</td><td>Subword tokenization, transfer learning</td><td>Domain-specific terminology</td></tr>
+                <tr><td>Context Understanding</td><td>Understanding long-range dependencies</td><td>Loss of important context</td><td>Attention mechanisms, transformer models</td><td>Document-level understanding</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

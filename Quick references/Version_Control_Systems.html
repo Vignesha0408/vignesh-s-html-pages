@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Version Control Systems - Quick Reference</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --primary-gradient-start: #6a85b6;
+            --primary-gradient-end: #bac8e0;
+            --secondary-gradient-start: #a1c4fd;
+            --secondary-gradient-end: #c2e9fb;
+            --accent-color: #4a69bd;
+            --text-color: #2c3e50;
+            --light-text: #7f8c8d;
+            --card-bg: #ffffff;
+            --border-color: #e0e0e0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, var(--primary-gradient-start), var(--primary-gradient-end));
+            background-attachment: fixed;
+            color: var(--text-color);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+        
+        h1 {
+            text-align: center;
+            background: linear-gradient(to right, var(--secondary-gradient-start), var(--secondary-gradient-end));
+            color: var(--text-color);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            font-size: 2.2rem;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            animation: slideDown 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        h1::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+        
+        h1:hover::before {
+            transform: translateX(100%);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        table:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        th {
+            background: linear-gradient(to right, var(--secondary-gradient-start), var(--secondary-gradient-end));
+            color: var(--text-color);
+            padding: 16px;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.95rem;
+            vertical-align: top;
+            transition: background-color 0.3s ease;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9fbfd;
+        }
+        
+        tr:hover {
+            background-color: #edf7ff;
+        }
+        
+        .topic-tag {
+            display: inline-block;
+            background: linear-gradient(to right, var(--secondary-gradient-start), var(--secondary-gradient-end));
+            color: var(--text-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 3px;
+            transition: transform 0.2s ease;
+        }
+        
+        .topic-tag:hover {
+            transform: scale(1.05);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 5px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+                padding: 20px;
+            }
+            
+            table {
+                margin: 15px 0;
+            }
+            
+            th, td {
+                padding: 12px 8px;
+                font-size: 0.9rem;
+            }
+            
+            .topic-tag {
+                font-size: 0.75rem;
+                padding: 4px 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+                padding: 15px;
+            }
+            
+            th {
+                font-size: 0.85rem;
+                padding: 10px 8px;
+            }
+            
+            td {
+                padding: 10px 6px;
+                font-size: 0.85rem;
+            }
+            
+            .topic-tag {
+                display: block;
+                margin: 4px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Version Control Systems - Quick Reference</h1>
+        
+        <table>
+            <tr><th>Concept</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Definition</div></td><td>System that records changes to files over time so you can recall specific versions later. Essential for collaboration and code management.</td></tr>
+            <tr><td><div class="topic-tag">Purpose</div></td><td>Track changes, collaborate, maintain history, enable branching/merging, backup and restore</td></tr>
+            <tr><td><div class="topic-tag">Types</div></td><td>Distributed (Git) vs Centralized (SVN), Client-server vs Peer-to-peer</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Git Basics</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Initialize</div></td><td>git init (create repo), git clone (copy remote repo)</td></tr>
+            <tr><td><div class="topic-tag">Add & Commit</div></td><td>git add (stage changes), git commit -m "message" (save changes)</td></tr>
+            <tr><td><div class="topic-tag">Status & Log</div></td><td>git status (check status), git log (view commit history)</td></tr>
+            <tr><td><div class="topic-tag">Push & Pull</div></td><td>git push (upload to remote), git pull (download from remote)</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Git Branching</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Create & Switch</div></td><td>git branch (list branches), git checkout -b new-branch (create and switch), git switch new-branch (switch)</td></tr>
+            <tr><td><div class="topic-tag">Merge & Rebase</div></td><td>git merge (combine branches), git rebase (reapply commits on top of another base)</td></tr>
+            <tr><td><div class="topic-tag">Remote Branches</div></td><td>git push origin branch-name (push branch), git fetch (get remote changes)</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Git Advanced</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Stash</div></td><td>git stash (save changes temporarily), git stash pop (apply stashed changes)</td></tr>
+            <tr><td><div class="topic-tag">Reset & Revert</div></td><td>git reset (undo changes), git revert (create new commit to undo changes)</td></tr>
+            <tr><td><div class="topic-tag">Tagging</div></td><td>git tag (list tags), git tag -a v1.0 -m "message" (create annotated tag)</td></tr>
+            <tr><td><div class="topic-tag">Log & Diff</div></td><td>git diff (show differences), git log --oneline (short log format)</td></tr>
+        </table>
+
+        <table>
+            <tr><th>SVN Basics</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Checkout</div></td><td>svn checkout (get working copy), svn update (get latest changes)</td></tr>
+            <tr><td><div class="topic-tag">Add & Commit</div></td><td>svn add (add files), svn commit -m "message" (save changes)</td></tr>
+            <tr><td><div class="topic-tag">Status & Log</div></td><td>svn status (check status), svn log (view commit history)</td></tr>
+            <tr><td><div class="topic-tag">Update</div></td><td>svn update (get latest changes from repository)</td></tr>
+        </table>
+
+        <table>
+            <tr><th>SVN Branching & Merging</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Branching</div></td><td>svn copy trunk branches/new-branch -m "Create branch" (create branch)</td></tr>
+            <tr><td><div class="topic-tag">Switching</div></td><td>svn switch (switch working copy to different branch)</td></tr>
+            <tr><td><div class="topic-tag">Merging</div></td><td>svn merge (combine changes from branches)</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Git vs SVN Comparison</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Architecture</div></td><td>Git: Distributed, each clone is full repository; SVN: Centralized, single server with working copies</td></tr>
+            <tr><td><div class="topic-tag">Performance</div></td><td>Git: Faster operations since most work done locally; SVN: Slower, requires network for most operations</td></tr>
+            <tr><td><div class="topic-tag">Branching</div></td><td>Git: Lightweight, fast branching; SVN: More expensive, stored on server</td></tr>
+            <tr><td><div class="topic-tag">History</div></td><td>Git: Immutable SHA-1 hashes; SVN: Incremental revision numbers</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Best Practices</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Commit Messages</div></td><td>Use clear, descriptive messages, follow conventions (e.g., conventional commits)</td></tr>
+            <tr><td><div class="topic-tag">Branch Strategy</div></td><td>Feature branching, Git Flow, Trunk-based development</td></tr>
+            <tr><td><div class="topic-tag">Workflow</div></td><td>Regular commits, pull before push, use branches for features, review code before merge</td></tr>
+            <tr><td><div class="topic-tag">Backup</div></td><td>Push regularly to remote repositories, use multiple remotes</td></tr>
+        </table>
+    </div>
+</body>
+</html>

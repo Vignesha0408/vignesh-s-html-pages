@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compiler Design Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Compiler Design Cheat Sheet</h1>
+        
+        <div class="section">
+            <h2>Compiler Phases</h2>
+            <table>
+                <tr><th>Phase</th><th>Purpose</th><th>Output</th><th>Tools/Techniques</th></tr>
+                <tr><td>Lexical Analysis</td><td>Convert source code to tokens</td><td>Token stream</td><td>Regular expressions, finite automata</td></tr>
+                <tr><td>Syntax Analysis</td><td>Parse tokens into syntax tree</td><td>Parse tree/AST</td><td>Context-free grammars, parsers</td></tr>
+                <tr><td>Semantic Analysis</td><td>Check semantic rules</td><td>Decorated AST</td><td>Type checking, attribute grammars</td></tr>
+                <tr><td>Intermediate Code Generation</td><td>Create intermediate representation</td><td>IR code</td><td>Three-address code, postfix</td></tr>
+                <tr><td>Code Optimization</td><td>Improve code efficiency</td><td>Optimized IR</td><td>Data flow analysis, loop optimization</td></tr>
+                <tr><td>Code Generation</td><td>Create target machine code</td><td>Assembly/machine code</td><td>Instruction selection, register allocation</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Lexical Analysis</h2>
+            <table>
+                <tr><th>Concept</th><th>Description</th><th>Implementation</th><th>Example</th></tr>
+                <tr><td>Token</td><td>Basic lexical unit</td><td>Keywords, identifiers, literals</td><td><span class="code">int x = 5;</span> → int, x, =, 5, ;</td></tr>
+                <tr><td>Patterns</td><td>Rules for token recognition</td><td>Regular expressions</td><td>Identifier: letter(letter|digit)*</td></tr>
+                <tr><td>Finite Automata</td><td>Recognition mechanism</td><td>DFA, NFA</td><td>State transition diagrams</td></tr>
+                <tr><td>Lexemes</td><td>Character sequences forming tokens</td><td>Actual input strings</td><td><span class="code">while</span> in source code</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Syntax Analysis (Parsing)</h2>
+            <table>
+                <tr><th>Type</th><th>Method</th><th>Direction</th><th>Complexity</th><th>Best For</th></tr>
+                <tr><td>Top-Down</td><td>Recursive descent, LL parsing</td><td>Root to leaves</td><td>O(n)</td><td>Programming languages</td></tr>
+                <tr><td>Bottom-Up</td><td>Shift-reduce, LR parsing</td><td>Leaves to root</td><td>O(n)</td><td>Most programming languages</td></tr>
+                <tr><td>LL(1)</td><td>Left-to-right, leftmost derivation</td><td>Top-down</td><td>O(n)</td><td>Simple grammars</td></tr>
+                <tr><td>LR(0)</td><td>Left-to-right, rightmost derivation</td><td>Bottom-up</td><td>O(n)</td><td>Deterministic grammars</td></tr>
+                <tr><td>SLR</td><td>Simple LR</td><td>Bottom-up</td><td>O(n)</td><td>Extended grammars</td></tr>
+                <tr><td>LALR</td><td>Lookahead LR</td><td>Bottom-up</td><td>O(n)</td><td>Most programming languages</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Symbol Table Management</h2>
+            <table>
+                <tr><th>Method</th><th>Description</th><th>Advantages</th><th>Disadvantages</th></tr>
+                <tr><td>Linear List</td><td>Simple linked list</td><td>Easy to implement</td><td>Slow search O(n)</td></tr>
+                <tr><td>Hash Table</td><td>Hash function for indexing</td><td>Fast search O(1)</td><td>Hash collisions</td></tr>
+                <tr><td>Tree Structure</td><td>Binary search tree</td><td>Sorted access, O(log n)</td><td>Complex implementation</td></tr>
+                <tr><td>Scope Handling</td><td>Multiple tables for nested scopes</td><td>Proper scope management</td><td>Memory overhead</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Intermediate Code Forms</h2>
+            <table>
+                <tr><th>Type</th><th>Representation</th><th>Advantages</th><th>Disadvantages</th></tr>
+                <tr><td>Three-Address Code</td><td>op arg1, arg2, result</td><td>Simple, general purpose</td><td>More instructions</td></tr>
+                <tr><td>Postfix Notation</td><td>ab+ (operands before operator)</td><td>No parentheses needed</td><td>Hard to read</td></tr>
+                <tr><td>Abstract Syntax Tree</td><td>Tree representation</td><td>Compact, hierarchical</td><td>More complex</td></tr>
+                <tr><td>Quadruples</td><td>(op, arg1, arg2, result)</td><td>Easy to rearrange</td><td>More memory</td></tr>
+                <tr><td>Triples</td><td>(op, arg1, arg2)</td><td>Less memory</td><td>Difficult to rearrange</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Code Optimization</h2>
+            <table>
+                <tr><th>Level</th><th>Technique</th><th>Purpose</th><th>Example</th></tr>
+                <tr><td>Local</td><td>Constant folding</td><td>Replace constant expressions</td><td><span class="code">x = 3 + 5</span> → <span class="code">x = 8</span></td></tr>
+                <tr><td>Local</td><td>Common subexpression elimination</td><td>Avoid recomputation</td><td><span class="code">a = b + c; d = b + c</span> → <span class="code">t = b + c; a = t; d = t</span></td></tr>
+                <tr><td>Local</td><td>Dead code elimination</td><td>Remove unused code</td><td>Remove assignments to unused variables</td></tr>
+                <tr><td>Loop</td><td>Loop invariant code motion</td><td>Move code outside loops</td><td>Move calculations out of loops</td></tr>
+                <tr><td>Loop</td><td>Loop unrolling</td><td>Reduce loop overhead</td><td>Replicate loop body multiple times</td></tr>
+                <tr><td>Global</td><td>Data flow analysis</td><td>Optimize across basic blocks</td><td>Global common subexpressions</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Runtime Environment</h2>
+            <table>
+                <tr><th>Component</th><th>Purpose</th><th>Contents</th><th>Management</th></tr>
+                <tr><td>Code Area</td><td>Store executable code</td><td>Machine instructions</td><td>Static allocation</td></tr>
+                <tr><td>Static Data</td><td>Global and static variables</td><td>Global variables, constants</td><td>Static allocation</td></tr>
+                <tr><td>Stack Area</td><td>Function calls and local variables</td><td>Activation records</td><td>Last-in-first-out</td></tr>
+                <tr><td>Heap Area</td><td>Dynamic memory allocation</td><td>Dynamically allocated data</td><td>Manual/Garbage collection</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Error Handling</h2>
+            <table>
+                <tr><th>Error Type</th><th>Phase</th><th>Detection</th><th>Recovery Strategy</th></tr>
+                <tr><td>Lexical</td><td>Lexical Analysis</td><td>Invalid characters</td><td>Ignore invalid characters</td></tr>
+                <tr><td>Syntactic</td><td>Syntax Analysis</td><td>Invalid syntax</td><td>Phrase-level, Panic mode</td></tr>
+                <tr><td>Semantic</td><td>Semantic Analysis</td><td>Type mismatches</td><td>Report and continue</td></tr>
+                <tr><td>Logical</td><td>Runtime</td><td>Program logic errors</td><td>Debugging, testing</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

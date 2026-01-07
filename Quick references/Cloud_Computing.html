@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Computing Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cloud Computing Cheat Sheet</h1>
+        
+        <div class="section">
+            <h2>Cloud Service Models</h2>
+            <table>
+                <tr><th>Model</th><th>Description</th><th>Examples</th><th>Customer Responsibilities</th></tr>
+                <tr><td>Infrastructure as a Service (IaaS)</td><td>Virtualized computing resources over the internet</td><td>AWS EC2, Microsoft Azure VMs, Google Compute Engine</td><td>Applications, runtime, middleware, data, OS</td></tr>
+                <tr><td>Platform as a Service (PaaS)</td><td>Platform allowing customers to develop, run, and manage applications</td><td>Google App Engine, Microsoft Azure App Service, Heroku</td><td>Applications, data</td></tr>
+                <tr><td>Software as a Service (SaaS)</td><td>Software applications delivered over the internet</td><td>Google Workspace, Microsoft Office 365, Salesforce</td><td>Data, user configuration</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Cloud Deployment Models</h2>
+            <table>
+                <tr><th>Model</th><th>Description</th><th>Advantages</th><th>Disadvantages</th></tr>
+                <tr><td>Public Cloud</td><td>Services offered over the public internet</td><td>Cost-effective, scalable, no maintenance</td><td>Less control, security concerns</td></tr>
+                <tr><td>Private Cloud</td><td>Cloud services used exclusively by one organization</td><td>Greater control, security, customization</td><td>Higher cost, requires maintenance</td></tr>
+                <tr><td>Hybrid Cloud</td><td>Combination of public and private clouds</td><td>Flexibility, optimization, compliance</td><td>Complexity, integration challenges</td></tr>
+                <tr><td>Community Cloud</td><td>Shared infrastructure for organizations with common concerns</td><td>Shared costs, similar requirements</td><td>Limited to specific communities</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Major Cloud Providers</h2>
+            <table>
+                <tr><th>Provider</th><th>Key Services</th><th>Strengths</th><th>Market Share</th></tr>
+                <tr><td>AWS (Amazon Web Services)</td><td>EC2, S3, Lambda, RDS, CloudFormation</td><td>Market leader, extensive services, global reach</td><td>~32%</td></tr>
+                <tr><td>Microsoft Azure</td><td>VMs, Storage, Functions, SQL Database, Resource Manager</td><td>Enterprise integration, hybrid solutions, Microsoft ecosystem</td><td>~20%</td></tr>
+                <tr><td>Google Cloud Platform</td><td>Compute Engine, Cloud Storage, BigQuery, Cloud Functions</td><td>Big data, machine learning, open source</td><td>~10%</td></tr>
+                <tr><td>IBM Cloud</td><td>Cloud Foundry, Kubernetes, Watson, Blockchain</td><td>Enterprise solutions, AI, consulting services</td><td>~5%</td></tr>
+                <tr><td>Oracle Cloud</td><td>Database Cloud, Application Cloud, Infrastructure Cloud</td><td>Database solutions, enterprise applications</td><td>~2%</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Cloud Computing Characteristics</h2>
+            <table>
+                <tr><th>Characteristic</th><th>Description</th><th>Benefits</th></tr>
+                <tr><td>On-demand self-service</td><td>Users can provision resources without human interaction</td><td>Convenience, automation, faster deployment</td></tr>
+                <tr><td>Broad network access</td><td>Resources available over the network via standard mechanisms</td><td>Accessibility, mobility, flexibility</td></tr>
+                <tr><td>Resource pooling</td><td>Resources are pooled to serve multiple consumers</td><td>Efficiency, cost savings, scalability</td></tr>
+                <tr><td>Rapid elasticity</td><td>Resources can be rapidly provisioned and released</td><td>Scalability, cost optimization, agility</td></tr>
+                <tr><td>Measured service</td><td>Resource usage is monitored, controlled, and reported</td><td>Transparency, optimization, pay-per-use</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Cloud Storage Services</h2>
+            <table>
+                <tr><th>Service</th><th>Provider</th><th>Type</th><th>Use Cases</th></tr>
+                <tr><td>S3 (Simple Storage Service)</td><td>AWS</td><td>Object Storage</td><td>Backup, archive, content distribution</td></tr>
+                <tr><td>S3 Glacier</td><td>AWS</td><td>Archive Storage</td><td>Long-term backup, compliance</td></tr>
+                <tr><td>Amazon EBS</td><td>AWS</td><td>Block Storage</td><td>Database storage, VM boot volumes</td></tr>
+                <tr><td>Amazon EFS</td><td>AWS</td><td>File Storage</td><td>Shared file systems, content management</td></tr>
+                <tr><td>Azure Blob Storage</td><td>Microsoft Azure</td><td>Object Storage</td><td>Unstructured data, media content</td></tr>
+                <tr><td>Azure Files</td><td>Microsoft Azure</td><td>File Storage</td><td>Shared file access, lift and shift</td></tr>
+                <tr><td>Google Cloud Storage</td><td>Google Cloud</td><td>Object Storage</td><td>Backup, content serving, analytics</td></tr>
+                <tr><td>Google Persistent Disk</td><td>Google Cloud</td><td>Block Storage</td><td>VM storage, database storage</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Cloud Compute Services</h2>
+            <table>
+                <tr><th>Service</th><th>Provider</th><th>Type</th><th>Characteristics</th></tr>
+                <tr><td>EC2</td><td>AWS</td><td>Virtual Machines</td><td>Scalable, variety of instance types</td></tr>
+                <tr><td>Lambda</td><td>AWS</td><td>Serverless Functions</td><td>Event-driven, no server management</td></tr>
+                <tr><td>ECS/EKS</td><td>AWS</td><td>Container Services</td><td>Docker container orchestration</td></tr>
+                <tr><td>Azure VMs</td><td>Microsoft Azure</td><td>Virtual Machines</td><td>Windows/Linux VMs, hybrid integration</td></tr>
+                <tr><td>Azure Functions</td><td>Microsoft Azure</td><td>Serverless Functions</td><td>Event-driven, multiple language support</td></tr>
+                <tr><td>Azure Kubernetes Service</td><td>Microsoft Azure</td><td>Container Orchestration</td><td>Managed Kubernetes service</td></tr>
+                <tr><td>Google Compute Engine</td><td>Google Cloud</td><td>Virtual Machines</td><td>High-performance computing, custom machines</td></tr>
+                <tr><td>Google Cloud Functions</td><td>Google Cloud</td><td>Serverless Functions</td><td>Lightweight, event-driven functions</td></tr>
+                <tr><td>Google Kubernetes Engine</td><td>Google Cloud</td><td>Container Orchestration</td><td>Managed Kubernetes environment</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Cloud Database Services</h2>
+            <table>
+                <tr><th>Service</th><th>Provider</th><th>Type</th><th>Features</th></tr>
+                <tr><td>RDS</td><td>AWS</td><td>Relational Database</td><td>MySQL, PostgreSQL, Oracle, SQL Server</td></tr>
+                <tr><td>DynamoDB</td><td>AWS</td><td>NoSQL Database</td><td>Key-value, document, serverless</td></tr>
+                <tr><td>Redshift</td><td>AWS</td><td>Data Warehouse</td><td>Analytics, columnar storage</td></tr>
+                <tr><td>DocumentDB</td><td>AWS</td><td>Document Database</td><td>MongoDB-compatible</td></tr>
+                <tr><td>Azure SQL Database</td><td>Microsoft Azure</td><td>Relational Database</td><td>Managed SQL Server</td></tr>
+                <tr><td>Azure Cosmos DB</td><td>Microsoft Azure</td><td>Global NoSQL</td><td>Multi-model, globally distributed</td></tr>
+                <tr><td>Google Cloud SQL</td><td>Google Cloud</td><td>Relational Database</td><td>MySQL, PostgreSQL, SQL Server</td></tr>
+                <tr><td>Google BigQuery</td><td>Google Cloud</td><td>Data Warehouse</td><td>Serverless, analytics, machine learning</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Cloud Security Services</h2>
+            <table>
+                <tr><th>Service</th><th>Provider</th><th>Function</th><th>Use Case</th></tr>
+                <tr><td>AWS IAM</td><td>AWS</td><td>Identity and Access Management</td><td>User authentication, permission control</td></tr>
+                <tr><td>AWS KMS</td><td>AWS</td><td>Key Management Service</td><td>Encryption key management</td></tr>
+                <tr><td>AWS CloudTrail</td><td>AWS</td><td>Audit and Logging</td><td>API call tracking, compliance</td></tr>
+                <tr><td>Azure Active Directory</td><td>Microsoft Azure</td><td>Identity Management</td><td>Single sign-on, multi-factor authentication</td></tr>
+                <tr><td>Azure Security Center</td><td>Microsoft Azure</td><td>Security Management</td><td>Threat detection, security policies</td></tr>
+                <tr><td>Google Cloud IAM</td><td>Google Cloud</td><td>Identity and Access Management</td><td>Resource access control</td></tr>
+                <tr><td>Google Cloud Security Command Center</td><td>Google Cloud</td><td>Security and Risk Management</td><td>Security posture management</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Cloud Networking Services</h2>
+            <table>
+                <tr><th>Service</th><th>Provider</th><th>Function</th><th>Benefits</th></tr>
+                <tr><td>VPC (Virtual Private Cloud)</td><td>AWS</td><td>Virtual Network</td><td>Isolated network environment</td></tr>
+                <tr><td>Virtual Network</td><td>Azure</td><td>Virtual Network</td><td>Connectivity to Azure resources</td></tr>
+                <tr><td>Virtual Private Cloud</td><td>Google Cloud</td><td>Virtual Network</td><td>Global, scalable networking</td></tr>
+                <tr><td>CloudFront</td><td>AWS</td><td>Content Delivery Network</td><td>Global content distribution</td></tr>
+                <tr><td>Azure CDN</td><td>Microsoft Azure</td><td>Content Delivery Network</td><td>Global content caching</td></tr>
+                <tr><td>Cloud CDN</td><td>Google Cloud</td><td>Content Delivery Network</td><td>Global content delivery</td></tr>
+                <tr><td>Route 53</td><td>AWS</td><td>DNS Service</td><td>Domain name resolution</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Cloud Monitoring & Management</h2>
+            <table>
+                <tr><th>Service</th><th>Provider</th><th>Function</th><th>Features</th></tr>
+                <tr><td>CloudWatch</td><td>AWS</td><td>Monitoring and Observability</td><td>Metric collection, alarms, logs</td></tr>
+                <tr><td>CloudFormation</td><td>AWS</td><td>Infrastructure as Code</td><td>Template-based resource management</td></tr>
+                <tr><td>Azure Monitor</td><td>Microsoft Azure</td><td>Monitoring and Diagnostics</td><td>Performance monitoring, log analytics</td></tr>
+                <tr><td>Azure Resource Manager</td><td>Microsoft Azure</td><td>Resource Management</td><td>Template-based deployment</td></tr>
+                <tr><td>Stackdriver</td><td>Google Cloud</td><td>Operations Suite</td><td>Monitoring, logging, error reporting</td></tr>
+                <tr><td>Google Cloud Deployment Manager</td><td>Google Cloud</td><td>Infrastructure as Code</td><td>Template-based resource deployment</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Cloud Pricing Models</h2>
+            <table>
+                <tr><th>Model</th><th>Description</th><th>Advantages</th><th>Best For</th></tr>
+                <tr><td>Pay-as-you-go</td><td>Pay only for resources consumed</td><td>Cost optimization, no upfront costs</td><td>Variable workloads, startups</td></tr>
+                <tr><td>Reserved Instances</td><td>Prepay for capacity to get discount</td><td>Significant cost savings, predictable costs</td><td>Steady-state applications</td></tr>
+                <tr><td>Spot Instances</td><td>Unused capacity at discounted prices</td><td>Up to 90% savings, flexible workloads</td><td>Batch processing, fault-tolerant apps</td></tr>
+                <tr><td>On-demand</td><td>Pay for resources when needed</td><td>No commitment, flexibility</td><td>Short-term, unpredictable workloads</td></tr>
+                <tr><td>Enterprise Discount</td><td>Volume-based pricing for large organizations</td><td>Significant savings for large usage</td><td>Enterprise customers</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Cloud Migration Strategies (6 R's)</h2>
+            <table>
+                <tr><th>Strategy</th><th>Description</th><th>When to Use</th><th>Example</th></tr>
+                <tr><td>Rehost (Lift and Shift)</td><td>Move applications without changes</td><td>Quick migration, minimal risk</td><td>VMs to cloud VMs</td></tr>
+                <tr><td>Replatform (Lift, Tinker and Shift)</td><td>Optimize applications during migration</td><td>Performance improvement needed</td><td>Move to managed databases</td></tr>
+                <tr><td>Refactor (Re-architect)</td><td>Redesign application for cloud-native</td><td>Modernization needed</td><td>Monolith to microservices</td></tr>
+                <tr><td>Rearchitect</td><td>Significant application changes</td><td>Cloud-native capabilities needed</td><td>Add serverless components</td></tr>
+                <tr><td>Retire</td><td>Decommission unnecessary applications</td><td>Outdated or unused applications</td><td>Legacy systems</td></tr>
+                <tr><td>Retain</td><td>Keep applications on-premises</td><td>Regulatory or technical constraints</td><td>Applications with strict requirements</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

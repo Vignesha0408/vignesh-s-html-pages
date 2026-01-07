@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DBMS Quick Reference Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 25px;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DBMS Quick Reference Sheet</h1>
+        
+        <div class="section">
+            <h2>Basic SQL Commands</h2>
+            <table>
+                <tr>
+                    <th>Command</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td><span class="keyword">SELECT</span></td>
+                    <td>Retrieve data from database</td>
+                    <td><span class="code">SELECT * FROM users WHERE age > 25;</span></td>
+                </tr>
+                <tr>
+                    <td><span class="keyword">INSERT</span></td>
+                    <td>Add new records to table</td>
+                    <td><span class="code">INSERT INTO users (name, age) VALUES ('John', 30);</span></td>
+                </tr>
+                <tr>
+                    <td><span class="keyword">UPDATE</span></td>
+                    <td>Modify existing records</td>
+                    <td><span class="code">UPDATE users SET age = 31 WHERE name = 'John';</span></td>
+                </tr>
+                <tr>
+                    <td><span class="keyword">DELETE</span></td>
+                    <td>Remove records from table</td>
+                    <td><span class="code">DELETE FROM users WHERE age < 18;</span></td>
+                </tr>
+                <tr>
+                    <td><span class="keyword">CREATE TABLE</span></td>
+                    <td>Create a new table</td>
+                    <td><span class="code">CREATE TABLE users (id INT PRIMARY KEY, name VARCHAR(50));</span></td>
+                </tr>
+                <tr>
+                    <td><span class="keyword">DROP TABLE</span></td>
+                    <td>Delete a table</td>
+                    <td><span class="code">DROP TABLE users;</span></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Common SQL Clauses</h2>
+            <table>
+                <tr>
+                    <th>Clause</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td><span class="keyword">WHERE</span></td>
+                    <td>Filter records based on condition</td>
+                    <td><span class="code">SELECT * FROM products WHERE price > 100;</span></td>
+                </tr>
+                <tr>
+                    <td><span class="keyword">ORDER BY</span></td>
+                    <td>Sort the result set</td>
+                    <td><span class="code">SELECT * FROM users ORDER BY name ASC;</span></td>
+                </tr>
+                <tr>
+                    <td><span class="keyword">GROUP BY</span></td>
+                    <td>Group rows with same values</td>
+                    <td><span class="code">SELECT department, COUNT(*) FROM employees GROUP BY department;</span></td>
+                </tr>
+                <tr>
+                    <td><span class="keyword">HAVING</span></td>
+                    <td>Filter groups (used with GROUP BY)</td>
+                    <td><span class="code">SELECT department, COUNT(*) FROM employees GROUP BY department HAVING COUNT(*) > 5;</span></td>
+                </tr>
+                <tr>
+                    <td><span class="keyword">LIMIT</span></td>
+                    <td>Limit number of returned rows</td>
+                    <td><span class="code">SELECT * FROM products LIMIT 10;</span></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>SQL Joins</h2>
+            <table>
+                <tr>
+                    <th>Join Type</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td><span class="keyword">INNER JOIN</span></td>
+                    <td>Returns records with matching values in both tables</td>
+                    <td><span class="code">SELECT orders.id, customers.name FROM orders INNER JOIN customers ON orders.customer_id = customers.id;</span></td>
+                </tr>
+                <tr>
+                    <td><span class="keyword">LEFT JOIN</span></td>
+                    <td>Returns all records from left table, and matched records from right table</td>
+                    <td><span class="code">SELECT customers.name, orders.id FROM customers LEFT JOIN orders ON customers.id = orders.customer_id;</span></td>
+                </tr>
+                <tr>
+                    <td><span class="keyword">RIGHT JOIN</span></td>
+                    <td>Returns all records from right table, and matched records from left table</td>
+                    <td><span class="code">SELECT customers.name, orders.id FROM customers RIGHT JOIN orders ON customers.id = orders.customer_id;</span></td>
+                </tr>
+                <tr>
+                    <td><span class="keyword">FULL OUTER JOIN</span></td>
+                    <td>Returns all records when there's a match in either table</td>
+                    <td><span class="code">SELECT customers.name, orders.id FROM customers FULL OUTER JOIN orders ON customers.id = orders.customer_id;</span></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Database Normalization Forms</h2>
+            <table>
+                <tr>
+                    <th>Form</th>
+                    <th>Description</th>
+                    <th>Requirements</th>
+                </tr>
+                <tr>
+                    <td>1NF (First Normal Form)</td>
+                    <td>Eliminate repeating groups</td>
+                    <td>Each column contains atomic (indivisible) values</td>
+                </tr>
+                <tr>
+                    <td>2NF (Second Normal Form)</td>
+                    <td>Eliminate partial dependencies</td>
+                    <td>Must be in 1NF; all non-key attributes fully functionally dependent on primary key</td>
+                </tr>
+                <tr>
+                    <td>3NF (Third Normal Form)</td>
+                    <td>Eliminate transitive dependencies</td>
+                    <td>Must be in 2NF; no non-key attribute depends on another non-key attribute</td>
+                </tr>
+                <tr>
+                    <td>BCNF (Boyce-Codd NF)</td>
+                    <td>Advanced version of 3NF</td>
+                    <td>Every determinant is a candidate key</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>ACID Properties</h2>
+            <table>
+                <tr>
+                    <th>Property</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td><strong>Atomicity</strong></td>
+                    <td>Ensures all operations in a transaction are completed successfully or none are</td>
+                </tr>
+                <tr>
+                    <td><strong>Consistency</strong></td>
+                    <td>Ensures database remains in valid state before and after transaction</td>
+                </tr>
+                <tr>
+                    <td><strong>Isolation</strong></td>
+                    <td>Ensures concurrent transactions don't interfere with each other</td>
+                </tr>
+                <tr>
+                    <td><strong>Durability</strong></td>
+                    <td>Ensures committed transactions remain permanent even after system failure</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Common Data Types</h2>
+            <table>
+                <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td>INT</td>
+                    <td>Integer numbers</td>
+                    <td><span class="code">age INT</span></td>
+                </tr>
+                <tr>
+                    <td>VARCHAR(n)</td>
+                    <td>Variable-length string</td>
+                    <td><span class="code">name VARCHAR(50)</span></td>
+                </tr>
+                <tr>
+                    <td>CHAR(n)</td>
+                    <td>Fixed-length string</td>
+                    <td><span class="code">country_code CHAR(2)</span></td>
+                </tr>
+                <tr>
+                    <td>TEXT</td>
+                    <td>Long text data</td>
+                    <td><span class="code">description TEXT</span></td>
+                </tr>
+                <tr>
+                    <td>DATE</td>
+                    <td>Date values (YYYY-MM-DD)</td>
+                    <td><span class="code">birth_date DATE</span></td>
+                </tr>
+                <tr>
+                    <td>DATETIME</td>
+                    <td>Date and time</td>
+                    <td><span class="code">created_at DATETIME</span></td>
+                </tr>
+                <tr>
+                    <td>BOOLEAN</td>
+                    <td>True/False values</td>
+                    <td><span class="code">is_active BOOLEAN</span></td>
+                </tr>
+                <tr>
+                    <td>DECIMAL(p,s)</td>
+                    <td>Precise decimal numbers</td>
+                    <td><span class="code">price DECIMAL(10,2)</span></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Database Constraints</h2>
+            <table>
+                <tr>
+                    <th>Constraint</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td>PRIMARY KEY</td>
+                    <td>Uniquely identifies each record</td>
+                    <td><span class="code">id INT PRIMARY KEY</span></td>
+                </tr>
+                <tr>
+                    <td>FOREIGN KEY</td>
+                    <td>References primary key in another table</td>
+                    <td><span class="code">customer_id INT REFERENCES customers(id)</span></td>
+                </tr>
+                <tr>
+                    <td>UNIQUE</td>
+                    <td>Ensures all values in column are unique</td>
+                    <td><span class="code">email VARCHAR(100) UNIQUE</span></td>
+                </tr>
+                <tr>
+                    <td>NOT NULL</td>
+                    <td>Ensures column cannot have NULL value</td>
+                    <td><span class="code">name VARCHAR(50) NOT NULL</span></td>
+                </tr>
+                <tr>
+                    <td>CHECK</td>
+                    <td>Ensures values meet specific condition</td>
+                    <td><span class="code">age INT CHECK (age >= 0)</span></td>
+                </tr>
+                <tr>
+                    <td>DEFAULT</td>
+                    <td>Sets default value for column</td>
+                    <td><span class="code">status VARCHAR(20) DEFAULT 'active'</span></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Aggregate Functions</h2>
+            <table>
+                <tr>
+                    <th>Function</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td>COUNT()</td>
+                    <td>Counts number of rows</td>
+                    <td><span class="code">SELECT COUNT(*) FROM users;</span></td>
+                </tr>
+                <tr>
+                    <td>SUM()</td>
+                    <td>Calculates sum of numeric values</td>
+                    <td><span class="code">SELECT SUM(price) FROM orders;</span></td>
+                </tr>
+                <tr>
+                    <td>AVG()</td>
+                    <td>Calculates average of values</td>
+                    <td><span class="code">SELECT AVG(age) FROM users;</span></td>
+                </tr>
+                <tr>
+                    <td>MAX()</td>
+                    <td>Finds maximum value</td>
+                    <td><span class="code">SELECT MAX(salary) FROM employees;</span></td>
+                </tr>
+                <tr>
+                    <td>MIN()</td>
+                    <td>Finds minimum value</td>
+                    <td><span class="code">SELECT MIN(price) FROM products;</span></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Index Types</h2>
+            <table>
+                <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>Clustered Index</td>
+                    <td>Determines physical order of data in table; only one per table</td>
+                </tr>
+                <tr>
+                    <td>Non-Clustered Index</td>
+                    <td>Separate structure from data; multiple allowed per table</td>
+                </tr>
+                <tr>
+                    <td>Unique Index</td>
+                    <td>Ensures no duplicate values in indexed columns</td>
+                </tr>
+                <tr>
+                    <td>Composite Index</td>
+                    <td>Index on multiple columns</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Detailed Problem Example: E-commerce Database Design</h2>
+            <p><strong>Problem:</strong> Design a database for an e-commerce platform that tracks customers, products, orders, and payments. The system needs to handle customers placing multiple orders, each order containing multiple products, and each order having one payment.</p>
+            
+            <h3>Initial Design Issues (Before Normalization)</h3>
+            <p>Let's look at an example of what NOT to do - an unnormalized table:</p>
+            
+            <table>
+                <tr>
+                    <th>order_id</th>
+                    <th>customer_name</th>
+                    <th>customer_email</th>
+                    <th>product_name</th>
+                    <th>product_price</th>
+                    <th>quantity</th>
+                    <th>payment_method</th>
+                    <th>order_date</th>
+                </tr>
+                <tr>
+                    <td>1001</td>
+                    <td>John Smith</td>
+                    <td>john@email.com</td>
+                    <td>Laptop</td>
+                    <td>999.99</td>
+                    <td>1</td>
+                    <td>Credit Card</td>
+                    <td>2023-05-15</td>
+                </tr>
+                <tr>
+                    <td>1001</td>
+                    <td>John Smith</td>
+                    <td>john@email.com</td>
+                    <td>Mouse</td>
+                    <td>25.99</td>
+                    <td>2</td>
+                    <td>Credit Card</td>
+                    <td>2023-05-15</td>
+                </tr>
+                <tr>
+                    <td>1002</td>
+                    <td>Jane Doe</td>
+                    <td>jane@email.com</td>
+                    <td>Keyboard</td>
+                    <td>79.99</td>
+                    <td>1</td>
+                    <td>PayPal</td>
+                    <td>2023-05-16</td>
+                </tr>
+            </table>
+            
+            <h3>Problems with This Design</h3>
+            <table>
+                <tr>
+                    <th>Problem</th>
+                    <th>Description</th>
+                    <th>Example from Table</th>
+                </tr>
+                <tr>
+                    <td>Data Redundancy</td>
+                    <td>Customer information is repeated for each product in an order</td>
+                    <td>John Smith's name and email appear twice for order 1001</td>
+                </tr>
+                <tr>
+                    <td>Update Anomaly</td>
+                    <td>Changing customer info requires updating multiple rows</td>
+                    <td>If John changes his email, we need to update multiple rows</td>
+                </tr>
+                <tr>
+                    <td>Insertion Anomaly</td>
+                    <td>Can't add a new customer without placing an order</td>
+                    <td>We can't store customer info without an associated order</td>
+                </tr>
+                <tr>
+                    <td>Deletion Anomaly</td>
+                    <td>Deleting an order might lose customer information</td>
+                    <td>If we delete all orders for a customer, we lose their info too</td>
+                </tr>
+            </table>
+            
+            <h3>Solution: Normalized Database Design</h3>
+            <p>Breaking down the database into normalized tables:</p>
+            
+            <h4>1. Customers Table (in 3NF)</h4>
+            <table>
+                <tr>
+                    <th>customer_id</th>
+                    <th>customer_name</th>
+                    <th>customer_email</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>John Smith</td>
+                    <td>john@email.com</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Jane Doe</td>
+                    <td>jane@email.com</td>
+                </tr>
+            </table>
+            
+            <h4>2. Products Table (in 3NF)</h4>
+            <table>
+                <tr>
+                    <th>product_id</th>
+                    <th>product_name</th>
+                    <th>product_price</th>
+                </tr>
+                <tr>
+                    <td>101</td>
+                    <td>Laptop</td>
+                    <td>999.99</td>
+                </tr>
+                <tr>
+                    <td>102</td>
+                    <td>Mouse</td>
+                    <td>25.99</td>
+                </tr>
+                <tr>
+                    <td>103</td>
+                    <td>Keyboard</td>
+                    <td>79.99</td>
+                </tr>
+            </table>
+            
+            <h4>3. Orders Table (in 3NF)</h4>
+            <table>
+                <tr>
+                    <th>order_id</th>
+                    <th>customer_id</th>
+                    <th>order_date</th>
+                    <th>payment_method</th>
+                </tr>
+                <tr>
+                    <td>1001</td>
+                    <td>1</td>
+                    <td>2023-05-15</td>
+                    <td>Credit Card</td>
+                </tr>
+                <tr>
+                    <td>1002</td>
+                    <td>2</td>
+                    <td>2023-05-16</td>
+                    <td>PayPal</td>
+                </tr>
+            </table>
+            
+            <h4>4. Order Items Table (Junction Table)</h4>
+            <table>
+                <tr>
+                    <th>order_id</th>
+                    <th>product_id</th>
+                    <th>quantity</th>
+                </tr>
+                <tr>
+                    <td>1001</td>
+                    <td>101</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>1001</td>
+                    <td>102</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>1002</td>
+                    <td>103</td>
+                    <td>1</td>
+                </tr>
+            </table>
+            
+            <h3>Benefits of Normalized Design</h3>
+            <table>
+                <tr>
+                    <th>Benefit</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td>Eliminates Redundancy</td>
+                    <td>Each piece of data is stored only once</td>
+                    <td>John Smith appears only once in customers table</td>
+                </tr>
+                <tr>
+                    <td>Prevents Update Anomalies</td>
+                    <td>Changing data requires updating only one row</td>
+                    <td>Changing John's email requires only one update</td>
+                </tr>
+                <tr>
+                    <td>Enables Flexibility</td>
+                    <td>Can add customers without orders, products without orders</td>
+                    <td>We can add a new customer before they place an order</td>
+                </tr>
+                <tr>
+                    <td>Improves Data Integrity</td>
+                    <td>Foreign key constraints maintain consistency</td>
+                    <td>Can't create an order with non-existent customer</td>
+                </tr>
+            </table>
+            
+            <h3>Sample Queries for the Normalized Design</h3>
+            <p>Here are some example queries that demonstrate how the normalized design works:</p>
+            
+            <ul>
+                <li><strong>Find all orders for a specific customer:</strong> <span class="code">SELECT * FROM orders WHERE customer_id = 1;</span></li>
+                <li><strong>Calculate total value of an order:</strong> <span class="code">SELECT SUM(p.product_price * oi.quantity) FROM order_items oi JOIN products p ON oi.product_id = p.product_id WHERE oi.order_id = 1001;</span></li>
+                <li><strong>Find all products ordered by a customer:</strong> <span class="code">SELECT p.product_name, oi.quantity FROM customers c JOIN orders o ON c.customer_id = o.customer_id JOIN order_items oi ON o.order_id = oi.order_id JOIN products p ON oi.product_id = p.product_id WHERE c.customer_name = 'John Smith';</span></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

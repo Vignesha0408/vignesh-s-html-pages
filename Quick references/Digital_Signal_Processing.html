@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Digital Signal Processing - Quick Reference</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --primary-gradient-start: #6a85b6;
+            --primary-gradient-end: #bac8e0;
+            --secondary-gradient-start: #a1c4fd;
+            --secondary-gradient-end: #c2e9fb;
+            --accent-color: #4a69bd;
+            --text-color: #2c3e50;
+            --light-text: #7f8c8d;
+            --card-bg: #ffffff;
+            --border-color: #e0e0e0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, var(--primary-gradient-start), var(--primary-gradient-end));
+            background-attachment: fixed;
+            color: var(--text-color);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+        
+        h1 {
+            text-align: center;
+            background: linear-gradient(to right, var(--secondary-gradient-start), var(--secondary-gradient-end));
+            color: var(--text-color);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            font-size: 2.2rem;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            animation: slideDown 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        h1::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+        
+        h1:hover::before {
+            transform: translateX(100%);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        table:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        th {
+            background: linear-gradient(to right, var(--secondary-gradient-start), var(--secondary-gradient-end));
+            color: var(--text-color);
+            padding: 16px;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.95rem;
+            vertical-align: top;
+            transition: background-color 0.3s ease;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9fbfd;
+        }
+        
+        tr:hover {
+            background-color: #edf7ff;
+        }
+        
+        .topic-tag {
+            display: inline-block;
+            background: linear-gradient(to right, var(--secondary-gradient-start), var(--secondary-gradient-end));
+            color: var(--text-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 3px;
+            transition: transform 0.2s ease;
+        }
+        
+        .topic-tag:hover {
+            transform: scale(1.05);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 5px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+                padding: 20px;
+            }
+            
+            table {
+                margin: 15px 0;
+            }
+            
+            th, td {
+                padding: 12px 8px;
+                font-size: 0.9rem;
+            }
+            
+            .topic-tag {
+                font-size: 0.75rem;
+                padding: 4px 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+                padding: 15px;
+            }
+            
+            th {
+                font-size: 0.85rem;
+                padding: 10px 8px;
+            }
+            
+            td {
+                padding: 10px 6px;
+                font-size: 0.85rem;
+            }
+            
+            .topic-tag {
+                display: block;
+                margin: 4px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Digital Signal Processing - Quick Reference</h1>
+        
+        <table>
+            <tr><th>Concept</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Definition</div></td><td>Mathematical processing of discrete-time signals using digital computers or specialized digital hardware.</td></tr>
+            <tr><td><div class="topic-tag">Applications</div></td><td>Audio processing, image processing, telecommunications, biomedical signal processing</td></tr>
+            <tr><td><div class="topic-tag">Advantages</div></td><td>Flexibility, reproducibility, accuracy, ease of storage and transmission</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Signal Classification</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Continuous vs Discrete</div></td><td>Continuous (analog) vs discrete (sampled) in time domain</td></tr>
+            <tr><td><div class="topic-tag">Analog vs Digital</div></td><td>Analog (continuous amplitude) vs digital (quantized amplitude)</td></tr>
+            <tr><td><div class="topic-tag">Deterministic vs Random</div></td><td>Predictable vs unpredictable signal behavior</td></tr>
+            <tr><td><div class="topic-tag">Periodic vs Aperiodic</div></td><td>Signals that repeat vs non-repeating patterns</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Sampling & Quantization</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Sampling Theorem</div></td><td>Nyquist rate: sampling frequency must be at least twice the highest frequency component</td></tr>
+            <tr><td><div class="topic-tag">Aliasing</div></td><td>Distortion when sampling rate is too low, higher frequencies appear as lower ones</td></tr>
+            <tr><td><div class="topic-tag">Quantization</div></td><td>Converting continuous amplitude to discrete levels, introduces quantization noise</td></tr>
+            <tr><td><div class="topic-tag">Resolution</div></td><td>Number of bits used to represent signal amplitude (8-bit, 16-bit, etc.)</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Discrete Transforms</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">DFT</div></td><td>Discrete Fourier Transform - converts time domain to frequency domain</td></tr>
+            <tr><td><div class="topic-tag">FFT</div></td><td>Fast Fourier Transform - efficient algorithm for computing DFT</td></tr>
+            <tr><td><div class="topic-tag">DTFT</div></td><td>Discrete-Time Fourier Transform - frequency representation of discrete signals</td></tr>
+            <tr><td><div class="topic-tag">Z-Transform</div></td><td>Generalization of DTFT, useful for analyzing LTI systems</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Filter Types</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">FIR</div></td><td>Finite Impulse Response - non-recursive, always stable, linear phase possible</td></tr>
+            <tr><td><div class="topic-tag">IIR</div></td><td>Infinite Impulse Response - recursive, potentially unstable, more efficient</td></tr>
+            <tr><td><div class="topic-tag">Low-pass</div></td><td>Allows low frequencies, attenuates high frequencies</td></tr>
+            <tr><td><div class="topic-tag">High-pass</div></td><td>Allows high frequencies, attenuates low frequencies</td></tr>
+            <tr><td><div class="topic-tag">Band-pass</div></td><td>Allows specific frequency range, attenuates others</td></tr>
+            <tr><td><div class="topic-tag">Band-stop</div></td><td>Attenuates specific frequency range, allows others</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Filter Design</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Windowing</div></td><td>Method for FIR filter design using window functions (Hamming, Hanning, etc.)</td></tr>
+            <tr><td><div class="topic-tag">Frequency Sampling</div></td><td>Design method based on desired frequency response samples</td></tr>
+            <tr><td><div class="topic-tag">IIR Design</div></td><td>Butterworth, Chebyshev, Elliptic filter design from analog prototypes</td></tr>
+            <tr><td><div class="topic-tag">Optimization</div></td><td>Parks-McClellan algorithm for optimal equiripple filter design</td></tr>
+        </table>
+
+        <table>
+            <tr><th>System Properties</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Linearity</div></td><td>System follows superposition principle</td></tr>
+            <tr><td><div class="topic-tag">Time-Invariance</div></td><td>System behavior doesn't change with time</td></tr>
+            <tr><td><div class="topic-tag">Causality</div></td><td>Output depends only on present and past inputs</td></tr>
+            <tr><td><div class="topic-tag">Stability</div></td><td>Bounded input produces bounded output (BIBO)</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Applications</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Audio Processing</div></td><td>Noise reduction, equalization, audio compression</td></tr>
+            <tr><td><div class="topic-tag">Image Processing</div></td><td>Filtering, enhancement, compression, feature extraction</td></tr>
+            <tr><td><div class="topic-tag">Telecommunications</div></td><td>Modulation, demodulation, channel equalization</td></tr>
+            <tr><td><div class="topic-tag">Biomedical</div></td><td>ECG, EEG, MRI signal processing and analysis</td></tr>
+        </table>
+    </div>
+</body>
+</html>

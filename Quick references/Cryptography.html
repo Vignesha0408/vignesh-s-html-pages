@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cryptography - Quick Reference</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --primary-gradient-start: #6a85b6;
+            --primary-gradient-end: #bac8e0;
+            --secondary-gradient-start: #a1c4fd;
+            --secondary-gradient-end: #c2e9fb;
+            --accent-color: #4a69bd;
+            --text-color: #2c3e50;
+            --light-text: #7f8c8d;
+            --card-bg: #ffffff;
+            --border-color: #e0e0e0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, var(--primary-gradient-start), var(--primary-gradient-end));
+            background-attachment: fixed;
+            color: var(--text-color);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+        
+        h1 {
+            text-align: center;
+            background: linear-gradient(to right, var(--secondary-gradient-start), var(--secondary-gradient-end));
+            color: var(--text-color);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            font-size: 2.2rem;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            animation: slideDown 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        h1::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+        
+        h1:hover::before {
+            transform: translateX(100%);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        table:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        th {
+            background: linear-gradient(to right, var(--secondary-gradient-start), var(--secondary-gradient-end));
+            color: var(--text-color);
+            padding: 16px;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.95rem;
+            vertical-align: top;
+            transition: background-color 0.3s ease;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9fbfd;
+        }
+        
+        tr:hover {
+            background-color: #edf7ff;
+        }
+        
+        .topic-tag {
+            display: inline-block;
+            background: linear-gradient(to right, var(--secondary-gradient-start), var(--secondary-gradient-end));
+            color: var(--text-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 3px;
+            transition: transform 0.2s ease;
+        }
+        
+        .topic-tag:hover {
+            transform: scale(1.05);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 5px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+                padding: 20px;
+            }
+            
+            table {
+                margin: 15px 0;
+            }
+            
+            th, td {
+                padding: 12px 8px;
+                font-size: 0.9rem;
+            }
+            
+            .topic-tag {
+                font-size: 0.75rem;
+                padding: 4px 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+                padding: 15px;
+            }
+            
+            th {
+                font-size: 0.85rem;
+                padding: 10px 8px;
+            }
+            
+            td {
+                padding: 10px 6px;
+                font-size: 0.85rem;
+            }
+            
+            .topic-tag {
+                display: block;
+                margin: 4px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cryptography - Quick Reference</h1>
+        
+        <table>
+            <tr><th>Concept</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Definition</div></td><td>Practice and study of techniques for secure communication in presence of adversaries. Protects data confidentiality, integrity, and authenticity.</td></tr>
+            <tr><td><div class="topic-tag">Goals</div></td><td>Confidentiality, Integrity, Authentication, Non-repudiation, Key exchange</td></tr>
+            <tr><td><div class="topic-tag">Terminology</div></td><td>Plaintext (original), Ciphertext (encrypted), Encryption (encoding), Decryption (decoding)</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Symmetric Cryptography</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Definition</div></td><td>Uses same key for encryption and decryption. Fast but key distribution is challenging.</td></tr>
+            <tr><td><div class="topic-tag">Algorithms</div></td><td>AES (Advanced Encryption Standard), DES, 3DES, Blowfish, RC4, ChaCha20</td></tr>
+            <tr><td><div class="topic-tag">Modes</div></td><td>ECB, CBC, CFB, OFB, CTR (Counter mode)</td></tr>
+            <tr><td><div class="topic-tag">Use Cases</div></td><td>Disk encryption, bulk data encryption, secure file transfer</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Asymmetric Cryptography</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Definition</div></td><td>Uses public-private key pairs. Public key is shared, private key is secret. Solves key distribution problem.</td></tr>
+            <tr><td><div class="topic-tag">Algorithms</div></td><td>RSA, ECC (Elliptic Curve), DSA, ElGamal, Diffie-Hellman</td></tr>
+            <tr><td><div class="topic-tag">Use Cases</div></td><td>Digital signatures, key exchange, secure email, SSL/TLS</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Hash Functions</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Definition</div></td><td>One-way functions that convert input of any size to fixed-size output. Deterministic and irreversible.</td></tr>
+            <tr><td><div class="topic-tag">Properties</div></td><td>Pre-image resistance, Second pre-image resistance, Collision resistance</td></tr>
+            <tr><td><div class="topic-tag">Algorithms</div></td><td>SHA-256, SHA-3, MD5 (deprecated), SHA-1 (deprecated), BLAKE2</td></tr>
+            <tr><td><div class="topic-tag">Use Cases</div></td><td>Password storage, Data integrity verification, Digital signatures, Blockchain</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Digital Signatures</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Definition</div></td><td>Mathematical scheme for verifying authenticity and integrity of digital messages or documents.</td></tr>
+            <tr><td><div class="topic-tag">Process</div></td><td>Hash message, encrypt hash with private key, recipient decrypts with public key and compares hash</td></tr>
+            <tr><td><div class="topic-tag">Standards</div></td><td>RSA-PSS, DSA, ECDSA, EdDSA</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Key Exchange</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Diffie-Hellman</div></td><td>Method for securely exchanging cryptographic keys over public channel. Based on discrete logarithm problem.</td></tr>
+            <tr><td><div class="topic-tag">ECDH</div></td><td>Elliptic Curve Diffie-Hellman. More efficient version using elliptic curves.</td></tr>
+            <tr><td><div class="topic-tag">RSA Key Exchange</div></td><td>Server sends public key, client encrypts session key with it.</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Applications</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">SSL/TLS</div></td><td>Hybrid cryptosystem using both symmetric and asymmetric encryption for secure web browsing.</td></tr>
+            <tr><td><div class="topic-tag">PGP/GPG</div></td><td>Uses public-key cryptography for email encryption and digital signatures.</td></tr>
+            <tr><td><div class="topic-tag">Blockchain</div></td><td>Uses hashing, digital signatures, and public-key cryptography for security.</td></tr>
+            <tr><td><div class="topic-tag">VPN</div></td><td>Virtual Private Networks use encryption for secure remote access.</td></tr>
+        </table>
+
+        <table>
+            <tr><th>Security Considerations</th><th>Description</th></tr>
+            <tr><td><div class="topic-tag">Key Length</div></td><td>AES-128/192/256, RSA-2048/4096 bits. Longer keys provide more security but slower performance.</td></tr>
+            <tr><td><div class="topic-tag">Quantum Threat</div></td><td>Quantum computers could break current asymmetric algorithms. Post-quantum cryptography is being developed.</td></tr>
+            <tr><td><div class="topic-tag">Implementation</div></td><td>Side-channel attacks, timing attacks, fault injection can compromise secure algorithms.</td></tr>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artificial Intelligence Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #f39c12;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #f39c12;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #f39c12;
+            margin-top: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #f39c12;
+            color: white;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Artificial Intelligence Cheat Sheet</h1>
+        
+        <div class="section">
+            <h2>AI Problem-Solving Approaches</h2>
+            <table>
+                <tr><th>Approach</th><th>Description</th><th>Best For</th><th>Characteristics</th></tr>
+                <tr><td>Uninformed Search</td><td>Search without problem-specific knowledge</td><td>Simple problems, small state spaces</td><td>BFS, DFS, uniform cost, iterative deepening</td></tr>
+                <tr><td>Informed Search</td><td>Search using heuristic functions</td><td>Large state spaces with domain knowledge</td><td>Greedy best-first, A* search</td></tr>
+                <tr><td>Local Search</td><td>Search in current state space only</td><td>Optimization problems, constraint satisfaction</td><td>Hill climbing, simulated annealing, genetic algorithms</td></tr>
+                <tr><td>Adversarial Search</td><td>Multi-agent environments with conflicting goals</td><td>Game playing, strategic decision making</td><td>Minimax, alpha-beta pruning</td></tr>
+                <tr><td>Constraint Satisfaction</td><td>Find values that satisfy constraints</td><td>Scheduling, configuration problems</td><td>Backtracking, constraint propagation</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Machine Learning Types</h2>
+            <table>
+                <tr><th>Type</th><th>Description</th><th>Examples</th><th>Algorithms</th></tr>
+                <tr><td>Supervised Learning</td><td>Learn from labeled training data</td><td>Image classification, spam detection</td><td>Linear regression, decision trees, SVM, neural networks</td></tr>
+                <tr><td>Unsupervised Learning</td><td>Find patterns in unlabeled data</td><td>Customer segmentation, anomaly detection</td><td>K-means clustering, PCA, association rules</td></tr>
+                <tr><td>Reinforcement Learning</td><td>Learn through interaction with environment</td><td>Game playing, robotics, autonomous driving</td><td>Q-learning, deep Q-networks, policy gradients</td></tr>
+                <tr><td>Semi-supervised Learning</td><td>Use both labeled and unlabeled data</td><td>Image classification with few labels</td><td>Self-training, co-training</td></tr>
+                <tr><td>Transfer Learning</td><td>Apply knowledge from one domain to another</td><td>Pre-trained models, domain adaptation</td><td>Feature extraction, fine-tuning</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Search Algorithms</h2>
+            <table>
+                <tr><th>Algorithm</th><th>Type</th><th>Time Complexity</th><th>Space Complexity</th><th>Optimality</th></tr>
+                <tr><td>Breadth-First Search (BFS)</td><td>Uninformed</td><td>O(b^d)</td><td>O(b^d)</td><td>Yes (for unweighted graphs)</td></tr>
+                <tr><td>Depth-First Search (DFS)</td><td>Uninformed</td><td>O(b^m)</td><td>O(bm)</td><td>No</td></tr>
+                <tr><td>Uniform Cost Search</td><td>Uninformed</td><td>O(b^(C*/ε))</td><td>O(b^(C*/ε))</td><td>Yes</td></tr>
+                <tr><td>Greedy Best-First</td><td>Informed</td><td>O(b^m)</td><td>O(b^m)</td><td>No</td></tr>
+                <tr><td>A* Search</td><td>Informed</td><td>O(b^d)</td><td>O(b^d)</td><td>Yes (if heuristic is admissible)</td></tr>
+                <tr><td>Iterative Deepening</td><td>Uninformed</td><td>O(b^d)</td><td>O(bd)</td><td>Yes</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Knowledge Representation</h2>
+            <table>
+                <tr><th>Method</th><th>Description</th><th>Advantages</th><th>Disadvantages</th></tr>
+                <tr><td>Logic-Based</td><td>Use logical statements to represent knowledge</td><td>Precise, supports inference</td><td>Computationally expensive, handles uncertainty poorly</td></tr>
+                <tr><td>Rule-Based</td><td>Represent knowledge as if-then rules</td><td>Easy to understand, maintain</td><td>Can become large and inconsistent</td></tr>
+                <tr><td>Semantic Networks</td><td>Represent relationships as a graph</td><td>Intuitive, visual representation</td><td>Not good for complex reasoning</td></tr>
+                <tr><td>Frames</td><td>Structured representation with slots and values</td><td>Good for representing objects</td><td>Complex to implement and maintain</td></tr>
+                <tr><td>Ontologies</td><td>Formal specification of concepts and relationships</td><td>Standardized, machine-readable</td><td>Requires domain expertise</td></tr>
+                <tr><td>Probabilistic Models</td><td>Represent uncertainty with probabilities</td><td>Handles uncertainty well</td><td>Complex to construct and compute</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Machine Learning Algorithms</h2>
+            <table>
+                <tr><th>Algorithm</th><th>Type</th><th>Use Case</th><th>Pros</th><th>Cons</th></tr>
+                <tr><td>Linear Regression</td><td>Supervised (Regression)</td><td>Predicting continuous values</td><td>Simple, interpretable, efficient</td><td>Assumes linear relationship, sensitive to outliers</td></tr>
+                <tr><td>Logistic Regression</td><td>Supervised (Classification)</td><td>Binary classification</td><td>Simple, fast, provides probabilities</td><td>Assumes linear decision boundary</td></tr>
+                <tr><td>Decision Trees</td><td>Supervised (Classification/Regression)</td><td>Classification and regression</td><td>Interpretable, handles non-linear relationships</td><td>Prone to overfitting, unstable</td></tr>
+                <tr><td>Random Forest</td><td>Supervised (Classification/Regression)</td><td>Classification and regression</td><td>Reduces overfitting, handles non-linear relationships</td><td>Less interpretable, requires more computation</td></tr>
+                <tr><td>Support Vector Machines (SVM)</td><td>Supervised (Classification/Regression)</td><td>Classification with high-dimensional data</td><td>Effective in high dimensions, memory efficient</td><td>Doesn't provide probability estimates, sensitive to kernel choice</td></tr>
+                <tr><td>K-Means Clustering</td><td>Unsupervised (Clustering)</td><td>Grouping similar data points</td><td>Simple, efficient</td><td>Need to specify number of clusters, sensitive to initialization</td></tr>
+                <tr><td>Neural Networks</td><td>Supervised/Unsupervised</td><td>Complex pattern recognition</td><td>Universal approximators, handle complex relationships</td><td>Black box, requires large datasets, computationally expensive</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Neural Networks</h2>
+            <table>
+                <tr><th>Type</th><th>Architecture</th><th>Use Case</th><th>Characteristics</th></tr>
+                <tr><td>Feedforward Networks</td><td>Layers of neurons, no cycles</td><td>Classification, regression</td><td>Simple, fully connected layers</td></tr>
+                <tr><td>Convolutional Neural Networks (CNN)</td><td>Convolutional layers, pooling, fully connected</td><td>Image processing, computer vision</td><td>Translation invariance, parameter sharing</td></tr>
+                <tr><td>Recurrent Neural Networks (RNN)</td><td>Loops to maintain state</td><td>Sequence modeling, NLP</td><td>Handles variable-length sequences</td></tr>
+                <tr><td>Long Short-Term Memory (LSTM)</td><td>Special RNN with memory cells</td><td>Long sequence modeling</td><td>Handles vanishing gradient problem</td></tr>
+                <tr><td>Transformer Networks</td><td>Attention mechanisms, self-attention</td><td>NLP, image processing</td><td>Parallel processing, captures long-range dependencies</td></tr>
+                <tr><td>Generative Adversarial Networks (GAN)</td><td>Generator and discriminator networks</td><td>Image generation, style transfer</td><td>Generates realistic data samples</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>AI Planning</h2>
+            <table>
+                <tr><th>Method</th><th>Description</th><th>Advantages</th><th>Disadvantages</th></tr>
+                <tr><td>Classical Planning</td><td>Find sequence of actions to reach goal</td><td>Systematic, optimal solutions</td><td>Assumes fully observable, deterministic environment</td></tr>
+                <tr><td>Probabilistic Planning</td><td>Handle uncertainty in actions and states</td><td>Realistic, handles uncertainty</td><td>Computationally expensive</td></tr>
+                <tr><td>Hierarchical Planning</td><td>Decompose complex tasks into subtasks</td><td>Manages complexity, reusable components</td><td>Requires domain knowledge</td></tr>
+                <tr><td>Multi-Agent Planning</td><td>Coordinate multiple agents to achieve goals</td><td>Handles distributed systems</td><td>Complex coordination, communication overhead</td></tr>
+                <tr><td>Temporal Planning</td><td>Consider timing constraints in planning</td><td>Realistic scheduling, resource allocation</td><td>Increased complexity</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Expert Systems</h2>
+            <table>
+                <tr><th>Component</th><th>Description</th><th>Function</th><th>Examples</th></tr>
+                <tr><td>Knowledge Base</td><td>Domain knowledge stored in rules/facts</td><td>Store and represent knowledge</td><td>Medical diagnosis rules, tax calculation rules</td></tr>
+                <tr><td>Inference Engine</td><td>Reasoning mechanism</td><td>Apply rules to facts to derive conclusions</td><td>Forward chaining, backward chaining</td></tr>
+                <tr><td>Explanation Facility</td><td>Explain reasoning process</td><td>Justify conclusions</td><td>Trace of rule applications</td></tr>
+                <tr><td>Knowledge Acquisition Facility</td><td>Tool for adding knowledge</td><td>Interface for knowledge engineers</td><td>Knowledge acquisition tools</td></tr>
+                <tr><td>User Interface</td><td>Interface for users</td><td>Interaction with system</td><td>Text-based, graphical interfaces</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Natural Language Processing (NLP)</h2>
+            <table>
+                <tr><th>Task</th><th>Description</th><th>Techniques</th><th>Applications</th></tr>
+                <tr><td>Tokenization</td><td>Split text into tokens (words, sentences)</td><td>Rule-based, statistical methods</td><td>Preprocessing for all NLP tasks</td></tr>
+                <tr><td>Part-of-Speech Tagging</td><td>Label each word with its grammatical role</td><td>HMM, CRF, neural networks</td><td>Grammar checking, information extraction</td></tr>
+                <tr><td>Named Entity Recognition (NER)</td><td>Identify and classify named entities</td><td>Rule-based, machine learning</td><td>Information extraction, question answering</td></tr>
+                <tr><td>Sentiment Analysis</td><td>Determine sentiment in text</td><td>Lexicon-based, machine learning</td><td>Social media monitoring, review analysis</td></tr>
+                <tr><td>Machine Translation</td><td>Translate text from one language to another</td><td>Rule-based, statistical, neural</td><td>Language translation systems</td></tr>
+                <tr><td>Text Summarization</td><td>Generate concise summary of text</td><td>Extractive, abstractive methods</td><td>News summarization, document processing</td></tr>
+                <tr><td>Question Answering</td><td>Answer questions based on text</td><td>Information retrieval, neural networks</td><td>Chatbots, search engines</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Ethics and AI Safety</h2>
+            <table>
+                <tr><th>Concern</th><th>Description</th><th>Examples</th><th>Mitigation Strategies</th></tr>
+                <tr><td>Bias and Fairness</td><td>AI systems showing unfair behavior toward groups</td><td>Biased hiring algorithms, facial recognition bias</td><td>Debiased training data, fairness constraints</td></tr>
+                <tr><td>Privacy</td><td>AI systems compromising individual privacy</td><td>Data breaches, surveillance</td><td>Differential privacy, federated learning</td></tr>
+                <tr><td>Transparency</td><td>AI systems being "black boxes"</td><td>Uninterpretable neural networks</td><td>Explainable AI, model interpretability</td></tr>
+                <tr><td>Accountability</td><td>Difficulty assigning responsibility for AI decisions</td><td>Autonomous vehicle accidents</td><td>Clear governance, audit trails</td></tr>
+                <tr><td>Job Displacement</td><td>AI automating human jobs</td><td>Automation of routine tasks</td><td>Retraining programs, human-AI collaboration</td></tr>
+                <tr><td>Security</td><td>AI systems being vulnerable to attacks</td><td>Adversarial attacks, data poisoning</td><td>Robust training, secure implementation</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

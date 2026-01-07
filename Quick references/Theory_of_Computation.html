@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theory of Computation Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #16a085;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #16a085;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #16a085;
+            margin-top: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #16a085;
+            color: white;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Theory of Computation Cheat Sheet</h1>
+        
+        <div class="section">
+            <h2>Automata Theory</h2>
+            <table>
+                <tr><th>Automaton</th><th>Memory</th><th>Language Class</th><th>Accepts</th><th>Example</th></tr>
+                <tr><td>Finite Automaton (FA)</td><td>No memory</td><td>Regular Languages</td><td>Regular expressions, simple patterns</td><td>Strings ending with '01'</td></tr>
+                <tr><td>Pushdown Automaton (PDA)</td><td>Stack memory</td><td>Context-Free Languages</td><td>Balanced parentheses, palindromes</td><td>Strings with equal 0s and 1s</td></tr>
+                <tr><td>Linear Bounded Automaton (LBA)</td><td>Limited tape</td><td>Context-Sensitive Languages</td><td>Context-sensitive grammars</td><td>anbncn</td></tr>
+                <tr><td>Turing Machine (TM)</td><td>Infinite tape</td><td>Recursively Enumerable Languages</td><td>All computable functions</td><td>Any algorithmic problem</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Chomsky Hierarchy</h2>
+            <table>
+                <tr><th>Type</th><th>Grammar</th><th>Automaton</th><th>Production Rules</th><th>Example Language</th></tr>
+                <tr><td>Type-0</td><td>Unrestricted</td><td>Turing Machine</td><td>α → β (α contains at least one non-terminal)</td><td>All recursively enumerable languages</td></tr>
+                <tr><td>Type-1</td><td>Context-Sensitive</td><td>Linear Bounded Automaton</td><td>αAβ → αγβ (|γ| ≥ |A|)</td><td>{anbncn | n ≥ 1}</td></tr>
+                <tr><td>Type-2</td><td>Context-Free</td><td>Pushdown Automaton</td><td>A → α (A is non-terminal)</td><td>Palindromes, arithmetic expressions</td></tr>
+                <tr><td>Type-3</td><td>Regular</td><td>Finite Automaton</td><td>A → aB or A → a (right-linear)</td><td>Strings ending with '01', even numbers</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Regular Languages</h2>
+            <table>
+                <tr><th>Concept</th><th>Description</th><th>Properties</th><th>Operations</th></tr>
+                <tr><td>Regular Expression</td><td>Pattern for describing regular languages</td><td>Closed under union, concatenation, Kleene star</td><td>Union (∪), concatenation (.), Kleene star (*)</td></tr>
+                <tr><td>Finite Automaton</td><td>Machine with finite states</td><td>Deterministic and non-deterministic equivalent</td><td>Union, intersection, complement</td></tr>
+                <tr><td>Myhill-Nerode Theorem</td><td>Criterion for regularity</td><td>Finite number of equivalence classes</td><td>Minimization of DFA</td></tr>
+                <tr><td>Pumping Lemma</td><td>Tool to prove non-regularity</td><td>For regular L, ∃ p such that ∀ s ∈ L with |s| ≥ p, s = xyz, |xy| ≤ p, |y| ≥ 1, xyiz ∈ L ∀ i ≥ 0</td><td>Proving languages non-regular</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Context-Free Languages</h2>
+            <table>
+                <tr><th>Concept</th><th>Description</th><th>Properties</th><th>Applications</th></tr>
+                <tr><td>Context-Free Grammar (CFG)</td><td>Rules of form A → α where A is non-terminal</td><td>Chomsky Normal Form, Greibach Normal Form</td><td>Programming language syntax, parsing</td></tr>
+                <tr><td>Pushdown Automaton (PDA)</td><td>FA with stack memory</td><td>Deterministic and non-deterministic not equivalent</td><td>Compiler design, syntax analysis</td></tr>
+                <tr><td>CYK Algorithm</td><td>Dynamic programming for CFG parsing</td><td>O(n³) time complexity</td><td>Recognition of CFL</td></tr>
+                <tr><td>Pumping Lemma</td><td>Tool to prove non-CFL</td><td>For CFL L, ∃ p such that ∀ s ∈ L with |s| ≥ p, s = uvxyz, |vxy| ≤ p, |vy| ≥ 1, uvixyiz ∈ L ∀ i ≥ 0</td><td>Proving languages non-CFL</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Turing Machines</h2>
+            <table>
+                <tr><th>Variant</th><th>Description</th><th>Power</th><th>Equivalence</th></tr>
+                <tr><td>Standard TM</td><td>One-way infinite tape, read/write head</td><td>Most powerful computational model</td><td>Equivalent to other variants</td></tr>
+                <tr><td>Multi-tape TM</td><td>Multiple tapes with independent heads</td><td>Same power as standard TM</td><td>Can simulate standard TM</td></tr>
+                <tr><td>Non-deterministic TM</td><td>Multiple possible transitions</td><td>Same power as deterministic TM</td><td>Can be simulated by deterministic TM</td></tr>
+                <tr><td>Multi-dimensional TM</td><td>Tape arranged in multiple dimensions</td><td>Same power as standard TM</td><td>Can simulate standard TM</td></tr>
+                <tr><td>Universal TM</td><td>TM that simulates any other TM</td><td>Can compute any computable function</td><td>Foundation of modern computers</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Decidability</h2>
+            <table>
+                <tr><th>Class</th><th>Description</th><th>Examples</th><th>Properties</th></tr>
+                <tr><td>Decidable (Recursive)</td><td>Turing machine halts and accepts/rejects all inputs</td><td>Regular languages, Context-free languages</td><td>Closed under complement, union, intersection</td></tr>
+                <tr><td>Undecidable (Recursively Enumerable)</td><td>Turing machine accepts all strings in the language but may not halt on non-members</td><td>Halting problem, Post correspondence problem</td><td>Not closed under complement</td></tr>
+                <tr><td>Not Recursively Enumerable</td><td>No Turing machine can recognize the language</td><td>Complement of halting problem</td><td>No algorithm exists</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Undecidable Problems</h2>
+            <table>
+                <tr><th>Problem</th><th>Description</th><th>Why Undecidable</th><th>Significance</th></tr>
+                <tr><td>Halting Problem</td><td>Determine if TM halts on given input</td><td>Diagonalization argument, self-reference</td><td>Fundamental result in computability</td></tr>
+                <td>Post Correspondence Problem</td><td>Find sequence of dominoes with matching top/bottom strings</td><td>Can encode computation of TMs</td><td>Useful for proving other problems undecidable</td></tr>
+                <tr><td>Emptiness Problem</td><td>Determine if language accepted by TM is empty</td><td>Reduction from halting problem</td><td>Important for program analysis</td></tr>
+                <tr><td>Equivalence Problem</td><td>Determine if two TMs accept same language</td><td>Reduction from emptiness problem</td><td>Important for program verification</td></tr>
+                <tr><td>Membership Problem</td><td>Determine if string is in language of given TM</td><td>Reduction from halting problem</td><td>Generalization of halting problem</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Complexity Classes</h2>
+            <table>
+                <tr><th>Class</th><th>Definition</th><th>Characteristics</th><th>Examples</th></tr>
+                <tr><td>P</td><td>Problems solvable in polynomial time by deterministic TM</td><td>Efficiently solvable</td><td>Shortest path, sorting, primality testing</td></tr>
+                <tr><td>NP</td><td>Problems solvable in polynomial time by non-deterministic TM</td><td>Solutions verifiable in polynomial time</td><td>TSP, graph coloring, SAT</td></tr>
+                <tr><td>NP-Complete</td><td>NP problems to which all other NP problems reduce in polynomial time</td><td>Hardest problems in NP</td><td>SAT, 3-SAT, vertex cover, TSP</td></tr>
+                <tr><td>NP-Hard</td><td>Problems to which all NP problems reduce in polynomial time</td><td>At least as hard as NP-complete</td><td>TSP optimization, halting problem</td></tr>
+                <tr><td>PSPACE</td><td>Problems solvable in polynomial space</td><td>Contains P and NP</td><td>Quantified Boolean formulas</td></tr>
+                <tr><td>EXP</td><td>Problems solvable in exponential time</td><td>Contains P and NP</td><td>Generalized chess</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Reductions</h2>
+            <table>
+                <tr><th>Type</th><th>Description</th><th>Purpose</th><th>Method</th></tr>
+                <tr><td>Polynomial Reduction</td><td>Transform instance of problem A to instance of problem B in polynomial time</td><td>Prove problem B is at least as hard as A</td><td>Construct function f such that x ∈ A iff f(x) ∈ B</td></tr>
+                <tr><td>Many-one Reduction</td><td>Each instance of A maps to single instance of B</td><td>Compare complexity of decision problems</td><td>Function f is computable and x ∈ A iff f(x) ∈ B</td></tr>
+                <tr><td>Turing Reduction</td><td>Problem A solved using algorithm for B as subroutine</td><td>More general than many-one reduction</td><td>Algorithm for A uses B as oracle</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Key Theorems and Results</h2>
+            <table>
+                <tr><th>Theorem</th><th>Statement</th><th>Significance</th><th>Applications</th></tr>
+                <tr><td>Kleene's Theorem</td><td>Regular expressions, finite automata, and regular grammars are equivalent</td><td>Foundation of formal language theory</td><td>Compiler design, pattern matching</td></tr>
+                <tr><td>Pumping Lemma for Regular Languages</td><td>Regular languages satisfy the pumping property</td><td>Tool to prove languages non-regular</td><td>Proving undecidability of certain problems</td></tr>
+                <tr><td>Cook's Theorem</td><td>SAT is NP-complete</td><td>First NP-complete problem</td><td>Foundation of NP-completeness theory</td></tr>
+                <tr><td>Rice's Theorem</td><td>All non-trivial properties of recursively enumerable languages are undecidable</td><td>General result about undecidability</td><td>Proving many problems undecidable</td></tr>
+                <tr><td>Church-Turing Thesis</td><td>Intuitive notion of computation equals Turing machine computation</td><td>Foundation of computability theory</td><td>Defines limits of computation</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

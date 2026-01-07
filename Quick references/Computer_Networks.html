@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Networks Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #2ecc71;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #2ecc71;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #27ae60;
+            margin-top: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #2ecc71;
+            color: white;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Computer Networks Cheat Sheet</h1>
+        
+        <div class="section">
+            <h2>OSI Model Layers</h2>
+            <table>
+                <tr><th>Layer</th><th>Name</th><th>Data Unit</th><th>Function</th><th>Examples</th></tr>
+                <tr><td>7</td><td>Application</td><td>Data</td><td>Network process to application</td><td>HTTP, FTP, SMTP, DNS</td></tr>
+                <tr><td>6</td><td>Presentation</td><td>Data</td><td>Data representation, encryption</td><td>SSL/TLS, JPEG, MPEG</td></tr>
+                <tr><td>5</td><td>Session</td><td>Data</td><td>Dialog control, synchronization</td><td>NetBIOS, PPTP, RPC</td></tr>
+                <tr><td>4</td><td>Transport</td><td>Segment</td><td>End-to-end communication</td><td>TCP, UDP</td></tr>
+                <tr><td>3</td><td>Network</td><td>Packet</td><td>Path determination, logical addressing</td><td>IP, ICMP, ARP</td></tr>
+                <tr><td>2</td><td>Data Link</td><td>Frame</td><td>Physical addressing, error detection</td><td>Ethernet, Wi-Fi, PPP</td></tr>
+                <tr><td>1</td><td>Physical</td><td>Bit</td><td>Media, signal transmission</td><td>Cables, hubs, repeaters</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>TCP/IP Model</h2>
+            <table>
+                <tr><th>Layer</th><th>Name</th><th>Protocols</th><th>Function</th><th>Comparison to OSI</th></tr>
+                <tr><td>4</td><td>Application</td><td>HTTP, FTP, SMTP, DNS, DHCP</td><td>Process-to-process communication</td><td>Combines OSI layers 5-7</td></tr>
+                <tr><td>3</td><td>Transport</td><td>TCP, UDP</td><td>Port-to-port communication</td><td>OSI layer 4</td></tr>
+                <tr><td>2</td><td>Internet</td><td>IP, ICMP, ARP, IGMP</td><td>Host-to-host communication</td><td>OSI layer 3</td></tr>
+                <tr><td>1</td><td>Network Access</td><td>Ethernet, Wi-Fi, PPP</td><td>Network media access</td><td>Combines OSI layers 1-2</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Network Protocols</h2>
+            <table>
+                <tr><th>Protocol</th><th>Layer</th><th>Port</th><th>Description</th><th>Characteristics</th></tr>
+                <tr><td>TCP</td><td>Transport</td><td>N/A</td><td>Transmission Control Protocol</td><td>Connection-oriented, reliable, ordered</td></tr>
+                <tr><td>UDP</td><td>Transport</td><td>N/A</td><td>User Datagram Protocol</td><td>Connectionless, fast, unreliable</td></tr>
+                <tr><td>HTTP</td><td>Application</td><td>80</td><td>HyperText Transfer Protocol</td><td>Web page transfer</td></tr>
+                <tr><td>HTTPS</td><td>Application</td><td>443</td><td>HTTP Secure</td><td>Encrypted HTTP</td></tr>
+                <tr><td>FTP</td><td>Application</td><td>20, 21</td><td>File Transfer Protocol</td><td>File transfer</td></tr>
+                <tr><td>SMTP</td><td>Application</td><td>25</td><td>Simple Mail Transfer Protocol</td><td>Email transmission</td></tr>
+                <tr><td>POP3</td><td>Application</td><td>110</td><td>Post Office Protocol</td><td>Email retrieval</td></tr>
+                <tr><td>IMAP</td><td>Application</td><td>143</td><td>Internet Message Access Protocol</td><td>Advanced email access</td></tr>
+                <tr><td>DNS</td><td>Application</td><td>53</td><td>Domain Name System</td><td>Name to IP resolution</td></tr>
+                <tr><td>DHCP</td><td>Application</td><td>67, 68</td><td>Dynamic Host Configuration Protocol</td><td>Automatic IP assignment</td></tr>
+                <tr><td>SNMP</td><td>Application</td><td>161, 162</td><td>Simple Network Management Protocol</td><td>Network device monitoring</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>IP Addressing</h2>
+            <table>
+                <tr><th>Class</th><th>Range</th><th>Default Subnet Mask</th><th>Network Bits</th><th>Host Bits</th><th>Max Networks</th><th>Max Hosts</th></tr>
+                <tr><td>A</td><td>1.0.0.0 - 126.255.255.255</td><td>255.0.0.0</td><td>8</td><td>24</td><td>126</td><td>16,777,214</td></tr>
+                <tr><td>B</td><td>128.0.0.0 - 191.255.255.255</td><td>255.255.0.0</td><td>16</td><td>16</td><td>16,384</td><td>65,534</td></tr>
+                <tr><td>C</td><td>192.0.0.0 - 223.255.255.255</td><td>255.255.255.0</td><td>24</td><td>8</td><td>2,097,152</td><td>254</td></tr>
+                <tr><td>D</td><td>224.0.0.0 - 239.255.255.255</td><td>N/A</td><td>Multicast</td><td>Multicast</td><td>Multicast</td><td>Multicast</td></tr>
+                <tr><td>E</td><td>240.0.0.0 - 255.255.255.255</td><td>N/A</td><td>Experimental</td><td>Experimental</td><td>Experimental</td><td>Experimental</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Subnetting</h2>
+            <table>
+                <tr><th>Subnet Mask</th><th>Binary</th><th>Wildcard</th><th>Networks</th><th>Hosts</th><th>Useful IPs</th></tr>
+                <tr><td>255.0.0.0</td><td>11111111.00000000.00000000.00000000</td><td>0.255.255.255</td><td>1</td><td>16,777,216</td><td>16,777,214</td></tr>
+                <tr><td>255.128.0.0</td><td>11111111.10000000.00000000.00000000</td><td>0.127.255.255</td><td>2</td><td>8,388,608</td><td>8,388,606</td></tr>
+                <tr><td>255.192.0.0</td><td>11111111.11000000.00000000.00000000</td><td>0.63.255.255</td><td>4</td><td>4,194,304</td><td>4,194,302</td></tr>
+                <tr><td>255.224.0.0</td><td>11111111.11100000.00000000.00000000</td><td>0.31.255.255</td><td>8</td><td>2,097,152</td><td>2,097,150</td></tr>
+                <tr><td>255.240.0.0</td><td>11111111.11110000.00000000.00000000</td><td>0.15.255.255</td><td>16</td><td>1,048,576</td><td>1,048,574</td></tr>
+                <tr><td>255.248.0.0</td><td>11111111.11111000.00000000.00000000</td><td>0.7.255.255</td><td>32</td><td>524,288</td><td>524,286</td></tr>
+                <tr><td>255.252.0.0</td><td>11111111.11111100.00000000.00000000</td><td>0.3.255.255</td><td>64</td><td>262,144</td><td>262,142</td></tr>
+                <tr><td>255.254.0.0</td><td>11111111.11111110.00000000.00000000</td><td>0.1.255.255</td><td>128</td><td>131,072</td><td>131,070</td></tr>
+                <tr><td>255.255.0.0</td><td>11111111.11111111.00000000.00000000</td><td>0.0.255.255</td><td>256</td><td>65,536</td><td>65,534</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Routing Protocols</h2>
+            <table>
+                <tr><th>Protocol</th><th>Type</th><th>Algorithm</th><th>Update Method</th><th>Use Case</th></tr>
+                <tr><td>RIP (v1/v2)</td><td>Distance Vector</td><td>Distance Vector</td><td>Periodic updates</td><td>Small networks, simple configuration</td></tr>
+                <tr><td>OSPF</td><td>Link State</td><td>Dijkstra's Algorithm</td><td>Triggered updates</td><td>Large networks, complex topologies</td></tr>
+                <tr><td>EIGRP</td><td>Hybrid</td><td>DUAL Algorithm</td><td>Partial updates</td><td>Cisco networks, fast convergence</td></tr>
+                <tr><td>BGP</td><td>Path Vector</td><td>Path Vector</td><td>Incremental updates</td><td>Internet backbone, inter-AS routing</td></tr>
+                <tr><td>IS-IS</td><td>Link State</td><td>SPF Algorithm</td><td>Link state updates</td><td>Service provider networks</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Network Devices</h2>
+            <table>
+                <tr><th>Device</th><th>Layer</th><th>Function</th><th>Use Case</th><th>Advantages</th></tr>
+                <tr><td>Repeater</td><td>Physical</td><td>Amplify signals</td><td>Extend cable length</td><td>Signal amplification</td></tr>
+                <tr><td>Hub</td><td>Physical</td><td>Connect multiple devices</td><td>Simple network connections</td><td>Low cost, simple</td></tr>
+                <tr><td>Bridge</td><td>Data Link</td><td>Connect network segments</td><td>Segment collision domains</td><td>Filter traffic</td></tr>
+                <tr><td>Switch</td><td>Data Link</td><td>Connect devices with MAC learning</td><td>Modern network connections</td><td>Fast, intelligent filtering</td></tr>
+                <tr><td>Router</td><td>Network</td><td>Connect networks, route packets</td><td>Connect different networks</td><td>Path selection, traffic control</td></tr>
+                <tr><td>Gateway</td><td>Application</td><td>Protocol conversion</td><td>Connect different network types</td><td>Protocol translation</td></tr>
+                <tr><td>Firewall</td><td>Network/Application</td><td>Security filtering</td><td>Network security</td><td>Security, access control</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Network Topologies</h2>
+            <table>
+                <tr><th>Topology</th><th>Description</th><th>Advantages</th><th>Disadvantages</th><th>Use Case</th></tr>
+                <tr><td>Bus</td><td>Single cable connects all devices</td><td>Easy to install, low cost</td><td>Single point of failure, difficult to troubleshoot</td><td>Small networks</td></tr>
+                <tr><td>Star</td><td>All devices connect to central hub/switch</td><td>Easy to install and manage, failure of one device doesn't affect others</td><td>Requires more cable, hub failure affects all</td><td>Most LANs</td></tr>
+                <tr><td>Ring</td><td>Each device connects to two others forming a ring</td><td>Equal access, predictable performance</td><td>Single break affects entire network</td><td>Token Ring networks</td></tr>
+                <tr><td>Mesh</td><td>Every device connects to every other device</td><td>High reliability, multiple paths</td><td>Expensive, complex</td><td>Critical networks</td></tr>
+                <tr><td>Tree</td><td>Hierarchical structure with root</td><td>Scalable, easy to manage</td><td>Root failure affects entire network</td><td>Large networks</td></tr>
+                <tr><td>Hybrid</td><td>Combination of topologies</td><td>Flexible, scalable</td><td>Complex, expensive</td><td>Large enterprise networks</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Network Security</h2>
+            <table>
+                <tr><th>Technology</th><th>Function</th><th>Description</th><th>Advantages</th><th>Disadvantages</th></tr>
+                <tr><td>Firewall</td><td>Access Control</td><td>Filters network traffic based on rules</td><td>Prevents unauthorized access</td><td>May block legitimate traffic</td></tr>
+                <tr><td>VPN</td><td>Secure Communication</td><td>Creates encrypted tunnel over public network</td><td>Secure remote access</td><td>Performance overhead</td></tr>
+                <tr><td>IDS</td><td>Intrusion Detection</td><td>Monitors network for suspicious activity</td><td>Real-time threat detection</td><td>False positives</td></tr>
+                <tr><td>IPS</td><td>Intrusion Prevention</td><td>Blocks detected threats</td><td>Prevents attacks in real-time</td><td>May impact performance</td></tr>
+                <tr><td>AAA</td><td>Authentication/Authorization/Auditing</td><td>Network access control framework</td><td>Comprehensive access control</td><td>Complexity</td></tr>
+                <tr><td>802.1X</td><td>Port-based Network Access Control</td><td>Authenticates devices before network access</td><td>Secure network access</td><td>Requires infrastructure support</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Wireless Technologies</h2>
+            <table>
+                <tr><th>Standard</th><th>Frequency</th><th>Max Speed</th><th>Range</th><th>Year</th><th>Characteristics</th></tr>
+                <tr><td>802.11a</td><td>5 GHz</td><td>54 Mbps</td><td>Shorter range</td><td>1999</td><td>OFDM, more channels</td></tr>
+                <tr><td>802.11b</td><td>2.4 GHz</td><td>11 Mbps</td><td>Longer range</td><td>1999</td><td>Lower speed, longer range</td></tr>
+                <tr><td>802.11g</td><td>2.4 GHz</td><td>54 Mbps</td><td>Longer range</td><td>2003</td><td>Backward compatible with b</td></tr>
+                <tr><td>802.11n</td><td>2.4/5 GHz</td><td>600 Mbps</td><td>Improved range</td><td>2009</td><td>MIMO, 40 MHz channels</td></tr>
+                <tr><td>802.11ac</td><td>5 GHz</td><td>6.9 Gbps</td><td>Shorter range</td><td>2013</td><td>Multi-user MIMO, beamforming</td></tr>
+                <tr><td>802.11ax (Wi-Fi 6)</td><td>2.4/5 GHz</td><td>9.6 Gbps</td><td>Improved efficiency</td><td>2019</td><td>OFDMA, improved density</td></tr>
+                <tr><td>802.11be (Wi-Fi 7)</td><td>2.4/5/6 GHz</td><td>46 Gbps</td><td>Enhanced range</td><td>2024</td><td>320 MHz channels, 4K QAM</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Network Troubleshooting Commands</h2>
+            <table>
+                <tr><th>Command</th><th>OS</th><th>Purpose</th><th>Common Use</th></tr>
+                <tr><td>ping</td><td>All</td><td>Test IP connectivity</td><td>Check if host is reachable</td></tr>
+                <tr><td>tracert (traceroute)</td><td>Windows (Unix)</td><td>Trace route to destination</td><td>Identify network path and delays</td></tr>
+                <tr><td>ipconfig (ifconfig)</td><td>Windows (Unix)</td><td>Display IP configuration</td><td>View network settings</td></tr>
+                <tr><td>netstat</td><td>All</td><td>Display network connections</td><td>Check active connections and ports</td></tr>
+                <tr><td>nslookup (dig)</td><td>All</td><td>DNS lookup</td><td>Resolve domain names to IPs</td></tr>
+                <tr><td>arp</td><td>All</td><td>ARP table management</td><td>View MAC address mappings</td></tr>
+                <tr><td>telnet</td><td>All</td><td>Test port connectivity</td><td>Check if port is open</td></tr>
+                <tr><td>route</td><td>All</td><td>Display/modify routing table</td><td>View routing information</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Algorithms - Quick Reference</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #34495e;
+            --card-bg: #ffffff;
+            --text-color: #2c3e50;
+            --light-text: #7f8c8d;
+            --border-color: #bdc3c7;
+            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+            --shadow-hover: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+            color: var(--text-color);
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 14px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+        
+        h1 {
+            text-align: center;
+            background: var(--card-bg);
+            color: var(--primary-color);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-size: 1.8rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+        
+        .algorithm-section {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin: 20px 0;
+            border: 1px solid var(--border-color);
+        }
+        
+        .section-header {
+            background: var(--secondary-color);
+            color: white;
+            padding: 12px 16px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .algorithm-content {
+            padding: 20px;
+        }
+        
+        .algorithm-title {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .algorithm-title i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+        
+        .algorithm-code {
+            background-color: #f8f9fa;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            white-space: pre;
+            line-height: 1.4;
+            font-size: 0.95rem;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        
+        .back-link:hover {
+            background: #2980b9;
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+                font-size: 13px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+                padding: 16px;
+            }
+            
+            .section-header {
+                font-size: 1rem;
+                padding: 10px;
+            }
+            
+            .algorithm-title {
+                font-size: 1.1rem;
+            }
+            
+            .algorithm-content {
+                padding: 15px;
+            }
+            
+            .algorithm-code {
+                padding: 12px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.3rem;
+                padding: 12px;
+            }
+            
+            .section-header {
+                font-size: 0.9rem;
+                padding: 8px;
+            }
+            
+            .algorithm-title {
+                font-size: 1rem;
+            }
+            
+            .algorithm-code {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Index</a>
+        
+        <h1><i class="fas fa-sort-amount-up"></i> Algorithms - Quick Reference</h1>
+        
+        <div class="algorithm-section">
+            <div class="section-header"><i class="fas fa-exchange-alt"></i> Sorting Algorithms</div>
+            <div class="algorithm-content">
+                <div class="algorithm-title"><i class="fas fa-arrow-down"></i> Bubble Sort</div>
+                <div class="algorithm-code">for(int i = 0; i < n-1; i++) 
+    for(int j = 0; j < n-1-i; j++) 
+        if(arr[j] > arr[j+1]) {
+            int temp = arr[j];
+            arr[j] = arr[j+1];
+            arr[j+1] = temp;
+        }</div>
+                
+                <div class="algorithm-title"><i class="fas fa-arrow-down"></i> Selection Sort</div>
+                <div class="algorithm-code">for(int i = 0; i < n-1; i++) {
+    int min_idx = i;
+    for(int j = i+1; j < n; j++) 
+        if(arr[j] < arr[min_idx]) 
+            min_idx = j;
+    int temp = arr[min_idx];
+    arr[min_idx] = arr[i];
+    arr[i] = temp;
+}</div>
+                
+                <div class="algorithm-title"><i class="fas fa-arrow-down"></i> Insertion Sort</div>
+                <div class="algorithm-code">for(int i = 1; i < n; i++) {
+    int key = arr[i];
+    int j = i - 1;
+    while(j >= 0 && arr[j] > key) {
+        arr[j+1] = arr[j];
+        j = j - 1;
+    }
+    arr[j+1] = key;
+}</div>
+                
+                <div class="algorithm-title"><i class="fas fa-arrow-down"></i> Merge Sort</div>
+                <div class="algorithm-code">void mergeSort(int arr[], int l, int r) {
+    if(l < r) {
+        int m = l + (r - l) / 2;
+        mergeSort(arr, l, m);
+        mergeSort(arr, m + 1, r);
+        merge(arr, l, m, r);
+    }
+}
+
+void merge(int arr[], int l, int m, int r) {
+    // Create temporary arrays
+    int n1 = m - l + 1;
+    int n2 = r - m;
+    
+    // Copy data to temp arrays
+    // Merge the temp arrays back
+    // Copy remaining elements if any
+}</div>
+                
+                <div class="algorithm-title"><i class="fas fa-arrow-down"></i> Quick Sort</div>
+                <div class="algorithm-code">void quickSort(int arr[], int low, int high) {
+    if(low < high) {
+        int pi = partition(arr, low, high);
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
+
+int partition(int arr[], int low, int high) {
+    int pivot = arr[high];
+    int i = (low - 1);
+    
+    for(int j = low; j <= high - 1; j++) {
+        if(arr[j] < pivot) {
+            i++;
+            swap(&arr[i], &arr[j]);
+        }
+    }
+    swap(&arr[i+1], &arr[high]);
+    return (i + 1);
+}</div>
+                
+                <div class="algorithm-title"><i class="fas fa-arrow-down"></i> Heap Sort</div>
+                <div class="algorithm-code">void heapSort(int arr[], int n) {
+    for(int i = n / 2 - 1; i >= 0; i--)
+        heapify(arr, n, i);
+    
+    for(int i = n - 1; i > 0; i--) {
+        swap(&arr[0], &arr[i]);
+        heapify(arr, i, 0);
+    }
+}
+
+void heapify(int arr[], int n, int i) {
+    int largest = i;
+    int l = 2 * i + 1;
+    int r = 2 * i + 2;
+    
+    if(l < n && arr[l] > arr[largest])
+        largest = l;
+    
+    if(r < n && arr[r] > arr[largest])
+        largest = r;
+    
+    if(largest != i) {
+        swap(&arr[i], &arr[largest]);
+        heapify(arr, n, largest);
+    }
+}</div>
+            </div>
+        </div>
+
+        <div class="algorithm-section">
+            <div class="section-header"><i class="fas fa-search"></i> Searching Algorithms</div>
+            <div class="algorithm-content">
+                <div class="algorithm-title"><i class="fas fa-search-plus"></i> Linear Search</div>
+                <div class="algorithm-code">int linearSearch(int arr[], int n, int x) {
+    for(int i = 0; i < n; i++) {
+        if(arr[i] == x)
+            return i;
+    }
+    return -1;
+}</div>
+                
+                <div class="algorithm-title"><i class="fas fa-search-plus"></i> Binary Search</div>
+                <div class="algorithm-code">int binarySearch(int arr[], int l, int r, int x) {
+    if(r >= l) {
+        int mid = l + (r - l) / 2;
+        
+        if(arr[mid] == x)
+            return mid;
+        
+        if(arr[mid] > x)
+            return binarySearch(arr, l, mid - 1, x);
+        
+        return binarySearch(arr, mid + 1, r, x);
+    }
+    return -1;
+}</div>
+                
+                <div class="algorithm-title"><i class="fas fa-search-plus"></i> Jump Search</div>
+                <div class="algorithm-code">int jumpSearch(int arr[], int n, int x) {
+    int step = sqrt(n);
+    int prev = 0;
+    
+    while(arr[min(step, n) - 1] < x) {
+        prev = step;
+        step += sqrt(n);
+        if(prev >= n)
+            return -1;
+    }
+    
+    while(arr[prev] < x) {
+        prev++;
+        if(prev == min(step, n))
+            return -1;
+    }
+    
+    if(arr[prev] == x)
+        return prev;
+    
+    return -1;
+}</div>
+                
+                <div class="algorithm-title"><i class="fas fa-search-plus"></i> Interpolation Search</div>
+                <div class="algorithm-code">int interpolationSearch(int arr[], int n, int x) {
+    int low = 0, high = n - 1;
+    
+    while(low <= high && x >= arr[low] && x <= arr[high]) {
+        if(low == high) {
+            if(arr[low] == x) return low;
+            return -1;
+        }
+        
+        int pos = low + (((double)(high - low) / 
+                (arr[high] - arr[low])) * (x - arr[low]));
+        
+        if(arr[pos] == x)
+            return pos;
+        
+        if(arr[pos] < x)
+            low = pos + 1;
+        else
+            high = pos - 1;
+    }
+    return -1;
+}</div>
+            </div>
+        </div>
+
+        <div class="algorithm-section">
+            <div class="section-header"><i class="fas fa-project-diagram"></i> Graph Algorithms</div>
+            <div class="algorithm-content">
+                <div class="algorithm-title"><i class="fas fa-project-diagram"></i> Breadth-First Search (BFS)</div>
+                <div class="algorithm-code">void BFS(int s) {
+    bool *visited = new bool[V];
+    for(int i = 0; i < V; i++)
+        visited[i] = false;
+    
+    list<int> queue;
+    visited[s] = true;
+    queue.push_back(s);
+    
+    list<int>::iterator i;
+    
+    while(!queue.empty()) {
+        s = queue.front();
+        cout << s << " ";
+        queue.pop_front();
+        
+        for(i = adj[s].begin(); i != adj[s].end(); ++i) {
+            if(!visited[*i]) {
+                visited[*i] = true;
+                queue.push_back(*i);
+            }
+        }
+    }
+}</div>
+                
+                <div class="algorithm-title"><i class="fas fa-project-diagram"></i> Depth-First Search (DFS)</div>
+                <div class="algorithm-code">void DFSUtil(int v, bool visited[]) {
+    visited[v] = true;
+    cout << v << " ";
+    
+    list<int>::iterator i;
+    for(i = adj[v].begin(); i != adj[v].end(); ++i)
+        if(!visited[*i])
+            DFSUtil(*i, visited);
+}
+
+void DFS(int v) {
+    bool *visited = new bool[V];
+    for(int i = 0; i < V; i++)
+        visited[i] = false;
+    
+    DFSUtil(v, visited);
+}</div>
+                
+                <div class="algorithm-title"><i class="fas fa-project-diagram"></i> Dijkstra's Algorithm</div>
+                <div class="algorithm-code">int minDistance(int dist[], bool sptSet[]) {
+    int min = INT_MAX, min_index;
+    
+    for(int v = 0; v < V; v++)
+        if(sptSet[v] == false && dist[v] <= min)
+            min = dist[v], min_index = v;
+    
+    return min_index;
+}
+
+void dijkstra(int graph[V][V], int src) {
+    int dist[V];
+    bool sptSet[V];
+    
+    for(int i = 0; i < V; i++)
+        dist[i] = INT_MAX, sptSet[i] = false;
+    
+    dist[src] = 0;
+    
+    for(int count = 0; count < V - 1; count++) {
+        int u = minDistance(dist, sptSet);
+        sptSet[u] = true;
+        
+        for(int v = 0; v < V; v++)
+            if(!sptSet[v] && graph[u][v] && 
+               dist[u] != INT_MAX && 
+               dist[u] + graph[u][v] < dist[v])
+                dist[v] = dist[u] + graph[u][v];
+    }
+}</div>
+                
+                <div class="algorithm-title"><i class="fas fa-project-diagram"></i> Bellman-Ford Algorithm</div>
+                <div class="algorithm-code">void BellmanFord(struct Graph* graph, int src) {
+    int V = graph->V;
+    int E = graph->E;
+    int dist[V];
+    
+    for(int i = 0; i < V; i++)
+        dist[i] = INT_MAX;
+    dist[src] = 0;
+    
+    for(int i = 1; i <= V - 1; i++) {
+        for(int j = 0; j < E; j++) {
+            int u = graph->edge[j].src;
+            int v = graph->edge[j].dest;
+            int weight = graph->edge[j].weight;
+            if(dist[u] != INT_MAX && 
+               dist[u] + weight < dist[v])
+                dist[v] = dist[u] + weight;
+        }
+    }
+    
+    for(int i = 0; i < E; i++) {
+        int u = graph->edge[i].src;
+        int v = graph->edge[i].dest;
+        int weight = graph->edge[i].weight;
+        if(dist[u] != INT_MAX && 
+           dist[u] + weight < dist[v])
+            printf("Graph contains negative weight cycle");
+    }
+}</div>
+                
+                <div class="algorithm-title"><i class="fas fa-project-diagram"></i> Floyd-Warshall Algorithm</div>
+                <div class="algorithm-code">void floydWarshall(int graph[][V]) {
+    int dist[V][V], i, j, k;
+    
+    for(i = 0; i < V; i++)
+        for(j = 0; j < V; j++)
+            dist[i][j] = graph[i][j];
+    
+    for(k = 0; k < V; k++) {
+        for(i = 0; i < V; i++) {
+            for(j = 0; j < V; j++) {
+                if(dist[i][k] + dist[k][j] < dist[i][j])
+                    dist[i][j] = dist[i][k] + dist[k][j];
+            }
+        }
+    }
+}</div>
+                
+                <div class="algorithm-title"><i class="fas fa-project-diagram"></i> Kruskal's Algorithm</div>
+                <div class="algorithm-code">int find(int parent[], int i) {
+    if(parent[i] == i)
+        return i;
+    return find(parent, parent[i]);
+}
+
+void Union(int parent[], int rank[], int x, int y) {
+    int xroot = find(parent, x);
+    int yroot = find(parent, y);
+    
+    if(rank[xroot] < rank[yroot])
+        parent[xroot] = yroot;
+    else if(rank[xroot] > rank[yroot])
+        parent[yroot] = xroot;
+    else {
+        parent[yroot] = xroot;
+        rank[xroot]++;
+    }
+}
+
+void KruskalMST() {
+    Edge result[V];
+    int e = 0, i = 0;
+    
+    qsort(edge, E, sizeof(edge[0]), myComp);
+    
+    int parent[V], rank[V];
+    
+    for(int v = 0; v < V; v++) {
+        parent[v] = v;
+        rank[v] = 0;
+    }
+    
+    while(e < V - 1 && i < E) {
+        Edge next_edge = edge[i++];
+        
+        int x = find(parent, next_edge.src);
+        int y = find(parent, next_edge.dest);
+        
+        if(x != y) {
+            result[e++] = next_edge;
+            Union(parent, rank, x, y);
+        }
+    }
+}</div>
+                
+                <div class="algorithm-title"><i class="fas fa-project-diagram"></i> Prim's Algorithm</div>
+                <div class="algorithm-code">int minKey(int key[], bool mstSet[]) {
+    int min = INT_MAX, min_index;
+    
+    for(int v = 0; v < V; v++)
+        if(mstSet[v] == false && key[v] < min)
+            min = key[v], min_index = v;
+    
+    return min_index;
+}
+
+void printMST(int parent[], int graph[V][V]) {
+    printf("Edge \tWeight\n");
+    for(int i = 1; i < V; i++)
+        printf("%d - %d \t%d \n", parent[i], i, graph[i][parent[i]]);
+}
+
+void primMST(int graph[V][V]) {
+    int parent[V];
+    int key[V];
+    bool mstSet[V];
+    
+    for(int i = 0; i < V; i++)
+        key[i] = INT_MAX, mstSet[i] = false;
+    
+    key[0] = 0;
+    parent[0] = -1;
+    
+    for(int count = 0; count < V - 1; count++) {
+        int u = minKey(key, mstSet);
+        
+        mstSet[u] = true;
+        
+        for(int v = 0; v < V; v++)
+            if(graph[u][v] && mstSet[v] == false && 
+               graph[u][v] < key[v])
+                parent[v] = u, key[v] = graph[u][v];
+    }
+    
+    printMST(parent, graph);
+}</div>
+                
+                <div class="algorithm-title"><i class="fas fa-project-diagram"></i> Topological Sort</div>
+                <div class="algorithm-code">void topologicalSortUtil(int v, bool visited[], 
+                        stack<int> &Stack) {
+    visited[v] = true;
+    
+    list<int>::iterator i;
+    for(i = adj[v].begin(); i != adj[v].end(); ++i)
+        if(!visited[*i])
+            topologicalSortUtil(*i, visited, Stack);
+    
+    Stack.push(v);
+}
+
+void topologicalSort() {
+    stack<int> Stack;
+    bool *visited = new bool[V];
+    
+    for(int i = 0; i < V; i++)
+        visited[i] = false;
+    
+    for(int i = 0; i < V; i++)
+        if(visited[i] == false)
+            topologicalSortUtil(i, visited, Stack);
+    
+    while(Stack.empty() == false) {
+        cout << Stack.top() << " ";
+        Stack.pop();
+    }
+}</div>
+                
+                <div class="algorithm-title"><i class="fas fa-project-diagram"></i> Union-Find (Disjoint Set)</div>
+                <div class="algorithm-code">int find(int parent[], int i) {
+    if(parent[i] == -1)
+        return i;
+    return find(parent, parent[i]);
+}
+
+void Union(int parent[], int x, int y) {
+    int xset = find(parent, x);
+    int yset = find(parent, y);
+    parent[xset] = yset;
+}
+
+bool isCycle(int graph[][2], int V, int E) {
+    int *parent = new int[V];
+    
+    for(int i = 0; i < V; i++)
+        parent[i] = -1;
+    
+    for(int i = 0; i < E; i++) {
+        int x = find(parent, graph[i][0]);
+        int y = find(parent, graph[i][1]);
+        
+        if(x == y)
+            return true;
+        
+        Union(parent, x, y);
+    }
+    return false;
+}</div>
+            </div>
+        </div>
+
+        <div class="algorithm-section">
+            <div class="section-header"><i class="fas fa-chart-line"></i> Dynamic Programming Algorithms</div>
+            <div class="algorithm-content">
+                <div class="algorithm-title"><i class="fas fa-chart-line"></i> Fibonacci Sequence</div>
+                <div class="algorithm-code">int fib(int n) {
+    if(n <= 1)
+        return n;
+    
+    int f[n + 1];
+    f[0] = 0;
+    f[1] = 1;
+    
+    for(int i = 2; i <= n; i++)
+        f[i] = f[i - 1] + f[i - 2];
+    
+    return f[n];
+}</div>
+                
+                <div class="algorithm-title"><i class="fas fa-chart-line"></i> Knapsack Problem</div>
+                <div class="algorithm-code">int knapSack(int W, int wt[], int val[], int n) {
+    int K[n + 1][W + 1];
+    
+    for(int i = 0; i <= n; i++) {
+        for(int w = 0; w <= W; w++) {
+            if(i == 0 || w == 0)
+                K[i][w] = 0;
+            else if(wt[i - 1] <= w)
+                K[i][w] = max(val[i - 1] + K[i - 1][w - wt[i - 1]], 
+                             K[i - 1][w]);
+            else
+                K[i][w] = K[i - 1][w];
+        }
+    }
+    
+    return K[n][W];
+}</div>
+                
+                <div class="algorithm-title"><i class="fas fa-chart-line"></i> Longest Common Subsequence</div>
+                <div class="algorithm-code">int lcs(char *X, char *Y, int m, int n) {
+    int L[m + 1][n + 1];
+    
+    for(int i = 0; i <= m; i++) {
+        for(int j = 0; j <= n; j++) {
+            if(i == 0 || j == 0)
+                L[i][j] = 0;
+            else if(X[i - 1] == Y[j - 1])
+                L[i][j] = L[i - 1][j - 1] + 1;
+            else
+                L[i][j] = max(L[i - 1][j], L[i][j - 1]);
+        }
+    }
+    
+    return L[m][n];
+}</div>
+                
+                <div class="algorithm-title"><i class="fas fa-chart-line"></i> Matrix Chain Multiplication</div>
+                <div class="algorithm-code">int MatrixChainOrder(int p[], int n) {
+    int m[n][n];
+    
+    for(int i = 1; i < n; i++)
+        m[i][i] = 0;
+    
+    for(int L = 2; L < n; L++) {
+        for(int i = 1; i < n - L + 1; i++) {
+            int j = i + L - 1;
+            m[i][j] = INT_MAX;
+            
+            for(int k = i; k <= j - 1; k++) {
+                int q = m[i][k] + m[k + 1][j] + 
+                        p[i - 1] * p[k] * p[j];
+                if(q < m[i][j])
+                    m[i][j] = q;
+            }
+        }
+    }
+    
+    return m[1][n - 1];
+}</div>
+                
+                <div class="algorithm-title"><i class="fas fa-chart-line"></i> Coin Change Problem</div>
+                <div class="algorithm-code">int count(int S[], int m, int n) {
+    int table[n + 1];
+    memset(table, 0, sizeof(table));
+    
+    table[0] = 1;
+    
+    for(int i = 0; i < m; i++) {
+        for(int j = S[i]; j <= n; j++)
+            table[j] += table[j - S[i]];
+    }
+    
+    return table[n];
+}</div>
+                
+                <div class="algorithm-title"><i class="fas fa-chart-line"></i> Longest Increasing Subsequence</div>
+                <div class="algorithm-code">int lis(int arr[], int n) {
+    int lis[n];
+    lis[0] = 1;
+    
+    for(int i = 1; i < n; i++) {
+        lis[i] = 1;
+        for(int j = 0; j < i; j++)
+            if(arr[i] > arr[j] && lis[i] < lis[j] + 1)
+                lis[i] = lis[j] + 1;
+    }
+    
+    return *max_element(lis, lis + n);
+}</div>
+                
+                <div class="algorithm-title"><i class="fas fa-chart-line"></i> Edit Distance</div>
+                <div class="algorithm-code">int editDist(string str1, string str2, int m, int n) {
+    int dp[m + 1][n + 1];
+    
+    for(int i = 0; i <= m; i++) {
+        for(int j = 0; j <= n; j++) {
+            if(i == 0)
+                dp[i][j] = j;
+            else if(j == 0)
+                dp[i][j] = i;
+            else if(str1[i - 1] == str2[j - 1])
+                dp[i][j] = dp[i - 1][j - 1];
+            else
+                dp[i][j] = 1 + min(min(dp[i][j - 1], 
+                                   dp[i - 1][j]), 
+                                   dp[i - 1][j - 1]);
+        }
+    }
+    
+    return dp[m][n];
+}</div>
+            </div>
+        </div>
+
+        <div class="algorithm-section">
+            <div class="section-header"><i class="fas fa-font"></i> String Algorithms</div>
+            <div class="algorithm-content">
+                <div class="algorithm-title"><i class="fas fa-font"></i> Knuth-Morris-Pratt (KMP)</div>
+                <div class="algorithm-code">void computeLPSArray(char* pat, int M, int* lps) {
+    int len = 0;
+    int i = 1;
+    lps[0] = 0;
+    
+    while(i < M) {
+        if(pat[i] == pat[len]) {
+            len++;
+            lps[i] = len;
+            i++;
+        } else {
+            if(len != 0) {
+                len = lps[len - 1];
+            } else {
+                lps[i] = 0;
+                i++;
+            }
+        }
+    }
+}
+
+void KMPSearch(char* pat, char* txt) {
+    int M = strlen(pat);
+    int N = strlen(txt);
+    
+    int lps[M];
+    computeLPSArray(pat, M, lps);
+    
+    int i = 0;
+    int j = 0;
+    while(i < N) {
+        if(pat[j] == txt[i]) {
+            j++;
+            i++;
+        }
+        
+        if(j == M) {
+            printf("Found pattern at index %d ", i - j);
+            j = lps[j - 1];
+        } else if(i < N && pat[j] != txt[i]) {
+            if(j != 0)
+                j = lps[j - 1];
+            else
+                i++;
+        }
+    }
+}</div>
+                
+                <div class="algorithm-title"><i class="fas fa-font"></i> Boyer-Moore</div>
+                <div class="algorithm-code">void badCharHeuristic(char *str, int size, int badchar[NO_OF_CHARS]) {
+    for(int i = 0; i < NO_OF_CHARS; i++)
+        badchar[i] = -1;
+    
+    for(int i = 0; i < size; i++)
+        badchar[(int)str[i]] = i;
+}
+
+void search(char *txt, char *pat) {
+    int m = strlen(pat);
+    int n = strlen(txt);
+    
+    int badchar[NO_OF_CHARS];
+    badCharHeuristic(pat, m, badchar);
+    
+    int s = 0;
+    while(s <= (n - m)) {
+        int j = m - 1;
+        
+        while(j >= 0 && pat[j] == txt[s + j])
+            j--;
+        
+        if(j < 0) {
+            printf("\n pattern occurs at shift = %d", s);
+            s += (s + m < n) ? m - badchar[txt[s + m]] : 1;
+        } else {
+            s += max(1, j - badchar[txt[s + j]]);
+        }
+    }
+}</div>
+                
+                <div class="algorithm-title"><i class="fas fa-font"></i> Rabin-Karp</div>
+                <div class="algorithm-code">#define d 256
+
+void search(char pat[], char txt[], int q) {
+    int M = strlen(pat);
+    int N = strlen(txt);
+    int i, j;
+    int p = 0;
+    int t = 0;
+    int h = 1;
+    
+    for(i = 0; i < M - 1; i++)
+        h = (h * d) % q;
+    
+    for(i = 0; i < M; i++) {
+        p = (d * p + pat[i]) % q;
+        t = (d * t + txt[i]) % q;
+    }
+    
+    for(i = 0; i <= N - M; i++) {
+        if(p == t) {
+            for(j = 0; j < M; j++) {
+                if(txt[i + j] != pat[j])
+                    break;
+            }
+            if(j == M)
+                printf("Pattern found at index %d \n", i);
+        }
+        
+        if(i < N - M) {
+            t = (d * (t - txt[i] * h) + txt[i + M]) % q;
+            if(t < 0)
+                t = (t + q);
+        }
+    }
+}</div>
+                
+                <div class="algorithm-title"><i class="fas fa-font"></i> Z Algorithm</div>
+                <div class="algorithm-code">void getZarr(string str, int Z[]) {
+    int n = str.length();
+    int L, R, k;
+    
+    L = R = 0;
+    for(int i = 1; i < n; ++i) {
+        if(i > R) {
+            L = R = i;
+            while(R < n && str[R - L] == str[R])
+                R++;
+            Z[i] = R - L;
+            R--;
+        } else {
+            k = i - L;
+            if(Z[k] < R - i + 1)
+                Z[i] = Z[k];
+            else {
+                L = i;
+                while(R < n && str[R - L] == str[R])
+                    R++;
+                Z[i] = R - L;
+                R--;
+            }
+        }
+    }
+}
+
+void search(string text, string pattern) {
+    string concat = pattern + "$" + text;
+    int l = concat.length();
+    
+    int Z[l];
+    getZarr(concat, Z);
+    
+    for(int i = 0; i < l; ++i) {
+        if(Z[i] == pattern.length())
+            cout << "Pattern found at index "
+                 << i - pattern.length() - 1 << endl;
+    }
+}</div>
+                
+                <div class="algorithm-title"><i class="fas fa-font"></i> Manacher's Algorithm</div>
+                <div class="algorithm-code">int min(int a, int b) {
+    int res = a < b ? a : b;
+    return res;
+}
+
+void findLongestPalindromicString(char text[]) {
+    int N = strlen(text);
+    if(N == 0)
+        return;
+    N = 2 * N + 1;
+    int L[N];
+    L[0] = 0;
+    L[1] = 1;
+    int C = 1;
+    int R = 2;
+    int i = 0;
+    int iMirror;
+    int maxLPSLength = 0;
+    int maxLPSCenterPosition = 0;
+    int start = -1;
+    int end = -1;
+    
+    for(i = 2; i < N; i++) {
+        iMirror = 2 * C - i;
+        L[i] = 0;
+        diff = R - i;
+        
+        if(diff > 0)
+            L[i] = min(L[iMirror], diff);
+        
+        try to expand palindrome centered at i
+        while(((i + L[i]) + 1 < N && (i - L[i]) > 0) && 
+              (((i + L[i] + 1) % 2 == 0) || 
+               (text[(i + L[i] + 1) / 2] == text[(i - L[i] - 1) / 2]))) {
+            L[i]++;
+        }
+        
+        if(L[i] > maxLPSLength) {
+            maxLPSLength = L[i];
+            maxLPSCenterPosition = i;
+        }
+        
+        if(i + L[i] > R) {
+            C = i;
+            R = i + L[i];
+        }
+    }
+}</div>
+            </div>
+        </div>
+
+        <div class="algorithm-section">
+            <div class="section-header"><i class="fas fa-sitemap"></i> Tree Algorithms</div>
+            <div class="algorithm-content">
+                <div class="algorithm-title"><i class="fas fa-sitemap"></i> Inorder Traversal</div>
+                <div class="algorithm-code">void inorder(struct Node* node) {
+    if(node == NULL)
+        return;
+    
+    inorder(node->left);
+    cout << node->data << " ";
+    inorder(node->right);
+}</div>
+                
+                <div class="algorithm-title"><i class="fas fa-sitemap"></i> Preorder Traversal</div>
+                <div class="algorithm-code">void preorder(struct Node* node) {
+    if(node == NULL)
+        return;
+    
+    cout << node->data << " ";
+    preorder(node->left);
+    preorder(node->right);
+}</div>
+                
+                <div class="algorithm-title"><i class="fas fa-sitemap"></i> Postorder Traversal</div>
+                <div class="algorithm-code">void postorder(struct Node* node) {
+    if(node == NULL)
+        return;
+    
+    postorder(node->left);
+    postorder(node->right);
+    cout << node->data << " ";
+}</div>
+                
+                <div class="algorithm-title"><i class="fas fa-sitemap"></i> Level Order Traversal</div>
+                <div class="algorithm-code">void printLevelOrder(struct Node* root) {
+    if(root == NULL)
+        return;
+    
+    queue<Node*> q;
+    q.push(root);
+    
+    while(!q.empty()) {
+        Node* node = q.front();
+        cout << node->data << " ";
+        q.pop();
+        
+        if(node->left)
+            q.push(node->left);
+        if(node->right)
+            q.push(node->right);
+    }
+}</div>
+                
+                <div class="algorithm-title"><i class="fas fa-sitemap"></i> Lowest Common Ancestor</div>
+                <div class="algorithm-code">struct Node* findLCA(struct Node* root, int n1, int n2) {
+    if(root == NULL)
+        return NULL;
+    
+    if(root->data == n1 || root->data == n2)
+        return root;
+    
+    Node* left_lca = findLCA(root->left, n1, n2);
+    Node* right_lca = findLCA(root->right, n1, n2);
+    
+    if(left_lca && right_lca)
+        return root;
+    
+    return (left_lca != NULL) ? left_lca : right_lca;
+}</div>
+                
+                <div class="algorithm-title"><i class="fas fa-sitemap"></i> Tree Diameter</div>
+                <div class="algorithm-code">int diameter(struct Node* tree) {
+    if(tree == NULL)
+        return 0;
+    
+    int lheight = height(tree->left);
+    int rheight = height(tree->right);
+    
+    int ldiameter = diameter(tree->left);
+    int rdiameter = diameter(tree->right);
+    
+    return max(lheight + rheight + 1, 
+               max(ldiameter, rdiameter));
+}
+
+int height(struct Node* node) {
+    if(node == NULL)
+        return 0;
+    
+    return 1 + max(height(node->left), 
+                   height(node->right));
+}</div>
+            </div>
+        </div>
+
+        <div class="algorithm-section">
+            <div class="section-header"><i class="fas fa-calculator"></i> Mathematical Algorithms</div>
+            <div class="algorithm-content">
+                <div class="algorithm-title"><i class="fas fa-calculator"></i> Euclidean Algorithm</div>
+                <div class="algorithm-code">int gcd(int a, int b) {
+    if(b == 0)
+        return a;
+    return gcd(b, a % b);
+}</div>
+                
+                <div class="algorithm-title"><i class="fas fa-calculator"></i> Sieve of Eratosthenes</div>
+                <div class="algorithm-code">void SieveOfEratosthenes(int n) {
+    bool prime[n + 1];
+    memset(prime, true, sizeof(prime));
+    
+    for(int p = 2; p * p <= n; p++) {
+        if(prime[p] == true) {
+            for(int i = p * p; i <= n; i += p)
+                prime[i] = false;
+        }
+    }
+    
+    for(int p = 2; p <= n; p++)
+        if(prime[p])
+            cout << p << " ";
+}</div>
+                
+                <div class="algorithm-title"><i class="fas fa-calculator"></i> Fast Exponentiation</div>
+                <div class="algorithm-code">long long power(long long base, long long exp, long long mod) {
+    long long result = 1;
+    base = base % mod;
+    
+    while(exp > 0) {
+        if(exp % 2 == 1)
+            result = (result * base) % mod;
+        
+        exp = exp >> 1;
+        base = (base * base) % mod;
+    }
+    
+    return result;
+}</div>
+                
+                <div class="algorithm-title"><i class="fas fa-calculator"></i> Modular Exponentiation</div>
+                <div class="algorithm-code">long long modpower(long long base, long long exp, long long mod) {
+    long long result = 1;
+    base = base % mod;
+    
+    while(exp > 0) {
+        if(exp & 1)
+            result = (result * base) % mod;
+        
+        exp = exp >> 1;
+        base = (base * base) % mod;
+    }
+    
+    return result;
+}</div>
+                
+                <div class="algorithm-title"><i class="fas fa-calculator"></i> Extended Euclidean</div>
+                <div class="algorithm-code">struct triplet {
+    int gcd;
+    int x;
+    int y;
+};
+
+triplet extendedEuclid(int a, int b) {
+    if(b == 0) {
+        triplet ans;
+        ans.gcd = a;
+        ans.x = 1;
+        ans.y = 0;
+        return ans;
+    }
+    
+    triplet smallAns = extendedEuclid(b, a % b);
+    
+    triplet ans;
+    ans.gcd = smallAns.gcd;
+    ans.x = smallAns.y;
+    ans.y = smallAns.x - (a / b) * smallAns.y;
+    
+    return ans;
+}</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

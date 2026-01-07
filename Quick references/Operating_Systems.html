@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operating Systems Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #9b59b6;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #9b59b6;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #8e44ad;
+            margin-top: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #9b59b6;
+            color: white;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Operating Systems Cheat Sheet</h1>
+        
+        <div class="section">
+            <h2>OS Functions</h2>
+            <table>
+                <tr><th>Function</th><th>Description</th><th>Example</th></tr>
+                <tr><td>Process Management</td><td>Manage processes and threads</td><td>Process creation, scheduling, synchronization</td></tr>
+                <tr><td>Memory Management</td><td>Manage primary memory allocation</td><td>Virtual memory, paging, segmentation</td></tr>
+                <tr><td>File System Management</td><td>Manage files and directories</td><td>File creation, deletion, access control</td></tr>
+                <tr><td>I/O Management</td><td>Manage input/output devices</td><td>Device drivers, buffering, spooling</td></tr>
+                <tr><td>Security and Protection</td><td>Protect system and user data</td><td>Access control, authentication, encryption</td></tr>
+                <tr><td>Networking</td><td>Manage network communication</td><td>Network protocols, data transmission</td></tr>
+                <tr><td>Error Detection</td><td>Detect and handle system errors</td><td>Hardware failure detection, error recovery</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Process States</h2>
+            <table>
+                <tr><th>State</th><th>Description</th><th>Transition Trigger</th></tr>
+                <tr><td>New</td><td>Process being created</td><td>Process creation request</td></tr>
+                <tr><td>Ready</td><td>Process waiting for CPU allocation</td><td>Admitted by OS, waiting for scheduler</td></tr>
+                <tr><td>Running</td><td>Process currently executing</td><td>Scheduled by CPU scheduler</td></tr>
+                <tr><td>Waiting</td><td>Process waiting for I/O or event</td><td>Waiting for I/O completion, resource, signal</td></tr>
+                <tr><td>Terminated</td><td>Process finished execution</td><td>Process completed or killed</td></tr>
+                <tr><td>Blocked</td><td>Process waiting for resource</td><td>Waiting for unavailable resource</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>CPU Scheduling Algorithms</h2>
+            <table>
+                <tr><th>Algorithm</th><th>Strategy</th><th>Advantages</th><th>Disadvantages</th><th>Use Case</th></tr>
+                <tr><td>FCFS (First-Come, First-Served)</td><td>First arrived, first served</td><td>Simple, fair</td><td>Convoy effect, poor average waiting time</td><td>Batch systems</td></tr>
+                <tr><td>SJF (Shortest Job First)</td><td>Shortest job executes first</td><td>Minimum average waiting time</td><td>Starvation, hard to predict job length</td><td>Theoretical optimization</td></tr>
+                <tr><td>SRTF (Shortest Remaining Time First)</td><td>Preemptive version of SJF</td><td>Optimal average waiting time</td><td>Starvation, overhead</td><td>Real-time systems</td></tr>
+                <tr><td>Round Robin</td><td>Fixed time quantum per process</td><td>Good response time, fair</td><td>Context switching overhead</td><td>Time-sharing systems</td></tr>
+                <tr><td>Priority Scheduling</td><td>Higher priority executes first</td><td>Flexible, can prioritize</td><td>Starvation possible</td><td>Real-time systems</td></tr>
+                <tr><td>Multilevel Queue</td><td>Processes in different priority queues</td><td>Different scheduling for different types</td><td>Potential starvation</td><td>Multiple process types</td></tr>
+                <tr><td>Multilevel Feedback Queue</td><td>Dynamic priority adjustment</td><td>Prevents starvation, responsive</td><td>Complex implementation</td><td>General-purpose systems</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Memory Management</h2>
+            <table>
+                <tr><th>Concept</th><th>Description</th><th>Advantages</th><th>Disadvantages</th></tr>
+                <tr><td>Contiguous Allocation</td><td>Each process gets contiguous memory block</td><td>Simple, efficient</td><td>External fragmentation, memory waste</td></tr>
+                <tr><td>Paging</td><td>Divide memory into fixed-size pages</td><td>No external fragmentation, efficient</td><td>Internal fragmentation, page table overhead</td></tr>
+                <tr><td>Segmentation</td><td>Divide memory into variable-size segments</td><td>Natural program structure, sharing possible</td><td>External fragmentation, complex</td></tr>
+                <tr><td>Virtual Memory</td><td>Extend physical memory with disk space</td><td>Larger logical address space, process isolation</td><td>Performance overhead, complexity</td></tr>
+                <tr><td>Page Replacement</td><td>Replace pages when memory is full</td><td>Efficient memory utilization</td><td>Page fault overhead</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Page Replacement Algorithms</h2>
+            <table>
+                <tr><th>Algorithm</th><th>Strategy</th><th>Advantages</th><th>Disadvantages</th></tr>
+                <tr><td>Optimal (OPT)</td><td>Replace page used farthest in future</td><td>Theoretical minimum page faults</td><td>Impractical, requires future knowledge</td></tr>
+                <tr><td>FIFO (First In, First Out)</td><td>Replace oldest page</td><td>Simple implementation</td><td>Belady's anomaly possible</td></tr>
+                <tr><td>LRU (Least Recently Used)</td><td>Replace least recently used page</td><td>Good performance, stack algorithm</td><td>Implementation overhead</td></tr>
+                <tr><td>LFU (Least Frequently Used)</td><td>Replace least frequently used page</td><td>Considers frequency</td><td>May keep old popular pages</td></tr>
+                <tr><td>Clock Algorithm</td><td>Approximation of LRU using reference bit</td><td>Good performance, simple</td><td>Approximation of LRU</td></tr>
+                <tr><td>Second Chance</td><td>FIFO with reference bit check</td><td>Better than FIFO</td><td>Still FIFO-based</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Process Synchronization</h2>
+            <table>
+                <tr><th>Concept</th><th>Description</th><th>Implementation</th><th>Use Case</th></tr>
+                <tr><td>Critical Section</td><td>Code segment accessing shared resources</td><td>Entry/exit protocols</td><td>Shared resource access</td></tr>
+                <tr><td>Mutex</td><td>Mutual exclusion lock</td><td>Binary semaphore</td><td>Exclusive access to resource</td></tr>
+                <tr><td>Semaphore</td><td>Integer variable for synchronization</td><td>Wait and signal operations</td><td>Resource counting, synchronization</td></tr>
+                <tr><td>Monitor</td><td>High-level synchronization construct</td><td>Condition variables, locks</td><td>Structured synchronization</td></tr>
+                <tr><td>Producer-Consumer</td><td>Coordination between processes</td><td>Buffer, semaphores</td><td>Data sharing between processes</td></tr>
+                <tr><td>Reader-Writer</td><td>Multiple readers, single writer</td><td>Read-write locks</td><td>Database access, file sharing</td></tr>
+                <tr><td>Dining Philosophers</td><td>Resource allocation problem</td><td>Resource ordering, deadlock prevention</td><td>Deadlock avoidance</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Deadlock Conditions</h2>
+            <table>
+                <tr><th>Condition</th><th>Description</th><th>How to Handle</th><th>Example</th></tr>
+                <tr><td>Mutual Exclusion</td><td>Resource cannot be shared</td><td>Resource sharing where possible</td><td>Printer cannot be shared</td></tr>
+                <tr><td>Hold and Wait</td><td>Process holds resources while waiting</td><td>Request all resources at once</td><td>Process holds disk, waits for printer</td></tr>
+                <tr><td>No Preemption</td><td>Resources cannot be forcibly taken</td><td>Allow resource preemption</td><td>Cannot take resources from process</td></tr>
+                <tr><td>Circular Wait</td><td>Cycle of processes waiting for each other</td><td>Resource ordering</td><td>P1 waits for P2, P2 waits for P1</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>File System Concepts</h2>
+            <table>
+                <tr><th>Concept</th><th>Description</th><th>Advantages</th><th>Disadvantages</th></tr>
+                <tr><td>Contiguous Allocation</td><td>File stored in contiguous blocks</td><td>Fast access, simple</td><td>External fragmentation, difficult to grow</td></tr>
+                <tr><td>Linked Allocation</td><td>File stored as linked list of blocks</td><td>No external fragmentation, easy to grow</td><td>No random access, pointer overhead</td></tr>
+                <tr><td>Indexed Allocation</td><td>Index block contains pointers to file blocks</td><td>Random access, no external fragmentation</td><td>Index block overhead</td></tr>
+                <tr><td>Free Space Management</td><td>Track available disk space</td><td>Efficient space utilization</td><td>Management overhead</td></tr>
+                <tr><td>Virtual File System</td><td>Abstraction layer for different file systems</td><td>Multiple file system support</td><td>Additional complexity</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Security Concepts</h2>
+            <table>
+                <tr><th>Concept</th><th>Description</th><th>Implementation</th><th>Example</th></tr>
+                <tr><td>Authentication</td><td>Verifying user identity</td><td>Passwords, biometrics, certificates</td><td>Login with username/password</td></tr>
+                <tr><td>Authorization</td><td>Granting access rights</td><td>Access control lists, capabilities</td><td>File permissions</td></tr>
+                <tr><td>Access Control</td><td>Controlling resource access</td><td>Discretionary, mandatory, role-based</td><td>File read/write permissions</td></tr>
+                <tr><td>Encryption</td><td>Protecting data confidentiality</td><td>Symmetric, asymmetric encryption</td><td>File encryption</td></tr>
+                <tr><td>Auditing</td><td>Monitoring security-related events</td><td>Log security events</td><td>Access logs, system logs</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>System Calls</h2>
+            <table>
+                <tr><th>Category</th><th>System Call</th><th>Purpose</th><th>Example</th></tr>
+                <tr><td>Process Control</td><td>fork(), exec(), wait(), exit()</td><td>Create, execute, wait, terminate processes</td><td>Create child process</td></tr>
+                <tr><td>File Management</td><td>open(), read(), write(), close()</td><td>File operations</td><td>Read from file</td></tr>
+                <tr><td>Device Management</td><td>ioctl(), read(), write()</td><td>Device operations</td><td>Read from device</td></tr>
+                <tr><td>Information Maintenance</td><td>getpid(), time(), getuid()</td><td>Get system information</td><td>Get process ID</td></tr>
+                <tr><td>Communications</td><td>pipe(), shmget(), mmap()</td><td>Process communication</td><td>Create pipe for IPC</td></tr>
+                <tr><td>Protection</td><td>chmod(), umask(), chown()</td><td>Set access permissions</td><td>Change file permissions</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Virtualization Concepts</h2>
+            <table>
+                <tr><th>Concept</th><th>Description</th><th>Advantages</th><th>Disadvantages</th></tr>
+                <tr><td>Full Virtualization</td><td>Complete simulation of hardware</td><td>Runs unmodified OS, good isolation</td><td>Performance overhead</td></tr>
+                <tr><td>Para-virtualization</td><td>Guest OS modified to work with hypervisor</td><td>Better performance than full virtualization</td><td>Requires guest OS modification</td></tr>
+                <tr><td>Hardware-assisted Virtualization</td><td>Hardware support for virtualization</td><td>Good performance, security</td><td>Requires special hardware</td></tr>
+                <tr><td>Containerization</td><td>OS-level virtualization</td><td>Lightweight, fast, efficient</td><td>Less isolation than full VM</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

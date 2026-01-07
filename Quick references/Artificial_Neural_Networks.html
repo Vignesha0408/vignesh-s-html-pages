@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artificial Neural Networks Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Artificial Neural Networks Cheat Sheet</h1>
+        
+        <div class="section">
+            <h2>Neural Network Components</h2>
+            <table>
+                <tr><th>Component</th><th>Description</th><th>Function</th><th>Example</th></tr>
+                <tr><td>Neuron/Perceptron</td><td>Basic processing unit</td><td>Receives inputs, applies weights, activation function</td><td>Output = f(Σ(wi*xi) + b)</td></tr>
+                <tr><td>Weights</td><td>Parameters that determine connection strength</td><td>Adjustable parameters during learning</td><td>Higher weight = more important input</td></tr>
+                <tr><td>Bias</td><td>Offset added to weighted sum</td><td>Allows shifting activation function</td><td>Output = f(Σ(wi*xi) + b)</td></tr>
+                <tr><td>Activation Function</td><td>Non-linear function applied to neuron output</td><td>Introduces non-linearity</td><td>ReLU, Sigmoid, Tanh</td></tr>
+                <tr><td>Layers</td><td>Groups of neurons</td><td>Input, hidden, output layers</td><td>Feedforward through layers</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Activation Functions</h2>
+            <table>
+                <tr><th>Function</th><th>Formula</th><th>Range</th><th>Advantages</th><th>Disadvantages</th></tr>
+                <tr><td>Sigmoid</td><td>1/(1+e^(-x))</td><td>(0,1)</td><td>Smooth gradient, probabilistic output</td><td>Vanishing gradient, not zero-centered</td></tr>
+                <tr><td>Tanh</td><td>(e^x - e^(-x))/(e^x + e^(-x))</td><td>(-1,1)</td><td>Zero-centered, stronger gradients</td><td>Vanishing gradient</td></tr>
+                <tr><td>ReLU</td><td>max(0,x)</td><td>[0,∞)</td><td>Computational efficiency, mitigates vanishing gradient</td><td>Dying ReLU problem</td></tr>
+                <tr><td>Leaky ReLU</td><td>if x>0: x, else: αx</td><td>(-∞,∞)</td><td>Fixes dying ReLU problem</td><td>Hyperparameter α required</td></tr>
+                <tr><td>Softmax</td><td>e^zi / Σe^zj</td><td>(0,1)</td><td>Probabilities sum to 1</td><td>Computationally expensive</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Network Architectures</h2>
+            <table>
+                <tr><th>Type</th><th>Structure</th><th>Use Case</th><th>Advantages</th><th>Disadvantages</th></tr>
+                <tr><td>Feedforward</td><td>Forward connections only</td><td>Classification, regression</td><td>Simple, easy to train</td><td>No memory, can't handle sequences</td></tr>
+                <tr><td>Recurrent (RNN)</td><td>Cycles for memory</td><td>Sequences, time series</td><td>Handles variable-length sequences</td><td>Vanishing/exploding gradients</td></tr>
+                <tr><td>Convolutional (CNN)</td><td>Convolutional filters</td><td>Image processing, vision</td><td>Translation invariance, parameter sharing</td><td>Translation sensitivity</td></tr>
+                <tr><td>Long Short-Term Memory (LSTM)</td><td>Memory cells with gates</td><td>Long sequences</td><td>Handles long-term dependencies</td><td>Complex, computationally expensive</td></tr>
+                <tr><td>Transformer</td><td>Self-attention mechanism</td><td>NLP, vision</td><td>Parallel processing, long-range dependencies</td><td>Quadratic complexity</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Learning Algorithms</h2>
+            <table>
+                <tr><th>Method</th><th>Approach</th><th>Use Case</th><th>Advantages</th><th>Disadvantages</th></tr>
+                <tr><td>Supervised</td><td>Learning with labeled data</td><td>Classification, regression</td><td>Clear learning signal</td><td>Requires labeled data</td></tr>
+                <tr><td>Unsupervised</td><td>Learning from unlabeled data</td><td>Clustering, dimensionality reduction</td><td>No labels required</td><td>Harder to evaluate</td></tr>
+                <tr><td>Reinforcement</td><td>Learning through rewards</td><td>Game playing, robotics</td><td>Learning from environment</td><td>Requires environment model</td></tr>
+                <tr><td>Self-Supervised</td><td>Learning from data itself</td><td>Pre-training, NLP</td><td>Abundant training data</td><td>Task-specific fine-tuning needed</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Training Process</h2>
+            <table>
+                <tr><th>Step</th><th>Description</th><th>Method</th><th>Key Parameters</th></tr>
+                <tr><td>Forward Pass</td><td>Input to output computation</td><td>Feed input through network</td><td>Input data, current weights</td></tr>
+                <tr><td>Loss Calculation</td><td>Compare prediction to target</td><td>MSE, Cross-entropy, etc.</td><td>Predicted vs actual values</td></tr>
+                <tr><td>Backpropagation</td><td>Compute gradients</td><td>Chain rule for derivatives</td><td>Loss function, activation derivatives</td></tr>
+                <tr><td>Weight Update</td><td>Adjust weights using gradients</td><td>Gradient descent variants</td><td>Learning rate, optimizer</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Optimization Techniques</h2>
+            <table>
+                <tr><th>Technique</th><th>Purpose</th><th>Method</th><th>Benefits</th></tr>
+                <tr><td>Gradient Descent</td><td>Minimize loss function</td><td>Update weights in negative gradient direction</td><td>Finds local minima</td></tr>
+                <tr><td>Stochastic GD</td><td>Efficient training</td><td>Update using single sample</td><td>Noisy but fast updates</td></tr>
+                <tr><td>Mini-batch GD</td><td>Balance efficiency and stability</td><td>Update using small batches</td><td>Reduced variance, vectorized operations</td></tr>
+                <tr><td>Momentum</td><td>Accelerate convergence</td><td>Add velocity term to updates</td><td>Smoothes path, escapes local minima</td></tr>
+                <tr><td>Adam</td><td>Adaptive learning rates</td><td>Combine momentum and adaptive learning</td><td>Robust, requires little tuning</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Regularization Methods</h2>
+            <table>
+                <tr><th>Method</th><th>Approach</th><th>How It Works</th><th>Best For</th></tr>
+                <tr><td>L1 Regularization</td><td>Add absolute value of weights</td><td>Promotes sparsity</td><td>Feature selection</td></tr>
+                <tr><td>L2 Regularization</td><td>Add square of weights</td><td>Prevents large weights</td><td>General overfitting prevention</td></tr>
+                <tr><td>Dropout</td><td>Randomly set neurons to zero</td><td>Prevents co-adaptation</td><td>Deep networks</td></tr>
+                <tr><td>Batch Normalization</td><td>Normalize layer inputs</td><td>Stabilizes training</td><td>Deep networks</td></tr>
+                <tr><td>Data Augmentation</td><td>Artificially increase data</td><td>Transform training data</td><td>Image, text tasks</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Common Challenges</h2>
+            <table>
+                <tr><th>Problem</th><th>Description</th><th>Cause</th><th>Solution</th></tr>
+                <tr><td>Vanishing Gradient</td><td>Gradients become too small</td><td>Deep networks, activation functions</td><td>ReLU, batch norm, skip connections</td></tr>
+                <tr><td>Exploding Gradient</td><td>Gradients become too large</td><td>Deep networks, large weights</td><td>Gradient clipping, proper initialization</td></tr>
+                <tr><td>Overfitting</td><td>Model memorizes training data</td><td>Too complex model, insufficient data</td><td>Regularization, dropout, more data</td></tr>
+                <tr><td>Underfitting</td><td>Model too simple for data</td><td>Insufficient capacity, poor features</td><td>More complex model, feature engineering</td></tr>
+                <tr><td>Local Minima</td><td>Optimization gets stuck</td><td>Non-convex loss surface</td><td>Good initialization, momentum, learning rate scheduling</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

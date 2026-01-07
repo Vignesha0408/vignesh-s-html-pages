@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human-Computer Interaction (HCI) Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Human-Computer Interaction (HCI) Cheat Sheet</h1>
+        
+        <div class="section">
+            <h2>HCI Core Principles</h2>
+            <table>
+                <tr><th>Principle</th><th>Description</th><th>Implementation</th><th>Benefits</th></tr>
+                <tr><td>Visibility</td><td>System status and options clearly visible</td><td>Clear labels, status indicators, progress bars</td><td>Users know what's happening</td></tr>
+                <tr><td>Feedback</td><td>System provides feedback for user actions</td><td>Confirmation messages, loading indicators, sound effects</td><td>Users know their actions were processed</td></tr>
+                <tr><td>Constraints</td><td>Limit user options to prevent errors</td><td>Dropdowns, checkboxes, disabled buttons</td><td>Prevents invalid actions</td></tr>
+                <tr><td>Mapping</td><td>Relationships between controls and effects are intuitive</td><td>Left volume down, right volume up</td><td>Easy to learn and use</td></tr>
+                <tr><td>Consistency</td><td>Similar elements behave the same way</td><td>Same icons, colors, layouts throughout</td><td>Reduces learning curve</td></tr>
+                <tr><td>Accessibility</td><td>Design for users with different abilities</td><td>Screen readers, keyboard navigation, high contrast</td><td>Inclusive design for all users</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Usability Heuristics (Nielsen)</h2>
+            <table>
+                <tr><th>Heuristic</th><th>Description</th><th>Example</th><th>Implementation</th></tr>
+                <tr><td>Visibility of System Status</td><td>System keeps users informed about what's happening</td><td>Loading bar during file upload</td><td>Progress indicators, status messages</td></tr>
+                <tr><td>Match Between System and Real World</td><td>Use familiar language and concepts</td><td>Trash can icon for deletion</td><td>Real-world metaphors, common language</td></tr>
+                <tr><td>User Control and Freedom</td><td>Provide undo/redo options</td><td>Back button, cancel options</td><td>Escape routes, undo functionality</td></tr>
+                <tr><td>Consistency and Standards</td><td>Follow platform conventions</td><td>Standard menu placement</td><td>Platform guidelines, consistent UI</td></tr>
+                <tr><td>Error Prevention</td><td>Design to prevent errors</td><td>Confirmation dialogs for deletion</td><td>Form validation, clear warnings</td></tr>
+                <tr><td>Recognition Rather Than Recall</td><td>Minimize user memory load</td><td>Visual cues, persistent navigation</td><td>Visible options, breadcrumbs</td></tr>
+                <tr><td>Flexibility and Efficiency of Use</td><td>Accommodate both novice and expert users</td><td>Keyboard shortcuts, customizable UI</td><td>Shortcuts, user preferences</td></tr>
+                <tr><td>Aesthetic and Minimalist Design</td><td>Remove irrelevant information</td><td>Simple, clean interface</td><td>Essential information only</td></tr>
+                <tr><td>Help Users Recognize and Recover from Errors</td><td>Clear error messages</td><td>"File not found" with suggestion</td><td>Clear, constructive error messages</td></tr>
+                <tr><td>Help and Documentation</td><td>Provide context-sensitive help</td><td>Tooltips, help buttons</td><td>Contextual help, documentation</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Interaction Design Process</h2>
+            <table>
+                <tr><th>Phase</th><th>Activities</th><th>Deliverables</th><th>Tools</th></tr>
+                <tr><td>Requirements Analysis</td><td>Understand user needs, business goals</td><td>User personas, use cases, requirements document</td><td>Interviews, surveys, observation</td></tr>
+                <tr><td>Conceptual Design</td><td>Define interaction framework</td><td>User journeys, scenarios, information architecture</td><td>Card sorting, user mapping</td></tr>
+                <tr><td>Logical Design</td><td>Define information structure</td><td>Site maps, content models</td><td>Tree testing, content inventory</td></tr>
+                <tr><td>Physical Design</td><td>Create detailed interface designs</td><td>Wireframes, prototypes, style guides</td><td>Design tools, prototyping tools</td></tr>
+                <tr><td>Evaluation</td><td>Test design with users</td><td>Usability reports, recommendations</td><td>Usability testing, heuristic evaluation</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>User Research Methods</h2>
+            <table>
+                <tr><th>Method</th><th>Purpose</th><th>When to Use</th><th>Advantages</th><th>Disadvantages</th></tr>
+                <tr><td>Interviews</td><td>Understand user needs and motivations</td><td>Early design phase, requirements gathering</td><td>Rich qualitative data, detailed insights</td><td>Time-consuming, potential bias</td></tr>
+                <tr><td>Surveys</td><td>Collect quantitative data from many users</td><td>Validate hypotheses, measure satisfaction</td><td>Large sample size, statistical data</td><td>Limited depth, response bias</td></tr>
+                <tr><td>Observation</td><td>See how users actually behave</td><td>Contextual understanding, usability issues</td><td>Real behavior, no bias</td><td>Time-consuming, observer effect</td></tr>
+                <tr><td>Focus Groups</td><td>Explore attitudes and opinions</td><td>Concept validation, feedback collection</td><td>Group dynamics, brainstorming</td><td>Groupthink, dominant voices</td></tr>
+                <tr><td>Usability Testing</td><td>Identify usability problems</td><td>Design validation, iteration</td><td>Direct observation of issues</td><td>Artificial setting, limited scenarios</td></tr>
+                <tr><td>Card Sorting</td><td>Understand mental models</td><td>Information architecture design</td><td>Reveals natural categorization</td><td>Artificial task, limited context</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Interface Design Elements</h2>
+            <table>
+                <tr><th>Element</th><th>Purpose</th><th>Best Practices</th><th>Common Mistakes</th></tr>
+                <tr><td>Navigation</td><td>Help users move through the interface</td><td>Clear labels, consistent placement, breadcrumbs</td><td>Hidden navigation, inconsistent structure</td></tr>
+                <tr><td>Forms</td><td>Collect user input</td><td>Clear labels, logical grouping, validation</td><td>Unclear labels, too many fields</td></tr>
+                <tr><td>Buttons</td><td>Trigger actions</td><td>Clear labels, appropriate size, visual feedback</td><td>Unclear purpose, poor affordance</td></tr>
+                <tr><td>Icons</td><td>Visual representation of functions</td><td>Universal symbols, consistent style, tooltips</td><td>Unclear meaning, inconsistent style</td></tr>
+                <tr><td>Text</td><td>Communicate information</td><td>Clear hierarchy, readable fonts, appropriate size</td><td>Too much text, poor contrast</td></tr>
+                <tr><td>Color</td><td>Provide visual cues and hierarchy</td><td>Accessible contrast, consistent meaning</td><td>Color as only indicator, poor contrast</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Evaluation Methods</h2>
+            <table>
+                <tr><th>Method</th><th>Approach</th><th>When to Use</th><th>Advantages</th><th>Disadvantages</th></tr>
+                <tr><td>Heuristic Evaluation</td><td>Experts review interface against heuristics</td><td>Early design, quick assessment</td><td>Fast, cost-effective, identifies issues</td><td>May miss user-specific issues</td></tr>
+                <tr><td>Usability Testing</td><td>Real users perform tasks with system</td><td>Design validation, iteration</td><td>Real user behavior, actual problems</td><td>Expensive, time-consuming</td></tr>
+                <tr><td>Think Aloud Protocol</td><td>Users verbalize thoughts while using system</td><td>Understanding user thought process</td><td>Insight into user thinking</td><td>May alter natural behavior</td></tr>
+                <tr><td>Cognitive Walkthrough</td><td>Step-by-step analysis of user tasks</td><td>Early design, task-focused evaluation</td><td>Focus on learnability</td><td>Time-consuming, limited scope</td></tr>
+                <tr><td>A/B Testing</td><td>Compare two versions of interface</td><td>Optimizing existing designs</td><td>Quantitative comparison, real data</td><td>Requires large user base, ethical concerns</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Accessibility Guidelines (WCAG)</h2>
+            <table>
+                <tr><th>Principle</th><th>Guideline</th><th>Example</th><th>Implementation</th></tr>
+                <tr><td>Perceivable</td><td>Provide text alternatives for non-text content</td><td>Alt text for images</td><td>Alt attributes, captions, transcripts</td></tr>
+                <tr><td>Perceivable</td><td>Distinguishable presentation</td><td>High contrast ratios</td><td>Color contrast, text size, spacing</td></tr>
+                <tr><td>Operable</td><td>Keyboard accessible</td><td>Tab navigation works</td><td>Focus indicators, keyboard shortcuts</td></tr>
+                <tr><td>Operable</td><td>Enough time to read and use content</td><td>No time limits or adjustable</td><td>Adjustable timeouts, pause options</td></tr>
+                <tr><td>Understandable</td><td>Readable text content</td><td>Clear language, proper markup</td><td>Proper heading structure, clear language</td></tr>
+                <tr><td>Robust</td><td>Compatible with assistive technologies</td><td>Screen reader compatible</td><td>Proper semantic markup, ARIA labels</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

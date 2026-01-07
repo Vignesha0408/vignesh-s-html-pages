@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Security Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #eee;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        .keyword {
+            color: #c7254e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cloud Security Cheat Sheet</h1>
+        
+        <div class="section">
+            <h2>Cloud Security Models</h2>
+            <table>
+                <tr><th>Model</th><th>Description</th><th>Shared Responsibilities</th><th>Best For</th></tr>
+                <tr><td>IaaS (Infrastructure as a Service)</td><td>Virtual machines, storage, networks</td><td>Cloud: Infrastructure; Customer: OS, apps, data</td><td>Full control requirements, custom applications</td></tr>
+                <tr><td>PaaS (Platform as a Service)</td><td>Development platform, runtime environment</td><td>Cloud: Infrastructure, platform; Customer: apps, data</td><td>Application development, faster deployment</td></tr>
+                <tr><td>SaaS (Software as a Service)</td><td>Complete software applications</td><td>Cloud: Everything; Customer: Data, user access</td><td>Standard business applications</td></tr>
+                <tr><td>Serverless/FaaS</td><td>Event-driven function execution</td><td>Cloud: Infrastructure, runtime; Customer: Code, data</td><td>Microservices, event-driven applications</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Cloud Security Domains</h2>
+            <table>
+                <tr><th>Domain</th><th>Focus Area</th><th>Key Components</th><th>Security Controls</th></tr>
+                <tr><td>Identity & Access Management</td><td>Control who can access resources</td><td>Users, groups, roles, permissions</td><td>MFA, RBAC, SSO, access policies</td></tr>
+                <tr><td>Network Security</td><td>Protect network traffic and connections</td><td>VPC, subnets, firewalls, gateways</td><td>NACLs, security groups, VPNs, WAF</td></tr>
+                <tr><td>Data Security</td><td>Protect data at rest and in transit</td><td>Encryption, key management, backup</td><td>Encryption, tokenization, DLP, backup policies</td></tr>
+                <tr><td>Application Security</td><td>Secure applications and workloads</td><td>Containers, serverless, web apps</td><td>Secure coding, container security, API security</td></tr>
+                <tr><td>Compliance & Governance</td><td>Meet regulatory requirements</td><td>Auditing, logging, reporting</td><td>Compliance frameworks, audit trails, governance policies</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Identity & Access Management (IAM)</h2>
+            <table>
+                <tr><th>Concept</th><th>Description</th><th>Implementation</th><th>Best Practices</th></tr>
+                <tr><td>Principle of Least Privilege</td><td>Grant minimum required permissions</td><td>RBAC, ABAC, granular permissions</td><td>Regular access reviews, just-in-time access</td></tr>
+                <tr><td>Multi-Factor Authentication</td><td>Multiple verification factors</td><td>SMS, authenticator apps, hardware tokens</td><td>Enforce MFA for all accounts</td></tr>
+                <tr><td>Role-Based Access Control</td><td>Assign permissions based on roles</td><td>Predefined roles, custom roles</td><td>Regular role reviews, separation of duties</td></tr>
+                <tr><td>Single Sign-On</td><td>One login for multiple services</td><td>SAML, OAuth, OpenID Connect</td><td>SSO with MFA, session management</td></tr>
+                <tr><td>Service Accounts</td><td>Non-human identities for applications</td><td>Managed service accounts, workload identity</td><td>Regular rotation, minimal permissions</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Encryption Strategies</h2>
+            <table>
+                <tr><th>Type</th><th>Scenario</th><th>Encryption Method</th><th>Key Management</th><th>Use Cases</th></tr>
+                <tr><td>At Rest</td><td>Data stored in databases, storage</td><td>AES-256, TDE, file-level encryption</td><td>KMS, HSM, customer-managed keys</td><td>Databases, file storage, backups</td></tr>
+                <tr><td>In Transit</td><td>Data moving between systems</td><td>TLS/SSL, IPsec, VPN</td><td>Certificates, cipher suites</td><td>API calls, database connections, web traffic</td></tr>
+                <tr><td>Data in Use</td><td>Data being processed</td><td>Homomorphic encryption, secure enclaves</td><td>TEE, confidential computing</td><td>Secure computation, privacy-preserving analytics</td></tr>
+                <tr><td>Application-Level</td><td>Specific application needs</td><td>Field-level encryption, tokenization</td><td>Application-managed keys</td><td>PII protection, compliance requirements</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Network Security Controls</h2>
+            <table>
+                <tr><th>Control</th><th>Purpose</th><th>Implementation</th><th>Benefits</th></tr>
+                <tr><td>Virtual Private Cloud</td><td>Isolated network environment</td><td>Subnets, route tables, gateways</td><td>Network segmentation, isolation</td></tr>
+                <tr><td>Network Access Control Lists</td><td>Filter network traffic</td><td>Rule-based filtering at subnet level</td><td>Layer of defense, subnet isolation</td></tr>
+                <tr><td>Security Groups</td><td>Virtual firewall for instances</td><td>Stateful packet filtering</td><td>Instance-level protection, dynamic rules</td></tr>
+                <tr><td>Web Application Firewall</td><td>Protect web applications</td><td>Rule-based protection against OWASP Top 10</td><td>Application-layer protection</td></tr>
+                <tr><td>VPN/Express Route</td><td>Secure connections to on-premises</td><td>IPsec tunnels, dedicated connections</td><td>Hybrid connectivity, secure access</td></tr>
+                <tr><td>DDoS Protection</td><td>Protect against distributed attacks</td><td>Rate limiting, traffic filtering</td><td>Availability protection, traffic scrubbing</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Security Monitoring & Compliance</h2>
+            <table>
+                <tr><th>Area</th><th>Tools/Techniques</th><th>Key Metrics</th><th>Compliance Frameworks</th></tr>
+                <tr><td>Security Monitoring</td><td>SIEM, SOAR, CloudTrail, CloudWatch</td><td>Log volume, incident response time</td><td>SOX, PCI DSS, HIPAA</td></tr>
+                <tr><td>Threat Detection</td><td>IDS/IPS, behavioral analytics, ML-based detection</td><td>False positive rate, detection accuracy</td><td>ISO 27001, NIST CSF</td></tr>
+                <tr><td>Vulnerability Management</td><td>Scanning tools, patch management</td><td>Patch compliance, vulnerability age</td><td>ISO 27001, NIST 800-53</td></tr>
+                <tr><td>Configuration Management</td><td>Cloud Config, Security Hub, Config rules</td><td>Compliance score, drift detection</td><td>CIS Benchmarks, FedRAMP</td></tr>
+                <tr><td>Audit & Logging</td><td>CloudTrail, Stackdriver, CloudWatch Logs</td><td>Log retention, audit completeness</td><td>SOC 2, GDPR</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Common Cloud Security Threats</h2>
+            <table>
+                <tr><th>Threat</th><th>Description</th><th>Impact</th><th>Mitigation Strategies</th></tr>
+                <tr><td>Data Breaches</td><td>Unauthorized access to sensitive data</td><td>Confidentiality loss, compliance violations</td><td>Encryption, access controls, DLP</td></tr>
+                <tr><td>Account Hijacking</td><td>Compromised user credentials</td><td>Unauthorized access, data theft</td><td>MFA, access monitoring, credential rotation</td></tr>
+                <tr><td>API Vulnerabilities</td><td>Weak or misconfigured APIs</td><td>Data exposure, system compromise</td><td>API gateways, input validation, rate limiting</td></tr>
+                <tr><td>Insider Threats</td><td>Malicious or negligent internal users</td><td>Data theft, system damage</td><td>Access monitoring, least privilege, DLP</td></tr>
+                <tr><td>Advanced Persistent Threats</td><td>Long-term targeted attacks</td><td>Data exfiltration, persistent access</td><td>Behavioral analytics, network monitoring</td></tr>
+                <tr><td>Denial of Service</td><td>Overwhelming service availability</td><td>Service unavailability, revenue loss</td><td>DDoS protection, auto-scaling, CDN</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
