@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Speed Challenge</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f8ff;
+            text-align: center;
+            margin: 0;
+            padding: 10px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.8em;
+            padding: 5px;
+        }
+        
+        .game-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin: 15px 10px;
+            width: auto;
+        }
+        
+        .problem-container {
+            font-size: 2em;
+            margin: 15px 0;
+            color: #34495e;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            word-break: break-word;
+        }
+        
+        .input-container {
+            margin: 15px 0;
+        }
+        
+        input[type="number"] {
+            font-size: 1.3em;
+            padding: 12px;
+            width: 80%;
+            max-width: 200px;
+            text-align: center;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 8px 5px;
+            width: 45%;
+            min-width: 120px;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 15px 0;
+            font-size: 1.1em;
+            flex-wrap: wrap;
+        }
+        
+        .stat-box {
+            background-color: #ecf0f1;
+            padding: 8px;
+            border-radius: 5px;
+            min-width: 80px;
+            margin: 5px;
+            flex: 1;
+        }
+        
+        .feedback {
+            font-size: 1.2em;
+            height: 25px;
+            margin: 10px 0;
+            min-height: 25px;
+        }
+        
+        .correct {
+            color: #27ae60;
+        }
+        
+        .incorrect {
+            color: #e74c3c;
+        }
+        
+        .difficulty-selector {
+            margin: 12px 0;
+        }
+        
+        select {
+            padding: 8px;
+            font-size: 1em;
+            border-radius: 5px;
+            border: 1px solid #3498db;
+            margin: 5px;
+            min-width: 120px;
+        }
+        
+        /* Mobile responsiveness */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 5px;
+            }
+            
+            h1 {
+                font-size: 1.5em;
+            }
+            
+            .game-container {
+                padding: 10px;
+                margin: 10px 5px;
+            }
+            
+            .problem-container {
+                font-size: 1.8em;
+                min-height: 50px;
+                margin: 10px 0;
+            }
+            
+            input[type="number"] {
+                font-size: 1.2em;
+                padding: 10px;
+                width: 90%;
+            }
+            
+            button {
+                padding: 10px 15px;
+                font-size: 1em;
+                width: 100%;
+                margin: 5px 0;
+            }
+            
+            .stats {
+                font-size: 1em;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .stat-box {
+                width: 80%;
+                margin: 5px 0;
+            }
+            
+            .difficulty-selector {
+                margin: 10px 0;
+            }
+            
+            select {
+                width: 90%;
+                min-width: auto;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 1.3em;
+            }
+            
+            .problem-container {
+                font-size: 1.5em;
+            }
+            
+            input[type="number"] {
+                font-size: 1.1em;
+            }
+            
+            button {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Math Speed Challenge</h1>
+    
+    <div class="game-container">
+        <div class="stats">
+            <div class="stat-box">
+                <div>Score</div>
+                <div id="score">0</div>
+            </div>
+            <div class="stat-box">
+                <div>Time</div>
+                <div id="timer">30</div>
+            </div>
+            <div class="stat-box">
+                <div>Streak</div>
+                <div id="streak">0</div>
+            </div>
+        </div>
+        
+        <div class="difficulty-selector">
+            <label for="difficulty">Difficulty:</label>
+            <select id="difficulty">
+                <option value="easy">Easy</option>
+                <option value="medium" selected>Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+        </div>
+        
+        <div class="problem-container">
+            <span id="problem">Ready to start?</span>
+        </div>
+        
+        <div class="input-container">
+            <input type="number" id="answer" placeholder="Your answer" autofocus>
+            <br>
+            <button id="submit-btn">Submit</button>
+            <button id="start-btn">Start Game</button>
+        </div>
+        
+        <div class="feedback" id="feedback"></div>
+    </div>
+
+    <script>
+        // Game variables
+        let score = 0;
+        let timeLeft = 30;
+        let streak = 0;
+        let timer;
+        let gameActive = false;
+        let currentAnswer = 0;
+        
+        // DOM elements
+        const problemEl = document.getElementById('problem');
+        const answerEl = document.getElementById('answer');
+        const scoreEl = document.getElementById('score');
+        const timerEl = document.getElementById('timer');
+        const streakEl = document.getElementById('streak');
+        const feedbackEl = document.getElementById('feedback');
+        const submitBtn = document.getElementById('submit-btn');
+        const startBtn = document.getElementById('start-btn');
+        const difficultySelect = document.getElementById('difficulty');
+        
+        // Event listeners
+        submitBtn.addEventListener('click', checkAnswer);
+        startBtn.addEventListener('click', startGame);
+        answerEl.addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                if (gameActive) {
+                    checkAnswer();
+                } else {
+                    startGame();
+                }
+            }
+        });
+        
+        // Function to generate a math problem based on difficulty
+        function generateProblem() {
+            const difficulty = difficultySelect.value;
+            let num1, num2, operator;
+            
+            switch(difficulty) {
+                case 'easy':
+                    num1 = Math.floor(Math.random() * 10) + 1;
+                    num2 = Math.floor(Math.random() * 10) + 1;
+                    break;
+                case 'medium':
+                    num1 = Math.floor(Math.random() * 20) + 1;
+                    num2 = Math.floor(Math.random() * 15) + 1;
+                    break;
+                case 'hard':
+                    num1 = Math.floor(Math.random() * 50) + 10;
+                    num2 = Math.floor(Math.random() * 25) + 10;
+                    break;
+            }
+            
+            // Randomly select operation (addition, subtraction, multiplication)
+            const operations = ['+', '-', '×'];
+            operator = operations[Math.floor(Math.random() * operations.length)];
+            
+            let problemText = '';
+            
+            switch(operator) {
+                case '+':
+                    currentAnswer = num1 + num2;
+                    problemText = `${num1} + ${num2}`;
+                    break;
+                case '-':
+                    // Ensure positive result
+                    if (num1 < num2) [num1, num2] = [num2, num1];
+                    currentAnswer = num1 - num2;
+                    problemText = `${num1} - ${num2}`;
+                    break;
+                case '×':
+                    // Limit numbers for multiplication
+                    if (difficulty === 'easy') {
+                        num1 = Math.floor(Math.random() * 10) + 1;
+                        num2 = Math.floor(Math.random() * 10) + 1;
+                    } else if (difficulty === 'medium') {
+                        num1 = Math.floor(Math.random() * 12) + 1;
+                        num2 = Math.floor(Math.random() * 10) + 1;
+                    } else {
+                        num1 = Math.floor(Math.random() * 15) + 1;
+                        num2 = Math.floor(Math.random() * 12) + 1;
+                    }
+                    currentAnswer = num1 * num2;
+                    problemText = `${num1} × ${num2}`;
+                    break;
+            }
+            
+            problemEl.textContent = problemText;
+        }
+        
+        // Function to check the user's answer
+        function checkAnswer() {
+            if (!gameActive) return;
+            
+            const userAnswer = parseInt(answerEl.value);
+            
+            if (isNaN(userAnswer)) {
+                feedbackEl.textContent = "Please enter a number";
+                feedbackEl.className = "feedback incorrect";
+                return;
+            }
+            
+            if (userAnswer === currentAnswer) {
+                // Correct answer
+                score += 10 + streak; // Bonus points for streaks
+                streak++;
+                scoreEl.textContent = score;
+                streakEl.textContent = streak;
+                
+                feedbackEl.textContent = "Correct! +10 points";
+                feedbackEl.className = "feedback correct";
+                
+                // Clear input and generate new problem
+                answerEl.value = '';
+                setTimeout(() => {
+                    generateProblem();
+                    feedbackEl.textContent = '';
+                    answerEl.focus();
+                }, 500);
+            } else {
+                // Incorrect answer
+                streak = 0;
+                streakEl.textContent = streak;
+                
+                feedbackEl.textContent = `Incorrect! Answer was ${currentAnswer}`;
+                feedbackEl.className = "feedback incorrect";
+                
+                // Clear input and generate new problem
+                answerEl.value = '';
+                setTimeout(() => {
+                    generateProblem();
+                    feedbackEl.textContent = '';
+                    answerEl.focus();
+                }, 1000);
+            }
+        }
+        
+        // Function to start the game
+        function startGame() {
+            if (gameActive) return;
+            
+            // Reset game state
+            score = 0;
+            timeLeft = 30;
+            streak = 0;
+            gameActive = true;
+            
+            // Update UI
+            scoreEl.textContent = score;
+            timerEl.textContent = timeLeft;
+            streakEl.textContent = streak;
+            startBtn.textContent = "Restart Game";
+            feedbackEl.textContent = '';
+            answerEl.value = '';
+            
+            // Generate first problem
+            generateProblem();
+            answerEl.focus();
+            
+            // Start timer
+            timer = setInterval(() => {
+                timeLeft--;
+                timerEl.textContent = timeLeft;
+                
+                if (timeLeft <= 0) {
+                    endGame();
+                }
+            }, 1000);
+        }
+        
+        // Function to end the game
+        function endGame() {
+            gameActive = false;
+            clearInterval(timer);
+            
+            problemEl.textContent = `Game Over! Final Score: ${score}`;
+            feedbackEl.textContent = "Game finished!";
+            feedbackEl.className = "feedback";
+            
+            answerEl.disabled = true;
+            submitBtn.disabled = true;
+            
+            // Re-enable after delay
+            setTimeout(() => {
+                answerEl.disabled = false;
+                submitBtn.disabled = false;
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

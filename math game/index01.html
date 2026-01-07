@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logic Puzzle Challenge</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 10px;
+            background-color: #f0f0f5;
+            text-align: center;
+            margin: 0;
+            padding: 5px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.8em;
+            padding: 5px;
+        }
+        
+        .game-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin: 15px 10px;
+            width: auto;
+        }
+        
+        .problem-container {
+            font-size: 1.5em;
+            margin: 15px 0;
+            color: #34495e;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            word-break: break-word;
+            flex-direction: column;
+        }
+        
+        .sequence-display {
+            font-size: 2em;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #e8f4fd;
+            border-radius: 5px;
+            min-width: 80%;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .input-container {
+            margin: 15px 0;
+        }
+        
+        input[type="number"] {
+            font-size: 1.3em;
+            padding: 12px;
+            width: 80%;
+            max-width: 200px;
+            text-align: center;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 8px 5px;
+            width: 45%;
+            min-width: 120px;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 15px 0;
+            font-size: 1.1em;
+            flex-wrap: wrap;
+        }
+        
+        .stat-box {
+            background-color: #ecf0f1;
+            padding: 8px;
+            border-radius: 5px;
+            min-width: 80px;
+            margin: 5px;
+            flex: 1;
+        }
+        
+        .feedback {
+            font-size: 1.2em;
+            height: 25px;
+            margin: 10px 0;
+            min-height: 25px;
+        }
+        
+        .correct {
+            color: #27ae60;
+        }
+        
+        .incorrect {
+            color: #e74c3c;
+        }
+        
+        .difficulty-selector {
+            margin: 12px 0;
+        }
+        
+        select {
+            padding: 8px;
+            font-size: 1em;
+            border-radius: 5px;
+            border: 1px solid #3498db;
+            margin: 5px;
+            min-width: 120px;
+        }
+        
+        .logic-info {
+            background-color: #fff8e1;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-size: 0.9em;
+            color: #5d4037;
+        }
+        
+        /* Mobile responsiveness */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 5px;
+            }
+            
+            h1 {
+                font-size: 1.5em;
+            }
+            
+            .game-container {
+                padding: 10px;
+                margin: 10px 5px;
+            }
+            
+            .problem-container {
+                font-size: 1.3em;
+                min-height: 50px;
+                margin: 10px 0;
+            }
+            
+            .sequence-display {
+                font-size: 1.5em;
+                min-height: 50px;
+            }
+            
+            input[type="number"] {
+                font-size: 1.2em;
+                padding: 10px;
+                width: 90%;
+            }
+            
+            button {
+                padding: 10px 15px;
+                font-size: 1em;
+                width: 100%;
+                margin: 5px 0;
+            }
+            
+            .stats {
+                font-size: 1em;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .stat-box {
+                width: 80%;
+                margin: 5px 0;
+            }
+            
+            .difficulty-selector {
+                margin: 10px 0;
+            }
+            
+            select {
+                width: 90%;
+                min-width: auto;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 1.3em;
+            }
+            
+            .problem-container {
+                font-size: 1.2em;
+            }
+            
+            .sequence-display {
+                font-size: 1.3em;
+            }
+            
+            input[type="number"] {
+                font-size: 1.1em;
+            }
+            
+            button {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Logic Puzzle Challenge</h1>
+    
+    <div class="game-container">
+        <div class="stats">
+            <div class="stat-box">
+                <div>Score</div>
+                <div id="score">0</div>
+            </div>
+            <div class="stat-box">
+                <div>Level</div>
+                <div id="level">1</div>
+            </div>
+            <div class="stat-box">
+                <div>Streak</div>
+                <div id="streak">0</div>
+            </div>
+        </div>
+        
+        <div class="difficulty-selector">
+            <label for="difficulty">Difficulty:</label>
+            <select id="difficulty">
+                <option value="easy">Easy</option>
+                <option value="medium" selected>Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+        </div>
+        
+        <div class="logic-info" id="logic-info">
+            Identify the pattern and find the next number in the sequence
+        </div>
+        
+        <div class="problem-container">
+            <div class="sequence-display" id="sequence">Ready to start?</div>
+            <div id="pattern-desc">Pattern: ?</div>
+        </div>
+        
+        <div class="input-container">
+            <input type="number" id="answer" placeholder="Next number" autofocus>
+            <br>
+            <button id="submit-btn">Submit</button>
+            <button id="start-btn">Start Game</button>
+        </div>
+        
+        <div class="feedback" id="feedback"></div>
+    </div>
+
+    <script>
+        // Game variables
+        let score = 0;
+        let level = 1;
+        let streak = 0;
+        let gameActive = false;
+        let currentAnswer = 0;
+        let currentSequence = [];
+        let currentPattern = '';
+        
+        // DOM elements
+        const sequenceEl = document.getElementById('sequence');
+        const patternDescEl = document.getElementById('pattern-desc');
+        const answerEl = document.getElementById('answer');
+        const scoreEl = document.getElementById('score');
+        const levelEl = document.getElementById('level');
+        const streakEl = document.getElementById('streak');
+        const feedbackEl = document.getElementById('feedback');
+        const submitBtn = document.getElementById('submit-btn');
+        const startBtn = document.getElementById('start-btn');
+        const difficultySelect = document.getElementById('difficulty');
+        const logicInfoEl = document.getElementById('logic-info');
+        
+        // Event listeners
+        submitBtn.addEventListener('click', checkAnswer);
+        startBtn.addEventListener('click', startGame);
+        answerEl.addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                if (gameActive) {
+                    checkAnswer();
+                } else {
+                    startGame();
+                }
+            }
+        });
+        
+        // Function to generate different types of logic sequences
+        function generateSequence() {
+            const difficulty = difficultySelect.value;
+            let sequence = [];
+            let pattern = '';
+            let nextNumber = 0;
+            
+            // Randomly select a pattern type
+            const patternTypes = ['arithmetic', 'geometric', 'fibonacci', 'square', 'prime', 'alternating'];
+            const selectedPattern = patternTypes[Math.floor(Math.random() * patternTypes.length)];
+            
+            switch(selectedPattern) {
+                case 'arithmetic':
+                    // Arithmetic sequence: adding/subtracting a constant
+                    let start = Math.floor(Math.random() * 10) + 1;
+                    let diff = 0;
+                    
+                    switch(difficulty) {
+                        case 'easy':
+                            diff = Math.floor(Math.random() * 5) + 1;
+                            break;
+                        case 'medium':
+                            diff = Math.floor(Math.random() * 8) - 4; // Can be negative
+                            if (diff === 0) diff = 1;
+                            break;
+                        case 'hard':
+                            diff = Math.floor(Math.random() * 12) - 6;
+                            if (diff === 0) diff = 2;
+                            break;
+                    }
+                    
+                    for (let i = 0; i < 5; i++) {
+                        sequence.push(start + i * diff);
+                    }
+                    nextNumber = start + 5 * diff;
+                    pattern = `Add ${diff}`;
+                    break;
+                    
+                case 'geometric':
+                    // Geometric sequence: multiplying by a constant
+                    let base = Math.floor(Math.random() * 5) + 1;
+                    let ratio = 0;
+                    
+                    switch(difficulty) {
+                        case 'easy':
+                            ratio = Math.floor(Math.random() * 3) + 2;
+                            break;
+                        case 'medium':
+                            ratio = Math.floor(Math.random() * 4) + 2;
+                            break;
+                        case 'hard':
+                            ratio = Math.floor(Math.random() * 3) + 2;
+                            // Also include division patterns
+                            if (Math.random() > 0.5) {
+                                base = Math.floor(Math.random() * 50) + 10;
+                                ratio = 2;
+                                // Create descending sequence
+                                sequence = [];
+                                for (let i = 4; i >= 0; i--) {
+                                    sequence.push(base / Math.pow(ratio, i));
+                                }
+                                nextNumber = base / Math.pow(ratio, 5);
+                                pattern = `Divide by ${ratio}`;
+                                break;
+                            }
+                            break;
+                    }
+                    
+                    if (sequence.length === 0) {
+                        for (let i = 0; i < 5; i++) {
+                            sequence.push(base * Math.pow(ratio, i));
+                        }
+                        nextNumber = base * Math.pow(ratio, 5);
+                        pattern = `Multiply by ${ratio}`;
+                    }
+                    break;
+                    
+                case 'fibonacci':
+                    // Fibonacci-like sequence: sum of previous numbers
+                    let first = Math.floor(Math.random() * 5) + 1;
+                    let second = Math.floor(Math.random() * 5) + 1;
+                    
+                    sequence = [first, second];
+                    for (let i = 2; i < 5; i++) {
+                        sequence.push(sequence[i-1] + sequence[i-2]);
+                    }
+                    nextNumber = sequence[4] + sequence[3];
+                    pattern = 'Fibonacci (sum of previous two)';
+                    break;
+                    
+                case 'square':
+                    // Square numbers or similar
+                    let offset = Math.floor(Math.random() * 5);
+                    
+                    switch(difficulty) {
+                        case 'easy':
+                            for (let i = 1; i <= 5; i++) {
+                                sequence.push(i * i); // Simple squares
+                            }
+                            nextNumber = 36; // 6^2
+                            pattern = 'Square numbers (n²)';
+                            break;
+                        case 'medium':
+                            for (let i = 1 + offset; i <= 5 + offset; i++) {
+                                sequence.push(i * i);
+                            }
+                            nextNumber = (6 + offset) * (6 + offset);
+                            pattern = 'Square numbers with offset';
+                            break;
+                        case 'hard':
+                            for (let i = 1 + offset; i <= 5 + offset; i++) {
+                                sequence.push(i * i + i); // n² + n
+                            }
+                            nextNumber = (6 + offset) * (6 + offset) + (6 + offset);
+                            pattern = 'Quadratic: n² + n';
+                            break;
+                    }
+                    break;
+                    
+                case 'prime':
+                    // Prime numbers
+                    const primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47];
+                    const startIndex = Math.floor(Math.random() * (primes.length - 5));
+                    
+                    for (let i = startIndex; i < startIndex + 5; i++) {
+                        sequence.push(primes[i]);
+                    }
+                    nextNumber = primes[startIndex + 5];
+                    pattern = 'Prime numbers';
+                    break;
+                    
+                case 'alternating':
+                    // Alternating pattern
+                    let val1 = Math.floor(Math.random() * 10) + 1;
+                    let val2 = Math.floor(Math.random() * 10) + 1;
+                    
+                    for (let i = 0; i < 5; i++) {
+                        if (i % 2 === 0) {
+                            sequence.push(val1);
+                        } else {
+                            sequence.push(val2);
+                        }
+                    }
+                    // Next number alternates
+                    nextNumber = (5 % 2 === 0) ? val1 : val2;
+                    pattern = `Alternating: ${val1}, ${val2}`;
+                    break;
+            }
+            
+            currentSequence = sequence;
+            currentAnswer = nextNumber;
+            currentPattern = pattern;
+            
+            // Update the display
+            sequenceEl.innerHTML = sequence.join(', ') + ', ?';
+            patternDescEl.textContent = `Pattern: ${pattern}`;
+        }
+        
+        // Function to check the user's answer
+        function checkAnswer() {
+            if (!gameActive) return;
+            
+            const userAnswer = parseInt(answerEl.value);
+            
+            if (isNaN(userAnswer)) {
+                feedbackEl.textContent = "Please enter a number";
+                feedbackEl.className = "feedback incorrect";
+                return;
+            }
+            
+            if (userAnswer === currentAnswer) {
+                // Correct answer
+                score += 10 + (streak * 2); // Bonus points for streaks
+                streak++;
+                
+                if (streak % 5 === 0) {
+                    level++;
+                    levelEl.textContent = level;
+                }
+                
+                scoreEl.textContent = score;
+                streakEl.textContent = streak;
+                
+                feedbackEl.textContent = "Correct! +10 points";
+                feedbackEl.className = "feedback correct";
+                
+                // Clear input and generate new problem
+                answerEl.value = '';
+                setTimeout(() => {
+                    generateSequence();
+                    feedbackEl.textContent = '';
+                    answerEl.focus();
+                }, 500);
+            } else {
+                // Incorrect answer
+                streak = 0;
+                streakEl.textContent = streak;
+                
+                feedbackEl.textContent = `Incorrect! Answer was ${currentAnswer}. Pattern: ${currentPattern}`;
+                feedbackEl.className = "feedback incorrect";
+                
+                // Clear input and generate new problem
+                answerEl.value = '';
+                setTimeout(() => {
+                    generateSequence();
+                    feedbackEl.textContent = '';
+                    answerEl.focus();
+                }, 1500);
+            }
+        }
+        
+        // Function to start the game
+        function startGame() {
+            if (gameActive) return;
+            
+            // Reset game state
+            score = 0;
+            level = 1;
+            streak = 0;
+            gameActive = true;
+            
+            // Update UI
+            scoreEl.textContent = score;
+            levelEl.textContent = level;
+            streakEl.textContent = streak;
+            startBtn.textContent = "Restart Game";
+            feedbackEl.textContent = '';
+            answerEl.value = '';
+            
+            // Generate first problem
+            generateSequence();
+            answerEl.focus();
+            
+            // Update logic info
+            logicInfoEl.textContent = "Identify the pattern and find the next number in the sequence";
+        }
+    </script>
+</body>
+</html>

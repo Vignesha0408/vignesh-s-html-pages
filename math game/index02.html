@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P&C Challenge - Permutations & Combinations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 10px;
+            background-color: #f5f0fa;
+            text-align: center;
+            margin: 0;
+            padding: 5px;
+        }
+        
+        h1 {
+            color: #4a235a;
+            margin-bottom: 10px;
+            font-size: 1.8em;
+            padding: 5px;
+        }
+        
+        .game-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin: 15px 10px;
+            width: auto;
+        }
+        
+        .problem-container {
+            font-size: 1.5em;
+            margin: 15px 0;
+            color: #34495e;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            word-break: break-word;
+            flex-direction: column;
+        }
+        
+        .question-display {
+            font-size: 1.4em;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f8f4e9;
+            border-radius: 5px;
+            min-width: 80%;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+        
+        .input-container {
+            margin: 15px 0;
+        }
+        
+        input[type="number"] {
+            font-size: 1.3em;
+            padding: 12px;
+            width: 80%;
+            max-width: 200px;
+            text-align: center;
+            border: 2px solid #8e44ad;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        
+        button {
+            background-color: #8e44ad;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 8px 5px;
+            width: 45%;
+            min-width: 120px;
+        }
+        
+        button:hover {
+            background-color: #7d3c98;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 15px 0;
+            font-size: 1.1em;
+            flex-wrap: wrap;
+        }
+        
+        .stat-box {
+            background-color: #e8daef;
+            padding: 8px;
+            border-radius: 5px;
+            min-width: 80px;
+            margin: 5px;
+            flex: 1;
+        }
+        
+        .feedback {
+            font-size: 1.2em;
+            height: 25px;
+            margin: 10px 0;
+            min-height: 25px;
+        }
+        
+        .correct {
+            color: #27ae60;
+        }
+        
+        .incorrect {
+            color: #e74c3c;
+        }
+        
+        .difficulty-selector {
+            margin: 12px 0;
+        }
+        
+        select {
+            padding: 8px;
+            font-size: 1em;
+            border-radius: 5px;
+            border: 1px solid #8e44ad;
+            margin: 5px;
+            min-width: 120px;
+        }
+        
+        .concept-info {
+            background-color: #e8f6f3;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-size: 0.9em;
+            color: #1a5490;
+        }
+        
+        .formula-display {
+            background-color: #d5f5e3;
+            padding: 8px;
+            border-radius: 5px;
+            margin: 8px 0;
+            font-family: monospace;
+            font-size: 1.1em;
+        }
+        
+        /* Mobile responsiveness */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 5px;
+            }
+            
+            h1 {
+                font-size: 1.5em;
+            }
+            
+            .game-container {
+                padding: 10px;
+                margin: 10px 5px;
+            }
+            
+            .problem-container {
+                font-size: 1.3em;
+                min-height: 50px;
+                margin: 10px 0;
+            }
+            
+            .question-display {
+                font-size: 1.2em;
+                min-height: 70px;
+            }
+            
+            input[type="number"] {
+                font-size: 1.2em;
+                padding: 10px;
+                width: 90%;
+            }
+            
+            button {
+                padding: 10px 15px;
+                font-size: 1em;
+                width: 100%;
+                margin: 5px 0;
+            }
+            
+            .stats {
+                font-size: 1em;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .stat-box {
+                width: 80%;
+                margin: 5px 0;
+            }
+            
+            .difficulty-selector {
+                margin: 10px 0;
+            }
+            
+            select {
+                width: 90%;
+                min-width: auto;
+            }
+            
+            .formula-display {
+                font-size: 1em;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 1.3em;
+            }
+            
+            .problem-container {
+                font-size: 1.1em;
+            }
+            
+            .question-display {
+                font-size: 1.1em;
+            }
+            
+            input[type="number"] {
+                font-size: 1.1em;
+            }
+            
+            button {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>P&C Challenge - Permutations & Combinations</h1>
+    
+    <div class="game-container">
+        <div class="stats">
+            <div class="stat-box">
+                <div>Score</div>
+                <div id="score">0</div>
+            </div>
+            <div class="stat-box">
+                <div>Level</div>
+                <div id="level">1</div>
+            </div>
+            <div class="stat-box">
+                <div>Streak</div>
+                <div id="streak">0</div>
+            </div>
+        </div>
+        
+        <div class="difficulty-selector">
+            <label for="difficulty">Difficulty:</label>
+            <select id="difficulty">
+                <option value="easy">Easy</option>
+                <option value="medium" selected>Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+        </div>
+        
+        <div class="concept-info" id="concept-info">
+            Permutation: nPr = n!/(n-r)! | Combination: nCr = n!/(r!(n-r)!)
+        </div>
+        
+        <div class="formula-display" id="formula-display">
+            Formula: nPr = n!/(n-r)! or nCr = n!/(r!(n-r)!)
+        </div>
+        
+        <div class="problem-container">
+            <div class="question-display" id="question">Ready to start?</div>
+        </div>
+        
+        <div class="input-container">
+            <input type="number" id="answer" placeholder="Your answer" autofocus>
+            <br>
+            <button id="submit-btn">Submit</button>
+            <button id="start-btn">Start Game</button>
+        </div>
+        
+        <div class="feedback" id="feedback"></div>
+    </div>
+
+    <script>
+        // Game variables
+        let score = 0;
+        let level = 1;
+        let streak = 0;
+        let gameActive = false;
+        let currentAnswer = 0;
+        let currentQuestion = '';
+        let currentFormula = '';
+        
+        // DOM elements
+        const questionEl = document.getElementById('question');
+        const answerEl = document.getElementById('answer');
+        const scoreEl = document.getElementById('score');
+        const levelEl = document.getElementById('level');
+        const streakEl = document.getElementById('streak');
+        const feedbackEl = document.getElementById('feedback');
+        const submitBtn = document.getElementById('submit-btn');
+        const startBtn = document.getElementById('start-btn');
+        const difficultySelect = document.getElementById('difficulty');
+        const formulaDisplayEl = document.getElementById('formula-display');
+        const conceptInfoEl = document.getElementById('concept-info');
+        
+        // Event listeners
+        submitBtn.addEventListener('click', checkAnswer);
+        startBtn.addEventListener('click', startGame);
+        answerEl.addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                if (gameActive) {
+                    checkAnswer();
+                } else {
+                    startGame();
+                }
+            }
+        });
+        
+        // Function to calculate factorial
+        function factorial(n) {
+            if (n <= 1) return 1;
+            let result = 1;
+            for (let i = 2; i <= n; i++) {
+                result *= i;
+            }
+            return result;
+        }
+        
+        // Function to calculate combination (nCr)
+        function combination(n, r) {
+            if (r > n || r < 0) return 0;
+            if (r === 0 || r === n) return 1;
+            
+            // Optimize calculation to avoid large factorials
+            r = Math.min(r, n - r); // Take advantage of symmetry
+            let result = 1;
+            for (let i = 0; i < r; i++) {
+                result = result * (n - i) / (i + 1);
+            }
+            return Math.round(result);
+        }
+        
+        // Function to calculate permutation (nPr)
+        function permutation(n, r) {
+            if (r > n || r < 0) return 0;
+            let result = 1;
+            for (let i = n; i > n - r; i--) {
+                result *= i;
+            }
+            return result;
+        }
+        
+        // Function to generate P&C questions
+        function generateQuestion() {
+            const difficulty = difficultySelect.value;
+            
+            // Randomly select question type: permutation or combination
+            const questionTypes = ['permutation', 'combination', 'word_problem'];
+            const selectedType = questionTypes[Math.floor(Math.random() * questionTypes.length)];
+            
+            let n, r;
+            let question = '';
+            let answer = 0;
+            let formula = '';
+            
+            switch(selectedType) {
+                case 'permutation':
+                    // nPr questions
+                    switch(difficulty) {
+                        case 'easy':
+                            n = Math.floor(Math.random() * 6) + 3; // 3-8
+                            r = Math.floor(Math.random() * 3) + 1; // 1-3
+                            break;
+                        case 'medium':
+                            n = Math.floor(Math.random() * 8) + 5; // 5-12
+                            r = Math.floor(Math.random() * 4) + 2; // 2-5
+                            break;
+                        case 'hard':
+                            n = Math.floor(Math.random() * 10) + 8; // 8-17
+                            r = Math.floor(Math.random() * 5) + 3; // 3-7
+                            break;
+                    }
+                    
+                    // Ensure r <= n
+                    if (r > n) r = n;
+                    
+                    answer = permutation(n, r);
+                    question = `Find ${n}P${r} (Permutation of ${n} things taken ${r} at a time)`;
+                    formula = `nPr = n!/(n-r)! = ${n}!/(${n}-${r})!`;
+                    break;
+                    
+                case 'combination':
+                    // nCr questions
+                    switch(difficulty) {
+                        case 'easy':
+                            n = Math.floor(Math.random() * 6) + 3; // 3-8
+                            r = Math.floor(Math.random() * 3) + 1; // 1-3
+                            break;
+                        case 'medium':
+                            n = Math.floor(Math.random() * 8) + 5; // 5-12
+                            r = Math.floor(Math.random() * 4) + 2; // 2-5
+                            break;
+                        case 'hard':
+                            n = Math.floor(Math.random() * 10) + 8; // 8-17
+                            r = Math.floor(Math.random() * 5) + 3; // 3-7
+                            break;
+                    }
+                    
+                    // Ensure r <= n
+                    if (r > n) r = n;
+                    
+                    answer = combination(n, r);
+                    question = `Find ${n}C${r} (Combination of ${n} things taken ${r} at a time)`;
+                    formula = `nCr = n!/(r!(n-r)!) = ${n}!/(${r}!×${n-r}!)`;
+                    break;
+                    
+                case 'word_problem':
+                    // Word problems involving P&C
+                    const wordProblemTypes = ['arrangement', 'selection', 'committee', 'team'];
+                    const selectedWordType = wordProblemTypes[Math.floor(Math.random() * wordProblemTypes.length)];
+                    
+                    switch(selectedWordType) {
+                        case 'arrangement':
+                            switch(difficulty) {
+                                case 'easy':
+                                    n = Math.floor(Math.random() * 4) + 3; // 3-6
+                                    r = Math.floor(Math.random() * 3) + 2; // 2-4
+                                    break;
+                                case 'medium':
+                                    n = Math.floor(Math.random() * 5) + 5; // 5-9
+                                    r = Math.floor(Math.random() * 4) + 3; // 3-6
+                                    break;
+                                case 'hard':
+                                    n = Math.floor(Math.random() * 6) + 8; // 8-13
+                                    r = Math.floor(Math.random() * 5) + 4; // 4-8
+                                    break;
+                            }
+                            
+                            if (r > n) r = n;
+                            
+                            answer = permutation(n, r);
+                            question = `In how many ways can ${r} prizes be given to ${n} students if each student can receive only one prize?`;
+                            formula = `nPr = n!/(n-r)! (Order matters)`;
+                            break;
+                            
+                        case 'selection':
+                            switch(difficulty) {
+                                case 'easy':
+                                    n = Math.floor(Math.random() * 5) + 4; // 4-8
+                                    r = Math.floor(Math.random() * 3) + 2; // 2-4
+                                    break;
+                                case 'medium':
+                                    n = Math.floor(Math.random() * 6) + 6; // 6-11
+                                    r = Math.floor(Math.random() * 4) + 3; // 3-6
+                                    break;
+                                case 'hard':
+                                    n = Math.floor(Math.random() * 8) + 9; // 9-16
+                                    r = Math.floor(Math.random() * 5) + 4; // 4-8
+                                    break;
+                            }
+                            
+                            if (r > n) r = n;
+                            
+                            answer = combination(n, r);
+                            question = `In how many ways can a committee of ${r} members be selected from ${n} people?`;
+                            formula = `nCr = n!/(r!(n-r)!) (Order doesn't matter)`;
+                            break;
+                            
+                        case 'committee':
+                            switch(difficulty) {
+                                case 'easy':
+                                    n = Math.floor(Math.random() * 4) + 4; // 4-7
+                                    r = Math.floor(Math.random() * 2) + 2; // 2-3
+                                    break;
+                                case 'medium':
+                                    n = Math.floor(Math.random() * 6) + 6; // 6-11
+                                    r = Math.floor(Math.random() * 3) + 3; // 3-5
+                                    break;
+                                case 'hard':
+                                    n = Math.floor(Math.random() * 8) + 8; // 8-15
+                                    r = Math.floor(Math.random() * 4) + 4; // 4-7
+                                    break;
+                            }
+                            
+                            if (r > n) r = n;
+                            
+                            answer = combination(n, r);
+                            question = `A committee of ${r} members is to be formed from ${n} people. How many different committees are possible?`;
+                            formula = `nCr = n!/(r!(n-r)!)`;
+                            break;
+                            
+                        case 'team':
+                            switch(difficulty) {
+                                case 'easy':
+                                    n = Math.floor(Math.random() * 5) + 5; // 5-9
+                                    r = Math.floor(Math.random() * 3) + 2; // 2-4
+                                    break;
+                                case 'medium':
+                                    n = Math.floor(Math.random() * 6) + 7; // 7-12
+                                    r = Math.floor(Math.random() * 4) + 3; // 3-6
+                                    break;
+                                case 'hard':
+                                    n = Math.floor(Math.random() * 8) + 10; // 10-17
+                                    r = Math.floor(Math.random() * 5) + 4; // 4-8
+                                    break;
+                            }
+                            
+                            if (r > n) r = n;
+                            
+                            answer = combination(n, r);
+                            question = `From ${n} players, in how many ways can a team of ${r} players be selected?`;
+                            formula = `nCr = n!/(r!(n-r)!)`;
+                            break;
+                    }
+                    break;
+            }
+            
+            currentQuestion = question;
+            currentAnswer = answer;
+            currentFormula = formula;
+            
+            // Update the display
+            questionEl.textContent = question;
+            formulaDisplayEl.textContent = formula;
+        }
+        
+        // Function to check the user's answer
+        function checkAnswer() {
+            if (!gameActive) return;
+            
+            const userAnswer = parseInt(answerEl.value);
+            
+            if (isNaN(userAnswer)) {
+                feedbackEl.textContent = "Please enter a number";
+                feedbackEl.className = "feedback incorrect";
+                return;
+            }
+            
+            if (userAnswer === currentAnswer) {
+                // Correct answer
+                score += 15 + (streak * 3); // Higher base points for P&C
+                streak++;
+                
+                if (streak % 4 === 0) { // Level up faster for P&C
+                    level++;
+                    levelEl.textContent = level;
+                }
+                
+                scoreEl.textContent = score;
+                streakEl.textContent = streak;
+                
+                feedbackEl.textContent = "Correct! +15 points";
+                feedbackEl.className = "feedback correct";
+                
+                // Clear input and generate new problem
+                answerEl.value = '';
+                setTimeout(() => {
+                    generateQuestion();
+                    feedbackEl.textContent = '';
+                    answerEl.focus();
+                }, 500);
+            } else {
+                // Incorrect answer
+                streak = 0;
+                streakEl.textContent = streak;
+                
+                feedbackEl.textContent = `Incorrect! Answer was ${currentAnswer}`;
+                feedbackEl.className = "feedback incorrect";
+                
+                // Clear input and generate new problem
+                answerEl.value = '';
+                setTimeout(() => {
+                    generateQuestion();
+                    feedbackEl.textContent = '';
+                    answerEl.focus();
+                }, 1500);
+            }
+        }
+        
+        // Function to start the game
+        function startGame() {
+            if (gameActive) return;
+            
+            // Reset game state
+            score = 0;
+            level = 1;
+            streak = 0;
+            gameActive = true;
+            
+            // Update UI
+            scoreEl.textContent = score;
+            levelEl.textContent = level;
+            streakEl.textContent = streak;
+            startBtn.textContent = "Restart Game";
+            feedbackEl.textContent = '';
+            answerEl.value = '';
+            
+            // Generate first problem
+            generateQuestion();
+            answerEl.focus();
+            
+            // Update concept info
+            conceptInfoEl.textContent = "Permutation: nPr = n!/(n-r)! (Order matters) | Combination: nCr = n!/(r!(n-r)!) (Order doesn't matter)";
+        }
+    </script>
+</body>
+</html>
