@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Environmental Pollution Cheat Sheet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: #f0f4f8;
+            padding: 20px;
+            font-size: 16px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #d32f2f, #b71c1c);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 45px;
+            border-left: 5px solid #d32f2f;
+            padding-left: 25px;
+            background-color: #fafafa;
+            border-radius: 8px;
+            padding: 25px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        
+        .section h2 {
+            color: #d32f2f;
+            font-size: 1.9rem;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #e0e0e0;
+            font-weight: 600;
+        }
+        
+        .subsection {
+            margin: 25px 0;
+            padding: 15px;
+            background-color: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .subsection h3 {
+            color: #e53935;
+            font-size: 1.5rem;
+            margin: 20px 0 15px 0;
+            font-weight: 600;
+        }
+        
+        .subsection h4 {
+            color: #ef5350;
+            font-size: 1.2rem;
+            margin: 18px 0 10px 0;
+            font-weight: 500;
+        }
+        
+        ul, ol {
+            margin: 12px 0 12px 30px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        p {
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+        
+        strong {
+            color: #b71c1c;
+            font-weight: 600;
+        }
+        
+        .pollution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .pollution-item {
+            background-color: #ffebee;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #d32f2f;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .pollution-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .pollution-title {
+            font-weight: bold;
+            color: #b71c1c;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .health-impacts {
+            background-color: #fff3e0;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #ff9800;
+            margin: 20px 0;
+        }
+        
+        .case-studies {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .case-study-card {
+            background-color: #e8eaf6;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #5c6bc0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .case-study-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .case-study-title {
+            font-weight: bold;
+            color: #283593;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .preventive-measures {
+            background-color: #e8f5e8;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #4caf50;
+            margin: 20px 0;
+        }
+        
+        .pollution-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .pollution-table th,
+        .pollution-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .pollution-table th {
+            background-color: #ffcdd2;
+            color: #b71c1c;
+            font-weight: 600;
+        }
+        
+        .pollution-table tr:nth-child(even) {
+            background-color: #ffebee;
+        }
+        
+        .pollution-table tr:hover {
+            background-color: #ffcccb;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+                font-size: 15px;
+            }
+            
+            .content {
+                padding: 25px 20px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section {
+                margin-left: 5px;
+                margin-right: 5px;
+                padding: 20px;
+            }
+            
+            .pollution-grid,
+            .case-studies {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Environmental Pollution Cheat Sheet</h1>
+            <div class="subtitle">Comprehensive Guide for Academic Study</div>
+        </header>
+        
+        <div class="content">
+            <!-- Water Pollution Section -->
+            <div class="section" id="water-pollution">
+                <h2>Water Pollution</h2>
+                
+                <div class="subsection">
+                    <h3>Sources of Water Pollution</h3>
+                    <ul>
+                        <li><strong>Point Sources:</strong> Direct discharge from factories, sewage treatment plants, oil refineries</li>
+                        <li><strong>Non-Point Sources:</strong> Agricultural runoff, urban runoff, atmospheric deposition</li>
+                        <li><strong>Industrial Waste:</strong> Heavy metals, toxic chemicals, organic compounds</li>
+                        <li><strong>Domestic Waste:</strong> Sewage, detergents, household chemicals</li>
+                        <li><strong>Agricultural Runoff:</strong> Pesticides, fertilizers, animal waste</li>
+                    </ul>
+                </div>
+                
+                <div class="subsection">
+                    <h3>Impacts of Water Pollution</h3>
+                    <div class="pollution-grid">
+                        <div class="pollution-item">
+                            <div class="pollution-title">Environmental Impact</div>
+                            <ul>
+                                <li>Eutrophication of water bodies</li>
+                                <li>Death of aquatic life</li>
+                                <li>Destruction of aquatic ecosystems</li>
+                                <li>Contamination of groundwater</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="pollution-item">
+                            <div class="pollution-title">Human Health Impact</div>
+                            <ul>
+                                <li>Water borne diseases</li>
+                                <li>Heavy metal poisoning</li>
+                                <li>Cancer and neurological disorders</li>
+                                <li>Reproductive problems</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="pollution-item">
+                            <div class="pollution-title">Economic Impact</div>
+                            <ul>
+                                <li>Loss of fisheries</li>
+                                <li>Increased water treatment costs</li>
+                                <li>Healthcare costs</li>
+                                <li>Reduced tourism</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3>Preventive Measures</h3>
+                    <div class="preventive-measures">
+                        <ul>
+                            <li>Proper treatment of industrial and domestic wastewater</li>
+                            <li>Use of eco-friendly detergents and chemicals</li>
+                            <li>Regulation of industrial discharge</li>
+                            <li>Watershed management</li>
+                            <li>Public awareness campaigns</li>
+                            <li>Implementation of water quality standards</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3>Public Health Aspects</h3>
+                    <div class="health-impacts">
+                        <ul>
+                            <li>Contaminated water causes 3.4 million deaths annually</li>
+                            <li>Diarrheal diseases are leading cause of death in children under 5</li>
+                            <li>Long-term exposure to pollutants causes chronic diseases</li>
+                            <li>Water pollution affects vulnerable populations disproportionately</li>
+                            <li>Safe water access is fundamental to public health</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Noise Pollution Section -->
+            <div class="section" id="noise-pollution">
+                <h2>Noise Pollution</h2>
+                
+                <div class="subsection">
+                    <h3>Sources of Noise Pollution</h3>
+                    <ul>
+                        <li><strong>Transportation:</strong> Road traffic, aircraft, railways</li>
+                        <li><strong>Industrial:</strong> Machinery, factories, construction activities</li>
+                        <li><strong>Domestic:</strong> Household appliances, music systems, barking dogs</li>
+                        <li><strong>Commercial:</strong> Loudspeakers, advertisements, markets</li>
+                        <li><strong>Fireworks:</strong> Cultural and religious celebrations</li>
+                    </ul>
+                </div>
+                
+                <div class="subsection">
+                    <h3>Impacts of Noise Pollution</h3>
+                    <div class="pollution-grid">
+                        <div class="pollution-item">
+                            <div class="pollution-title">Health Impacts</div>
+                            <ul>
+                                <li>Hearing loss and impairment</li>
+                                <li>Sleep disturbances</li>
+                                <li>Cardiovascular problems</li>
+                                <li>Stress and anxiety</li>
+                                <li>Reduced concentration and productivity</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="pollution-item">
+                            <div class="pollution-title">Environmental Impacts</div>
+                            <ul>
+                                <li>Disturbance to wildlife behavior</li>
+                                <li>Migration of animals from habitats</li>
+                                <li>Communication disruption in animals</li>
+                                <li>Reduced reproductive success in wildlife</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="pollution-item">
+                            <div class="pollution-title">Social Impacts</div>
+                            <ul>
+                                <li>Reduced quality of life</li>
+                                <li>Property value decrease</li>
+                                <li>Social conflicts</li>
+                                <li>Reduced property development</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3>Preventive Measures</h3>
+                    <div class="preventive-measures">
+                        <ul>
+                            <li>Use of noise barriers along highways</li>
+                            <li>Implementation of noise regulations</li>
+                            <li>Soundproofing of buildings</li>
+                            <li>Proper urban planning</li>
+                            <li>Use of quieter machinery and vehicles</li>
+                            <li>Regular maintenance of equipment</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3>Public Health Aspects</h3>
+                    <div class="health-impacts">
+                        <ul>
+                            <li>World Health Organization recommends outdoor noise below 55 dB</li>
+                            <li>Chronic noise exposure increases risk of hypertension</li>
+                            <li>Noise pollution affects children's learning abilities</li>
+                            <li>Sleep disruption leads to various health issues</li>
+                            <li>Occupational noise exposure causes hearing loss</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Air Pollution Section -->
+            <div class="section" id="air-pollution">
+                <h2>Air Pollution</h2>
+                
+                <div class="subsection">
+                    <h3>Sources of Air Pollution</h3>
+                    <table class="pollution-table">
+                        <thead>
+                            <tr>
+                                <th>Source Type</th>
+                                <th>Examples</th>
+                                <th>Major Pollutants</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Industrial Sources</td>
+                                <td>Power plants, factories, refineries</td>
+                                <td>Sulfur dioxide, nitrogen oxides, particulate matter</td>
+                            </tr>
+                            <tr>
+                                <td>Transportation</td>
+                                <td>Vehicles, aircraft, ships</td>
+                                <td>Carbon monoxide, nitrogen oxides, hydrocarbons</td>
+                            </tr>
+                            <tr>
+                                <td>Domestic Sources</td>
+                                <td>Cooking, heating, waste burning</td>
+                                <td>Particulate matter, carbon monoxide</td>
+                            </tr>
+                            <tr>
+                                <td>Agricultural Sources</td>
+                                <td>Fertilizer use, livestock, burning</td>
+                                <td>Ammonia, methane, particulate matter</td>
+                            </tr>
+                            <tr>
+                                <td>Natural Sources</td>
+                                <td>Volcanic eruptions, dust storms, wildfires</td>
+                                <td>Particulate matter, sulfur compounds</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="subsection">
+                    <h3>Impacts of Air Pollution</h3>
+                    <div class="pollution-grid">
+                        <div class="pollution-item">
+                            <div class="pollution-title">Health Impacts</div>
+                            <ul>
+                                <li>Respiratory diseases (asthma, bronchitis)</li>
+                                <li>Lung cancer and cardiovascular diseases</li>
+                                <li>Acute respiratory infections</li>
+                                <li>Reduced life expectancy</li>
+                                <li>Birth defects and developmental issues</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="pollution-item">
+                            <div class="pollution-title">Environmental Impacts</div>
+                            <ul>
+                                <li>Acid rain and its effects on ecosystems</li>
+                                <li>Global warming and climate change</li>
+                                <li>Ozone layer depletion</li>
+                                <li>Reduced visibility (smog)</li>
+                                <li>Damage to crops and vegetation</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="pollution-item">
+                            <div class="pollution-title">Economic Impacts</div>
+                            <ul>
+                                <li>Healthcare costs</li>
+                                <li>Agricultural losses</li>
+                                <li>Infrastructure damage</li>
+                                <li>Reduced tourism</li>
+                                <li>Productivity losses</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3>Preventive Measures</h3>
+                    <div class="preventive-measures">
+                        <ul>
+                            <li>Use of cleaner fuels and renewable energy</li>
+                            <li>Implementation of emission standards</li>
+                            <li>Development of public transportation</li>
+                            <li>Industrial emission controls</li>
+                            <li>Green belt development</li>
+                            <li>Vehicle emission testing</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3>Public Health Aspects</h3>
+                    <div class="health-impacts">
+                        <ul>
+                            <li>Air pollution causes 7 million premature deaths annually</li>
+                            <li>WHO estimates 91% of world population lives in polluted areas</li>
+                            <li>Children are most vulnerable to air pollution effects</li>
+                            <li>Indoor air pollution affects 3 billion people</li>
+                            <li>PM2.5 particles penetrate deep into lungs and bloodstream</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Self-Study Component Section -->
+            <div class="section" id="ssc">
+                <h2>Self-Study Component (SSC): Case Studies of Air Pollution Episodes</h2>
+                
+                <div class="case-studies">
+                    <div class="case-study-card">
+                        <div class="case-study-title">London Smog (1952)</div>
+                        <p><strong>Duration:</strong> December 5-9, 1952</p>
+                        <p><strong>Cause:</strong> Coal burning combined with weather conditions</p>
+                        <p><strong>Impact:</strong> 4,000-12,000 deaths, led to Clean Air Act 1956</p>
+                        <p><strong>Lessons:</strong> Importance of air quality regulation and urban planning</p>
+                    </div>
+                    
+                    <div class="case-study-card">
+                        <div class="case-study-title">Los Angeles Photochemical Smog (1940s-1970s)</div>
+                        <p><strong>Duration:</strong> Several decades of recurring episodes</p>
+                        <p><strong>Cause:</strong> Vehicle emissions in sunny climate</p>
+                        <p><strong>Impact:</strong> Respiratory problems, eye irritation, reduced visibility</p>
+                        <p><strong>Lessons:</strong> Need for vehicle emission controls</p>
+                    </div>
+                    
+                    <div class="case-study-card">
+                        <div class="case-study-title">Bhopal Gas Tragedy (1984)</div>
+                        <p><strong>Duration:</strong> Single night disaster</p>
+                        <p><strong>Cause:</strong> Methyl isocyanate leak from pesticide plant</p>
+                        <p><strong>Impact:</strong> 3,000+ immediate deaths, 558,000+ affected</p>
+                        <p><strong>Lessons:</strong> Industrial safety and emergency response importance</p>
+                    </div>
+                    
+                    <div class="case-study-card">
+                        <div class="case-study-title">Beijing Air Pollution (2013-ongoing)</div>
+                        <p><strong>Duration:</strong> Ongoing with peak episodes</p>
+                        <p><strong>Cause:</strong> Industrial growth, vehicle emissions, coal burning</p>
+                        <p><strong>Impact:</strong> Public health crisis, economic losses</p>
+                        <p><strong>Lessons:</strong> Need for sustainable development planning</p>
+                    </div>
+                    
+                    <div class="case-study-card">
+                        <div class="case-study-title">Delhi Air Pollution (Recurring)</div>
+                        <p><strong>Duration:</strong> Seasonal with peak in winter</p>
+                        <p><strong>Cause:</strong> Vehicle emissions, industry, construction, crop burning</p>
+                        <p><strong>Impact:</strong> AQI often exceeds 400 (hazardous level)</p>
+                        <p><strong>Lessons:</strong> Multi-state coordination needed for air quality</p>
+                    </div>
+                    
+                    <div class="case-study-card">
+                        <div class="case-study-title">Great Smog of London (1962)</div>
+                        <p><strong>Duration:</strong> December 1962</p>
+                        <p><strong>Cause:</strong> Similar to 1952, after Clean Air Act implementation</p>
+                        <p><strong>Impact:</strong> Demonstrated need for stronger enforcement</p>
+                        <p><strong>Lessons:</strong> Policy implementation and enforcement critical</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

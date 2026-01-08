@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Background effects -->
+        <div class="background-gradient"></div>
+        <div class="particles" id="particles"></div>
+        
+        <!-- Main content -->
+        <div class="main-content">
+            <header class="app-header">
+                <h1 class="app-title"> RANDOM  Number PICKER</h1>
+                <p class="app-subtitle">Ultra-premium number selection experience</p>
+            </header>
+            
+            <div class="app-body">
+                <!-- Control panel -->
+                <div class="control-panel">
+                    <div class="input-group">
+                        <label for="minNumber">Min Number</label>
+                        <input type="number" id="minNumber" value="1" min="1">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="maxNumber">Max Number</label>
+                        <input type="number" id="maxNumber" value="10" min="2">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="excludeNumbers">Exclude Numbers (comma separated)</label>
+                        <input type="text" id="excludeNumbers" placeholder="e.g., 13,42,69">
+                    </div>
+                    
+                    <div class="mode-selector">
+                        <button id="normalMode" class="mode-btn active">Normal Mode</button>
+                        <button id="eliminationMode" class="mode-btn">Elimination Mode</button>
+                    </div>
+                    
+                    <div class="center-controls">
+                        <button id="spinButton" class="spin-btn">
+                            <span class="btn-text">SPIN</span>
+                        </button>
+                        <button id="clearButton" class="clear-btn">CLEAR ALL</button>
+                    </div>
+                </div>
+                
+                <!-- Wheel container -->
+                <div class="wheel-container">
+                    <div class="wheel-wrapper">
+                        <canvas id="wheelCanvas" width="500" height="500"></canvas>
+                        <div class="wheel-center">
+                            <div class="pointer"></div>
+                            <button id="spinButtonCenter" class="spin-btn-center">
+                                <span class="btn-text">SPIN</span>
+                            </button>
+                        </div>
+                        <div class="result-display" id="resultDisplay">
+                            <div class="result-value">--</div>
+                            <div class="result-label"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- History panel -->
+                <div class="history-panel">
+                    <h3 class="history-title">SPIN HISTORY</h3>
+                    <div class="history-list" id="historyList">
+                        <!-- History items will be added here dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Confetti container -->
+    <div class="confetti-container" id="confettiContainer"></div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

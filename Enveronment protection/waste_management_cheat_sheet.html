@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waste Management Cheat Sheet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: #f0f4f8;
+            padding: 20px;
+            font-size: 16px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #4527a0, #311b92);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 45px;
+            border-left: 5px solid #4527a0;
+            padding-left: 25px;
+            background-color: #fafafa;
+            border-radius: 8px;
+            padding: 25px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        
+        .section h2 {
+            color: #4527a0;
+            font-size: 1.9rem;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #e0e0e0;
+            font-weight: 600;
+        }
+        
+        .subsection {
+            margin: 25px 0;
+            padding: 15px;
+            background-color: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .subsection h3 {
+            color: #5e35b1;
+            font-size: 1.5rem;
+            margin: 20px 0 15px 0;
+            font-weight: 600;
+        }
+        
+        .subsection h4 {
+            color: #7e57c2;
+            font-size: 1.2rem;
+            margin: 18px 0 10px 0;
+            font-weight: 500;
+        }
+        
+        ul, ol {
+            margin: 12px 0 12px 30px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        p {
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+        
+        strong {
+            color: #311b92;
+            font-weight: 600;
+        }
+        
+        .waste-types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
+        .waste-type-card {
+            background-color: #ede7f6;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #5e35b1;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .waste-type-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .waste-type-title {
+            font-weight: bold;
+            color: #4527a0;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .functional-elements {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .element-card {
+            background-color: #e8eaf6;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #3949ab;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .element-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .element-title {
+            font-weight: bold;
+            color: #1a237e;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .legislation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .legislation-card {
+            background-color: #f3e5f5;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #8e24aa;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .legislation-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .legislation-title {
+            font-weight: bold;
+            color: #4a148c;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .remembering-techniques {
+            background-color: #fff3e0;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #ff9800;
+            margin: 20px 0;
+            border: 2px dashed #ffd54f;
+        }
+        
+        .mcq-section {
+            background-color: #e8f5e8;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #4caf50;
+            margin: 20px 0;
+            border: 2px solid #c8e6c9;
+        }
+        
+        .mcq-question {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: white;
+            border-radius: 5px;
+            border-left: 3px solid #4caf50;
+        }
+        
+        .concept-differentiation {
+            background-color: #e3f2fd;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #2196f3;
+            margin: 20px 0;
+            border: 2px solid #bbdefb;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .comparison-table th {
+            background-color: #bbdefb;
+            color: #0d47a1;
+            font-weight: 600;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #e3f2fd;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: #e1f5fe;
+        }
+        
+        .highlight-box {
+            background-color: #fff8e1;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+            border: 1px solid #ffecb3;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+                font-size: 15px;
+            }
+            
+            .content {
+                padding: 25px 20px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section {
+                margin-left: 5px;
+                margin-right: 5px;
+                padding: 20px;
+            }
+            
+            .waste-types-grid,
+            .functional-elements,
+            .legislation-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Waste Management Cheat Sheet</h1>
+            <div class="subtitle">Comprehensive Guide for Academic Study</div>
+        </header>
+        
+        <div class="content">
+            <!-- Solid Waste Management Section -->
+            <div class="section" id="solid-waste">
+                <h2>Solid Waste Management</h2>
+                
+                <div class="subsection">
+                    <h3>Types and Sources of Solid Waste</h3>
+                    <div class="waste-types-grid">
+                        <div class="waste-type-card">
+                            <div class="waste-type-title">Municipal Solid Waste</div>
+                            <p><strong>Sources:</strong> Households, commercial establishments</p>
+                            <p><strong>Examples:</strong> Food waste, paper, plastic, glass, metals</p>
+                            <p><strong>Characteristics:</strong> Organic and inorganic components</p>
+                        </div>
+                        
+                        <div class="waste-type-card">
+                            <div class="waste-type-title">Industrial Waste</div>
+                            <p><strong>Sources:</strong> Manufacturing industries, factories</p>
+                            <p><strong>Examples:</strong> Metal scraps, chemical waste, packaging materials</p>
+                            <p><strong>Characteristics:</strong> Often hazardous and toxic</p>
+                        </div>
+                        
+                        <div class="waste-type-card">
+                            <div class="waste-type-title">Hazardous Waste</div>
+                            <p><strong>Sources:</strong> Chemical plants, laboratories, medical facilities</p>
+                            <p><strong>Examples:</strong> Toxic chemicals, flammable materials, corrosive substances</p>
+                            <p><strong>Characteristics:</strong> Dangerous to health and environment</p>
+                        </div>
+                        
+                        <div class="waste-type-card">
+                            <div class="waste-type-title">Construction Waste</div>
+                            <p><strong>Sources:</strong> Construction and demolition sites</p>
+                            <p><strong>Examples:</strong> Concrete, bricks, wood, metals, plastics</p>
+                            <p><strong>Characteristics:</strong> Bulk waste, recyclable materials</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3>Functional Elements of Solid Waste Management</h3>
+                    <div class="functional-elements">
+                        <div class="element-card">
+                            <div class="element-title">Generation</div>
+                            <p>Creation of waste at source through human activities</p>
+                            <p><strong>Key Point:</strong> Primary stage in SWM cycle</p>
+                        </div>
+                        
+                        <div class="element-card">
+                            <div class="element-title">Storage</div>
+                            <p>Temporary holding of waste at source before collection</p>
+                            <p><strong>Key Point:</strong> On-site temporary storage</p>
+                        </div>
+                        
+                        <div class="element-card">
+                            <div class="element-title">Collection</div>
+                            <p>Gathering waste from various sources for processing</p>
+                            <p><strong>Key Point:</strong> Door-to-door or community collection</p>
+                        </div>
+                        
+                        <div class="element-card">
+                            <div class="element-title">Transfer</div>
+                            <p>Moving waste from collection points to disposal sites</p>
+                            <p><strong>Key Point:</strong> Intermediate handling point</p>
+                        </div>
+                        
+                        <div class="element-card">
+                            <div class="element-title">Transportation</div>
+                            <p>Moving waste to processing or disposal facilities</p>
+                            <p><strong>Key Point:</strong> Long-distance movement</p>
+                        </div>
+                        
+                        <div class="element-card">
+                            <div class="element-title">Processing</div>
+                            <p>Treatment, recycling, composting, or disposal of waste</p>
+                            <p><strong>Key Point:</strong> Conversion to useful products</p>
+                        </div>
+                        
+                        <div class="element-card">
+                            <div class="element-title">Disposal</div>
+                            <p>Final placement of waste in landfills or incinerators</p>
+                            <p><strong>Key Point:</strong> Last resort option</p>
+                        </div>
+                        
+                        <div class="element-card">
+                            <div class="element-title">Planning</div>
+                            <p>Strategic planning for waste management systems</p>
+                            <p><strong>Key Point:</strong> Foundation for all activities</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Biomedical Waste Management Section -->
+            <div class="section" id="biomedical-waste">
+                <h2>Biomedical Waste Management</h2>
+                
+                <div class="subsection">
+                    <h3>Sources of Biomedical Waste</h3>
+                    <ul>
+                        <li><strong>Hospitals:</strong> Surgical waste, pathological waste, infectious materials</li>
+                        <li><strong>Clinics:</strong> Syringes, bandages, diagnostic samples</li>
+                        <li><strong>Diagnostic Centers:</strong> Blood samples, culture plates, contaminated materials</li>
+                        <li><strong>Research Labs:</strong> Animal tissues, biological samples, contaminated equipment</li>
+                        <li><strong>Pharmacies:</strong> Expired medicines, packaging materials</li>
+                        <li><strong>Veterinary Clinics:</strong> Animal waste, surgical materials, biological samples</li>
+                    </ul>
+                </div>
+                
+                <div class="subsection">
+                    <h3>Characteristics of Biomedical Waste</h3>
+                    <ul>
+                        <li><strong>Infectious:</strong> Contains pathogens capable of causing disease</li>
+                        <li><strong>Pathological:</strong> Human anatomical parts, tissues, organs</li>
+                        <li><strong>Sharps:</strong> Needles, syringes, scalpels, broken glass</li>
+                        <li><strong>Toxic:</strong> Chemicals harmful to health</li>
+                        <li><strong>Radioactive:</strong> Materials contaminated with radioactive substances</li>
+                        <li><strong>Cytotoxic:</strong> Substances affecting cell function</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Environmental Legislation Section -->
+            <div class="section" id="legislation">
+                <h2>Environmental Legislation</h2>
+                
+                <div class="subsection">
+                    <h3>Solid Waste Management Rules, 2016</h3>
+                    <div class="legislation-grid">
+                        <div class="legislation-card">
+                            <div class="legislation-title">Objectives</div>
+                            <ul>
+                                <li>Ensure scientific management of solid waste</li>
+                                <li>Promote waste segregation at source</li>
+                                <li>Encourage recycling and resource recovery</li>
+                                <li>Establish waste processing and disposal facilities</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="legislation-card">
+                            <div class="legislation-title">Key Provisions</div>
+                            <ul>
+                                <li>Mandatory segregation into 3 streams (wet, dry, hazardous)</li>
+                                <li>Responsibility of waste generators</li>
+                                <li>Role of local authorities and state governments</li>
+                                <li>Extended Producer Responsibility (EPR)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="legislation-card">
+                            <div class="legislation-title">Compliance</div>
+                            <ul>
+                                <li>Registration of waste processing facilities</li>
+                                <li>Monitoring and reporting mechanisms</li>
+                                <li>Penalties for non-compliance</li>
+                                <li>Public participation in waste management</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3>Biomedical Waste Management Rules, 2016</h3>
+                    <div class="legislation-grid">
+                        <div class="legislation-card">
+                            <div class="legislation-title">Classification</div>
+                            <ul>
+                                <li>Yellow: Infectious waste (autoclaving, microwaving)</li>
+                                <li>Red: Anatomical waste (incineration, deep burial)</li>
+                                <li>Blue/White: Sharps (puncture-proof containers)</li>
+                                <li>Black: General waste (landfill disposal)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="legislation-card">
+                            <div class="legislation-title">Key Changes</div>
+                            <ul>
+                                <li>Reduction from 10 to 4 categories</li>
+                                <li>Improved pre-treatment options</li>
+                                <li>Streamlined authorization process</li>
+                                <li>Enhanced compliance monitoring</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="legislation-card">
+                            <div class="legislation-title">Responsibilities</div>
+                            <ul>
+                                <li>Healthcare facility operators accountable</li>
+                                <li>Training for staff handling biomedical waste</li>
+                                <li>Annual reporting requirements</li>
+                                <li>Barcoding and GPS tracking systems</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Remembering Techniques Section -->
+            <div class="section" id="remembering-techniques">
+                <h2>Remembering Techniques</h2>
+                
+                <div class="remembering-techniques">
+                    <h3>Memory Aids for Waste Management Concepts</h3>
+                    
+                    <div class="highlight-box">
+                        <strong>SWASTHA Method:</strong> Segregation, Waste Collection, Analysis, Sorting, Treatment, Handling, Awareness
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <strong>3R Principle:</strong> Reduce, Reuse, Recycle - Think of "3 R's to Rescue Resources"
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <strong>Biomedical Waste Colors:</strong> Yellow-Yuck (Infectious), Red-Rotten (Anatomical), Blue-Breakable (Sharps), Black-Burial (General)
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <strong>Functional Elements:</strong> "Great Elephants Dance Through Pretty Deserts Planning" (Generation, Storage, Collection, Transfer, Transportation, Processing, Disposal, Planning)
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <strong>Waste Categories:</strong> "MICD" - Municipal, Industrial, Construction, Hazardous/Dangerous
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Important Concepts Differentiation -->
+            <div class="section" id="concept-differentiation">
+                <h2>Important Concepts Differentiation</h2>
+                
+                <div class="concept-differentiation">
+                    <h3>Key Distinctions in Waste Management</h3>
+                    
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Concept</th>
+                                <th>Definition</th>
+                                <th>Key Differences</th>
+                                <th>Examples</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Solid vs Liquid Waste</td>
+                                <td>Physical state of waste material</td>
+                                <td>Solid has definite shape; Liquid flows and takes container shape</td>
+                                <td>Solid: Paper, Plastic; Liquid: Sewage, Industrial effluent</td>
+                            </tr>
+                            <tr>
+                                <td>Hazardous vs Non-Hazardous</td>
+                                <td>Level of danger to health/environment</td>
+                                <td>Hazardous is dangerous; Non-hazardous is relatively safe</td>
+                                <td>Hazardous: Chemicals, Medical waste; Non-hazardous: Food waste, Paper</td>
+                            </tr>
+                            <tr>
+                                <td>Biodegradable vs Non-Biodegradable</td>
+                                <td>Decomposition capability</td>
+                                <td>Biodegradable decomposes naturally; Non-biodegradable persists</td>
+                                <td>Biodegradable: Food, Leaves; Non-biodegradable: Plastic, Metal</td>
+                            </tr>
+                            <tr>
+                                <td>Recycling vs Reuse</td>
+                                <td>Process approach</td>
+                                <td>Recycling changes form; Reuse keeps original form</td>
+                                <td>Recycling: Plastic bottles to fibers; Reuse: Jar as container</td>
+                            </tr>
+                            <tr>
+                                <td>Centralized vs Decentralized</td>
+                                <td>Processing location</td>
+                                <td>Centralized at one place; Decentralized at source</td>
+                                <td>Centralized: Large plant; Decentralized: Composting at home</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- MCQ Section -->
+            <div class="section" id="mcqs">
+                <h2>Multiple Choice Questions (MCQs)</h2>
+                
+                <div class="mcq-section">
+                    <h3>Test Your Knowledge</h3>
+                    
+                    <div class="mcq-question">
+                        <strong>Q1. How many functional elements are there in Solid Waste Management?</strong>
+                        <ol>
+                            <li>A) 6</li>
+                            <li>B) 7</li>
+                            <li>C) 8</li>
+                            <li>D) 9</li>
+                        </ol>
+                        <p><strong>Answer: C) 8 (Generation, Storage, Collection, Transfer, Transportation, Processing, Disposal, Planning)</strong></p>
+                    </div>
+                    
+                    <div class="mcq-question">
+                        <strong>Q2. Which color bag is used for infectious biomedical waste?</strong>
+                        <ol>
+                            <li>A) Red</li>
+                            <li>B) Yellow</li>
+                            <li>C) Blue</li>
+                            <li>D) Green</li>
+                        </ol>
+                        <p><strong>Answer: B) Yellow</strong></p>
+                    </div>
+                    
+                    <div class="mcq-question">
+                        <strong>Q3. What does EPR stand for in Solid Waste Management Rules 2016?</strong>
+                        <ol>
+                            <li>A) Efficient Producer Responsibility</li>
+                            <li>B) Extended Producer Responsibility</li>
+                            <li>C) Environmental Producer Responsibility</li>
+                            <li>D) Enhanced Producer Responsibility</li>
+                        </ol>
+                        <p><strong>Answer: B) Extended Producer Responsibility</strong></p>
+                    </div>
+                    
+                    <div class="mcq-question">
+                        <strong>Q4. Which waste category includes expired medicines?</strong>
+                        <ol>
+                            <li>A) Municipal Solid Waste</li>
+                            <li>B) Industrial Waste</li>
+                            <li>C) Biomedical Waste</li>
+                            <li>D) Construction Waste</li>
+                        </ol>
+                        <p><strong>Answer: C) Biomedical Waste</strong></p>
+                    </div>
+                    
+                    <div class="mcq-question">
+                        <strong>Q5. What percentage of municipal solid waste is typically organic?</strong>
+                        <ol>
+                            <li>A) 20-30%</li>
+                            <li>B) 40-50%</li>
+                            <li>C) 60-70%</li>
+                            <li>D) 80-90%</li>
+                        </ol>
+                        <p><strong>Answer: C) 60-70%</strong></p>
+                    </div>
+                    
+                    <div class="mcq-question">
+                        <strong>Q6. Which rule mandates segregation at source?</strong>
+                        <ol>
+                            <li>A) Biomedical Waste Management Rules 2016</li>
+                            <li>B) Solid Waste Management Rules 2016</li>
+                            <li>C) Both A and B</li>
+                            <li>D) Neither A nor B</li>
+                        </ol>
+                        <p><strong>Answer: B) Solid Waste Management Rules 2016</strong></p>
+                    </div>
+                    
+                    <div class="mcq-question">
+                        <strong>Q7. What is the primary treatment method for yellow category biomedical waste?</strong>
+                        <ol>
+                            <li>A) Incineration</li>
+                            <li>B) Autoclaving</li>
+                            <li>C) Deep burial</li>
+                            <li>D) Landfilling</li>
+                        </ol>
+                        <p><strong>Answer: B) Autoclaving</strong></p>
+                    </div>
+                    
+                    <div class="mcq-question">
+                        <strong>Q8. Which characteristic defines hazardous waste?</strong>
+                        <ol>
+                            <li>A) Biodegradable</li>
+                            <li>B) Toxic, Reactive, Corrosive, or Ignitable</li>
+                            <li>C) Solid state</li>
+                            <li>D) High moisture content</li>
+                        </ol>
+                        <p><strong>Answer: B) Toxic, Reactive, Corrosive, or Ignitable</strong></p>
+                    </div>
+                    
+                    <div class="mcq-question">
+                        <strong>Q9. What is the main objective of the 3R principle?</strong>
+                        <ol>
+                            <li>A) Increase waste generation</li>
+                            <li>B) Minimize waste and maximize resource recovery</li>
+                            <li>C) Reduce collection costs</li>
+                            <li>D) Improve landfill capacity</li>
+                        </ol>
+                        <p><strong>Answer: B) Minimize waste and maximize resource recovery</strong></p>
+                    </div>
+                    
+                    <div class="mcq-question">
+                        <strong>Q10. Which element of SWM involves moving waste to distant facilities?</strong>
+                        <ol>
+                            <li>A) Collection</li>
+                            <li>B) Transfer</li>
+                            <li>C) Transportation</li>
+                            <li>D) Processing</li>
+                        </ol>
+                        <p><strong>Answer: C) Transportation</strong></p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Self-Study Component Section -->
+            <div class="section" id="ssc">
+                <h2>Self-Study Component (SSC): Case Studies on Waste Management Options</h2>
+                
+                <div class="subsection">
+                    <h3>Case Studies on Waste Management Options</h3>
+                    <div class="waste-types-grid">
+                        <div class="waste-type-card">
+                            <div class="waste-type-title">Swachh Bharat Mission (India)</div>
+                            <p><strong>Objective:</strong> Eliminate open defecation and improve solid waste management</p>
+                            <p><strong>Approach:</strong> Community participation, behavioral change</p>
+                            <p><strong>Results:</strong> Significant increase in waste collection rates</p>
+                        </div>
+                        
+                        <div class="waste-type-card">
+                            <div class="waste-type-title">Zero Waste San Francisco (USA)</div>
+                            <p><strong>Objective:</strong> Achieve zero waste to landfill by 2020</p>
+                            <p><strong>Approach:</strong> Mandatory recycling and composting ordinances</p>
+                            <p><strong>Results:</strong> Diversion rate of 80% from landfills</p>
+                        </div>
+                        
+                        <div class="waste-type-card">
+                            <div class="waste-type-title">Circular Economy in Netherlands</div>
+                            <p><strong>Objective:</strong> Transition to circular economy by 2050</p>
+                            <p><strong>Approach:</strong> Resource efficiency, waste prevention</p>
+                            <p><strong>Results:</strong> Leading country in EU waste management</p>
+                        </div>
+                        
+                        <div class="waste-type-card">
+                            <div class="waste-type-title">Integrated Waste Management in Sweden</div>
+                            <p><strong>Objective:</strong> Maximize resource recovery and energy generation</p>
+                            <p><strong>Approach:</strong> Waste-to-energy, recycling, export of waste</p>
+                            <p><strong>Results:</strong> Imports waste from other countries for energy</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Environmental Science Question Bank</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: linear-gradient(135deg, #f0f4f8 0%, #d1c4e9 100%);
+            min-height: 100vh;
+            padding: 20px;
+            font-size: 16px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1a237e, #4527a0);
+            color: white;
+            text-align: center;
+            padding: 50px 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            position: relative;
+            text-shadow: 0 3px 6px rgba(0,0,0,0.3);
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .description {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            position: relative;
+            text-align: center;
+            color: #e0e0ff;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .module-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+            justify-content: center;
+        }
+        
+        .module-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #1a237e, #4527a0);
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(26, 35, 126, 0.3);
+        }
+        
+        .module-btn:hover {
+            background: linear-gradient(135deg, #4527a0, #7b1fa2);
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(26, 35, 126, 0.5);
+        }
+        
+        .module {
+            margin-bottom: 50px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .module-header {
+            background: linear-gradient(135deg, #4527a0, #311b92);
+            color: white;
+            padding: 25px;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+        
+        .module-content {
+            background-color: #fafafa;
+            padding: 30px;
+        }
+        
+        .question-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .question-table th,
+        .question-table td {
+            border: 1px solid #e0e0e0;
+            padding: 15px;
+            text-align: left;
+            vertical-align: top;
+        }
+        
+        .question-table th {
+            background: linear-gradient(135deg, #5e35b1, #7e57c2);
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .question-table tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+        
+        .question-table tr:hover {
+            background-color: #e8eaf6;
+        }
+        
+        .question-cell {
+            font-weight: 500;
+            color: #283593;
+        }
+        
+        .answer-cell {
+            color: #2e7d32;
+            font-weight: 600;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            border-top: 2px solid #eee;
+            color: #666;
+            font-size: 1rem;
+            background-color: #f9f9f9;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+                font-size: 15px;
+            }
+            
+            .content {
+                padding: 25px 20px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .module-header {
+                font-size: 1.5rem;
+                padding: 20px;
+            }
+            
+            .question-table {
+                font-size: 0.9rem;
+            }
+            
+            .question-table th,
+            .question-table td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Environmental Science Question Bank</h1>
+            <div class="subtitle">Comprehensive Academic Question Collection</div>
+            <div class="description">
+                <p>This question bank covers essential topics in Environmental Science across 5 modules. Each module contains important questions with answers for academic study and exam preparation.</p>
+            </div>
+        </header>
+        
+        <div class="content">
+            <div class="module-nav">
+                <a href="#module1" class="module-btn">Module 1: Ecosystems & Biodiversity</a>
+                <a href="#module2" class="module-btn">Module 2: Energy Systems</a>
+                <a href="#module3" class="module-btn">Module 3: Environmental Pollution</a>
+                <a href="#module4" class="module-btn">Module 4: Global Concerns</a>
+                <a href="#module5" class="module-btn">Module 5: Environmental Legislation</a>
+            </div>
+            
+            <!-- Module 1 -->
+            <div class="module" id="module1">
+                <div class="module-header">
+                    Module 1: Ecosystems (Structure and Function) & Biodiversity
+                </div>
+                <div class="module-content">
+                    <table class="question-table">
+                        <thead>
+                            <tr>
+                                <th>Question</th>
+                                <th>Answer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="question-cell">The science that deals with the relationship of various organisms with their environment is known as</td>
+                                <td class="answer-cell">Ecology</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Word Environment is derived from</td>
+                                <td class="answer-cell">French</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Word Ecology is derived from</td>
+                                <td class="answer-cell">Greek</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">'World Environmental Day' is celebrated every year on</td>
+                                <td class="answer-cell">5th June</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">'Earth's Day' is celebrated every year on</td>
+                                <td class="answer-cell">22nd April</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">The sequence of eating and being eaten in an ecosystem is called</td>
+                                <td class="answer-cell">Food chain</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">A food web consists of</td>
+                                <td class="answer-cell">Interlocking of food chains</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Tendency of pollutants to become concentrated in successive tropic levels is known as</td>
+                                <td class="answer-cell">Biomagnifications</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Deserts, grasslands, forests and tundra regions are the examples of</td>
+                                <td class="answer-cell">Biomes</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">How much area is under the forest cover in India?</td>
+                                <td class="answer-cell">Around 710000 sq km</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Hotspots are regions of high</td>
+                                <td class="answer-cell">Endemism</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">The true end of any food chain is the</td>
+                                <td class="answer-cell">Decomposer</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Which of these organisms has a diet consisting only of plant matter?</td>
+                                <td class="answer-cell">Herbivores</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">The second tropic level in a lake is</td>
+                                <td class="answer-cell">Zooplanktons</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Energy flow in an ecosystem is</td>
+                                <td class="answer-cell">Unidirectional</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Pyramid of energy in a pond ecosystem is always</td>
+                                <td class="answer-cell">Upright</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Which of the ecological pyramid is always upright?</td>
+                                <td class="answer-cell">Pyramid of energy</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">In a pyramid of numbers in grassland ecosystems, the largest population is that of</td>
+                                <td class="answer-cell">Producers</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">The pyramid of energy is always upright for any ecosystem, this situation indicates that</td>
+                                <td class="answer-cell">Herbivores have better energy conversion efficiency than carnivores</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">A herbivore is also known as a</td>
+                                <td class="answer-cell">First order consumer</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Primary source of energy in a food web is/are</td>
+                                <td class="answer-cell">Sun</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">A product of photosynthesis is</td>
+                                <td class="answer-cell">Oxygen</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">The most important reason for decrease in biodiversity is</td>
+                                <td class="answer-cell">Over exploitation</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Dodo is</td>
+                                <td class="answer-cell">Extinct species</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Blue whale is placed under</td>
+                                <td class="answer-cell">Endangered</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Deforestation means</td>
+                                <td class="answer-cell">Cutting trees for various reasons, conversion of forest land to agricultural land home etc.</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Forest rich area in Karnataka found in</td>
+                                <td class="answer-cell">Western Ghats</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Module 2 -->
+            <div class="module" id="module2">
+                <div class="module-header">
+                    Module 2: Advances in Energy Systems & Natural Resource Management
+                </div>
+                <div class="module-content">
+                    <table class="question-table">
+                        <thead>
+                            <tr>
+                                <th>Question</th>
+                                <th>Answer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="question-cell">Which is considered as energy source of future?</td>
+                                <td class="answer-cell">Hydrogen</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Renewable energy is</td>
+                                <td class="answer-cell">Primary source</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">The total percentage of non-renewable energy sources available is</td>
+                                <td class="answer-cell">18</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Good examples for inexhaustible/ renewable energy resource is</td>
+                                <td class="answer-cell">Solar, Wind, OTEC, Tide etc.</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Hydrogen is found on earth in combination with</td>
+                                <td class="answer-cell">Oxygen</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">The main disadvantage of hydrogen energy source is</td>
+                                <td class="answer-cell">takes more energy to produce hydrogen than the energy that could be obtained from it.</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">____ is the best environmental clean alternative fuel</td>
+                                <td class="answer-cell">CNG</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Solar radiations consist of</td>
+                                <td class="answer-cell">UV, Visible and Infrared radiations</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">The depletion of trees is causing accumulation of</td>
+                                <td class="answer-cell">CO2</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Electromagnetic radiation energy is an energy in the form of</td>
+                                <td class="answer-cell">Light(Photons), wave and heat</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Solar energy is ideal energy because of</td>
+                                <td class="answer-cell">Unlimited supply, no air or water pollution, no hazardous byproducts</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Nuclear fusion reaction occurs in the</td>
+                                <td class="answer-cell">Sun, stars and hydrogen bombs</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Wind energy depends on</td>
+                                <td class="answer-cell">wind direction, speed (velocity) and humidity</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">OTEC is an energy technology that converts</td>
+                                <td class="answer-cell">Energy of the ocean due to thermal gradient to generate electricity</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Oceans are the largest storage of water on earth containing</td>
+                                <td class="answer-cell">97% of water</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">About 30% of the country's coal deposits are found in</td>
+                                <td class="answer-cell">Bihar and Orissa</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">The mineral resources are</td>
+                                <td class="answer-cell">non renewable</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Chemical used in cloud seeding</td>
+                                <td class="answer-cell">Silver Iodide, NaCl and Hygroscopic salts, Potassium Iodide</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">The scientist who experimented cloud seeding for first time</td>
+                                <td class="answer-cell">Vincent Schaefer</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">_____ Gas causes 60% of greenhouse effect</td>
+                                <td class="answer-cell">CO2</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">The Greenhouse gasses</td>
+                                <td class="answer-cell">CO2, CH4, NOx etc.</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Which protocol is aims at reducing green house gases</td>
+                                <td class="answer-cell">Kyoto protocol</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Carbon trading deals with</td>
+                                <td class="answer-cell">Carbon emission (as CO2 causes more than 60% greenhouse effect on earth)</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">_____ is a government regulatory system designed to give companies an incentive to reduce their carbon emissions.</td>
+                                <td class="answer-cell">Cap and trade</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">One credit permits the emission of a mass equal to</td>
+                                <td class="answer-cell">One ton of carbon dioxide</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Module 3 -->
+            <div class="module" id="module3">
+                <div class="module-header">
+                    Module 3: Environmental Pollution & Waste Management
+                </div>
+                <div class="module-content">
+                    <table class="question-table">
+                        <thead>
+                            <tr>
+                                <th>Question</th>
+                                <th>Answer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="question-cell">Environmental Pollution is due to</td>
+                                <td class="answer-cell">Rapid Urbanization and Deforestation</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Soil erosion removes surface soil contains</td>
+                                <td class="answer-cell">Organic matter and plant nutrient</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">As per BIS, the permissible limit of PH value for Drinking water</td>
+                                <td class="answer-cell">6.5 to 8.5</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">What is the Max. allowable concentration of Iron content in drinking water? (as per BIS).</td>
+                                <td class="answer-cell">1.0mg/l</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Cholera and Typhoid are caused by</td>
+                                <td class="answer-cell">Bacteria</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Excess of Nitrate in drinking water causes</td>
+                                <td class="answer-cell">Blue Baby Syndrome</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Water quality involves measuring the number of colonies of</td>
+                                <td class="answer-cell">Coliform bacteria</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Water is an excellent solvent because</td>
+                                <td class="answer-cell">It has high dielectric constant</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Turbidity in water mainly arises from</td>
+                                <td class="answer-cell">Colloidal matter</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Odour in water can be eliminated</td>
+                                <td class="answer-cell">Aeration</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">______ is a nonpoint source of water pollution</td>
+                                <td class="answer-cell">Urban and Suburban lands</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">______ is a point source of water pollution</td>
+                                <td class="answer-cell">Factory</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Temporary hardness of water is due to</td>
+                                <td class="answer-cell">Carbonates and Bicarbonates</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">The process of killing micro-organisms in water is called</td>
+                                <td class="answer-cell">Disinfection</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">The liquid waste from baths and kitchen is called</td>
+                                <td class="answer-cell">Sullage</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">BOD is abbreviation of</td>
+                                <td class="answer-cell">Biochemical Oxygen Demand</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Physical pollution of water is due to</td>
+                                <td class="answer-cell">Turbidity</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">______ is a major source of Thermal pollution</td>
+                                <td class="answer-cell">Thermal power plants</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Minamata Disease is caused due to</td>
+                                <td class="answer-cell">Mercury</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Air pollution in automobiles can be controlled by fitting</td>
+                                <td class="answer-cell">Catalytic converter</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Plants grown by the roadside have higher content of</td>
+                                <td class="answer-cell">Pb (lead)</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">_______ is a government regulatory system designed to give companies an incentive to reduce their carbon emissions.</td>
+                                <td class="answer-cell">Cap and trade</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">The noise is measured in</td>
+                                <td class="answer-cell">Decibels (dB)</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Sound above ____is considered as hazardous noise pollution</td>
+                                <td class="answer-cell">Above 80 dB</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">_____ is the source of fly ash pollution</td>
+                                <td class="answer-cell">Thermal power plant</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">______ is an aerosol</td>
+                                <td class="answer-cell">Smoke, Fume and Mist</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Hemoglobin of blood forms carboxy-hemoglobin with</td>
+                                <td class="answer-cell">Carbon monoxide</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Decrease of oxygen level in water causes</td>
+                                <td class="answer-cell">Death of aquatic life</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">COD is</td>
+                                <td class="answer-cell">Chemical Oxygen Demand</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Module 4 -->
+            <div class="module" id="module4">
+                <div class="module-header">
+                    Module 4: Global Environmental Concerns
+                </div>
+                <div class="module-content">
+                    <table class="question-table">
+                        <thead>
+                            <tr>
+                                <th>Question</th>
+                                <th>Answer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="question-cell">Below which of the following pH is rain regarded as 'acid rain'?</td>
+                                <td class="answer-cell">5.6</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Which of the following gases are main contributors to acid rain?</td>
+                                <td class="answer-cell">Sulphur dioxide and nitrous oxide</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">What is the pH required for the survival of aquatic animals and plants?</td>
+                                <td class="answer-cell">4.8</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Ozone is found in the</td>
+                                <td class="answer-cell">Stratosphere</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Montreal protocol is related to the</td>
+                                <td class="answer-cell">Ozone layer depletion</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">This is a major risk linked with extreme ultraviolet rays through the atmosphere as a result of</td>
+                                <td class="answer-cell">ozone layer depletion</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Increased skin cancer</td>
+                                <td class="answer-cell">due to ozone layer depletion</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">The protocol that reduces greenhouse gas emissions is</td>
+                                <td class="answer-cell">Kyoto protocol</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Green House effect causes</td>
+                                <td class="answer-cell">Rise in temperature of earth</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Percentage of nitrogen in earth's atmosphere is</td>
+                                <td class="answer-cell">78%</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Thickness of Ozone layer measured in _______ Unit</td>
+                                <td class="answer-cell">Dobson</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Average thickness of ozone layer in stratosphere</td>
+                                <td class="answer-cell">230 Dobson Unit</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">______ are responsible for Ozone depletion</td>
+                                <td class="answer-cell">Methyl bromide, Chloro Fluorocarbons, Hydro Chloro Fluorocarbons</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Ozone layer is located up to _____Km above the earth surface</td>
+                                <td class="answer-cell">50</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">The Major compound responsible for the ozone layer depletion is</td>
+                                <td class="answer-cell">Chloro Fluoro Carbons</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">The steady decline of Ozone in the stratosphere is called</td>
+                                <td class="answer-cell">Ozone hole</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">What is the maximum limit for fluoride in drinking water</td>
+                                <td class="answer-cell">1.5 mg/l</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Excess of fluoride in drinking water causes</td>
+                                <td class="answer-cell">Fluorosis</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Radon is a</td>
+                                <td class="answer-cell">Inert gas</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Module 5 -->
+            <div class="module" id="module5">
+                <div class="module-header">
+                    Module 5: Environmental Legislation
+                </div>
+                <div class="module-content">
+                    <table class="question-table">
+                        <thead>
+                            <tr>
+                                <th>Question</th>
+                                <th>Answer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="question-cell">EIA can be expanded as</td>
+                                <td class="answer-cell">Environmental Impact Assessment</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">To achieve the goal of clean environment, important strategies required are</td>
+                                <td class="answer-cell">Effective laws and Active participation of publics</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">An International conference on Environmental Education was held in Dec. 1982 at</td>
+                                <td class="answer-cell">New Delhi</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">The first United Nation Conference on human environment was held at</td>
+                                <td class="answer-cell">Stockholm</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">In which year the Hon'ble supreme court of India made environmental education compulsory subject at all the levels of education</td>
+                                <td class="answer-cell">2003</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Environmental protection is fundamental duties of the citizen of India under the</td>
+                                <td class="answer-cell">Article 51-A(g)</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Which is the first country amended laws for the punishment of crimes relating to Environmental pollution</td>
+                                <td class="answer-cell">Japan</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Government of India enacted Water Act in the year</td>
+                                <td class="answer-cell">1974</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Government of India enacted Environmental (Protection) Act in the year</td>
+                                <td class="answer-cell">1986</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Environmental education is targeted to</td>
+                                <td class="answer-cell">General Public, Professional and social groups and Technicians and Scientists</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Basal Convention 1989 deals with</td>
+                                <td class="answer-cell">Transboundary movement of hazardous wastes</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">EPA means</td>
+                                <td class="answer-cell">Environmental Protection Act</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">The first major environmental protection law promulgated in India was</td>
+                                <td class="answer-cell">Wild Life Protection Act</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">'Wild Life Protection Act' was enacted in the year</td>
+                                <td class="answer-cell">1972</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Government of India enacted Water Act in the year</td>
+                                <td class="answer-cell">1974</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Government of India enacted Environmental (Protection) Act in the year</td>
+                                <td class="answer-cell">1986</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Karnataka State Pollution Control Board was established in the year</td>
+                                <td class="answer-cell">1974</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Water supply for Domestic consumption in Indian Towns as per BIS</td>
+                                <td class="answer-cell">135 lpcd</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">First International Earth summit was held at</td>
+                                <td class="answer-cell">Rio de Janeiro</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">Environmental education is targeted to</td>
+                                <td class="answer-cell">General Public, Professional and social groups and Technicians and Scientists</td>
+                            </tr>
+                            <tr>
+                                <td class="question-cell">The Tiger Conservation Project was started in</td>
+                                <td class="answer-cell">1st April 1973</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Environmental Science Question Bank | University Academic Reference Materials</p>
+            <p>Comprehensive collection of questions with answers for exam preparation</p>
+        </div>
+    </div>
+</body>
+</html>

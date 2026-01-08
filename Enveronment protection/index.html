@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Environmental Science Cheat Sheets - Index</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            font-size: 16px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1a237e, #4527a0);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            position: relative;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .description {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            position: relative;
+            text-align: center;
+            color: #e0e0ff;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .link-card {
+            background: linear-gradient(145deg, #ffffff, #f8f9fa);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+        }
+        
+        .link-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+        }
+        
+        .link-card:nth-child(1)::before { background: linear-gradient(90deg, #4caf50, #8bc34a); }
+        .link-card:nth-child(2)::before { background: linear-gradient(90deg, #2196f3, #03a9f4); }
+        .link-card:nth-child(3)::before { background: linear-gradient(90deg, #ff9800, #ff5722); }
+        .link-card:nth-child(4)::before { background: linear-gradient(90deg, #9c27b0, #673ab7); }
+        
+        .link-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.18);
+        }
+        
+        .link-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #1a237e;
+            font-weight: 600;
+        }
+        
+        .link-card p {
+            color: #555;
+            margin-bottom: 25px;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        
+        .link-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #1a237e, #4527a0);
+            color: white;
+            text-decoration: none;
+            padding: 14px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(26, 35, 126, 0.3);
+        }
+        
+        .link-button:hover {
+            background: linear-gradient(135deg, #4527a0, #7b1fa2);
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(26, 35, 126, 0.5);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            border-top: 1px solid #eee;
+            color: #777;
+            font-size: 0.95rem;
+            background-color: #f9f9f9;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+                font-size: 15px;
+            }
+            
+            .content {
+                padding: 25px 20px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .links-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .link-card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Environmental Science Cheat Sheets</h1>
+            <div class="subtitle">Comprehensive Academic Reference Materials</div>
+            <div class="description">
+                <p>This collection contains essential cheat sheets covering key topics in Environmental Science and Engineering. Each resource is designed for academic study and exam preparation.</p>
+            </div>
+        </header>
+        
+        <div class="content">
+            <div class="links-grid">
+                <div class="link-card">
+                    <h3>🌱 Ecosystem & Sustainability</h3>
+                    <p>Covers ecosystem structure, types of ecosystems, 17 SDG targets, and components of the environment</p>
+                    <a href="ecosystem_sustainability_cheat_sheet.html" class="link-button">View Cheat Sheet</a>
+                </div>
+                
+                <div class="link-card">
+                    <h3>💧 Natural Resources & Energy</h3>
+                    <p>Comprehensive guide on water resources, energy types, and alternative energy sources</p>
+                    <a href="natural_resources_energy_cheat_sheet.html" class="link-button">View Cheat Sheet</a>
+                </div>
+                
+                <div class="link-card">
+                    <h3>🏭 Environmental Pollution</h3>
+                    <p>Detailed coverage of water, noise, and air pollution with public health aspects</p>
+                    <a href="environmental_pollution_cheat_sheet.html" class="link-button">View Cheat Sheet</a>
+                </div>
+                
+                <div class="link-card">
+                    <h3>🗑️ Waste Management</h3>
+                    <p>Complete guide on solid waste management, biomedical waste, and environmental legislation</p>
+                    <a href="waste_management_cheat_sheet.html" class="link-button">View Cheat Sheet</a>
+                </div>
+                
+                <div class="link-card">
+                    <h3>💻 E-Waste Management</h3>
+                    <p>Comprehensive coverage of e-waste composition, pollutants, management rules, and environmental impact</p>
+                    <a href="ewaste_management_cheat_sheet.html" class="link-button">View Cheat Sheet</a>
+                </div>
+                <div class="link-card">
+                    <h3>📚 Environmental Question Bank</h3>
+                    <p>Comprehensive collection of questions with answers for exam preparation across 5 modules</p>
+                    <a href="environmental_question_bank.html" class="link-button">View Question Bank</a>
+                </div>
+                
+                <div class="link-card">
+                    <h3>🎯 Environmental Quiz</h3>
+                    <p>Interactive quiz with questions from all modules to test your knowledge</p>
+                    <a href="environmental_quiz.html" class="link-button">Take Quiz</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>University Environmental Science Reference Materials | Academic Use Only</p>
+            <p>All cheat sheets designed for comprehensive study and exam preparation</p>
+        </div>
+    </div>
+</body>
+</html>

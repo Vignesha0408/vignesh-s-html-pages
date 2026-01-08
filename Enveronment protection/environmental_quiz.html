@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Environmental Science Quiz</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: linear-gradient(135deg, #f0f4f8 0%, #d1c4e9 100%);
+            min-height: 100vh;
+            padding: 20px;
+            font-size: 16px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1a237e, #4527a0);
+            color: white;
+            text-align: center;
+            padding: 40px 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            position: relative;
+            text-shadow: 0 3px 6px rgba(0,0,0,0.3);
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .description {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            position: relative;
+            text-align: center;
+            color: #e0e0ff;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .quiz-container {
+            background-color: #fafafa;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .quiz-title {
+            font-size: 1.8rem;
+            color: #1a237e;
+            margin-bottom: 10px;
+        }
+        
+        .quiz-info {
+            color: #555;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        
+        .question-container {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-left: 5px solid #4527a0;
+            animation: slideIn 0.6s ease-out, float 3s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .question-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #4527a0, transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .question-number {
+            font-size: 1.2rem;
+            color: #4527a0;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .question-text {
+            font-size: 1.3rem;
+            color: #283593;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+        
+        .option {
+            background: #f5f5f5;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .option:hover {
+            background: #e8eaf6;
+            border-color: #9fa8da;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .option.selected {
+            background: #bbdefb;
+            border-color: #1976d2;
+            box-shadow: 0 0 15px rgba(25, 118, 210, 0.4);
+        }
+        
+        .option.correct {
+            background: linear-gradient(45deg, #4caf50, #8bc34a);
+            border-color: #2e7d32;
+            color: white;
+            animation: smoothCorrectGlow 1.5s ease-in-out;
+        }
+        
+        .option.incorrect {
+            background: linear-gradient(45deg, #f44336, #ff5252);
+            border-color: #c62828;
+            color: white;
+        }
+        
+        .option::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.5s;
+            pointer-events: none;
+        }
+        
+        .option.correct::before {
+            animation: smoothShine 1.2s ease-in-out;
+        }
+        
+        @keyframes smoothCorrectGlow {
+            0% { box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(76, 175, 80, 0.8); }
+            100% { box-shadow: 0 0 12px rgba(76, 175, 80, 0.6); }
+        }
+        
+        @keyframes smoothShine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            animation: smoothFall linear forwards;
+        }
+        
+        @keyframes smoothFall {
+            to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+        
+        .pulse {
+            animation: smoothPulse 0.4s ease-in-out;
+        }
+        
+        @keyframes smoothPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+        
+        .bounce {
+            animation: smoothBounce 0.5s ease;
+        }
+        
+        @keyframes smoothBounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-6px);}
+            60% {transform: translateY(-3px);}
+        }
+        
+        .glow {
+            animation: smoothGlow 1.5s ease-in-out infinite alternate;
+        }
+        
+        @keyframes smoothGlow {
+            from { box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+            to { box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); }
+        }
+        
+        .rainbow {
+            background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+            background-size: 300% 300%;
+            animation: smoothRainbow 2.5s ease-in-out infinite;
+        }
+        
+        @keyframes smoothRainbow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #1a237e, #4527a0);
+            color: white;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(26, 35, 126, 0.3);
+        }
+        
+        .btn:hover {
+            background: linear-gradient(135deg, #4527a0, #7b1fa2);
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(26, 35, 126, 0.5);
+        }
+        
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .btn-next {
+            background: linear-gradient(135deg, #4caf50, #2e7d32);
+        }
+        
+        .btn-next:hover {
+            background: linear-gradient(135deg, #2e7d32, #1b5e20);
+        }
+        
+        .btn-submit {
+            background: linear-gradient(135deg, #ff9800, #f57c00);
+        }
+        
+        .btn-submit:hover {
+            background: linear-gradient(135deg, #f57c00, #ef6c00);
+        }
+        
+        .progress-container {
+            margin-bottom: 25px;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4caf50, #2196f3);
+            transition: width 0.3s ease;
+        }
+        
+        .progress-text {
+            text-align: center;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .result-container {
+            text-align: center;
+            padding: 40px;
+            display: none;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            animation: fadeInScale 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .result-container::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+        }
+        
+        .result-title {
+            font-size: 2.2rem;
+            color: #1a237e;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: slideIn 0.6s ease-out;
+        }
+        
+        .score {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #4527a0;
+            margin: 20px 0;
+            background: linear-gradient(45deg, #4527a0, #7b1fa2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: smoothRainbow 4s ease-in-out infinite;
+        }
+        
+        @keyframes smoothRainbow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        
+        .result-message {
+            font-size: 1.3rem;
+            color: #555;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            animation: fadeIn 0.6s ease-out 0.2s both;
+        }
+        
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .feedback {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        
+        .feedback.correct {
+            background: #c8e6c9;
+            color: #2e7d32;
+        }
+        
+        .feedback.incorrect {
+            background: #ffcdd2;
+            color: #c62828;
+        }
+        
+        .module-selector {
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .module-selector label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #1a237e;
+        }
+        
+        .module-checkboxes {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .module-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .module-checkbox input {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .question-count {
+            text-align: center;
+            margin-bottom: 15px;
+            font-weight: 600;
+            color: #555;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+                font-size: 15px;
+            }
+            
+            .content {
+                padding: 25px 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .question-text {
+                font-size: 1.1rem;
+            }
+            
+            .controls {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Environmental Science Quiz</h1>
+            <div class="subtitle">Test Your Knowledge Across All Modules</div>
+            <div class="description">
+                <p>Challenge yourself with questions from the Environmental Science Question Bank. Select modules and number of questions to start the quiz!</p>
+            </div>
+        </header>
+        
+        <div class="content">
+            <div class="quiz-container">
+                <div class="quiz-setup" id="quizSetup">
+                    <div class="quiz-header">
+                        <h2 class="quiz-title">Quiz Setup</h2>
+                        <p class="quiz-info">Select the total number of random questions from all modules combined</p>
+                    </div>
+                    
+                    <div class="question-count">
+                        <label for="totalQuestions">Enter total number of questions: </label>
+                        <input type="number" id="totalQuestions" min="1" max="100" value="50" style="padding: 8px; font-size: 1rem; border-radius: 5px; border: 1px solid #ccc; width: 100px;">
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 30px;">
+                        <button class="btn" onclick="startQuiz()">Start Quiz</button>
+                    </div>
+                </div>
+                
+                <div class="quiz-area" id="quizArea" style="display: none;">
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
+                        </div>
+                        <div class="progress-text" id="progressText">Question 1 of 50</div>
+                    </div>
+                    
+                    <div class="question-container">
+                        <div class="question-number" id="questionNumber">Question 1</div>
+                        <div class="question-text" id="questionText">Loading question...</div>
+                        <div class="options-container" id="optionsContainer">
+                            <!-- Options will be populated by JavaScript -->
+                        </div>
+                        <div class="feedback" id="feedback" style="display: none;"></div>
+                    </div>
+                    
+                    <div class="controls">
+                        <button class="btn btn-next" id="nextBtn" onclick="nextQuestion()" style="display: none;">Next Question</button>
+                        <button class="btn btn-submit" id="submitBtn" onclick="submitQuiz()" style="display: none;">Submit Quiz</button>
+                    </div>
+                </div>
+                
+                <div class="result-container" id="resultContainer">
+                    <h2 class="result-title">Quiz Completed!</h2>
+                    <div class="score" id="finalScore">0/0</div>
+                    <div class="result-message" id="resultMessage">Your results will appear here...</div>
+                    <button class="btn" onclick="restartQuiz()">Take Quiz Again</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Question bank data
+        const questionBank = {
+            module1: [
+                { question: "The science that deals with the relationship of various organisms with their environment is known as", answer: "Ecology" },
+                { question: "Word Environment is derived from", answer: "French" },
+                { question: "Word Ecology is derived from", answer: "Greek" },
+                { question: "'World Environmental Day' is celebrated every year on", answer: "5th June" },
+                { question: "'Earth's Day' is celebrated every year on", answer: "22nd April" },
+                { question: "The sequence of eating and being eaten in an ecosystem is called", answer: "Food chain" },
+                { question: "A food web consists of", answer: "Interlocking of food chains" },
+                { question: "Tendency of pollutants to become concentrated in successive tropic levels is known as", answer: "Biomagnifications" },
+                { question: "Deserts, grasslands, forests and tundra regions are the examples of", answer: "Biomes" },
+                { question: "How much area is under the forest cover in India?", answer: "Around 710000 sq km" },
+                { question: "Hotspots are regions of high", answer: "Endemism" },
+                { question: "The true end of any food chain is the", answer: "Decomposer" },
+                { question: "Which of these organisms has a diet consisting only of plant matter?", answer: "Herbivores" },
+                { question: "The second tropic level in a lake is", answer: "Zooplanktons" },
+                { question: "Energy flow in an ecosystem is", answer: "Unidirectional" },
+                { question: "Pyramid of energy in a pond ecosystem is always", answer: "Upright" },
+                { question: "Which of the ecological pyramid is always upright?", answer: "Pyramid of energy" },
+                { question: "In a pyramid of numbers in grassland ecosystems, the largest population is that of", answer: "Producers" },
+                { question: "The pyramid of energy is always upright for any ecosystem, this situation indicates that", answer: "Herbivores have better energy conversion efficiency than carnivores" },
+                { question: "A herbivore is also known as a", answer: "First order consumer" },
+                { question: "Primary source of energy in a food web is/are", answer: "Sun" },
+                { question: "A product of photosynthesis is", answer: "Oxygen" },
+                { question: "The most important reason for decrease in biodiversity is", answer: "Over exploitation" },
+                { question: "Dodo is", answer: "Extinct species" },
+                { question: "Blue whale is placed under", answer: "Endangered" },
+                { question: "Deforestation means", answer: "Cutting trees for various reasons , conversion of forest land  to agricultural land home etc." },
+                { question: "Forest rich area in Karnataka found in", answer: "Western Ghats" }
+            ],
+            module2: [
+                { question: "Which is considered as energy source of future?", answer: "Hydrogen" },
+                { question: "Renewable energy is", answer: "Primary source" },
+                { question: "The total percentage of non-renewable energy sources available is", answer: "18" },
+                { question: "Good examples for  inexhaustible/ renewable energy resource is", answer: "Solar , Wind, OTEC, Tide etc" },
+                { question: "Hydrogen is found on earth in combination with", answer: "Oxygen" },
+                { question: "The main disadvantage of hydrogen energy  source is", answer: "takes more energy to produce hydrogen than the energy that could be obtained from it." },
+                { question: "____ is the best environmental clean alternative fuel", answer: "CNG" },
+                { question: "Solar radiations consist of", answer: "UV, Visible and Infrared radiations" },
+                { question: "The depletion of trees is causing accumulation of", answer: "CO2" },
+                { question: "Electromagnetic radiation energy is an energy in the form of", answer: "Light(Photons) , wave and heat" },
+                { question: "Solar energy is ideal energy because of", answer: "Unlimited supply, no air or water pollution, no hazardous byproducts" },
+                { question: "Nuclear fusion reaction occurs in the", answer: "Sun, stars and hydrogen bombs" },
+                { question: "Wind energy depends on", answer: "wind direction, speed (velocity) and humidity" },
+                { question: "OTEC is an energy technology that converts", answer: "Energy of the ocean due to thermal gradient to generate electricity" },
+                { question: "Oceans are the largest storage of water on earth containing", answer: "97% of water" },
+                { question: "About 30% of the country's coal deposits are found in", answer: "Bihar and Orissa" },
+                { question: "The mineral resources are", answer: "non renewable" },
+                { question: "Chemical  used in cloud seeding", answer: "Silver Iodide, NaCl and Hygroscopic salts,  Potassium Iodide" },
+                { question: "The scientist who experimented cloud seeding for first time", answer: "Vincent Schaefer" },
+                { question: "_______ Gas causes 60% of greenhouse effect", answer: "CO2" },
+                { question: "The Greenhouse gasses", answer: "CO2 , CH4 , NOx etc." },
+                { question: "Which protocol is aims at reducing green house gases", answer: "Kyoto protocol" },
+                { question: "Carbon trading deals with", answer: "Carbon emission (as CO2  causes more than 60% greenhouse effect on earth)" },
+                { question: "_______ is a government regulatory system designed to give companies an incentive to reduce their carbon emissions.", answer: "Cap and trade" },
+                { question: "One credit permits the emission of a mass equal to", answer: "One ton of carbon dioxide" }
+            ],
+            module3: [
+                { question: "Environmental Pollution is due to", answer: "Rapid Urbanization and Deforestation" },
+                { question: "Soil erosion removes surface soil contains", answer: "Organic matter and plant nutrient" },
+                { question: "As per BIS, the permissible limit of PH value for Drinking water", answer: "6.5 to 8.5" },
+                { question: "What is the Max. allowable concentration of Iron content in drinking water ? (as per BIS).", answer: "1.0mg/l" },
+                { question: "Cholera and Typhoid are caused by", answer: "Bacteria" },
+                { question: "Excess of Nitrate in drinking water causes", answer: "Blue Baby Sundrome" },
+                { question: "Water quality involves measuring the number of colonies of", answer: "Coliform bacteria" },
+                { question: "Water is an excellent solvent because", answer: "It has high dielectric constant" },
+                { question: "Turbidity in water mainly arises from", answer: "Colloidal mater" },
+                { question: "Odour in water can be eliminated", answer: "Aeration" },
+                { question: "______ is a nonpoint source of water pollution", answer: "Urban and Suburban lands" },
+                { question: "______ is a point source of water pollution", answer: "Factory" },
+                { question: "Temporary hardness of water is due to", answer: "Carbonates and Bicarbonates" },
+                { question: "The process of killing micro-organisms in water is called", answer: "Disinfection" },
+                { question: "The liquid waste from baths and kitchen is called", answer: "Sullage" },
+                { question: "BOD is abbreviation of", answer: "Biochemical Oxygen Demand" },
+                { question: "Physical pollution of water is due to", answer: "Turbidity" },
+                { question: "______ is a major source of Thermal pollution", answer: "Thermal power plants" },
+                { question: "Minamata Disease is caused due to", answer: "Mercury" },
+                { question: "Air pollution in automobiles can be controlled by fitting", answer: "Catalytic converter" },
+                { question: "Plants grown by the roadside have higher content of", answer: "Pb (lead)" },
+                { question: "_______ is a government regulatory system designed to give companies an incentive to reduce their carbon emissions.", answer: "Cap and trade" },
+                { question: "The noise is measured in", answer: "Decibels (dB)" },
+                { question: "Sound above ____is considered as hazardous noise pollution", answer: "Above 80 dB" },
+                { question: "_____ is the source of fly ash pollution", answer: "Thermal power plant" },
+                { question: "______ is an aerosol", answer: "Smoke, Fume and Mist" },
+                { question: "Hemoglobin of blood forms carboxy-hemoglobin with", answer: "Carbon monoxide" },
+                { question: "Decrease of oxygen level in water causes", answer: "Death of aquatic life" },
+                { question: "COD is", answer: "Chemical Oxygen Demand" }
+            ],
+            module4: [
+                { question: "Below which of the following pH is rain regarded as 'acid rain'?", answer: "5.6" },
+                { question: "Which of the following gases are main contributors to acid rain?", answer: "Sulphur dioxide and nitrous oxide" },
+                { question: "What is the pH required for the survival of aquatic animals and plants?", answer: "4.8" },
+                { question: "Ozone is found in the", answer: "Stratosphere" },
+                { question: "Montreal protocol is related to the", answer: "Ozone layer depletion" },
+                { question: "This is a major risk linked with extreme ultraviolet rays through the atmosphere as a result of", answer: "ozone layer depletion" },
+                { question: "Increased skin cancer", answer: "due to ozone layer depletion" },
+                { question: "The protocol that reduces greenhouse gas emissions is", answer: "Kyoto protocol" },
+                { question: "Green House effect causes", answer: "Rise in temperature of earth" },
+                { question: "Percentage of nitrogen in earth's atmosphere is", answer: "78%" },
+                { question: "Thickness of Ozone layer measured in _______ Unit", answer: "Dobson" },
+                { question: "Average thickness of ozone layer in stratosphere", answer: "230 Dobson Unit" },
+                { question: "______  are responsible for Ozone depletion", answer: "Methyl bromide, Chloro Fluorocarbons, Hydro  Chloro Fluorocarbons" },
+                { question: "Ozone layer is located up to _____Km above the earth surface", answer: "50" },
+                { question: "The Major compound responsible for the ozone layer depletion is", answer: "Chloro Fluoro Carbons" },
+                { question: "The steady decline of Ozone in the stratosphere is called", answer: "Ozone hole" },
+                { question: "What is the maximum limit for fluoride in drinking water", answer: "1.5 mg/l" },
+                { question: "Excess of fluoride in drinking water causes", answer: "Fluorosis" },
+                { question: "Radon is a", answer: "Inert gas" }
+            ],
+            module5: [
+                { question: "EIA can be expanded as", answer: "Environmental Impact Assessment" },
+                { question: "To achieve  the goal of clean environment, important strategies required are", answer: "Effective laws and Active participation of publics" },
+                { question: "An International conference on Environmental Education was held in Dec. 1982 at", answer: "New Delhi" },
+                { question: "The first United Nation Conference on human environment was held at", answer: "Stockholm" },
+                { question: "In which year the Hon'ble supreme court of India made environmental education compulsory subject at all the levels of education", answer: "2003" },
+                { question: "Environmental protection is fundamental duties of the citizen of India under the", answer: "Article 51-A(g)" },
+                { question: "Which is the first country amended laws for the punishment of crimes relating to Environmental   pollution", answer: "Japan" },
+                { question: "Government of India enacted Water Act in the year", answer: "1974" },
+                { question: "Government of India enacted Environmental (Protection)  Act in the year", answer: "1986" },
+                { question: "Environmental education is targeted to", answer: "General Public, Professional and social groups and Technicians and Scientists" },
+                { question: "Basal Convention 1989 deals with", answer: "Transboundary movement of hazardous wastes" },
+                { question: "EPA means", answer: "Environmental Protection Act" },
+                { question: "The first major environmental protection law promulgated in India was", answer: "Wild Life Protection Act" },
+                { question: "'Wild Life Protection Act' was enacted in the year", answer: "1972" },
+                { question: "Government of India enacted Water Act in the year", answer: "1974" },
+                { question: "Government of India enacted Environmental (Protection)  Act in the year", answer: "1986" },
+                { question: "Karnataka State Pollution Control Board was established in the year", answer: "1974" },
+                { question: "Water supply for Domestic consumption in Indian Towns as per BIS", answer: "135 lpcd" },
+                { question: "First International Earth summit was held at", answer: "Riode Janeiro" },
+                { question: "Environmental education is targeted to", answer: "General Public, Professional and social groups and Technicians and Scientists" },
+                { question: "The Tiger Conservation Project was started in", answer: "1st April 1973" }
+            ]
+        };
+
+        // Quiz state variables
+        let currentQuiz = [];
+        let currentQuestionIndex = 0;
+        let userAnswers = [];
+        let totalQuestions = 20;
+
+        function startQuiz() {
+            totalQuestions = parseInt(document.getElementById('totalQuestions').value);
+            
+            // Validate input
+            if (isNaN(totalQuestions) || totalQuestions <= 0) {
+                alert('Please enter a valid number of questions (at least 1).');
+                return;
+            }
+            
+            // Generate quiz questions
+            generateQuiz();
+
+            // Hide setup, show quiz
+            document.getElementById('quizSetup').style.display = 'none';
+            document.getElementById('quizArea').style.display = 'block';
+
+            // Load first question
+            loadQuestion();
+            updateProgress();
+        }
+
+        function generateQuiz() {
+            // Combine all questions from all modules
+            const allQuestions = [];
+            Object.values(questionBank).forEach(module => {
+                allQuestions.push(...module);
+            });
+            
+            // Shuffle all questions
+            shuffleArray(allQuestions);
+            
+            // Take the requested number of questions
+            currentQuiz = allQuestions.slice(0, totalQuestions);
+            userAnswers = new Array(currentQuiz.length);
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        function loadQuestion() {
+            const question = currentQuiz[currentQuestionIndex];
+            document.getElementById('questionNumber').textContent = `Question ${currentQuestionIndex + 1}`;
+            document.getElementById('questionText').textContent = question.question;
+
+            // Clear previous options
+            const optionsContainer = document.getElementById('optionsContainer');
+            optionsContainer.innerHTML = '';
+
+            // Add some random incorrect answers for multiple choice
+            const allAnswers = getAllAnswers();
+            const incorrectAnswers = getIncorrectAnswers(question.answer, allAnswers, 3);
+            
+            const allOptions = [question.answer, ...incorrectAnswers];
+            shuffleArray(allOptions);
+
+            allOptions.forEach((option, index) => {
+                const optionDiv = document.createElement('div');
+                optionDiv.className = 'option';
+                optionDiv.textContent = option;
+                optionDiv.onclick = function() {
+                    selectOption(this, option);
+                };
+                optionsContainer.appendChild(optionDiv);
+            });
+
+            // Update button states
+            document.getElementById('submitBtn').style.display = 'none';
+
+            // Clear feedback
+            document.getElementById('feedback').style.display = 'none';
+            
+            // Enable all options
+            document.querySelectorAll('.option').forEach(option => {
+                option.style.pointerEvents = 'auto';
+                option.classList.remove('correct', 'incorrect');
+            });
+        }
+
+        function getAllAnswers() {
+            const allAnswers = new Set();
+            Object.values(questionBank).forEach(module => {
+                module.forEach(q => allAnswers.add(q.answer));
+            });
+            return Array.from(allAnswers);
+        }
+
+        function getIncorrectAnswers(correctAnswer, allAnswers, count) {
+            const incorrect = [];
+            const available = allAnswers.filter(ans => ans.toLowerCase() !== correctAnswer.toLowerCase());
+            
+            // Shuffle and take required number
+            shuffleArray(available);
+            return available.slice(0, count);
+        }
+
+        function selectOption(element, answer) {
+            // Disable all options to prevent further selection
+            document.querySelectorAll('.option').forEach(opt => {
+                opt.style.pointerEvents = 'none';
+            });
+
+            // Store the user's answer
+            userAnswers[currentQuestionIndex] = answer;
+            
+            const correctAnswer = currentQuiz[currentQuestionIndex].answer;
+            
+            // Highlight correct and incorrect answers
+            document.querySelectorAll('.option').forEach(opt => {
+                if (opt.textContent === correctAnswer) {
+                    opt.classList.add('correct', 'glow', 'bounce');
+                } else if (opt.textContent === answer && answer !== correctAnswer) {
+                    opt.classList.add('incorrect');
+                }
+            });
+            
+            // Show feedback
+            const feedback = document.getElementById('feedback');
+            if (answer.toLowerCase().trim() === correctAnswer.toLowerCase().trim()) {
+                feedback.textContent = 'Correct! Well done.';
+                feedback.className = 'feedback correct glow';
+                
+                // Add glitter effect for correct answer
+                createGlitterEffect(element);
+            } else {
+                feedback.textContent = `Incorrect. The correct answer is: ${correctAnswer}`;
+                feedback.className = 'feedback incorrect';
+                
+                // Highlight correct answer with special effect
+                const correctOption = Array.from(document.querySelectorAll('.option')).find(opt => opt.textContent === correctAnswer);
+                if (correctOption) {
+                    correctOption.classList.add('glow', 'pulse');
+                }
+            }
+            feedback.style.display = 'block';
+            
+            // Show next button
+            document.getElementById('nextBtn').style.display = 'inline-block';
+        }
+        
+        function createGlitterEffect(element) {
+            // Create confetti/glitter effect around the correct answer
+            const rect = element.getBoundingClientRect();
+
+            for (let i = 0; i < 30; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                
+                // Random colors for confetti
+                const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#ff9900', '#ff66cc'];
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Position near the element
+                confetti.style.left = (rect.left + Math.random() * rect.width) + 'px';
+                confetti.style.top = (rect.top + Math.random() * rect.height) + 'px';
+                
+                // Random size
+                const size = 4 + Math.random() * 8;
+                confetti.style.width = size + 'px';
+                confetti.style.height = size + 'px';
+                
+                // Random animation duration
+                confetti.style.animationDuration = (0.5 + Math.random() * 2) + 's';
+                
+                document.body.appendChild(confetti);
+                
+                // Remove confetti after animation completes
+                setTimeout(() => {
+                    if (confetti.parentNode) {
+                        confetti.parentNode.removeChild(confetti);
+                    }
+                }, 2000);
+            }
+            
+            // Create a sparkle effect on the element itself
+            element.classList.add('rainbow', 'pulse');
+            
+            // Remove classes after animation completes
+            setTimeout(() => {
+                element.classList.remove('rainbow', 'pulse');
+            }, 3000);
+        }
+        
+
+        function updateProgress() {
+            const progressPercent = ((currentQuestionIndex + 1) / currentQuiz.length) * 100;
+            document.getElementById('progressFill').style.width = `${progressPercent}%`;
+            document.getElementById('progressText').textContent = `Question ${currentQuestionIndex + 1} of ${currentQuiz.length}`;
+        }
+        
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < currentQuiz.length) {
+                loadQuestion();
+                updateProgress();
+                
+                // Hide next button and feedback for the new question
+                document.getElementById('nextBtn').style.display = 'none';
+                document.getElementById('feedback').style.display = 'none';
+            } else {
+                // If we're at the last question, show submit button
+                document.getElementById('nextBtn').style.display = 'none';
+                document.getElementById('submitBtn').style.display = 'inline-block';
+            }
+        }
+
+        function submitQuiz() {
+            // Calculate score and find wrong answers
+            let correct = 0;
+            const wrongAnswers = [];
+            
+            for (let i = 0; i < currentQuiz.length; i++) {
+                if (userAnswers[i] && userAnswers[i].toLowerCase().trim() === currentQuiz[i].answer.toLowerCase().trim()) {
+                    correct++;
+                } else {
+                    wrongAnswers.push({
+                        question: currentQuiz[i].question,
+                        correctAnswer: currentQuiz[i].answer,
+                        userAnswer: userAnswers[i] || 'No answer selected'
+                    });
+                }
+            }
+
+            const score = Math.round((correct / currentQuiz.length) * 100);
+            
+            // Show results
+            document.getElementById('quizArea').style.display = 'none';
+            document.getElementById('resultContainer').style.display = 'block';
+            
+            document.getElementById('finalScore').textContent = `${correct}/${currentQuiz.length} (${score}%)`;
+            
+            let message = '';
+            if (score >= 90) {
+                message = 'Excellent! You have a strong understanding of Environmental Science!';
+            } else if (score >= 70) {
+                message = 'Good job! You have a solid foundation in Environmental Science.';
+            } else if (score >= 50) {
+                message = 'Not bad! You have some knowledge but could benefit from more study.';
+            } else {
+                message = 'You need to study more to improve your understanding of Environmental Science.';
+            }
+            
+            // Create wrong answers list
+            let wrongAnswersHtml = '<h3>Questions You Got Wrong:</h3><ul>';
+            if (wrongAnswers.length > 0) {
+                wrongAnswers.forEach((item, index) => {
+                    wrongAnswersHtml += `<li><strong>Question:</strong> ${item.question}<br>`;
+                    wrongAnswersHtml += `<strong>Your Answer:</strong> ${item.userAnswer}<br>`;
+                    wrongAnswersHtml += `<strong>Correct Answer:</strong> ${item.correctAnswer}</li>`;
+                });
+            } else {
+                wrongAnswersHtml += '<li>Congratulations! You got all questions correct!</li>';
+            }
+            wrongAnswersHtml += '</ul>';
+            
+            document.getElementById('resultMessage').innerHTML = message + '<br><br>' + wrongAnswersHtml;
+        }
+        
+        function restartQuiz() {
+            // Reset quiz state
+            currentQuestionIndex = 0;
+            userAnswers = [];
+            currentQuiz = []; // Reset the current quiz array
+            
+            // Reset UI elements
+            document.getElementById('nextBtn').style.display = 'none';
+            document.getElementById('submitBtn').style.display = 'none';
+            
+            // Show setup again and hide other sections
+            document.getElementById('resultContainer').style.display = 'none';
+            document.getElementById('quizArea').style.display = 'none';
+            document.getElementById('progressFill').style.width = '0%';
+            document.getElementById('progressText').textContent = 'Question 1 of 1';
+            
+            // Reset the quiz setup form
+            document.getElementById('totalQuestions').value = '20';
+            
+            document.getElementById('quizSetup').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

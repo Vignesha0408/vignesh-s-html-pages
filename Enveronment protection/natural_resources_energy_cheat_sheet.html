@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natural Resources and Energy Cheat Sheet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: #f0f4f8;
+            padding: 20px;
+            font-size: 16px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #0288d1, #01579b);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 45px;
+            border-left: 5px solid #0288d1;
+            padding-left: 25px;
+            background-color: #fafafa;
+            border-radius: 8px;
+            padding: 25px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        
+        .section h2 {
+            color: #0288d1;
+            font-size: 1.9rem;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #e0e0e0;
+            font-weight: 600;
+        }
+        
+        .subsection {
+            margin: 25px 0;
+            padding: 15px;
+            background-color: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .subsection h3 {
+            color: #039be5;
+            font-size: 1.5rem;
+            margin: 20px 0 15px 0;
+            font-weight: 600;
+        }
+        
+        .subsection h4 {
+            color: #29b6f6;
+            font-size: 1.2rem;
+            margin: 18px 0 10px 0;
+            font-weight: 500;
+        }
+        
+        ul, ol {
+            margin: 12px 0 12px 30px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        p {
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+        
+        strong {
+            color: #01579b;
+            font-weight: 600;
+        }
+        
+        .disease-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .disease-item {
+            background-color: #e1f5fe;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #0288d1;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .disease-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .disease-title {
+            font-weight: bold;
+            color: #01579b;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .energy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .energy-card {
+            background-color: #fff3e0;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #ff9800;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .energy-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .energy-title {
+            font-weight: bold;
+            color: #e65100;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .alternative-energy {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .alt-energy-card {
+            background-color: #f3e5f5;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #9c27b0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .alt-energy-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .alt-energy-title {
+            font-weight: bold;
+            color: #4a148c;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .water-quality-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .water-quality-table th,
+        .water-quality-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .water-quality-table th {
+            background-color: #bbdefb;
+            color: #01579b;
+            font-weight: 600;
+        }
+        
+        .water-quality-table tr:nth-child(even) {
+            background-color: #e3f2fd;
+        }
+        
+        .water-quality-table tr:hover {
+            background-color: #e1f5fe;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+                font-size: 15px;
+            }
+            
+            .content {
+                padding: 25px 20px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section {
+                margin-left: 5px;
+                margin-right: 5px;
+                padding: 20px;
+            }
+            
+            .disease-grid,
+            .energy-grid,
+            .alternative-energy {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Natural Resources and Energy Cheat Sheet</h1>
+            <div class="subtitle">Comprehensive Guide for Academic Study</div>
+        </header>
+        
+        <div class="content">
+            <!-- Natural Resources Section -->
+            <div class="section" id="natural-resources">
+                <h2>Natural Resources</h2>
+                
+                <div class="subsection">
+                    <h3>Water Resources – Availability & Quality Aspects</h3>
+                    <p>Water is the most essential natural resource for all forms of life on Earth. Understanding its availability and quality is crucial for sustainable development.</p>
+                    
+                    <h4>Water Availability</h4>
+                    <ul>
+                        <li><strong>Global Water Distribution:</strong> 97.5% saltwater, 2.5% freshwater</li>
+                        <li><strong>Freshwater Breakdown:</strong> 68.7% glaciers, 30.1% groundwater, 0.3% surface water, 0.9% other</li>
+                        <li><strong>Renewable Water Resources:</strong> Precipitation, river flow, groundwater recharge</li>
+                        <li><strong>Water Stress:</strong> Situation where demand exceeds available amount during a certain period</li>
+                        <li><strong>Water Scarcity:</strong> Physical shortage of water or economic water shortage</li>
+                    </ul>
+                    
+                    <h4>Water Quality Aspects</h4>
+                    <table class="water-quality-table">
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Description</th>
+                                <th>Acceptable Limits</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>pH Level</td>
+                                <td>Measure of acidity/alkalinity</td>
+                                <td>6.5-8.5</td>
+                            </tr>
+                            <tr>
+                                <td>Turbidity</td>
+                                <td>Clarity of water</td>
+                                <td>Less than 5 NTU</td>
+                            </tr>
+                            <tr>
+                                <td>Dissolved Oxygen</td>
+                                <td>Oxygen available for aquatic life</td>
+                                <td>4-8 mg/L</td>
+                            </tr>
+                            <tr>
+                                <td>BOD</td>
+                                <td>Biochemical Oxygen Demand</td>
+                                <td>Less than 3 mg/L</td>
+                            </tr>
+                            <tr>
+                                <td>Total Dissolved Solids (TDS)</td>
+                                <td>Total dissolved minerals</td>
+                                <td>Less than 500 mg/L</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h4>Water Quality Parameters</h4>
+                    <ul>
+                        <li><strong>Physical:</strong> Temperature, color, odor, taste, turbidity, suspended solids</li>
+                        <li><strong>Chemical:</strong> pH, dissolved oxygen, BOD, COD, nitrogen compounds, phosphorus, heavy metals</li>
+                        <li><strong>Biological:</strong> Bacteria, viruses, algae, parasites, coliform count</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Water Borne Diseases Section -->
+            <div class="section" id="water-diseases">
+                <h2>Water Borne Diseases & Water Induced Diseases</h2>
+                
+                <div class="subsection">
+                    <h3>Water Borne Diseases</h3>
+                    <p>Diseases transmitted through contaminated water by ingestion of water containing pathogens.</p>
+                    
+                    <div class="disease-grid">
+                        <div class="disease-item">
+                            <div class="disease-title">Cholera</div>
+                            <p><strong>Causative Agent:</strong> Vibrio cholerae bacteria</p>
+                            <p><strong>Symptoms:</strong> Severe diarrhea, dehydration, vomiting</p>
+                            <p><strong>Prevention:</strong> Safe drinking water, sanitation, hygiene</p>
+                        </div>
+                        
+                        <div class="disease-item">
+                            <div class="disease-title">Typhoid Fever</div>
+                            <p><strong>Causative Agent:</strong> Salmonella typhi bacteria</p>
+                            <p><strong>Symptoms:</strong> High fever, weakness, stomach pain, headache</p>
+                            <p><strong>Prevention:</strong> Safe water, proper sanitation, vaccination</p>
+                        </div>
+                        
+                        <div class="disease-item">
+                            <div class="disease-title">Dysentery</div>
+                            <p><strong>Causative Agent:</strong> Shigella bacteria or Entamoeba histolytica</p>
+                            <p><strong>Symptoms:</strong> Severe diarrhea with blood and mucus</p>
+                            <p><strong>Prevention:</strong> Clean water, handwashing, proper waste disposal</p>
+                        </div>
+                        
+                        <div class="disease-item">
+                            <div class="disease-title">Hepatitis A</div>
+                            <p><strong>Causative Agent:</strong> Hepatitis A virus</p>
+                            <p><strong>Symptoms:</strong> Jaundice, fatigue, abdominal pain, nausea</p>
+                            <p><strong>Prevention:</strong> Safe water, vaccination, proper hygiene</p>
+                        </div>
+                        
+                        <div class="disease-item">
+                            <div class="disease-title">Giardiasis</div>
+                            <p><strong>Causative Agent:</strong> Giardia lamblia parasite</p>
+                            <p><strong>Symptoms:</strong> Diarrhea, gas, stomach cramps, nausea</p>
+                            <p><strong>Prevention:</strong> Treated water, proper sanitation</p>
+                        </div>
+                        
+                        <div class="disease-item">
+                            <div class="disease-title">Polio</div>
+                            <p><strong>Causative Agent:</strong> Poliovirus</p>
+                            <p><strong>Symptoms:</strong> Paralysis, muscle weakness, fever</p>
+                            <p><strong>Prevention:</strong> Vaccination, safe water, sanitation</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3>Water Induced Diseases</h3>
+                    <p>Diseases transmitted through water contact, vector breeding, or water-related environmental conditions.</p>
+                    
+                    <div class="disease-grid">
+                        <div class="disease-item">
+                            <div class="disease-title">Malaria</div>
+                            <p><strong>Transmission:</strong> Mosquito bite (Anopheles mosquito breeds in water)</p>
+                            <p><strong>Symptoms:</strong> Fever, chills, flu-like illness</p>
+                            <p><strong>Prevention:</strong> Eliminate breeding sites, use bed nets, insecticides</p>
+                        </div>
+                        
+                        <div class="disease-item">
+                            <div class="disease-title">Dengue</div>
+                            <p><strong>Transmission:</strong> Aedes mosquito breeding in water containers</p>
+                            <p><strong>Symptoms:</strong> High fever, severe headache, joint pain</p>
+                            <p><strong>Prevention:</strong> Eliminate standing water, use repellents</p>
+                        </div>
+                        
+                        <div class="disease-item">
+                            <div class="disease-title">Schistosomiasis</div>
+                            <p><strong>Transmission:</strong> Contact with freshwater containing parasites</p>
+                            <p><strong>Symptoms:</strong> Abdominal pain, diarrhea, blood in stool/urine</p>
+                            <p><strong>Prevention:</strong> Avoid contact with contaminated water</p>
+                        </div>
+                        
+                        <div class="disease-item">
+                            <div class="disease-title">Filariasis</div>
+                            <p><strong>Transmission:</strong> Mosquito bite (breeds in water)</p>
+                            <p><strong>Symptoms:</strong> Swelling of limbs, lymphatic system damage</p>
+                            <p><strong>Prevention:</strong> Vector control, eliminate breeding sites</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Fluoride Problem Section -->
+            <div class="section" id="fluoride">
+                <h2>Fluoride Problem in Drinking Water</h2>
+                
+                <div class="subsection">
+                    <h3>Fluoride in Water: Benefits and Risks</h3>
+                    <p>Fluoride is naturally present in water but can cause health problems when concentrations exceed safe limits.</p>
+                    
+                    <h4>Safe Limits and Standards</h4>
+                    <ul>
+                        <li><strong>WHO Guideline:</strong> 1.5 mg/L (maximum acceptable concentration)</li>
+                        <li><strong>ISI Standard:</strong> 1.0 mg/L (desirable limit), 1.5 mg/L (permissible limit)</li>
+                        <li><strong>Natural Occurrence:</strong> Found in rocks, soil, and water sources</li>
+                    </ul>
+                    
+                    <h4>Fluorosis: Health Effects</h4>
+                    <ul>
+                        <li><strong>Dental Fluorosis:</strong> Discoloration and pitting of teeth</li>
+                        <li><strong>Skeletal Fluorosis:</strong> Joint pain, stiffness, bone damage</li>
+                        <li><strong>Non-skeletal Effects:</strong> Neurological problems, kidney damage, thyroid issues</li>
+                    </ul>
+                    
+                    <h4>Geographic Distribution</h4>
+                    <ul>
+                        <li><strong>High Fluoride Areas:</strong> Rajasthan, Gujarat, Andhra Pradesh, Telangana, Tamil Nadu</li>
+                        <li><strong>Causes:</strong> Geological factors, deep bore wells, arid conditions</li>
+                    </ul>
+                    
+                    <h4>Removal Methods</h4>
+                    <ul>
+                        <li><strong>Precipitation Method:</strong> Using lime, aluminum sulfate, or calcium chloride</li>
+                        <li><strong>Adsorption Method:</strong> Using activated alumina, bone char, or activated carbon</li>
+                        <li><strong>Membrane Method:</strong> Reverse osmosis, electrodialysis</li>
+                        <li><strong>Alternative Sources:</strong> Rainwater harvesting, surface water</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Energy Section -->
+            <div class="section" id="energy">
+                <h2>Energy</h2>
+                
+                <div class="subsection">
+                    <h3>Different Types of Energy</h3>
+                    <div class="energy-grid">
+                        <div class="energy-card">
+                            <div class="energy-title">Kinetic Energy</div>
+                            <p>Energy of motion; depends on mass and velocity of an object</p>
+                        </div>
+                        
+                        <div class="energy-card">
+                            <div class="energy-title">Potential Energy</div>
+                            <p>Stored energy due to position or configuration</p>
+                        </div>
+                        
+                        <div class="energy-card">
+                            <div class="energy-title">Thermal Energy</div>
+                            <p>Energy associated with heat and temperature</p>
+                        </div>
+                        
+                        <div class="energy-card">
+                            <div class="energy-title">Chemical Energy</div>
+                            <p>Energy stored in chemical bonds of substances</p>
+                        </div>
+                        
+                        <div class="energy-card">
+                            <div class="energy-title">Electrical Energy</div>
+                            <p>Energy from flow of electric charge</p>
+                        </div>
+                        
+                        <div class="energy-card">
+                            <div class="energy-title">Nuclear Energy</div>
+                            <p>Energy released from nuclear reactions (fission/fusion)</p>
+                        </div>
+                        
+                        <div class="energy-card">
+                            <div class="energy-title">Radiant Energy</div>
+                            <p>Energy carried by electromagnetic waves</p>
+                        </div>
+                        
+                        <div class="energy-card">
+                            <div class="energy-title">Mechanical Energy</div>
+                            <p>Sum of kinetic and potential energy in a mechanical system</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3>Conventional Sources of Energy</h3>
+                    <ul>
+                        <li><strong>Fossil Fuels:</strong> Coal, petroleum, natural gas</li>
+                        <li><strong>Nuclear Energy:</strong> Uranium-based fission reactions</li>
+                        <li><strong>Characteristics:</strong> Finite resources, environmental concerns, reliable supply</li>
+                        <li><strong>Advantages:</strong> Established infrastructure, high energy density, consistent supply</li>
+                        <li><strong>Disadvantages:</strong> Depletion, pollution, greenhouse gas emissions</li>
+                    </ul>
+                    
+                    <h3>Non-Conventional Sources of Energy</h3>
+                    <ul>
+                        <li><strong>Renewable Sources:</strong> Solar, wind, hydro, biomass, geothermal</li>
+                        <li><strong>Characteristics:</strong> Inexhaustible, environmentally friendly, sustainable</li>
+                        <li><strong>Advantages:</strong> Clean energy, sustainable, reduces carbon footprint</li>
+                        <li><strong>Disadvantages:</strong> Intermittent supply, high initial costs, location dependent</li>
+                    </ul>
+                </div>
+                
+                <div class="subsection">
+                    <h3>Solar Energy</h3>
+                    <ul>
+                        <li><strong>Technology Types:</strong> Photovoltaic (PV) panels, solar thermal systems</li>
+                        <li><strong>Applications:</strong> Electricity generation, water heating, space heating/cooling</li>
+                        <li><strong>Advantages:</strong> Abundant resource, zero emissions, low maintenance</li>
+                        <li><strong>Disadvantages:</strong> Intermittent, high initial cost, weather dependent</li>
+                        <li><strong>Efficiency:</strong> Commercial PV panels: 15-22%, Concentrated solar: up to 40%</li>
+                    </ul>
+                    
+                    <h3>Wind Energy</h3>
+                    <ul>
+                        <li><strong>Technology:</strong> Horizontal and vertical axis wind turbines</li>
+                        <li><strong>Applications:</strong> Electricity generation, water pumping, mechanical power</li>
+                        <li><strong>Advantages:</strong> Clean, renewable, cost-effective, scalable</li>
+                        <li><strong>Disadvantages:</strong> Intermittent, noise, visual impact, wildlife concerns</li>
+                        <li><strong>Capacity Factor:</strong> 25-35% for onshore, 35-50% for offshore</li>
+                    </ul>
+                    
+                    <h3>Hydrogen as Alternative Energy</h3>
+                    <ul>
+                        <li><strong>Production Methods:</strong> Electrolysis, steam methane reforming, biomass gasification</li>
+                        <li><strong>Applications:</strong> Fuel cells, transportation, industrial processes</li>
+                        <li><strong>Advantages:</strong> Zero emissions when used, high energy density, versatile</li>
+                        <li><strong>Disadvantages:</strong> High production cost, storage challenges, infrastructure needs</li>
+                        <li><strong>Hydrogen Economy:</strong> Potential for clean energy storage and transportation</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Self-Study Component Section -->
+            <div class="section" id="ssc">
+                <h2>Self-Study Component (SSC): Alternative Energy Sources</h2>
+                
+                <div class="alternative-energy">
+                    <div class="alt-energy-card">
+                        <div class="alt-energy-title">Biomass Energy</div>
+                        <p>Energy from organic matter including wood, agricultural residues, and animal waste.</p>
+                        <ul>
+                            <li>Direct combustion for heat/electricity</li>
+                            <li>Biofuels like ethanol and biodiesel</li>
+                            <li>Biogas from anaerobic digestion</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="alt-energy-card">
+                        <div class="alt-energy-title">Geothermal Energy</div>
+                        <p>Heat energy from Earth's interior accessed through hot springs, geysers, and underground reservoirs.</p>
+                        <ul>
+                            <li>Electricity generation</li>
+                            <li>Direct heating applications</li>
+                            <li>Low emissions and reliable</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="alt-energy-card">
+                        <div class="alt-energy-title">Ocean Energy</div>
+                        <p>Energy from ocean thermal gradients, waves, tides, and salinity differences.</p>
+                        <ul>
+                            <li>Tidal energy systems</li>
+                            <li>Wave energy converters</li>
+                            <li>Ocean thermal energy conversion (OTEC)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="alt-energy-card">
+                        <div class="alt-energy-title">Fuel Cells</div>
+                        <p>Devices that convert chemical energy directly to electrical energy through electrochemical reactions.</p>
+                        <ul>
+                            <li>Hydrogen fuel cells</li>
+                            <li>Proton exchange membrane (PEM) cells</li>
+                            <li>High efficiency, zero emissions</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="alt-energy-card">
+                        <div class="alt-energy-title">Small Hydroelectric</div>
+                        <p>Micro and mini hydro systems that generate electricity from flowing water on a smaller scale.</p>
+                        <ul>
+                            <li>Capacity up to 10 MW</li>
+                            <li>Environmentally friendly</li>
+                            <li>Suitable for remote areas</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="alt-energy-card">
+                        <div class="alt-energy-title">Energy Storage Systems</div>
+                        <p>Technologies that store energy for later use, complementing intermittent renewable sources.</p>
+                        <ul>
+                            <li>Battery systems (Li-ion, flow batteries)</li>
+                            <li>Pumped hydro storage</li>
+                            <li>Compressed air energy storage</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

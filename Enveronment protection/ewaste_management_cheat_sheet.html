@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Waste Management Cheat Sheet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: #f0f4f8;
+            padding: 20px;
+            font-size: 16px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #00695c, #004d40);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 45px;
+            border-left: 5px solid #00695c;
+            padding-left: 25px;
+            background-color: #fafafa;
+            border-radius: 8px;
+            padding: 25px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        
+        .section h2 {
+            color: #00695c;
+            font-size: 1.9rem;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #e0e0e0;
+            font-weight: 600;
+        }
+        
+        .subsection {
+            margin: 25px 0;
+            padding: 15px;
+            background-color: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .subsection h3 {
+            color: #00796b;
+            font-size: 1.5rem;
+            margin: 20px 0 15px 0;
+            font-weight: 600;
+        }
+        
+        .subsection h4 {
+            color: #26a69a;
+            font-size: 1.2rem;
+            margin: 18px 0 10px 0;
+            font-weight: 500;
+        }
+        
+        ul, ol {
+            margin: 12px 0 12px 30px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        p {
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+        
+        strong {
+            color: #004d40;
+            font-weight: 600;
+        }
+        
+        .ewaste-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .ewaste-card {
+            background-color: #e0f2f1;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #00897b;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .ewaste-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .ewaste-title {
+            font-weight: bold;
+            color: #00695c;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .health-effects {
+            background-color: #ffebee;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #e53935;
+            margin: 20px 0;
+        }
+        
+        .management-principles {
+            background-color: #e8f5e8;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #4caf50;
+            margin: 20px 0;
+        }
+        
+        .rules-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .rules-table th,
+        .rules-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .rules-table th {
+            background-color: #b2dfdb;
+            color: #004d40;
+            font-weight: 600;
+        }
+        
+        .rules-table tr:nth-child(even) {
+            background-color: #e0f2f1;
+        }
+        
+        .rules-table tr:hover {
+            background-color: #c8e6c9;
+        }
+        
+        .remembering-techniques {
+            background-color: #fff3e0;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #ff9800;
+            margin: 20px 0;
+            border: 2px dashed #ffd54f;
+        }
+        
+        .mcq-section {
+            background-color: #e8f5e8;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #4caf50;
+            margin: 20px 0;
+            border: 2px solid #c8e6c9;
+        }
+        
+        .mcq-question {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: white;
+            border-radius: 5px;
+            border-left: 3px solid #4caf50;
+        }
+        
+        .concept-differentiation {
+            background-color: #e3f2fd;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #2196f3;
+            margin: 20px 0;
+            border: 2px solid #bbdefb;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .comparison-table th {
+            background-color: #bbdefb;
+            color: #0d47a1;
+            font-weight: 600;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #e3f2fd;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: #e1f5fe;
+        }
+        
+        .highlight-box {
+            background-color: #fff8e1;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+            border: 1px solid #ffecb3;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+                font-size: 15px;
+            }
+            
+            .content {
+                padding: 25px 20px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section {
+                margin-left: 5px;
+                margin-right: 5px;
+                padding: 20px;
+            }
+            
+            .ewaste-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>E-Waste Management Cheat Sheet</h1>
+            <div class="subtitle">Comprehensive Guide for Academic Study</div>
+        </header>
+        
+        <div class="content">
+            <!-- E-Waste Management Section -->
+            <div class="section" id="e-waste">
+                <h2>E-Waste Management</h2>
+                
+                <div class="subsection">
+                    <h3>E-Waste: Composition and Generation</h3>
+                    <div class="ewaste-grid">
+                        <div class="ewaste-card">
+                            <div class="ewaste-title">Composition</div>
+                            <ul>
+                                <li><strong>Metals (60%):</strong> Iron, copper, aluminum, precious metals</li>
+                                <li><strong>Plastics (20%):</strong> Various polymers and resins</li>
+                                <li><strong>Other Materials (20%):</strong> Glass, ceramics, circuit boards</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="ewaste-card">
+                            <div class="ewaste-title">Generation Sources</div>
+                            <ul>
+                                <li>Computers and laptops</li>
+                                <li>Mobile phones and tablets</li>
+                                <li>Televisions and monitors</li>
+                                <li>Home appliances</li>
+                                <li>Printers and scanners</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="ewaste-card">
+                            <div class="ewaste-title">Global Context</div>
+                            <ul>
+                                <li>50+ million tons generated annually worldwide</li>
+                                <li>Fastest growing waste stream globally</li>
+                                <li>Asia-Pacific region generates largest volume</li>
+                                <li>India ranks 3rd in e-waste generation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3>E-Waste Pollutants</h3>
+                    <div class="ewaste-grid">
+                        <div class="ewaste-card">
+                            <div class="ewaste-title">Heavy Metals</div>
+                            <ul>
+                                <li>Lead (neurotoxin, affects brain development)</li>
+                                <li>Mercury (damages nervous system)</li>
+                                <li>Cadmium (kidney damage, bone disease)</li>
+                                <li>Chromium (respiratory problems)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="ewaste-card">
+                            <div class="ewaste-title">Toxic Compounds</div>
+                            <ul>
+                                <li>Polyvinyl Chloride (PVC) - releases dioxins when burned</li>
+                                <li>Brominated Flame Retardants (BFRs) - endocrine disruptors</li>
+                                <li>Phthalates - hormone disruptors</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="ewaste-card">
+                            <div class="ewaste-title">Hazardous Properties</div>
+                            <ul>
+                                <li>Toxicity - harmful to health</li>
+                                <li>Corrosivity - damages materials and tissues</li>
+                                <li>Ignitability - fire hazard</li>
+                                <li>Reactivity - explosive or unstable</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3>Effects of E-Waste Pollutants</h3>
+                    <div class="health-effects">
+                        <h4>On Human Health:</h4>
+                        <ul>
+                            <li><strong>Neurological Effects:</strong> Lead and mercury cause cognitive impairments, developmental delays in children</li>
+                            <li><strong>Respiratory Problems:</strong> Inhalation of toxic fumes causes breathing difficulties</li>
+                            <li><strong>Cancer Risk:</strong> Exposure to heavy metals and flame retardants increases cancer risk</li>
+                            <li><strong>Reproductive Issues:</strong> Endocrine disruptors affect fertility and fetal development</li>
+                            <li><strong>Kidney Damage:</strong> Cadmium and lead accumulate in kidneys causing dysfunction</li>
+                        </ul>
+                        
+                        <h4>On Environment:</h4>
+                        <ul>
+                            <li><strong>Soil Contamination:</strong> Heavy metals accumulate in soil, reducing fertility</li>
+                            <li><strong>Water Pollution:</strong> Leaching of toxic substances into groundwater</li>
+                            <li><strong>Air Pollution:</strong> Burning of e-waste releases toxic gases</li>
+                            <li><strong>Biodiversity Loss:</strong> Contamination affects flora and fauna</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3>Domestic E-Waste Disposal</h3>
+                    <ul>
+                        <li>Improper disposal in general waste bins</li>
+                        <li>Informal sector dismantling without safety measures</li>
+                        <li>Open burning to extract valuable metals</li>
+                        <li>Lack of awareness about proper disposal methods</li>
+                        <li>Insufficient collection centers in rural areas</li>
+                    </ul>
+                </div>
+                
+                <div class="subsection">
+                    <h3>Basic Principles of E-Waste Management</h3>
+                    <div class="management-principles">
+                        <ul>
+                            <li><strong>Reduce:</strong> Minimize consumption and extend product lifespan</li>
+                            <li><strong>Reuse:</strong> Donate or sell functional devices to others</li>
+                            <li><strong>Recycle:</strong> Extract valuable materials through proper channels</li>
+                            <li><strong>Recovery:</strong> Energy recovery from non-recyclable components</li>
+                            <li><strong>Responsible Disposal:</strong> Ensure safe handling of hazardous components</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3>Components of E-Waste Management</h3>
+                    <ul>
+                        <li><strong>Collection System:</strong> Establishing collection points and door-to-door services</li>
+                        <li><strong>Storage and Transportation:</strong> Safe handling and transport of e-waste</li>
+                        <li><strong>Processing Facilities:</strong> Authorized dismantling and recycling units</li>
+                        <li><strong>Material Recovery:</strong> Extraction of metals, plastics, and other materials</li>
+                        <li><strong>Disposal of Residues:</strong> Safe disposal of non-recoverable waste</li>
+                        <li><strong>Information System:</strong> Tracking and monitoring of e-waste flow</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- E-Waste Rules Section -->
+            <div class="section" id="ewaste-rules">
+                <h2>E-Waste (Management and Handling) Rules, 2011 and E-Waste (Management) Rules, 2022</h2>
+                
+                <div class="subsection">
+                    <h3>Salient Features and Implications</h3>
+                    <table class="rules-table">
+                        <thead>
+                            <tr>
+                                <th>Aspect</th>
+                                <th>Rules 2011</th>
+                                <th>Rules 2022</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Scope</td>
+                                <td>Covered 21 products</td>
+                                <td>Expanded to cover all electrical and electronic equipment</td>
+                            </tr>
+                            <tr>
+                                <td>Producer Responsibility</td>
+                                <td>Introduced Extended Producer Responsibility (EPR)</td>
+                                <td>Enhanced EPR with targets and online registration</td>
+                            </tr>
+                            <tr>
+                                <td>Collection Targets</td>
+                                <td>Initial targets based on historical sales</td>
+                                <td>Progressive targets: 20% by 2023, 70% by 2030</td>
+                            </tr>
+                            <tr>
+                                <td>Compliance</td>
+                                <td>Annual returns to Central Pollution Control Board</td>
+                                <td>Quarterly returns with online monitoring</td>
+                            </tr>
+                            <tr>
+                                <td>State Government Role</td>
+                                <td>Facilitating collection centers</td>
+                                <td>Enhanced role in monitoring and enforcement</td>
+                            </tr>
+                            <tr>
+                                <td>Import Regulations</td>
+                                <td>Basic import provisions</td>
+                                <td>Strict import controls for non-functional equipment</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="subsection">
+                    <h3>Key Implications</h3>
+                    <ul>
+                        <li>Manufacturers must meet collection targets or face penalties</li>
+                        <li>Consumers can return e-waste to manufacturers or authorized dealers</li>
+                        <li>Formalization of e-waste recycling sector</li>
+                        <li>Increased investment in recycling infrastructure</li>
+                        <li>Greater accountability and transparency in e-waste handling</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Remembering Techniques Section -->
+            <div class="section" id="remembering-techniques">
+                <h2>Remembering Techniques</h2>
+                
+                <div class="remembering-techniques">
+                    <h3>Memory Aids for E-Waste Management Concepts</h3>
+                    
+                    <div class="highlight-box">
+                        <strong>REDER Principle:</strong> Reduce, Reuse, Recycle, Recovery, Responsible disposal
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <strong>TOCR Framework:</strong> Toxic, Obsolete, Corrosive, Radioactive - Key e-waste hazards
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <strong>HEAVY Metals:</strong> Mercury, Lead, Cadmium, Chromium - Major e-waste pollutants
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <strong>ECO RULES:</strong> Electronics, Computers, Old, Recyclable, Units, Legal, Enforcement, Standards
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <strong>3C Approach:</strong> Collect, Classify, Channelize - E-waste management process
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <strong>Global E-Waste:</strong> "50 Million Tons Annually" (50M = 5 continents actively managing e-waste)
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Important Concepts Differentiation -->
+            <div class="section" id="concept-differentiation">
+                <h2>Important Concepts Differentiation</h2>
+                
+                <div class="concept-differentiation">
+                    <h3>Key Distinctions in E-Waste Management</h3>
+                    
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Concept</th>
+                                <th>Definition</th>
+                                <th>Key Differences</th>
+                                <th>Examples</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Formal vs Informal Sector</td>
+                                <td>Legal framework for e-waste handling</td>
+                                <td>Formal follows regulations; Informal operates illegally</td>
+                                <td>Formal: Authorized recyclers; Informal: Backyard operations</td>
+                            </tr>
+                            <tr>
+                                <td>Reuse vs Refurbish</td>
+                                <td>Continuing device functionality</td>
+                                <td>Reuse same function; Refurbish improves function</td>
+                                <td>Reuse: Donating old phone; Refurbish: Repairing laptop</td>
+                            </tr>
+                            <tr>
+                                <td>Domestic vs Imported E-Waste</td>
+                                <td>Source of e-waste</td>
+                                <td>Domestic from local; Imported from other countries</td>
+                                <td>Domestic: Local electronics; Imported: From developed nations</td>
+                            </tr>
+                            <tr>
+                                <td>Consumer vs Industrial E-Waste</td>
+                                <td>Type of generating entity</td>
+                                <td>Consumer from households; Industrial from businesses</td>
+                                <td>Consumer: Personal devices; Industrial: Servers, equipment</td>
+                            </tr>
+                            <tr>
+                                <td>Authorized vs Unauthorized</td>
+                                <td>Government approval status</td>
+                                <td>Authorized licensed; Unauthorized unlicensed</td>
+                                <td>Authorized: Registered facilities; Unauthorized: Illegal operations</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- MCQ Section -->
+            <div class="section" id="mcqs">
+                <h2>Multiple Choice Questions (MCQs)</h2>
+                
+                <div class="mcq-section">
+                    <h3>Test Your Knowledge</h3>
+                    
+                    <div class="mcq-question">
+                        <strong>Q1. What percentage of e-waste is composed of metals?</strong>
+                        <ol>
+                            <li>A) 40%</li>
+                            <li>B) 50%</li>
+                            <li>C) 60%</li>
+                            <li>D) 70%</li>
+                        </ol>
+                        <p><strong>Answer: C) 60%</strong></p>
+                    </div>
+                    
+                    <div class="mcq-question">
+                        <strong>Q2. Which heavy metal in e-waste primarily affects the nervous system?</strong>
+                        <ol>
+                            <li>A) Lead</li>
+                            <li>B) Mercury</li>
+                            <li>C) Cadmium</li>
+                            <li>D) Chromium</li>
+                        </ol>
+                        <p><strong>Answer: B) Mercury</strong></p>
+                    </div>
+                    
+                    <div class="mcq-question">
+                        <strong>Q3. What is the global annual e-waste generation approximately?</strong>
+                        <ol>
+                            <li>A) 30 million tons</li>
+                            <li>B) 40 million tons</li>
+                            <li>C) 50 million tons</li>
+                            <li>D) 60 million tons</li>
+                        </ol>
+                        <p><strong>Answer: C) 50 million tons</strong></p>
+                    </div>
+                    
+                    <div class="mcq-question">
+                        <strong>Q4. Which principle is NOT part of the basic e-waste management principles?</strong>
+                        <ol>
+                            <li>A) Reduce</li>
+                            <li>B) Reuse</li>
+                            <li>C) Relocate</li>
+                            <li>D) Recycle</li>
+                        </ol>
+                        <p><strong>Answer: C) Relocate</strong></p>
+                    </div>
+                    
+                    <div class="mcq-question">
+                        <strong>Q5. What does EPR stand for in e-waste management?</strong>
+                        <ol>
+                            <li>A) Environmental Protection Regulation</li>
+                            <li>B) Extended Producer Responsibility</li>
+                            <li>C) Electronic Product Recycling</li>
+                            <li>D) Efficient Processing Requirements</li>
+                        </ol>
+                        <p><strong>Answer: B) Extended Producer Responsibility</strong></p>
+                    </div>
+                    
+                    <div class="mcq-question">
+                        <strong>Q6. Which year did the original E-Waste Management Rules come into effect?</strong>
+                        <ol>
+                            <li>A) 2008</li>
+                            <li>B) 2011</li>
+                            <li>C) 2016</li>
+                            <li>D) 2022</li>
+                        </ol>
+                        <p><strong>Answer: B) 2011</strong></p>
+                    </div>
+                    
+                    <div class="mcq-question">
+                        <strong>Q7. What percentage of global e-waste is formally collected and recycled?</strong>
+                        <ol>
+                            <li>A) 10-15%</li>
+                            <li>B) 20-25%</li>
+                            <li>C) 30-35%</li>
+                            <li>D) 40-45%</li>
+                        </ol>
+                        <p><strong>Answer: A) 10-15%</strong></p>
+                    </div>
+                    
+                    <div class="mcq-question">
+                        <strong>Q8. Which toxic compound in e-waste releases dioxins when burned?</strong>
+                        <ol>
+                            <li>A) Brominated Flame Retardants</li>
+                            <li>B) Phthalates</li>
+                            <li>C) Polyvinyl Chloride (PVC)</li>
+                            <li>D) Heavy metals</li>
+                        </ol>
+                        <p><strong>Answer: C) Polyvinyl Chloride (PVC)</strong></p>
+                    </div>
+                    
+                    <div class="mcq-question">
+                        <strong>Q9. Which country ranks 3rd in e-waste generation globally?</strong>
+                        <ol>
+                            <li>A) China</li>
+                            <li>B) USA</li>
+                            <li>C) India</li>
+                            <li>D) Japan</li>
+                        </ol>
+                        <p><strong>Answer: C) India</strong></p>
+                    </div>
+                    
+                    <div class="mcq-question">
+                        <strong>Q10. What is the target collection rate for e-waste by 2030 under Rules 2022?</strong>
+                        <ol>
+                            <li>A) 50%</li>
+                            <li>B) 60%</li>
+                            <li>C) 70%</li>
+                            <li>D) 80%</li>
+                        </ol>
+                        <p><strong>Answer: C) 70%</strong></p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Self-Study Component Section -->
+            <div class="section" id="ssc">
+                <h2>Self-Study Component (SSC): E-Waste Management Rules and Amendment Rules</h2>
+                
+                <div class="subsection">
+                    <h3>E-Waste Management Rules and Success Stories</h3>
+                    <div class="ewaste-grid">
+                        <div class="ewaste-card">
+                            <div class="ewaste-title">E-Waste Recycling in Germany</div>
+                            <p><strong>Objective:</strong> Maximize e-waste recovery and recycling</p>
+                            <p><strong>Approach:</strong> Strict producer responsibility, advanced technology</p>
+                            <p><strong>Results:</strong> Over 45% e-waste recycling rate</p>
+                        </div>
+                        
+                        <div class="ewaste-card">
+                            <div class="ewaste-title">Japan's Urban Mining</div>
+                            <p><strong>Objective:</strong> Extract precious metals from e-waste</p>
+                            <p><strong>Approach:</strong> Advanced extraction technologies</p>
+                            <p><strong>Results:</strong> Metals from e-waste used for Olympic medals</p>
+                        </div>
+                        
+                        <div class="ewaste-card">
+                            <div class="ewaste-title">E-Waste Take-Back Programs</div>
+                            <p><strong>Objective:</strong> Manufacturer responsibility for end-of-life products</p>
+                            <p><strong>Approach:</strong> Retailer collection points, consumer incentives</p>
+                            <p><strong>Results:</strong> Increased formal collection rates</p>
+                        </div>
+                        
+                        <div class="ewaste-card">
+                            <div class="ewaste-title">E-Waste Exchange Mechanism</div>
+                            <p><strong>Objective:</strong> Efficient channelization of e-waste</p>
+                            <p><strong>Approach:</strong> Digital platform for tracking and trading</p>
+                            <p><strong>Results:</strong> Improved collection and processing efficiency</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3>E-Waste (Management) Amendment Rules, 2023 and 2024</h3>
+                    <ul>
+                        <li><strong>Amendment 2023:</strong> Introduction of stricter norms for informal sector engagement</li>
+                        <li><strong>Amendment 2023:</strong> Enhanced monitoring through digital platforms</li>
+                        <li><strong>Amendment 2023:</strong> Updated standards for authorized dismantlers and recyclers</li>
+                        <li><strong>Proposed Amendment 2024:</strong> Stricter penalties for non-compliance</li>
+                        <li><strong>Proposed Amendment 2024:</strong> Introduction of e-waste exchange mechanism</li>
+                        <li><strong>Proposed Amendment 2024:</strong> Mandatory insurance for e-waste handlers</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
